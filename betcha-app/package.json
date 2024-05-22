@@ -13,7 +13,7 @@
     "srv:kill-ports": "npx kill-port 8080 5001 9099 4300",
     "srv:build": "npm run watch",
     "srv:emulators": "npm run srv:kill-ports && npm run srv:run",
-    "srv:concur": "concurrently \"npm:start\" \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
+    "srv:concur": "concurrently \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
     "srv:concur:fb": "concurrently \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
     "srv": "npm run srv:compile && npm run srv:concur"
   },

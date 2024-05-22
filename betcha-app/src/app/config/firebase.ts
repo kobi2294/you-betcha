@@ -35,7 +35,7 @@ export function importAuth(): EnvironmentProviders {
   return provideAuth(() => {
     const auth = getAuth();
     if(environment.simulation) {
-      connectAuthEmulator(auth, 'http://localhost:9099');
+      connectAuthEmulator(auth, 'http://localhost:9099', {disableWarnings: true});
     }
     return auth;
   })
