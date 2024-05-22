@@ -1,4 +1,4 @@
-import { EnvironmentProviders } from "@angular/core";
+import { EnvironmentProviders, makeEnvironmentProviders } from "@angular/core";
 import { getFirestore, provideFirestore, connectFirestoreEmulator } from "@angular/fire/firestore";
 import { environment } from "../../environments/environment";
 import { connectAuthEmulator, getAuth, provideAuth } from "@angular/fire/auth";
@@ -6,6 +6,17 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from "@angul
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { connectStorageEmulator, getStorage, provideStorage } from "@angular/fire/storage";
 
+
+export function provideFirebaseServices(): EnvironmentProviders {
+
+  return makeEnvironmentProviders([
+    importFirebase(),
+    importFirestore(),
+    importAuth(),
+    importFunctions(),
+    importStorage(),
+  ])
+}
 
 export function importFirebase(): EnvironmentProviders {
   return provideFirebaseApp(() => initializeApp(environment.firebaseConfig));

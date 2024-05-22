@@ -10,26 +10,13 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { importAuth, importFirebase, importFirestore, importFunctions, importStorage } from './config/firebase';
+import { importAuth, importFirebase, importFirestore, importFunctions, importStorage, provideFirebaseServices } from './config/firebase';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     { provide: APP_VERSION, useValue: packageJson.version },
 
-    importFirebase(), 
-    importFirestore(),
-    importAuth(),
-    importFunctions(),
-    importStorage(),
-
-
-    provideFirebaseApp(() =>
-      initializeApp(environment.firebaseConfig)
-    ),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideStorage(() => getStorage()),
+    provideFirebaseServices(),
   ],
 };
