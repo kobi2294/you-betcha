@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { APP_VERSION } from './tokens/app-version.token';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,5 @@ import { APP_VERSION } from './tokens/app-version.token';
 })
 export class AppComponent {
   version = inject(APP_VERSION);
+  env = environment.name;
 }
