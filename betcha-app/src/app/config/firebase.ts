@@ -32,7 +32,7 @@ export function importAuth(): EnvironmentProviders {
 
 export function importFunctions(): EnvironmentProviders {
   return  provideFunctions(() => {
-    const functions = getFunctions(undefined, 'europe-central2');
+    const functions = getFunctions(undefined, 'europe-west3');
     if(environment.simulation) {
       connectFunctionsEmulator(functions, 'localhost', 5001);
     }
