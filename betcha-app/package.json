@@ -15,8 +15,7 @@
     "srv:emulators": "npm run srv:kill-ports && npm run srv:run",
     "srv:concur": "concurrently \"npm:start\" \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
     "srv:concur:fb": "concurrently \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
-    "srv": "npm run srv:compile && npm run srv:concur",
-
+    "srv": "npm run srv:compile && npm run srv:concur"
   },
   "private": true,
   "dependencies": {
