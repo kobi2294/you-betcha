@@ -2,5 +2,35 @@
   "projects": {
     "default": "you-betcha-stage",
     "prod": "you-betcha-prod"
-  }
+  },
+  "targets": {
+    "you-betcha-stage": {
+      "hosting": {
+        "betcha-app": [
+          "you-betcha-stage"
+        ],
+        "betcha-admin": [
+          "you-betcha-admin-stage"
+        ],
+        "betcha-dashboard": [
+          "you-betcha-dashboard-stage"
+        ]
+      }
+    },
+    "you-betcha-prod": {
+      "hosting": {
+        "betcha-app": [
+          "you-betcha-app-prod"
+        ],
+        "betcha-admin": [
+          "you-betcha-admin-prod"
+        ],
+        "betcha-dashboard": [
+          "you-betcha-dashboard-prod"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
