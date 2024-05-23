@@ -5,12 +5,13 @@ import packageJson from '../../package.json';
 import { routes } from './app.routes';
 import { APP_VERSION } from './tokens/app-version.token';
 import { provideFirebaseServices } from './config/firebase';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     { provide: APP_VERSION, useValue: packageJson.version },
 
-    provideFirebaseServices(),
+    provideFirebaseServices(environment.firebaseConfig, environment.simulation),
   ],
 };

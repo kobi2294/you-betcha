@@ -2,11 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "paths": {
-      "bt-lib": [
-        "./dist/bt-lib"
-      ]
-    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -23,10 +18,21 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ], 
+    "paths": {
+      "@lib": [
+        "./dist/bt-lib", 
+        "./projects/bt-lib/src/public-api.ts"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@angular/material"    ]
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

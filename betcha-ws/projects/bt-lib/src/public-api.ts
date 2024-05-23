@@ -2,5 +2,5 @@
  * Public API Surface of bt-lib
  */
 
-export * from './lib/bt-lib.service';
-export * from './lib/bt-lib.component';
+export * from './utils/provide-firebase-services';
+export * from './utils/provide-version';

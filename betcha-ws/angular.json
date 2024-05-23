@@ -110,13 +110,14 @@
           "defaultConfiguration": "prod"
         },
         "serve": {
+          "options": {"port": 4200},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "betcha-app:build:production"
+              "buildTarget": "betcha-app:build:prod"
             },
             "development": {
-              "buildTarget": "betcha-app:build:development"
+              "buildTarget": "betcha-app:build:dev"
             }
           },
           "defaultConfiguration": "development"
@@ -255,13 +256,14 @@
           "defaultConfiguration": "prod"
         },
         "serve": {
+          "options": {"port": 4300},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "betcha-dashboard:build:production"
+              "buildTarget": "betcha-dashboard:build:prod"
             },
             "development": {
-              "buildTarget": "betcha-dashboard:build:development"
+              "buildTarget": "betcha-dashboard:build:dev"
             }
           },
           "defaultConfiguration": "development"
@@ -400,13 +402,14 @@
           "defaultConfiguration": "prod"
         },
         "serve": {
+          "options": {"port": 4400},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "betcha-admin:build:production"
+              "buildTarget": "betcha-admin:build:prod"
             },
             "development": {
-              "buildTarget": "betcha-admin:build:development"
+              "buildTarget": "betcha-admin:build:dev"
             }
           },
           "defaultConfiguration": "development"
