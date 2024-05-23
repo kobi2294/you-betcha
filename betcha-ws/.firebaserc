@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "you-betcha-stage", 
+    "default": "you-betcha-stage",
     "prod": "you-betcha-prod"
   }
 }
