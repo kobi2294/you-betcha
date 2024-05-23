@@ -256,7 +256,7 @@
           "defaultConfiguration": "prod"
         },
         "serve": {
-          "options": {"port": 4300},
+          "options": {"port": 4210},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -402,7 +402,7 @@
           "defaultConfiguration": "prod"
         },
         "serve": {
-          "options": {"port": 4400},
+          "options": {"port": 4220},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
