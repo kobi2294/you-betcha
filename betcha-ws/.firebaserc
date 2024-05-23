@@ -20,13 +20,13 @@
     "you-betcha-prod": {
       "hosting": {
         "betcha-app": [
-          "you-betcha-app-prod"
+          "u-betcha"
         ],
         "betcha-admin": [
-          "you-betcha-admin-prod"
+          "u-betcha-admin"
         ],
         "betcha-dashboard": [
-          "you-betcha-dashboard-prod"
+          "u-betcha-dashboard"
         ]
       }
     }

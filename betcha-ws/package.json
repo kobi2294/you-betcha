@@ -16,16 +16,16 @@
     "srv:emulators": "npm run srv:kill-ports && npm run srv:run",
     "srv:concur": "concurrently \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
     "srv:compile": "npm run build --prefix functions",
-    "srv": "npm run srv:compile && npm run change-to-stage && npm run srv:concur",
+    "srv": "npm run srv:compile && npm run use:stage && npm run srv:concur",
 
-    "change-to-stage": "firebase use you-betcha-stage",
-    "change-to-prod": "firebase use you-betcha-prod",
-    "stage:seed": "npm run change-to-stage && npm run seed-stage --prefix functions",
-    "prod:seed": "npm run change-to-prod && npm run seed-prod --prefix functions",
-    "deploy:stage-with-seed": "npm run build:stage && npm run change-to-stage && firebase deploy && npm run stage:seed",
-    "deploy:stage": "npm run build:stage && npm run change-to-stage && firebase deploy",
-    "deploy:prod-with-seed": "npm run build:prod && npm run change-to-prod && firebase deploy && npm run prod:seed",
-    "deploy:prod": "npm run build:prod && npm run change-to-prod && firebase deploy"
+    "use:stage": "firebase use you-betcha-stage",
+    "use:prod": "firebase use you-betcha-prod",
+    "stage:seed": "npm run use:stage && npm run seed-stage --prefix functions",
+    "prod:seed": "npm run use:prod && npm run seed-prod --prefix functions",
+    "deploy:stage-with-seed": "npm run build:stage && npm run use:stage && firebase deploy && npm run stage:seed",
+    "deploy:stage": "npm run build:stage && npm run use:stage && firebase deploy",
+    "deploy:prod-with-seed": "npm run build:prod && npm run use:prod && firebase deploy && npm run prod:seed",
+    "deploy:prod": "npm run build:prod && npm run use:prod && firebase deploy"
 
 
   },
