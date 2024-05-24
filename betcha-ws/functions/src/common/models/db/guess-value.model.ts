@@ -1,0 +1,1 @@
+export type GuessValue = 'home' | 'away' | 'tie';
