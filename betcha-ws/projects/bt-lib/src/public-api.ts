@@ -4,3 +4,4 @@
 
 export * from './utils/provide-firebase-services';
 export * from './utils/provide-version';
+export * from './utils/provide-firebase-ui';

@@ -5,11 +5,10 @@
     "ng": "ng",
     "start": "concurrently \"ng serve betcha-app\" \"ng serve betcha-dashboard\" \"ng serve betcha-admin\"",
     "build": "ng build --configuration dev betcha-app && ng build --configuration dev betcha-admin && ng build --configuration dev betcha-dashboard",
-    "build:prod": "ng build --configuration prod betcha-app && ng build --configuration prod betcha-admin && ng build --configuration prod betcha-dashboard", 
+    "build:prod": "ng build --configuration prod betcha-app && ng build --configuration prod betcha-admin && ng build --configuration prod betcha-dashboard",
     "build:stage": "ng build --configuration stage betcha-app && ng build --configuration stage betcha-admin && ng build --configuration stage betcha-dashboard",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration dev",
     "test": "ng test",
-
     "srv:emulators-seed": "npm run seed-emulators --prefix functions",
     "srv:run": "firebase emulators:start --inspect-functions --export-on-exit em-data --import em-data",
     "srv:kill-ports": "npx kill-port 8080 5001 9099 9199 4000",
@@ -17,7 +16,6 @@
     "srv:concur": "concurrently \"npm:srv:emulators\" \"npm:srv:emulators-seed\"",
     "srv:compile": "npm run build --prefix functions",
     "srv": "npm run srv:compile && npm run use:stage && npm run srv:concur",
-
     "use:stage": "firebase use you-betcha-stage",
     "use:prod": "firebase use you-betcha-prod",
     "stage:seed": "npm run use:stage && npm run seed-stage --prefix functions",
@@ -26,8 +24,6 @@
     "deploy:stage": "npm run build:stage && npm run use:stage && firebase deploy",
     "deploy:prod-with-seed": "npm run build:prod && npm run use:prod && firebase deploy && npm run prod:seed",
     "deploy:prod": "npm run build:prod && npm run use:prod && firebase deploy"
-
-
   },
   "private": true,
   "dependencies": {
@@ -40,6 +36,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "firebaseui-angular": "^6.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

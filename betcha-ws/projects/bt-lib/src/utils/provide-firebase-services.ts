@@ -1,12 +1,17 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from "@angular/core";
 import { getFirestore, provideFirestore, connectFirestoreEmulator } from "@angular/fire/firestore";
-import { connectAuthEmulator, getAuth, provideAuth } from "@angular/fire/auth";
+import { connectAuthEmulator, getAuth, provideAuth, setPersistence } from "@angular/fire/auth";
 import { connectFunctionsEmulator, getFunctions, provideFunctions } from "@angular/fire/functions";
 import { FirebaseOptions, initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { connectStorageEmulator, getStorage, provideStorage } from "@angular/fire/storage";
+import { FIREBASE_OPTIONS } from "@angular/fire/compat";
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from "@angular/fire/compat/auth";
+import firebase from 'firebase/app';
 
 
 export function provideFirebaseServices(config: FirebaseOptions, simulation: boolean): EnvironmentProviders {
+
+  console.log('firebase settings', config);
 
   return makeEnvironmentProviders([
     importFirebase(),
@@ -14,6 +19,11 @@ export function provideFirebaseServices(config: FirebaseOptions, simulation: boo
     importAuth(),
     importFunctions(),
     importStorage(),
+    {
+      provide: FIREBASE_OPTIONS, useValue: config
+    }, 
+    { provide: USE_AUTH_EMULATOR, useValue: simulation ? ['http://localhost:9099', 9099] : undefined }
+
   ]);
 
 
