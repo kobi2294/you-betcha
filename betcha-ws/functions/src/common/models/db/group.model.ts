@@ -1,3 +1,5 @@
+import { ColorTheme } from "./color-theme.model";
+
 export interface Group {
     readonly id: string;
     readonly secret: string;
@@ -7,4 +9,5 @@ export interface Group {
     readonly photoUrl: string;
     readonly latestMessage: string;
     readonly latestMessagePhotoUrl: string;
+    readonly theme: ColorTheme;
 }
