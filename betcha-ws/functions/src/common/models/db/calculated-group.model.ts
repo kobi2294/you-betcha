@@ -1,7 +1,7 @@
 import { GuessValue } from "./guess-value.model";
 import { Match } from "./match.model";
 
-export interface CaluculatedGroup {
+export interface CalculatedGroup {
     readonly id: string;    
 }
 
