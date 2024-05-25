@@ -1,3 +1,9 @@
+export interface Metadata {
+    id: 'metadata'
+    matches: Match[];
+    stages: Stage[];
+}
+
 export interface Match {
     readonly id: string;
     readonly stage: string;
@@ -6,4 +12,10 @@ export interface Match {
     readonly awayScore: number | null;
     readonly homeScore: number | null;
     readonly date: string;
+}
+
+export interface Stage {
+    readonly id: string;
+    readonly displayName: string;
+    readonly points: number;
 }

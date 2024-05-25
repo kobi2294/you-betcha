@@ -1,4 +1,4 @@
-import { ColorTheme } from "./color-theme.model";
+import { ColorTheme } from "./enums.model";
 
 export interface Group {
     readonly id: string;

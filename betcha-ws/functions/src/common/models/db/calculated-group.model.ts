@@ -1,8 +1,9 @@
-import { GuessValue } from "./guess-value.model";
-import { Match } from "./match.model";
+import { GuessValue } from "./enums.model";
+import { Match } from "./metadata.model";
 
 export interface CalculatedGroup {
-    readonly id: string;    
+    readonly id: string;    // group-id
+    readonly matchScores: CalculatedMatchScores[];
 }
 
 export interface CalculatedMatchScores extends Match {

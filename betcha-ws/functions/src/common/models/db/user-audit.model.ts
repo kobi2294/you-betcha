@@ -1,5 +1,5 @@
 export interface UserAudit {
-    readonly id: string;
+    readonly id: string;    // user-id
     readonly displayName: string;
     readonly displayModeStandalone: boolean;
     readonly standalone: boolean;
