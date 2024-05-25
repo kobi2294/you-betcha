@@ -4,3 +4,12 @@ export function bufferCount<T>(items: T[], buffer: number): T[][] {
   );
 }
 
+export function arrayWith<T>(source: T[], item: T): T[] {
+  if (source.includes(item)) return source;
+  return [...source, item];
+}
+
+export function arrayWithout<T>(source: T[], item: T): T[] {
+  return source.filter(i => i !== item);
+}
+

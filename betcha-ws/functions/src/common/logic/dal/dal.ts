@@ -6,6 +6,7 @@ import {
 } from './dal-types';
 import { dalAccess } from './dal-access';
 import { on } from '../../utils/functional';
+import { DbModel } from '../../models/db/db.alias';
 
 export function getDal() {
   const access = dalAccess();
@@ -22,14 +23,29 @@ export function getDal() {
     }));
   }
 
+  async function _getGroupBySecret(secret: string): Promise<DbModel.Group | undefined> {
+    const groups =  await access.collection('groups').getAll(['secret', '==', secret]);
+    return groups[0];
+  }
+
   return {
     batch: access.batch,
     audits: _collectionMethods('audits'),
-    groups: _collectionMethods('groups'),
-    metadata: _collectionMethods('metadata'),
+    groups: { 
+      ..._collectionMethods('groups'),
+      getBySecret: _getGroupBySecret
+    },
+    metadata: on(access.collection('metadata'), (x) => ({
+      get: () => x.doc('metadata').get(),
+      update: (updater: DalUpdater<'metadata'>) =>
+        x.doc('metadata').update(updater),
+      set: (data: Partial<DbModel.Metadata>) =>
+        x.doc('metadata').update((_) => data),
+    })),
     users: _collectionMethods('users'),
     calculatedGroups: _collectionMethods('calculated-groups'),
     calculatedMatches: _collectionMethods('calculated-matches'),
     clearAllData: access.clearAllData,
+    file: access.file,
   };
 }

@@ -1,9 +1,10 @@
 import { CalculatedGroup, CalculatedMatchScores, CalculatedUserScore } from "./calculated-group.model";
 import { CalculatedMatch } from "./calculated-match.model";
-import { COLOR_THEMES, ColorTheme, GUESS_VALUES, GuessValue, USER_ROLES, UserRole } from "./enums.model";
+import { COLOR_THEMES, ColorTheme, GUESS_VALUES, GuessValue, USER_ROLES, UserRole, isRoleSufficient } from "./enums.model";
 import { Group } from "./group.model";
 import { Match, Metadata, Stage } from "./metadata.model";
 import { UserAudit } from "./user-audit.model";
+import { AuthClaims, UserAuth } from "./user-claims.model";
 import { User } from "./user.model";
 
 export {
@@ -15,7 +16,7 @@ export {
 
     COLOR_THEMES, ColorTheme,
     GUESS_VALUES, GuessValue,
-    USER_ROLES, UserRole,
+    USER_ROLES, UserRole, isRoleSufficient,
 
     Group, 
 
@@ -25,5 +26,6 @@ export {
 
     UserAudit, 
 
-    User
+    User, 
+    AuthClaims, UserAuth
 }

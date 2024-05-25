@@ -57,4 +57,10 @@ export type DalAccess = {
     collection: <T extends DalCollection>(collection: T) => DalCollectionAccess<T>,
     batch: () => DalBatchAccess,
     clearAllData: () => Promise<void>,
+    file: {
+        upload: (path: string, content: string, contentType: DalFileContentType) => Promise<string>,
+        delete: (path: string) => Promise<void>,
+    }
 }
+
+export type DalFileContentType = 'image/png' | 'image/jpg';

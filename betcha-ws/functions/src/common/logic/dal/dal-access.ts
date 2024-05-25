@@ -1,12 +1,15 @@
 import { getFirestore } from 'firebase-admin/firestore';
+import { getStorage } from 'firebase-admin/storage';
 import {
   CollectionType,
   DalAccess,
   DalCollection,
+  DalFileContentType,
   DalQuery,
   DalUpdater,
 } from './dal-types';
 import { dalBatch } from './dal-batch';
+import { PassThrough } from 'stream';
 
 export function dalAccess(firestore = getFirestore()): DalAccess {
   async function _getCollection<T extends DalCollection>(
@@ -58,20 +61,24 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
     await _setDoc(collection, updated);
   }
 
-  async function _clearAllData(subCollections?: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>[] | undefined) {
+  async function _clearAllData(
+    subCollections?:
+      | FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>[]
+      | undefined
+  ) {
     const collections = subCollections ?? (await firestore.listCollections());
     for (const coll of collections) {
       // Get a new write batch
       const batch = firestore.batch();
       const documents = await coll.listDocuments();
-  
+
       for (const doc of documents) {
         await _clearAllData(await doc.listCollections());
         batch.delete(doc);
       }
       await batch.commit();
     }
-    return;    
+    return;
   }
 
   async function _deleteCollection(collection: DalCollection) {
@@ -79,12 +86,45 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
     await _clearAllData([coll]);
   }
 
+  function _uploadFile(
+    path: string,
+    content: string,
+    contentType: DalFileContentType
+  ): Promise<string> {
+    const bucket = getStorage().bucket();
+
+    return new Promise((resolve, reject) => {
+      const blob = bucket.file(path);
+      const bufferStream = new PassThrough();
+
+      bufferStream.pipe(
+        blob.createWriteStream({
+          metadata: { contentType },
+        })
+      );
+
+      bufferStream.on('error', (err) => {
+        reject(err);
+      });
+
+      bufferStream.on('finish', () => {
+        resolve(path);
+      });
+
+      bufferStream.end(Buffer.from(content, 'base64'));
+
+    });
+  }
+
+  async function _deleteFile(path: string): Promise<void> {
+      await getStorage().bucket().file(path).delete({ignoreNotFound: true});
+  }
 
   return {
     collection: <T extends DalCollection>(collection: T) => ({
       deleteAll: () => _deleteCollection(collection),
       getAll: (...queries: DalQuery<T>[]) =>
-        _getCollection(collection, ...queries),      
+        _getCollection(collection, ...queries),
       doc: (id: string) => ({
         get: () => _getDoc(collection, id),
         update: (updater: DalUpdater<T>) => _updateDoc(collection, id, updater),
@@ -94,5 +134,9 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
     }),
     batch: () => dalBatch(firestore),
     clearAllData: () => _clearAllData(),
+    file: {
+      upload: _uploadFile,
+      delete: _deleteFile
+    },
   };
 }
