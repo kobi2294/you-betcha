@@ -7,6 +7,7 @@ import {
 import {
   connectAuthEmulator,
   getAuth,
+  initializeAuth,
   provideAuth,
   setPersistence,
 } from '@angular/fire/auth';
@@ -40,7 +41,10 @@ export function provideFirebaseServices(
   ]);
 
   function importFirebase(): EnvironmentProviders {
-    return provideFirebaseApp(() => initializeApp(config));
+    return provideFirebaseApp(() => {
+      const app =  initializeApp(config);
+      return app;
+    });
   }
   function importFirestore(): EnvironmentProviders {
     return provideFirestore(() => {
@@ -55,6 +59,8 @@ export function provideFirebaseServices(
     return provideAuth(() => {
       console.log('AUTH AUTH');
       const auth = getAuth();
+
+      setPersistence(auth, { type: 'LOCAL' });
       if (simulation) {
         connectAuthEmulator(auth, 'http://localhost:9099', {
           disableWarnings: true,

@@ -3,6 +3,7 @@ import {
   InjectionToken,
   makeEnvironmentProviders,
 } from '@angular/core';
+import { sign } from 'crypto';
 import * as firebaseAuth from 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 
@@ -21,11 +22,11 @@ export function provideLoginUi(): EnvironmentProviders {
       provide: AUTH_CONFIG,
       useValue: {
         callbacks: {
-          signInSuccessWithAuthResult: () => false,
-          uiShown: () => {},
+          // signInSuccessWithAuthResult: () => false,
+          // uiShown: () => {},
         },
         signInFlow: 'redirect',
-
+        signInSuccessUrl: '/',
         signInOptions: [
           firebaseAuth.GoogleAuthProvider.PROVIDER_ID,
           {

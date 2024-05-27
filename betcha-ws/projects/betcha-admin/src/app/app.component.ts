@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Auth, User } from '@angular/fire/auth';
+import { Auth, User, getRedirectResult } from '@angular/fire/auth';
 import { RouterOutlet } from '@angular/router';
 import { LoginUiComponent } from '@lib';
 import { ReplaySubject, map } from 'rxjs';
@@ -23,6 +23,15 @@ export class AppComponent {
   constructor() {
     this.auth.onAuthStateChanged(this.user$);
     this.user$.subscribe(val => console.log('User is', val));
+  }
+
+  async ngOnInit() {
+    try {
+      const result = await getRedirectResult(this.auth);
+      alert('Redirect result success');
+    } catch (err) {
+      alert(`Redirect result error ${err}`);
+    }
   }
 
   logout() {

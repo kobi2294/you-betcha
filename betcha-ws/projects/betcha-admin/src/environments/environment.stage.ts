@@ -4,7 +4,7 @@ export const environment = {
   simulation: false,
   firebaseConfig: {
     apiKey: 'AIzaSyC-sVnTn7ZBTSJ7_jTEV9K9yCtPhETPnac',
-    authDomain: 'you-betcha-stage.firebaseapp.com',
+    authDomain: 'you-betcha-admin-stage.web.app',
     projectId: 'you-betcha-stage',
     storageBucket: 'you-betcha-stage.appspot.com',
     messagingSenderId: '436644278366',
