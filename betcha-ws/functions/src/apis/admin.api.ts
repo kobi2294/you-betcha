@@ -1,10 +1,9 @@
-import { AuthData } from "firebase-functions/lib/common/providers/tasks";
-import { authorize } from "../common/api/authorize";
+import { AuthToken, authorize } from "../common/api/authorize";
 import { DbModel } from "../common/models/db/db.alias";
 import { getDal } from "../common/logic/dal/dal";
 
-export function getAdminApi(authData: AuthData | undefined) {
-    const auth = authorize(authData, 'admin');
+export function getAdminApi(token: AuthToken) {
+    authorize(token, 'admin');
     const dal = getDal();
 
     async function _setMatches(matches: DbModel.Match[]) {

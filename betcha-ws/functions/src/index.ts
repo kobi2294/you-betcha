@@ -8,11 +8,15 @@
  */
 
 import { onCall } from 'firebase-functions/v2/https';
+import { authorize } from './common/api/authorize';
+import { getSuperApi } from './apis/super.api';
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
 export const helloWorld = onCall({region: 'europe-west3'}, res => {
+  const token = authorize.getAdminToken();
+  const api = getSuperApi(token);
   console.log('Hello there!');
   return 'hello world';
 });

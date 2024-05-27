@@ -1,4 +1,55 @@
 {
   "indexes": [],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "audits",
+      "fieldPath": "*",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "metadata", 
+      "fieldPath": "*",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "groups",
+      "fieldPath": "displayName",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "groups",
+      "fieldPath": "photoUrl",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "groups",
+      "fieldPath": "latestMessage",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "groups",
+      "fieldPath": "latestMessagePhotoUrl",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "users",
+      "fieldPath": "displayName",
+      "indexes": [] 
+    }, 
+    {
+      "collectionGroup": "users",
+      "fieldPath": "guesses", 
+      "indexes": []
+    }, 
+    {
+      "collectionGroup": "calculated-groups", 
+      "fieldPath": "matchScores",
+      "indexes": []
+    }, 
+    {
+      "collectionGroup": "calculated-matches", 
+      "fieldPath": "statistics",
+      "indexes": []
+    }
+  ]
 }

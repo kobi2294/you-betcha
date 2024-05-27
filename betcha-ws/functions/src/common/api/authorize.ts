@@ -3,9 +3,35 @@ import { HttpsError } from "firebase-functions/v2/https"
 import { DbModel } from "../models/db/db.alias";
 import { isRoleSufficient } from "../models/db/enums.model";
 
-export function authorize(auth: AuthData | undefined, role: DbModel.UserRole, group: string = ''): DbModel.UserAuth {
+
+export type AdminToken = {  isAdminToken: true };
+
+export type AuthToken = AuthData | AdminToken | undefined;
+
+function isAdminAuth(auth: AuthToken): auth is AdminToken {
+    return !!(auth as AdminToken).isAdminToken;
+}
+
+export function getAdminToken(): AdminToken {
+    return { isAdminToken: true };
+}
+
+const authorize = (auth: AuthData | AdminToken | undefined, role: DbModel.UserRole, group: string = ''): DbModel.UserAuth  => {
     if (!auth) {
         throw unauthenticated();
+    }
+
+    if (isAdminAuth(auth)) {
+        if((role === 'admin' || role === 'super')) {
+            return {
+                email: '', 
+                role: 'super',
+                groups: [], 
+                id: ''
+            }
+        } else {
+            throw forbidden();
+        }
     }
 
     const userRole = (auth.token.role || 'user') as DbModel.UserRole;
@@ -26,6 +52,9 @@ export function authorize(auth: AuthData | undefined, role: DbModel.UserRole, gr
         groups: userGroups    
     }
 }
+
+authorize.getAdminToken = getAdminToken;
+export { authorize };
 
 export function unauthenticated(msg: string = 'Unauthorized') {
     return new HttpsError('unauthenticated', msg);
