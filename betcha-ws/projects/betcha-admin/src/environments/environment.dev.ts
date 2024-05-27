@@ -8,6 +8,6 @@ export const environment = {
     projectId: 'you-betcha-stage',
     storageBucket: 'you-betcha-stage.appspot.com',
     messagingSenderId: '436644278366',
-    appId: '1:436644278366:web:e7df68523665351af404cf',
+    appId: '1:436644278366:web:1090ae2d9d8fc8e5f404cf',
   },
 };

@@ -18,4 +18,5 @@ export class AppComponent {
 
   firestore = inject(Firestore);
   msg$ = getDoc(doc(this.firestore, 'constants/data')).then(res => res.data());
+
 }
