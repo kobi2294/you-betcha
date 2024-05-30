@@ -7,7 +7,8 @@ export const AuthStore = signalStore(
     {providedIn: 'root'},
     withState(initialAuthSlice), 
     withComputed(store => ({
-        loginRequired: computed(() => store.user() === null)
+        loginRequired: computed(() => store.user() === null), 
+        isInProgress: computed(() => store.user() === undefined)
     })),
     withMethods((_, afAuth = inject(Auth)) => ({
         signOut: () => afAuth.signOut()
