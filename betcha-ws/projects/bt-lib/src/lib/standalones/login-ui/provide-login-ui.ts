@@ -30,6 +30,13 @@ export function provideLoginUi(): EnvironmentProviders {
           },
         ],
         credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+        callbacks: {
+          signInSuccessWithAuthResult: (authResult: any, redirectUrl: any) => {
+            console.log('Auth Result', authResult);
+            console.log('Redirect URL', redirectUrl);
+            return false;
+          }
+        }
       },
     },
   ]);

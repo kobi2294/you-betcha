@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
 import { Auth, User, getRedirectResult } from '@angular/fire/auth';
 import { RouterOutlet } from '@angular/router';
-import { AuthStore, LoginUiDirective } from '@lib';
+import { AuthStore, LoginUiDirective, PagesModule } from '@lib';
 import { ReplaySubject, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, LoginUiDirective],
+  imports: [RouterOutlet, CommonModule, PagesModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [],

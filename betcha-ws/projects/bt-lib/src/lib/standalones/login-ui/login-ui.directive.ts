@@ -1,4 +1,4 @@
-import { Component, DestroyRef, Directive, ElementRef, effect, inject, viewChild } from '@angular/core';
+import { Component, DestroyRef, Directive, ElementRef, HostBinding, effect, inject, viewChild } from '@angular/core';
 import { AUTH_CONFIG, AUTH_UI } from './provide-login-ui';
 import { Auth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithRedirect } from '@angular/fire/auth';
 import { DOCUMENT } from '@angular/common';
@@ -14,6 +14,8 @@ export class LoginUiDirective {
   readonly auth = inject(Auth);
   readonly doc = inject(DOCUMENT);
   readonly destroyRef = inject(DestroyRef)
+
+  @HostBinding('style.min-width') minWidth = '200px';
 
   constructor() {
     this.ui.start(this.elem.nativeElement, this.config);

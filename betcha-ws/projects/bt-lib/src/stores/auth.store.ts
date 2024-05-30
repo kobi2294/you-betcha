@@ -1,7 +1,7 @@
 import { getState, patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
 import { initialAuthSlice } from "./auth.slice";
 import { computed, effect, inject } from "@angular/core";
-import { Auth, Unsubscribe } from "@angular/fire/auth";
+import { Auth, Unsubscribe, getRedirectResult } from "@angular/fire/auth";
 
 export const AuthStore = signalStore(
     {providedIn: 'root'},
