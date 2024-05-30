@@ -28,6 +28,9 @@
       "@lib": [
         "./dist/bt-lib", 
         "./projects/bt-lib/src/public-api.ts"
+      ], 
+      "@tscommon": [
+        "./functions/src/common/public-api.ts"
       ]
     },
     "typeRoots": [
