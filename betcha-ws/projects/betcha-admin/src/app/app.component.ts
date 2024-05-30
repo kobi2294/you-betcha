@@ -25,15 +25,6 @@ export class AppComponent {
     this.user$.subscribe(val => console.log('User is', val));
   }
 
-  async ngOnInit() {
-    try {
-      const result = await getRedirectResult(this.auth);
-      alert('Redirect result success');
-    } catch (err) {
-      alert(`Redirect result error ${err}`);
-    }
-  }
-
   logout() {
     this.auth.signOut();
   }
