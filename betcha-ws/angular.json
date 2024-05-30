@@ -40,7 +40,12 @@
               "projects/betcha-app/src/assets"
             ],
             "styles": [
-              "projects/betcha-app/src/styles.scss"
+              "projects/betcha-app/src/styles.scss",
+              "node_modules/firebaseui/dist/firebaseui.css", 
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/material-icons/iconfont/material-icons.css", 
+              "node_modules/material-symbols/index.scss"
+
             ],
             "scripts": []
           },
@@ -127,25 +132,6 @@
           "options": {
             "buildTarget": "betcha-app:build"
           }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/betcha-app/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/betcha-app/src/favicon.ico",
-              "projects/betcha-app/src/assets"
-            ],
-            "styles": [
-              "projects/betcha-app/src/styles.scss"
-            ],
-            "scripts": []
-          }
         }
       }
     },
@@ -186,7 +172,10 @@
               "projects/betcha-dashboard/src/assets"
             ],
             "styles": [
-              "projects/betcha-dashboard/src/styles.scss"
+              "projects/betcha-dashboard/src/styles.scss",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/material-icons/iconfont/material-icons.css", 
+              "node_modules/material-symbols/index.scss"
             ],
             "scripts": []
           },
@@ -273,25 +262,6 @@
           "options": {
             "buildTarget": "betcha-dashboard:build"
           }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/betcha-dashboard/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/betcha-dashboard/src/favicon.ico",
-              "projects/betcha-dashboard/src/assets"
-            ],
-            "styles": [
-              "projects/betcha-dashboard/src/styles.scss"
-            ],
-            "scripts": []
-          }
         }
       }
     },
@@ -333,7 +303,11 @@
             ],
             "styles": [
               "projects/betcha-admin/src/styles.scss", 
-              "node_modules/firebaseui/dist/firebaseui.css"              
+              "node_modules/firebaseui/dist/firebaseui.css", 
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/material-icons/iconfont/material-icons.css", 
+              "node_modules/material-symbols/index.scss"
+            
             ],
             "scripts": []
           },
@@ -419,25 +393,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "betcha-admin:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/betcha-admin/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/betcha-admin/src/favicon.ico",
-              "projects/betcha-admin/src/assets"
-            ],
-            "styles": [
-              "projects/betcha-admin/src/styles.scss"
-            ],
-            "scripts": []
           }
         }
       }
