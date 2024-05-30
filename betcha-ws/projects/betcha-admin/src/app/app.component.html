@@ -1,6 +1,6 @@
-<lib-login-ui *ngIf="showLogin$ | async"/>
+<lib-login-ui *ngIf="loginRequired()"/>
 <button (click)="logout()">Logout</button>
 
 <pre>
-    USER: {{user$ | async | json}}
+    USER: {{user() | json}}
 </pre>
