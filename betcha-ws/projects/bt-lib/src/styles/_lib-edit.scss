@@ -1,0 +1,22 @@
+@mixin go() {
+    input.lib-edit {
+        outline: 0 transparent;
+        border: 0px transparent;
+        border-bottom: 1px solid var(--n-500);
+        background: transparent;
+        padding: 2px;
+        font-size: 1em;
+        color: currentColor;
+
+        &:focus {
+            border-bottom-color: var(--p-500);
+        }
+
+
+
+        &::selection {
+            background-color: var(--p-900);
+        }
+    }
+
+}

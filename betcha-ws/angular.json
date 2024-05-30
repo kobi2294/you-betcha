@@ -27,6 +27,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/betcha-app/src/styles",
+                "projects/bt-lib/src/styles"
+              ]
+            },
             "outputPath": "dist/betcha-app",
             "index": "projects/betcha-app/src/index.html",
             "browser": "projects/betcha-app/src/main.ts",
@@ -159,6 +165,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/betcha-dashboard/src/styles",
+                "projects/bt-lib/src/styles"
+              ]
+            },
             "outputPath": "dist/betcha-dashboard",
             "index": "projects/betcha-dashboard/src/index.html",
             "browser": "projects/betcha-dashboard/src/main.ts",
@@ -289,6 +301,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/betcha-admin/src/styles",
+                "projects/bt-lib/src/styles"
+              ]
+            },
             "outputPath": "dist/betcha-admin",
             "index": "projects/betcha-admin/src/index.html",
             "browser": "projects/betcha-admin/src/main.ts",

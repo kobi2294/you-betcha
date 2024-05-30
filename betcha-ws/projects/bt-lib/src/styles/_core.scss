@@ -1,0 +1,44 @@
+@use "@angular/material" as mat;
+@use "lib-edit" as lib-edit;
+@use "lib-common" as lib-common;
+
+@mixin go() {
+  @include mat.core();
+  @include lib-edit.go();
+  @include lib-common.go();
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background: var(--b-background);
+    color: var(--f-text);
+  }
+
+  body {
+    display: grid;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+  }
+
+  :root {
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+    }
+
+    mat-icon.mat-icon {
+      width: auto;
+      height: auto;
+    }
+  
+
+
+  
+  }
+
+}
