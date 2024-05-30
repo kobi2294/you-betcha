@@ -57,10 +57,8 @@ export function provideFirebaseServices(
   }
   function importAuth(): EnvironmentProviders {
     return provideAuth(() => {
-      console.log('AUTH AUTH');
       const auth = getAuth();
 
-      // setPersistence(auth, { type: 'LOCAL' });
       if (simulation) {
         connectAuthEmulator(auth, 'http://localhost:9099', {
           disableWarnings: true,

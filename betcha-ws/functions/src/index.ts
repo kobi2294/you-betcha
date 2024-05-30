@@ -17,7 +17,5 @@ import { getSuperApi } from './apis/super.api';
 export const helloWorld = onCall({region: 'europe-west3'}, res => {
   const token = authorize.getAdminToken();
   const api = getSuperApi(token);
-  console.log('api', api);
-  console.log('Hello there!');
   return 'hello world';
 });
