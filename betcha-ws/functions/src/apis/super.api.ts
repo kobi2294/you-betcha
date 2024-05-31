@@ -47,7 +47,6 @@ export function getSuperApi(authData: MaybeAuthData) {
         const dalAuth = getDalAuth();
         await Promise.all(users.map(user => dalAuth.removeUserFromGroup(user.id, id)));
     }
-
     async function _addAdminToGroup(email: string, groupId: string) {
         const group = await dal.groups.getOne(groupId);
         if (!group) throw new Error('Group does not exist');
@@ -58,7 +57,6 @@ export function getSuperApi(authData: MaybeAuthData) {
         const dalAuth = getDalAuth();
         await dalAuth.addAdminToGroup(email, groupId);
     }
-
     async function _removeAdminFromGroup(email: string, groupId: string) {
         const group = await dal.groups.getOne(groupId);
         if (!group) throw new Error('Group does not exist');
@@ -68,6 +66,12 @@ export function getSuperApi(authData: MaybeAuthData) {
 
         const dalAuth = getDalAuth();
         await dalAuth.removeAdminFromGroup(email, groupId);
+    }
+    async function _setGroupUsersLimit(groupId: string, usersLimit: number) {
+        await dal.groups.updateOne(groupId, _ => ({ usersLimit }));
+    }
+    async function _setGroupBlocked(groupId: string, blocked: boolean) {
+        await dal.groups.updateOne(groupId, _ => ({ blocked }));
     }
 
     async function _setUserRole(email: string, role: DbModel.UserRole) {
@@ -85,6 +89,8 @@ export function getSuperApi(authData: MaybeAuthData) {
         deleteGroup: _deleteGroup, 
         addAdminToGroup: _addAdminToGroup,
         removeAdminFromGroup: _removeAdminFromGroup, 
+        setGroupUsersLimit: _setGroupUsersLimit,
+        setGroupBlocked: _setGroupBlocked,
         _setUserRole: _setUserRole
     }
 }

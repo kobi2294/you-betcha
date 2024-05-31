@@ -7,8 +7,7 @@ import { arrayWith, arrayWithout } from "../common/utils/arrays";
 
 export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
-    const dal = getDal();
-    
+    const dal = getDal();    
 
     async function _setDisplayName(displayName: string) {
         await dal.users.updateOne(auth.email, _ => ({ displayName }));

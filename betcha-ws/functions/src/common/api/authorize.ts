@@ -1,7 +1,7 @@
 import { HttpsError } from "firebase-functions/v2/https"
 import { AuthToken } from "../models/db/user-claims.model";
 import { AuthData } from "firebase-functions/lib/common/providers/https";
-export type AuthRole = 'super' | 'admin' | 'user' | 'trustee';
+export type AuthRole = 'super' | 'group-admin' | 'user' | 'trustee';
 export type SuperOverride = { isSuperOveride: true, data: AuthData | undefined | null };
 
 export type MaybeAuthData = AuthData | SuperOverride | null | undefined;
@@ -15,8 +15,7 @@ function tokenize(data: AuthData | SuperOverride): AuthToken {
         return {
             id: data.data?.uid || '',
             email: data.data?.token.email || '',
-            super: true,
-            trustee: data.data?.token.trustee || false,
+            role: 'super',
             userGroups: data.data?.token.userGroups || [],
             adminGroups: data.data?.token.adminGroups || [],
         };
@@ -25,8 +24,7 @@ function tokenize(data: AuthData | SuperOverride): AuthToken {
     return {
         id: data.uid,
         email: data.token.email || '',
-        super: data.token.super || false,
-        trustee: data.token.trustee || false,
+        role: data.token.role || 'user',
         userGroups: data.token.userGroups || [],
         adminGroups: data.token.adminGroups || [],
     };
@@ -34,7 +32,7 @@ function tokenize(data: AuthData | SuperOverride): AuthToken {
 
 
 function authorize(data: MaybeAuthData, role: 'super'): AuthToken
-function authorize(data: MaybeAuthData, role: 'admin', group: string): AuthToken
+function authorize(data: MaybeAuthData, role: 'group-admin', group: string): AuthToken
 function authorize(data: MaybeAuthData, role: 'user', group: string): AuthToken
 function authorize(data: MaybeAuthData, role: 'user'): AuthToken
 function authorize(data: MaybeAuthData, role: 'trustee'): AuthToken
@@ -46,20 +44,20 @@ function authorize(data: MaybeAuthData, role: AuthRole, group?: string): AuthTok
     const token = tokenize(data);
 
     // super is allowed anything
-    if (token.super) {
+    if (token.role === 'super') {
         return token;
     }
 
     // trustee is allowed only trustee
     if (role === 'trustee') {
-        if (token.trustee) {
+        if (token.role === 'trustee') {
             return token;
         }
         throw forbidden();
     }
     
     // admin is allowed for group is the adminGroups includes the group
-    if (role === 'admin') {
+    if (role === 'group-admin') {
         if (group && token.adminGroups.includes(group)) {
             return token;
         }
