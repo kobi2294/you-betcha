@@ -1,17 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, effect, inject } from '@angular/core';
-import { Auth, User, getRedirectResult } from '@angular/fire/auth';
-import { RouterOutlet } from '@angular/router';
-import { AuthStore, LoginUiDirective, PagesModule } from '@lib';
-import { ReplaySubject, map } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AuthStore, PagesModule, SharedModule } from '@lib';
+import { ToolBarComponent } from "./components/tool-bar/tool-bar.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, PagesModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers: [],
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    providers: [],
+    imports: [RouterModule, SharedModule, PagesModule, ToolBarComponent]
 })
 export class AppComponent {
   authStore = inject(AuthStore)

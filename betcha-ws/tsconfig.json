@@ -34,7 +34,8 @@
       ]
     },
     "typeRoots": [
-      "node_modules/@angular/material"    ]
+      "node_modules/@angular/material"    
+    ]
 
   },
   "angularCompilerOptions": {

@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 4px;
+    background-color: var(--p-100);
+    color: var(--p-700);
+
+    .title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    mat-icon {
+        font-size: 2.5em;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1;
+    }
+}

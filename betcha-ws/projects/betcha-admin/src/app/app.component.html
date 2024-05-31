@@ -1,7 +1,9 @@
 
-<lib-login-page *ngIf="loginRequired()"/>
-<button (click)="logout()">Logout</button>
+@if (loginRequired()) {
+    <lib-login-page *ngIf="loginRequired()"/>
+}
+@else {
+    <app-tool-bar/>
+}
 
-<pre>
-    USER: {{user() | json}}
-</pre>
+
