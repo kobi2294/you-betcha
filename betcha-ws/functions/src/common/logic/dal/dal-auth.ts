@@ -3,8 +3,9 @@ import { DbModel } from "../../models/db/db.alias";
 import { arrayWith, arrayWithout } from "../../utils/arrays";
 
 export const DEFAULT_CLAIMS: DbModel.AuthClaims = {
-    role: 'user',
-    groups: []
+    role: DbModel.UserRole,
+    userGroups: [], 
+    adminGroups: []
 }
 
 export function getDalAuth() {
@@ -17,22 +18,33 @@ export function getDalAuth() {
         await auth.setCustomUserClaims(authUser.uid, targetClaims);
     }
 
-    async function _setUserRole(email: string, role: DbModel.UserRole) {
-        await _setUserClaims(email, _ => ({ role }));
-    }
-
     async function _addUserToGroup(email: string, group: string) {
-        await _setUserClaims(email, claims => ({ groups: arrayWith(claims.groups, group) }));
+        await _setUserClaims(email, claims => ({ userGroups: arrayWith(claims.userGroups, group) }));
     }
 
     async function _removeUserFromGroup(email: string, group: string) {
-        await _setUserClaims(email, claims => ({ groups: arrayWithout(claims.groups, group) }));
+        await _setUserClaims(email, claims => ({ userGroups: arrayWithout(claims.userGroups, group) }));
+    }
+
+    async function _addAdminToGroup(email: string, group: string) {
+        await _setUserClaims(email, claims => ({ adminGroups: arrayWith(claims.adminGroups, group) }));
+    }
+
+    async function _removeAdminFromGroup(email: string, group: string) {
+        await _setUserClaims(email, claims => ({ adminGroups: arrayWithout(claims.adminGroups, group) }));
+    }
+
+    async function _setRole(email: string, role: DbModel.UserRole) {
+        await _setUserClaims(email, claims => ({ role }));
     }
 
     return {
-        setUserRole: _setUserRole,
+        setUserClaims: _setUserClaims,
         addUserToGroup: _addUserToGroup,
-        removeUserFromGroup: _removeUserFromGroup
+        removeUserFromGroup: _removeUserFromGroup, 
+        addAdminToGroup: _addAdminToGroup,
+        removeAdminFromGroup: _removeAdminFromGroup,
+        setRole: _setRole, 
     }
 
 

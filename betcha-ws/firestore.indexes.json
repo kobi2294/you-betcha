@@ -18,7 +18,7 @@
     },
     {
       "collectionGroup": "groups",
-      "fieldPath": "photoUrl",
+      "fieldPath": "logoUrl",
       "indexes": []
     },
     {
@@ -28,7 +28,7 @@
     },
     {
       "collectionGroup": "groups",
-      "fieldPath": "latestMessagePhotoUrl",
+      "fieldPath": "slogan",
       "indexes": []
     },
     {

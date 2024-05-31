@@ -1,14 +1,13 @@
-import { UserRole } from "./enums.model";
-
-export interface UserAuth {
-    readonly id: string;
-    readonly email: string;
-    readonly role: UserRole;
-    readonly groups: string[];
-
-}
+export type UserRole = 'user' | 'trustee' | 'super';
 
 export interface AuthClaims {
-    readonly role: UserRole;
-    readonly groups: string[];
+  readonly role: UserRole;
+  readonly userGroups: string[];
+  readonly adminGroups: string[];
+}
+
+export interface AuthToken extends AuthClaims {
+  readonly id: string;
+
+  readonly email: string;
 }

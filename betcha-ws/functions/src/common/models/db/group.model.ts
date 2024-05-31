@@ -6,8 +6,9 @@ export interface Group {
     readonly displayName: string;
     readonly usersLimit: number;
     readonly blocked: boolean;
-    readonly photoUrl: string;
-    readonly latestMessage: string;
-    readonly latestMessagePhotoUrl: string;
+    readonly logoUrl: string;
+    readonly message: string;
+    readonly slogan: string;
     readonly theme: ColorTheme;
+    readonly admins: string[];
 }

@@ -1,11 +1,11 @@
 import { getDal } from "../common/logic/dal/dal";
 import { GuessValue } from "../common/models/db/enums.model";
-import { AuthToken, authorize } from "../common/api/authorize";
+import { MaybeAuthData, authorize } from "../common/api/authorize";
 import { getDalAuth } from "../common/logic/dal/dal-auth";
 import { DalFileContentType } from "../common/logic/dal/dal-types";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
 
-export function getUserApi(authData: AuthToken) {
+export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
     const dal = getDal();
     

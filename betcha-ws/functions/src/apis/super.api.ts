@@ -1,10 +1,10 @@
-import { AuthToken, authorize } from "../common/api/authorize"
+import { MaybeAuthData, authorize } from "../common/api/authorize"
 import { getDal } from "../common/logic/dal/dal";
 import { DbModel } from "../common/models/db/db.alias";
-import { arrayWithout } from "../common/utils/arrays";
+import { arrayWith, arrayWithout } from "../common/utils/arrays";
 import { getDalAuth } from "../common/logic/dal/dal-auth";
 
-export function getSuperApi(authData: AuthToken) {
+export function getSuperApi(authData: MaybeAuthData) {
     authorize(authData, 'super');
     const dal = getDal();
 
@@ -14,11 +14,12 @@ export function getSuperApi(authData: AuthToken) {
             displayName,
             secret: Math.random().toString(10).substring(2, 12),
             blocked: false,
-            latestMessage: '', 
-            latestMessagePhotoUrl: '', 
-            photoUrl: '', 
+            message: '',         
+            logoUrl: '', 
             theme: 'blue', 
-            usersLimit: 25
+            usersLimit: 25, 
+            slogan: '',
+            admins: []
         };
 
         const calcGroup: DbModel.CalculatedGroup = {
@@ -31,7 +32,6 @@ export function getSuperApi(authData: AuthToken) {
             dal.calculatedGroups.saveOne(calcGroup)
         ]);
     }
-
     async function _deleteGroup(id: string) {
         await Promise.all([
             dal.groups.deleteOne(id),
@@ -48,13 +48,43 @@ export function getSuperApi(authData: AuthToken) {
         await Promise.all(users.map(user => dalAuth.removeUserFromGroup(user.id, id)));
     }
 
-    
+    async function _addAdminToGroup(email: string, groupId: string) {
+        const group = await dal.groups.getOne(groupId);
+        if (!group) throw new Error('Group does not exist');
 
+        const groupAdmins = arrayWith(group.admins, email);
+        await dal.groups.updateOne(groupId, _ => ({ admins: groupAdmins }));
 
+        const dalAuth = getDalAuth();
+        await dalAuth.addAdminToGroup(email, groupId);
+    }
+
+    async function _removeAdminFromGroup(email: string, groupId: string) {
+        const group = await dal.groups.getOne(groupId);
+        if (!group) throw new Error('Group does not exist');
+
+        const groupAdmins = arrayWithout(group.admins, email);
+        await dal.groups.updateOne(groupId, _ => ({ admins: groupAdmins }));
+
+        const dalAuth = getDalAuth();
+        await dalAuth.removeAdminFromGroup(email, groupId);
+    }
+
+    async function _setUserRole(email: string, role: DbModel.UserRole) {
+        const user = await dal.users.getOne(email);
+        if (!user) throw new Error('User does not exist');
+
+        await dal.users.updateOne(email, _ => ({ role }));
+        const dalAuth = getDalAuth();
+        await dalAuth.setRole(email, role);
+    }
 
 
     return {
         createGroup: _createGroup,
-        deleteGroup: _deleteGroup
+        deleteGroup: _deleteGroup, 
+        addAdminToGroup: _addAdminToGroup,
+        removeAdminFromGroup: _removeAdminFromGroup, 
+        _setUserRole: _setUserRole
     }
 }
