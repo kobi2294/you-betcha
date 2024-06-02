@@ -1,10 +1,9 @@
-
-@if (loginRequired()) {
-    <lib-login-page *ngIf="loginRequired()"/>
-}
-@else {
-    
-    <app-tool-bar/>
-}
-
-
+@if (authStore.isInProgress()) {
+  <lib-busy-page/>
+} @else { @if (authStore.loginRequired()) {
+<lib-login-page />
+} @else { @if(authStore.adminAppForbidden()) {
+<app-forbidden />
+} @else {
+<app-tool-bar />
+} } }

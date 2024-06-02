@@ -4,9 +4,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconSymbolDirective } from "./directives/mat-icon-symbol.directive";
+import { DecoBgComponent } from "./components/deco-bg/deco-bg.component";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 const publicDeclared: Type<any>[] = [
-    MatIconSymbolDirective
+    MatIconSymbolDirective, 
+    DecoBgComponent
 ]
 
 const privateDeclared: Type<any>[] = [
@@ -19,7 +23,9 @@ const publicImports: Type<any>[] = [
     CommonModule, 
     MatButtonModule, 
     MatIconModule, 
-    MatMenuModule
+    MatMenuModule, 
+    MatProgressBarModule, 
+    MatProgressSpinnerModule
 ]
 
 @NgModule({

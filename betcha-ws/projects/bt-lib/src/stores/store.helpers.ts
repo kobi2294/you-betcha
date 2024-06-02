@@ -11,3 +11,18 @@ export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
     }
 }
 
+
+export function canAccessAdminApp(claims: DbModel.AuthClaims | null): boolean {
+    if (!claims) return false;
+
+    return claims.role === 'trustee' 
+        || claims.role === 'super' 
+        || claims.adminGroups.length > 0;
+}
+
+export function isInProgress(fireuser: User | null | undefined, user: DbModel.User | null, claims: DbModel.AuthClaims | null): boolean {
+    if (fireuser === undefined) return true;
+    if (fireuser === null) return false;
+    if (!user || !claims) return true;
+    return false;
+}
