@@ -1,6 +1,6 @@
 import { getDal } from "../common/logic/dal/dal";
 import { GuessValue } from "../common/models/db/enums.model";
-import { MaybeAuthData, authorize } from "../common/api/authorize";
+import { MaybeAuthData, authorize, badRequest, notFound } from "../common/api/authorize";
 import { getDalAuth } from "../common/logic/dal/dal-auth";
 import { DalFileContentType } from "../common/logic/dal/dal-types";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
@@ -8,6 +8,12 @@ import { arrayWith, arrayWithout } from "../common/utils/arrays";
 export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
     const dal = getDal();    
+
+    async function _getUserDetails() {
+        const user = await dal.users.getOne(auth.email);
+        if (!user) throw notFound('User not found');
+        return user;
+    }
 
     async function _setDisplayName(displayName: string) {
         await dal.users.updateOne(auth.email, _ => ({ displayName }));
@@ -21,7 +27,7 @@ export function getUserApi(authData: MaybeAuthData) {
 
     async function _joinGroup(groupSecret: string) {
         const group = await dal.groups.getBySecret(groupSecret);
-        if (!group) throw new Error('Group does not exist');
+        if (!group) throw notFound('Group does not exist');
 
         const user = (await dal.users.getOne(auth.email))!;
         const dalAuth = getDalAuth();
@@ -47,20 +53,21 @@ export function getUserApi(authData: MaybeAuthData) {
             dal.metadata.get()
         ]);
 
-        if (!user) throw new Error('User does not exist');
-        if (!metadata) throw new Error('Metadata does not exist');
+        if (!user) throw notFound('User does not exist');
+        if (!metadata) throw notFound('Metadata does not exist');
 
         const match = metadata.matches.find(m => m.id === matchId);
-        if (!match) throw new Error('Match does not exist');
+        if (!match) throw notFound('Match does not exist');
 
         if (Date.now() > new Date(match.date).valueOf()) 
-            throw new Error('Match has already started');
+            throw badRequest('Match has already started');
 
         const userGuesses = { ...user.guesses, [matchId]: guess };
         await dal.users.updateOne(auth.email, _ => ({ guesses: userGuesses }));
     }
 
     return {
+        getUserDetails: _getUserDetails,
         setDisplayName: _setDisplayName, 
         uploadProfileImage: _uploadProfileImage,
         joinGroup: _joinGroup,

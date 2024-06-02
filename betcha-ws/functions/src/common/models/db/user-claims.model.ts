@@ -1,4 +1,5 @@
-export type UserRole = 'user' | 'trustee' | 'super';
+export const USER_ROLES = ['user', 'trustee', 'super'] as const;
+export type UserRole = typeof USER_ROLES[number];
 
 export interface AuthClaims {
   readonly role: UserRole;

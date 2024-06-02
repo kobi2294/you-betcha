@@ -1,9 +1,14 @@
 import { User } from "@angular/fire/auth";
+import { DbModel } from "@tscommon";
 
 export interface AuthSlice {
-    user: User | null | undefined;  
+    fireUser: User | null | undefined;  
+    user: DbModel.User | null;
+    claims: DbModel.AuthClaims | null;
 }
 
 export const initialAuthSlice: AuthSlice = {
-    user: undefined, 
+    fireUser: undefined,
+    user: null,
+    claims: null
 }

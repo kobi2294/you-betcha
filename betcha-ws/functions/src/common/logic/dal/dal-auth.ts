@@ -1,9 +1,9 @@
 import { getAuth } from "firebase-admin/auth";
-import { DbModel } from "../../models/db/db.alias";
+import { DbModel } from "../../models/db/db.alias"
 import { arrayWith, arrayWithout } from "../../utils/arrays";
 
 export const DEFAULT_CLAIMS: DbModel.AuthClaims = {
-    role: DbModel.UserRole,
+    role: 'user',
     userGroups: [], 
     adminGroups: []
 }

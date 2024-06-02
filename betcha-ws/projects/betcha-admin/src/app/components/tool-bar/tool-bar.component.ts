@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { SharedModule } from '@lib';
+import { Component, inject } from '@angular/core';
+import { AuthStore, SharedModule } from '@lib';
 
 @Component({
   selector: 'app-tool-bar',
@@ -9,5 +9,6 @@ import { SharedModule } from '@lib';
   styleUrl: './tool-bar.component.scss'
 })
 export class ToolBarComponent {
+  readonly store = inject(AuthStore);
 
 }

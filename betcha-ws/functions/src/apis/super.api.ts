@@ -1,4 +1,4 @@
-import { MaybeAuthData, authorize } from "../common/api/authorize"
+import { MaybeAuthData, authorize, notFound } from "../common/api/authorize"
 import { getDal } from "../common/logic/dal/dal";
 import { DbModel } from "../common/models/db/db.alias";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
@@ -49,7 +49,7 @@ export function getSuperApi(authData: MaybeAuthData) {
     }
     async function _addAdminToGroup(email: string, groupId: string) {
         const group = await dal.groups.getOne(groupId);
-        if (!group) throw new Error('Group does not exist');
+        if (!group) throw notFound('Group does not exist');
 
         const groupAdmins = arrayWith(group.admins, email);
         await dal.groups.updateOne(groupId, _ => ({ admins: groupAdmins }));
@@ -59,7 +59,7 @@ export function getSuperApi(authData: MaybeAuthData) {
     }
     async function _removeAdminFromGroup(email: string, groupId: string) {
         const group = await dal.groups.getOne(groupId);
-        if (!group) throw new Error('Group does not exist');
+        if (!group) throw notFound('Group does not exist');
 
         const groupAdmins = arrayWithout(group.admins, email);
         await dal.groups.updateOne(groupId, _ => ({ admins: groupAdmins }));
@@ -76,7 +76,7 @@ export function getSuperApi(authData: MaybeAuthData) {
 
     async function _setUserRole(email: string, role: DbModel.UserRole) {
         const user = await dal.users.getOne(email);
-        if (!user) throw new Error('User does not exist');
+        if (!user) throw notFound('User does not exist');
 
         await dal.users.updateOne(email, _ => ({ role }));
         const dalAuth = getDalAuth();
