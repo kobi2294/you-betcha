@@ -26,10 +26,8 @@ export const AuthStore = signalStore(
                 sub = afAuth.onAuthStateChanged(async fireUser => {
                     patchState(store, {fireUser});
                     if (fireUser) {
-                        const [claims, user] = await Promise.all([
-                            claimsFromUser(fireUser),
-                            firstValueFrom(api.getUserDetails())
-                        ]);    
+                        const user = await firstValueFrom(api.getUserDetails());
+                        const claims = await claimsFromUser(fireUser);
 
                         patchState(store, {claims, user});
                     } else {

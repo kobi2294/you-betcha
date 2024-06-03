@@ -11,10 +11,6 @@ import { CallableOptions, onCall } from 'firebase-functions/v2/https';
 import { getUserApi } from './apis/user.api';
 import { initializeApp } from 'firebase-admin/app';
 
-import * as functions from 'firebase-functions';
-import { getAutomaticApi } from './apis/automatic.api';
-import { authorize } from './common/api/authorize';
-
 
 initializeApp();
 
@@ -28,7 +24,3 @@ export const getUserDetails = onCall<void>(options, req => {
 });
 
 
-export const userCreateTrigger = functions.auth.user().onCreate(async user => {
-  const api = getAutomaticApi(authorize.upgrateToSuper(null));
-  await api.onNewUserCreated(user);
-});

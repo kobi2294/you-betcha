@@ -4,14 +4,24 @@ import { MaybeAuthData, authorize, badRequest, notFound } from "../common/api/au
 import { getDalAuth } from "../common/logic/dal/dal-auth";
 import { DalFileContentType } from "../common/logic/dal/dal-types";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
+import { getAutomaticApi } from "./automatic.api";
+import { getAuth } from "firebase-admin/auth";
 
 export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
     const dal = getDal();    
 
     async function _getUserDetails() {
-        const user = await dal.users.getOne(auth.email);
-        if (!user) throw notFound('User not found');
+        let user = await dal.users.getOne(auth.email);
+        if (!user) {
+            const superToken = authorize.upgrateToSuper(authData);
+            const auto = getAutomaticApi(superToken);
+            const authService = getAuth();
+            const record = await authService.getUserByEmail(auth.email);
+            await auto.onNewUserCreated(record);
+            user = await dal.users.getOne(auth.email);
+        }
+        if (!user) throw notFound('User does not exist');
         return user;
     }
 

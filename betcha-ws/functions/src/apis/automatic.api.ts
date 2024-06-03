@@ -11,7 +11,7 @@ export function getAutomaticApi(authData: MaybeAuthData) {
     // collects all the groups that the user is admin of, and sets it in the user claims
     // this should be called when a user is created to make sure the claims contain all the groups 
     // he was set as an admin of
-    async function _collectUserGroupAdmins(email: string) {
+    async function _collectUserGroupAdmins(email: string): Promise<void> {
         const groups = await dal.groups.getAll(['admins', 'array-contains', email]);
         const groupIds = groups.map(g => g.id);
         const dalAuth = getDalAuth();
@@ -42,12 +42,12 @@ export function getAutomaticApi(authData: MaybeAuthData) {
             role: isHardCodedSuper ? 'super' : 'user'
         };
 
-        await dal.users.saveOne(user);
         await _collectUserGroupAdmins(user.id);
         if (isHardCodedSuper) {
             const dalAuth = getDalAuth();
             await dalAuth.setRole(user.id, 'super');
         }
+        await dal.users.saveOne(user);
     }
 
     return {

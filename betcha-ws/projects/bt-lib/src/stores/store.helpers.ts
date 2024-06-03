@@ -2,6 +2,7 @@ import { User } from "@angular/fire/auth";
 import { DbModel } from "@tscommon";
 
 export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
+    await user.reload();
     const token = await user.getIdTokenResult(true);
     console.log('token for user', user.email, token);
     return {

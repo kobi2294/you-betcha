@@ -115,7 +115,8 @@
                   "replace": "projects/betcha-app/src/environments/environment.ts",
                   "with": "projects/betcha-app/src/environments/environment.stage.ts"
                 }
-              ]
+              ], 
+              "outputHashing": "all"
             }
           },
           "defaultConfiguration": "prod"
