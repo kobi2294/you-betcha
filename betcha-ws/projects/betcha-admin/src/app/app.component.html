@@ -1,9 +1,17 @@
-@if (authStore.isInProgress()) {
-  <lib-busy-page/>
-} @else { @if (authStore.loginRequired()) {
-<lib-login-page />
-} @else { @if(authStore.adminAppForbidden()) {
-<app-forbidden />
-} @else {
-<app-tool-bar />
-} } }
+<lib-deco-bg>
+  @if (authStore.isInProgress()) {
+    <lib-busy-page/>
+  } @else { @if (authStore.loginRequired()) {
+  <lib-login-page />
+  } @else { @if(authStore.adminAppForbidden()) {
+  <app-forbidden />
+  } @else {
+  <app-tool-bar />
+  <div class="logo">
+    <mat-icon symbol>sports_soccer</mat-icon>
+    <h1><span>You</span> Betcha</h1>
+  </div>
+  } } }
+  
+</lib-deco-bg>
+

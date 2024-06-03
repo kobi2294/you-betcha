@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { AuthStore, SharedModule } from '@lib';
+import { AuthStore, PagesModule, SharedModule } from '@lib';
 
 @Component({
   selector: 'app-forbidden',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, PagesModule],
   templateUrl: './forbidden.component.html',
   styleUrl: './forbidden.component.scss'
 })
