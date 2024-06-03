@@ -14,7 +14,8 @@ export const AuthStore = signalStore(
         isInProgress: computed(() => (isInProgress(store.fireUser(), store.user(), store.claims()))), 
     })),
     withComputed(store => ({
-        adminAppForbidden: computed(() => !store.isInProgress() && !canAccessAdminApp(store.claims()))
+        adminAppForbidden: computed(() => !store.isInProgress() && !canAccessAdminApp(store.claims())), 
+        photoUrl: computed(() => store.user()?.photoUrl || 'assets/images/guest.png'),
     })),    
     withMethods((_, afAuth = inject(Auth)) => ({
         signOut: () => afAuth.signOut()

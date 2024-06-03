@@ -6,7 +6,7 @@
   } @else { @if(authStore.adminAppForbidden()) {
   <app-forbidden />
   } @else {
-  <app-tool-bar />
+  <lib-toolbar [admin]="true"/>
   <div class="logo">
     <mat-icon symbol>sports_soccer</mat-icon>
     <h1><span>You</span> Betcha</h1>

@@ -43,7 +43,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/betcha-app/src/favicon.ico",
-              "projects/betcha-app/src/assets"
+              "projects/betcha-app/src/assets", 
+              {
+                "glob": "**/*",
+                "input": "projects/bt-lib/src/assets",
+                "output": "assets/"
+              }
+
             ],
             "styles": [
               "projects/betcha-app/src/styles.scss",
@@ -182,7 +188,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/betcha-dashboard/src/favicon.ico",
-              "projects/betcha-dashboard/src/assets"
+              "projects/betcha-dashboard/src/assets", 
+              {
+                "glob": "**/*",
+                "input": "projects/bt-lib/src/assets",
+                "output": "assets/"
+              }
+
             ],
             "styles": [
               "projects/betcha-dashboard/src/styles.scss",
@@ -318,7 +330,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/betcha-admin/src/favicon.ico",
-              "projects/betcha-admin/src/assets"
+              "projects/betcha-admin/src/assets", 
+              {
+                "glob": "**/*",
+                "input": "projects/bt-lib/src/assets",
+                "output": "assets/"
+              }
             ],
             "styles": [
               "projects/betcha-admin/src/styles.scss", 

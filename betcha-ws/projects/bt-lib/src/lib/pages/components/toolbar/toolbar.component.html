@@ -1,0 +1,11 @@
+<mat-icon symbol>sports_soccer</mat-icon>
+<div class="title">
+  <h1>You Betcha</h1>
+  <h3 *ngIf="admin()">Admin</h3>
+</div>
+<div class="end">
+  <lib-profile-pic [matMenuTriggerFor]="menu" />
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="store.signOut()">Sign out</button>
+  </mat-menu>
+</div>
