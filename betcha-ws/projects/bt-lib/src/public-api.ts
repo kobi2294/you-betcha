@@ -21,6 +21,7 @@ export * from './lib/pages/components/toolbar/toolbar.component';
 export * from './lib/shared/shared.module';
 export * from './lib/shared/components/deco-bg/deco-bg.component';
 export * from './lib/shared/directives/mat-icon-symbol.directive';
+export * from './lib/shared/directives/alt-image.directive';
 
 export * from './stores/auth.store';
 export * from './stores/auth.slice';

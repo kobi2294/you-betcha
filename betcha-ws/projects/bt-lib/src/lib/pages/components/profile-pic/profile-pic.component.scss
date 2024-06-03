@@ -9,5 +9,8 @@
         border-radius: 50%;
         overflow: hidden;
         border: 1px solid var(--p-300);
+        background-image: url('../../../../assets/images/guest.png');
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 }

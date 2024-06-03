@@ -7,9 +7,11 @@ import { MatIconSymbolDirective } from "./directives/mat-icon-symbol.directive";
 import { DecoBgComponent } from "./components/deco-bg/deco-bg.component";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { AltImageDirective } from "./directives/alt-image.directive";
 
 const publicDeclared: Type<any>[] = [
     MatIconSymbolDirective, 
+    AltImageDirective,
     DecoBgComponent
 ]
 
