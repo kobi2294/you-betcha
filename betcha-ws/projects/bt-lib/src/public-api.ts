@@ -14,6 +14,7 @@ export * from './lib/pages/pages.module';
 export * from './lib/pages/pages/login-page/login-page.component';
 export * from './lib/pages/pages/busy-page/busy-page.component';
 export * from './lib/pages/skeletons/sk-full/sk-full.component';
+export * from './lib/pages/skeletons/sk-nav/sk-nav.component';
 export * from './lib/pages/components/full-title/full-title.component';
 export * from './lib/pages/components/profile-pic/profile-pic.component';
 export * from './lib/pages/components/toolbar/toolbar.component';

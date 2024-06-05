@@ -7,14 +7,20 @@ import { SkFullComponent } from "./skeletons/sk-full/sk-full.component";
 import { FullTitleComponent } from "./components/full-title/full-title.component";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { ProfilePicComponent } from "./components/profile-pic/profile-pic.component";
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
+import { NavItemComponent } from "./components/nav-bar/nav-item/nav-item.component";
+import { SkNavComponent } from "./skeletons/sk-nav/sk-nav.component";
 
 const declarations: Type<any>[] = [
     LoginPageComponent, 
     BusyPageComponent, 
     SkFullComponent, 
+    SkNavComponent,
     FullTitleComponent, 
     ToolbarComponent, 
-    ProfilePicComponent
+    ProfilePicComponent, 
+    NavBarComponent, 
+    NavItemComponent
 ];
 
 @NgModule({

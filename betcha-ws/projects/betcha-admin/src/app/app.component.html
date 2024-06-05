@@ -6,11 +6,10 @@
   } @else { @if(authStore.adminAppForbidden()) {
   <app-forbidden />
   } @else {
-  <lib-toolbar [admin]="true"/>
-  <div class="logo">
-    <mat-icon symbol>sports_soccer</mat-icon>
-    <h1><span>You</span> Betcha</h1>
-  </div>
+    <lib-sk-nav>
+      <lib-toolbar [admin]="true"/>
+      <lib-nav-bar></lib-nav-bar>  
+    </lib-sk-nav>
   } } }
   
 </lib-deco-bg>
