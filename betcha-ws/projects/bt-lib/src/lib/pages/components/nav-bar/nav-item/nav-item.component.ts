@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, HostListener, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NoDoubleClickDirective } from '../../../../shared/directives/no-double-click.directive';
 
 @Component({
   selector: 'lib-nav-item',
@@ -7,6 +8,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav-item.component.scss', 
   hostDirectives: [
     RouterLinkActive, 
+    NoDoubleClickDirective,
     {
       directive: RouterLink, 
       inputs: [

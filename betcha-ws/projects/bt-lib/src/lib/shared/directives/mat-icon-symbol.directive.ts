@@ -2,6 +2,7 @@ import { Directive, inject, input } from "@angular/core";
 import { MatIcon } from "@angular/material/icon";
 
 @Directive({
+    standalone: true,
     selector: 'mat-icon[symbol]'
 })
 export class MatIconSymbolDirective {

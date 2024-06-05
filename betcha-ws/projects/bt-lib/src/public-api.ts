@@ -6,6 +6,7 @@
 export * from './utils/provide-firebase-services';
 export * from './utils/provide-version';
 export * from './utils/provide-lib';
+export * from './utils/provide-pwa';
 
 export * from './lib/standalones/login-ui/login-ui.directive';
 export * from './lib/standalones/login-ui/provide-login-ui';

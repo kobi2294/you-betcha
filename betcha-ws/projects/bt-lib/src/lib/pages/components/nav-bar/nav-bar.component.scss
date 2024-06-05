@@ -1,5 +1,10 @@
 :host {
     display: flex;
     flex-direction: row;
+}
 
+@media screen and (orientation: landscape) {
+    :host {
+        flex-direction: column;
+    }
 }

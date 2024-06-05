@@ -4,6 +4,39 @@
     height: 100%;
 
     .page-area {
+        padding: min(1vh, 10px) min(1vw, 10px);
         flex-grow: 1;
+    }
+
+    .nav-area {
+        display: grid;
+    }
+
+    .toolbar-area {
+        display: grid;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    :host {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+        't t'
+        'n m';
+    }
+
+    .page-area {
+        padding: min(1vh, 10px) min(1vw, 10px);
+        grid-area: m;
+    }
+
+    .toolbar-area {
+        grid-area: t;
+    }
+
+    .nav-area {
+        grid-area: n;
     }
 }

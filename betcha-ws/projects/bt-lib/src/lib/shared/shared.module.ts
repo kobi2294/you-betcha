@@ -9,11 +9,10 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AltImageDirective } from "./directives/alt-image.directive";
 import { RouterModule } from "@angular/router";
+import { NoDoubleClickDirective } from "./directives/no-double-click.directive";
 
 const publicDeclared: Type<any>[] = [
-    MatIconSymbolDirective, 
-    AltImageDirective,
-    DecoBgComponent
+    DecoBgComponent, 
 ]
 
 const privateDeclared: Type<any>[] = [
@@ -23,6 +22,9 @@ const privateImports: Type<any>[] = [
 ]
 
 const publicImports: Type<any>[] = [
+    MatIconSymbolDirective, 
+    AltImageDirective,
+    NoDoubleClickDirective,
     CommonModule, 
     RouterModule,
     MatButtonModule, 

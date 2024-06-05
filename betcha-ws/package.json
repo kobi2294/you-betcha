@@ -1,6 +1,6 @@
 {
   "name": "betcha-ws",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve betcha-app\" \"ng serve betcha-dashboard\" \"ng serve betcha-admin\"",
@@ -38,6 +38,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@angular/service-worker": "^17.3.0",
     "@ngrx/signals": "^17.2.0",
     "firebaseui-angular": "^6.2.1",
     "material-icons": "^1.13.12",

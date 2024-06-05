@@ -8,10 +8,10 @@
     padding-top: 6px;
     background-color: var(--b-background);
     color: var(--f-secondary-text);
+    outline: 0px solid transparent;
     gap: 3px;
     user-select: none;
-    cursor: pointer;
-    
+    cursor: pointer;    
 
     .caption {
         font-size: 12px;;
@@ -22,7 +22,7 @@
     }
 
     &.active {
-        border-top: 2px solid var(--p-500);
+        border-color: var(--p-500);
         background-color: var(--p-50);
         color: var(--p-800);
 
@@ -30,5 +30,17 @@
             color: var(--p-600);
         }
     }
+}
 
+@media screen and (orientation: landscape) {
+    :host {
+        height: unset;
+        width: 70px;
+        justify-content: center;
+        border-top: 0px;
+        border-inline-end: 2px solid var(--f-divider);
+        padding-top: 0px;
+        padding-inline-end: 6px;
+
+    }
 }

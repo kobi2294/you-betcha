@@ -329,8 +329,9 @@
             "tsConfig": "projects/betcha-admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "projects/betcha-admin/src/manifest.webmanifest",
               "projects/betcha-admin/src/favicon.ico",
-              "projects/betcha-admin/src/assets", 
+              "projects/betcha-admin/src/assets",
               {
                 "glob": "**/*",
                 "input": "projects/bt-lib/src/assets",
