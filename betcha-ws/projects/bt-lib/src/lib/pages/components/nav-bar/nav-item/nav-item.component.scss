@@ -1,0 +1,30 @@
+:host {
+    flex-grow: 1;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid var(--f-divider);
+    align-items: center;
+    padding-top: 6px;
+    background-color: var(--b-background);
+    color: var(--f-secondary-text);
+    gap: 3px;
+    user-select: none;
+    cursor: pointer;
+    
+
+    .caption {
+        font-size: 12px;;
+    }
+
+    mat-icon {
+        font-size: 28px;
+    }
+
+    &.active {
+        border-top: 2px solid var(--p-700);
+        background-color: var(--p-100);
+        color: var(--p-700);
+    }
+
+}

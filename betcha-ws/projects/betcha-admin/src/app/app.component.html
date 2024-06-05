@@ -8,7 +8,12 @@
   } @else {
     <lib-sk-nav>
       <lib-toolbar [admin]="true"/>
-      <lib-nav-bar></lib-nav-bar>  
+      <lib-nav-bar>
+          <lib-nav-item caption="Home" page="home" icon="home"/>
+          <lib-nav-item caption="Groups" page="groups" icon="group"/>
+          <lib-nav-item caption="Users" page="users" icon="face"/>
+          <lib-nav-item caption="Matches" page="matches" icon="calendar_today"/>
+      </lib-nav-bar>  
     </lib-sk-nav>
   } } }
   
