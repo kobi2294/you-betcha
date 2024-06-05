@@ -4,4 +4,4 @@
 @use 'core';
 
 @include core.go();
-@include theme.go(pal.$blue, pal.$purple);
+@include theme.go(pal.$teal, pal.$purple);

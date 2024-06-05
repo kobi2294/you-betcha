@@ -22,9 +22,13 @@
     }
 
     &.active {
-        border-top: 2px solid var(--p-700);
-        background-color: var(--p-100);
-        color: var(--p-700);
+        border-top: 2px solid var(--p-500);
+        background-color: var(--p-50);
+        color: var(--p-800);
+
+        mat-icon {
+            color: var(--p-600);
+        }
     }
 
 }
