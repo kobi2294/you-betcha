@@ -1,7 +1,8 @@
 import { getState, signalStoreFeature, withHooks } from "@ngrx/signals";
 import { EmptyFeatureResult, SignalStoreFeature, SignalStoreFeatureResult } from '@ngrx/signals/src/signal-store-models';
-import { reduxDevtoolsDestroy, reduxDevtoolsInit, reduxDevtoolsSend } from './devtools.helpers';
+import { reduxDevtoolsDestroy, reduxDevtoolsInit, reduxDevtoolsSendObject, reduxDevtoolsSendStore } from './devtools.helpers';
 import { effect } from "@angular/core";
+import { getSignalValues } from "./get-signal-values";
 
 
 export function withDevtools<Input extends SignalStoreFeatureResult>(instanceName: string): 
@@ -13,8 +14,8 @@ export function withDevtools<Input extends SignalStoreFeatureResult>(instanceNam
             withHooks({
                 onInit(store) {
                     effect(() => {
-                        const state = getState(store);
-                        reduxDevtoolsSend(session, 'action', store);
+                        const state = getSignalValues(store);
+                        reduxDevtoolsSendObject(session, 'action', state);
                     
                     })
                 },

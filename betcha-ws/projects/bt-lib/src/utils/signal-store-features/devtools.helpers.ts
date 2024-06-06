@@ -38,7 +38,7 @@ export function reduxDevtoolsInit(instanceName: string, store: Store): Session |
   return {connection, unsubscriber} ;
 }
 
-export function reduxDevtoolsSend(
+export function reduxDevtoolsSendStore(
   session: Session | null,
   action: ReduxAction,
   store: Store
@@ -46,6 +46,15 @@ export function reduxDevtoolsSend(
   if (!session) return;
   const state = getState(store);
   session.connection.send(action, state);
+}
+
+export function reduxDevtoolsSendObject(
+  session: Session | null,
+  action: ReduxAction,
+  object: any
+) {
+  if (!session) return;
+  session.connection.send(action, object);
 }
 
 export function reduxDevtoolsDestroy(session: Session | null): void {
