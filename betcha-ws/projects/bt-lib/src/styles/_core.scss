@@ -1,11 +1,13 @@
 @use "@angular/material" as mat;
 @use "lib-edit" as lib-edit;
+@use "snackbar";
 @use "lib-common" as lib-common;
 
 @mixin go() {
   @include mat.core();
   @include lib-edit.go();
   @include lib-common.go();
+  @include snackbar.go();
 
   html,
   body {

@@ -13,6 +13,7 @@ import { NoDoubleClickDirective } from "./directives/no-double-click.directive";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -37,6 +38,7 @@ const publicImports: Type<any>[] = [
     MatProgressBarModule, 
     MatProgressSpinnerModule, 
     MatFormFieldModule, 
+    MatSnackBarModule,
     MatInputModule
 ]
 

@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
+import { FirebaseError } from '@angular/fire/app';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, SharedModule } from '@lib';
+import { ApiService, NotificationsService, SharedModule } from '@lib';
 import { Api } from '@tscommon';
 import { firstValueFrom } from 'rxjs';
 
@@ -15,6 +16,7 @@ import { firstValueFrom } from 'rxjs';
 export default class AddGroupComponent {
   readonly router = inject(Router);
   readonly api = inject(ApiService);
+  readonly notifications = inject(NotificationsService);
 
   form = inject(FormBuilder).group({
     groupId: ['', Validators.required], 
@@ -27,10 +29,11 @@ export default class AddGroupComponent {
         const data = this.form.value;
         const req: Api.CreateGroupRequest = {id: data.groupId!, displayName: data.name!};
         await firstValueFrom(this.api.createGroup(req));
-        this.router.navigate(['groups', 'details', data.groupId!]);  
+        this.router.navigate(['groups', 'details', data.groupId!], {replaceUrl: true});  
       }
-      catch (err) {
-        console.error(err);
+      catch (err: unknown) {
+        this.notifications.error(err);
+
       }
     }
 

@@ -14,6 +14,7 @@ export * from './utils/signal-store-features/with-devtools.feature';
 export * from './utils/filter-not-null';
 
 export * from './services/api.service';
+export * from './services/notifications.service';
 
 export * from './lib/standalones/login-ui/login-ui.directive';
 export * from './lib/standalones/login-ui/provide-login-ui';
