@@ -4,6 +4,7 @@ import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { EmptyFeatureResult, SignalStoreFeature, SignalStoreFeatureResult, SignalStoreSlices } from "@ngrx/signals/src/signal-store-models";
 import { Prettify } from "@ngrx/signals/src/ts-helpers";
 import { Observable, switchMap, tap } from "rxjs";
+import { withLoadState } from "./with-load-state.feature";
 
 export type RxMethodInput<Input> = Input | Observable<Input> | Signal<Input>;
 
@@ -27,6 +28,7 @@ export function withLoadMethod<Input extends SignalStoreFeatureResult, T>(loadMe
 
         const loader = () => runInInjectionContext(injector, () => loadMethod(storeContent));
         const feature = signalStoreFeature(
+            withLoadState(),
             withMethods((store) => ({                
                 load: rxMethod<void>(trigger$ => trigger$.pipe(
                     tap(_ => patchState(store, { loadState: 'loading' })),
