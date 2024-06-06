@@ -1,26 +1,35 @@
 import { inject } from "@angular/core";
+import { toObservable } from "@angular/core/rxjs-interop";
 import { CanActivateFn, Router } from "@angular/router";
-import { AuthStore, PermissionSlice } from "@lib";
+import { AuthStore, PermissionSlice, filterNotNull } from "@lib";
 import { DbModel } from "@tscommon";
+import { firstValueFrom } from "rxjs";
 
 export function roleGuard(role: DbModel.UserRole): CanActivateFn {
-    return () => {
+    return async () => {
         const router = inject(Router);
-        const auth = inject(AuthStore);
-        const isOk = hasRole(auth.claims()?.role ?? null, role);
+        const claims = await getClaims();
+        const isOk = hasRole(claims.role, role);
         if (isOk) return true;
         return router.parseUrl('/home');
     }
 }
 
 export function permissionGuard(premission: (p: PermissionSlice) => boolean): CanActivateFn {
-    return () => {
-        const router = inject(Router);
+    return async () => {
         const auth = inject(AuthStore);
+        const router = inject(Router);
+        await getClaims();
         const isOk = premission(auth.permissions());
         if (isOk) return true;
         return router.parseUrl('/home');
     }
+}
+
+async function getClaims(): Promise<DbModel.AuthClaims> {
+    const authStore = inject(AuthStore);
+    const claims$ = toObservable(authStore.claims);
+    return firstValueFrom(claims$.pipe(filterNotNull())) 
 }
 
 

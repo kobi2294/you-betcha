@@ -11,6 +11,7 @@ export * from './utils/provide-pwa';
 export * from './utils/signal-store-features/with-load-state.feature';
 export * from './utils/signal-store-features/with-load-method.feature';
 export * from './utils/signal-store-features/with-devtools.feature';
+export * from './utils/filter-not-null';
 
 export * from './services/api.service';
 

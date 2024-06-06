@@ -1,1 +1,18 @@
-<p>add-group works!</p>
+<div class="form" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Group Identifier</mat-label>
+        <input matInput formControlName="groupId" required>
+        <mat-icon matSuffix>group</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Group Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-icon matSuffix>group</mat-icon>
+    </mat-form-field>
+
+    <div class="toolbar">
+        <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="ok()">Create Group</button>
+        <button mat-button color="accent" (click)="cancel()">Cancel</button>
+    </div>
+</div>

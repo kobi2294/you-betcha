@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
-import { DbModel } from "@tscommon";
+import { Api, DbModel } from "@tscommon";
 import { Observable } from "rxjs";
 
 @Injectable({providedIn: 'root'})
@@ -9,6 +9,7 @@ export class ApiService {
 
     private _getUserDetails = httpsCallableData<void, DbModel.User>(this.functions, 'getUserDetails');
     private _getManagedGroups = httpsCallableData<void, DbModel.Group[]>(this.functions, 'getUserManagedGroups');
+    private _createGroup = httpsCallableData<Api.CreateGroupRequest, void>(this.functions, 'createGroup');
 
     
 
@@ -18,6 +19,10 @@ export class ApiService {
 
     getManagedGroups(): Observable<DbModel.Group[]> {
         return this._getManagedGroups();
+    }
+
+    createGroup(req: Api.CreateGroupRequest): Observable<void> {
+        return this._createGroup(req);
     }
 
 }

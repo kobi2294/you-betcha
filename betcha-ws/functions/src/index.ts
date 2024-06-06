@@ -11,6 +11,8 @@ import { CallableOptions, onCall } from 'firebase-functions/v2/https';
 import { getUserApi } from './apis/user.api';
 import { initializeApp } from 'firebase-admin/app';
 import { DbModel } from './common/public-api';
+import { CreateGroupRequest } from './common/models/api/create-group.api';
+import { getSuperApi } from './apis/super.api';
 
 
 initializeApp();
@@ -28,5 +30,11 @@ export const getUserManagedGroups = onCall<DbModel.Group[]>(options, req => {
   const api = getUserApi(req.auth);
   return api.getManagedGroups();
 });
+
+export const createGroup = onCall<CreateGroupRequest, void>(options, req => {
+  const api = getSuperApi(req.auth);
+  const data = req.data;
+  return api.createGroup(data.id, data.displayName);
+})
 
 

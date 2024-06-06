@@ -10,6 +10,9 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AltImageDirective } from "./directives/alt-image.directive";
 import { RouterModule } from "@angular/router";
 import { NoDoubleClickDirective } from "./directives/no-double-click.directive";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -27,11 +30,14 @@ const publicImports: Type<any>[] = [
     NoDoubleClickDirective,
     CommonModule, 
     RouterModule,
+    ReactiveFormsModule,
     MatButtonModule, 
     MatIconModule, 
     MatMenuModule, 
     MatProgressBarModule, 
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule, 
+    MatFormFieldModule, 
+    MatInputModule
 ]
 
 @NgModule({
