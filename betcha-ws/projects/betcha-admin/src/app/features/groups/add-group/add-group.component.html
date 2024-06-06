@@ -3,6 +3,8 @@
         <mat-label>Group Identifier</mat-label>
         <input matInput formControlName="groupId" required>
         <mat-icon matSuffix>group</mat-icon>
+        <mat-error *ngIf="groupId.errors?.['minLength']??false">Please enter at least 5 characters</mat-error>
+        <mat-error *ngIf="groupId.errors?.['pattern']??false">only lower case letters, numbers and '-' are allowed</mat-error>
     </mat-form-field>
 
     <mat-form-field>

@@ -19,9 +19,13 @@ export default class AddGroupComponent {
   readonly notifications = inject(NotificationsService);
 
   form = inject(FormBuilder).group({
-    groupId: ['', Validators.required], 
+    groupId: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9-]+$/), Validators.minLength(5)], ], 
     name: ['', Validators.required],
   });
+
+  groupId = this.form.get('groupId')!;
+  name = this.form.get('name')!;
+
 
   async ok() {
     if (this.form.valid) {
