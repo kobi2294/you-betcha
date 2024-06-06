@@ -40,6 +40,18 @@
       width: auto;
       height: auto;
     }
+
+    --mdc-filled-text-field-label-text-size: 24px;
+
+    input[matinput] {
+      font-size: 24px;
+    }
+
+    mat-form-field {
+      mat-icon[matsuffix] {
+        font-size: 32px;
+      }
+    }
   
 
 
