@@ -6,6 +6,8 @@ import { DalFileContentType } from "../common/logic/dal/dal-types";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
 import { getAutomaticApi } from "./automatic.api";
 import { getAuth } from "firebase-admin/auth";
+import { Api } from "src/common/models/api/api.alias";
+import { DbModel } from "src/common/public-api";
 
 export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
@@ -76,12 +78,25 @@ export function getUserApi(authData: MaybeAuthData) {
         await dal.users.updateOne(auth.email, _ => ({ guesses: userGuesses }));
     }
 
+    async function _getManagedGroups(): Promise<Api.GroupInfo[]> {
+        let groups: DbModel.Group[] = [];
+
+        if (auth.role === 'super') {
+            groups = await dal.groups.getAll();
+        } else {
+            groups = await dal.groups.getAllAdminedByUser(auth.email);
+        }
+
+        return groups.map(g => ({ groupId: g.id, displayName: g.displayName }));
+    }
+
     return {
         getUserDetails: _getUserDetails,
         setDisplayName: _setDisplayName, 
         uploadProfileImage: _uploadProfileImage,
         joinGroup: _joinGroup,
         leaveGroup: _leaveGroup,
-        setGuess: _setGuess
+        setGuess: _setGuess, 
+        getManagedGroups: _getManagedGroups
     }
 }

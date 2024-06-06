@@ -7,12 +7,17 @@ import { Observable } from "rxjs";
 export class ApiService {
     readonly functions = inject(Functions);
 
-    private getUserDetailsCallable = httpsCallableData<void, DbModel.User>(this.functions, 'getUserDetails');
+    private _getUserDetails = httpsCallableData<void, DbModel.User>(this.functions, 'getUserDetails');
+    private _getManagedGroups = httpsCallableData<void, DbModel.Group[]>(this.functions, 'getUserManagedGroups');
 
     
 
     getUserDetails(): Observable<DbModel.User> {
-        return this.getUserDetailsCallable();
+        return this._getUserDetails();
+    }
+
+    getManagedGroups(): Observable<DbModel.Group[]> {
+        return this._getManagedGroups();
     }
 
 }

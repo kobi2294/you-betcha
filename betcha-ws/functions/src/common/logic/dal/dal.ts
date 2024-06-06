@@ -28,12 +28,18 @@ export function getDal() {
     return groups[0];
   }
 
+  async function _getAllAdminedByUser(userId: string): Promise<DbModel.Group[]> {
+    const groups = await access.collection('groups').getAll(['admins', 'array-contains', userId]);
+    return groups;
+  }
+
   return {
     batch: access.batch,
     audits: _collectionMethods('audits'),
     groups: { 
       ..._collectionMethods('groups'),
-      getBySecret: _getGroupBySecret
+      getBySecret: _getGroupBySecret, 
+      getAllAdminedByUser: _getAllAdminedByUser 
     },
     metadata: on(access.collection('metadata'), (x) => ({
       get: () => x.doc('metadata').get(),

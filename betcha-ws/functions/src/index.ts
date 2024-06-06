@@ -10,6 +10,7 @@
 import { CallableOptions, onCall } from 'firebase-functions/v2/https';
 import { getUserApi } from './apis/user.api';
 import { initializeApp } from 'firebase-admin/app';
+import { DbModel } from './common/public-api';
 
 
 initializeApp();
@@ -21,6 +22,11 @@ const options: CallableOptions = {
 export const getUserDetails = onCall<void>(options, req => {
   const api = getUserApi(req.auth);
   return api.getUserDetails();  
+});
+
+export const getUserManagedGroups = onCall<DbModel.Group[]>(options, req => {
+  const api = getUserApi(req.auth);
+  return api.getManagedGroups();
 });
 
 
