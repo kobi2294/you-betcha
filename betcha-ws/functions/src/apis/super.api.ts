@@ -1,4 +1,4 @@
-import { MaybeAuthData, authorize, notFound } from "../common/api/authorize"
+import { MaybeAuthData, authorize, badRequest, notFound } from "../common/api/authorize"
 import { getDal } from "../common/logic/dal/dal";
 import { DbModel } from "../common/models/db/db.alias";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
@@ -9,6 +9,9 @@ export function getSuperApi(authData: MaybeAuthData) {
     const dal = getDal();
 
     async function _createGroup(id: string, displayName: string) {
+        const existing = await dal.groups.getOne(id);
+        if (existing) throw badRequest('Group already exists');
+
         const group: DbModel.Group = {
             id,
             displayName,

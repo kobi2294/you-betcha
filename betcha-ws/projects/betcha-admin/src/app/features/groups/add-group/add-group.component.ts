@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService, SharedModule } from '@lib';
 import { Api } from '@tscommon';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-add-group',
@@ -25,7 +26,7 @@ export default class AddGroupComponent {
       try {
         const data = this.form.value;
         const req: Api.CreateGroupRequest = {id: data.groupId!, displayName: data.name!};
-        await this.api.createGroup(req);
+        await firstValueFrom(this.api.createGroup(req));
         this.router.navigate(['groups', 'details', data.groupId!]);  
       }
       catch (err) {
