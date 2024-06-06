@@ -3,3 +3,11 @@
         <mat-icon>add</mat-icon>
     </button>
 }
+
+<cdk-virtual-scroll-viewport itemSize="60">
+    <div *cdkVirtualFor="let group of store.groups()" class="group" [routerLink]="['details', group.groupId]">
+        <mat-icon symbol>group</mat-icon>
+        <h1>{{group.displayName}}</h1>
+        <h2>{{group.groupId}}</h2>
+    </div>
+</cdk-virtual-scroll-viewport>
