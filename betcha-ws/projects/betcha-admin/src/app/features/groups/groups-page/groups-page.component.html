@@ -1,1 +1,5 @@
-<p>groups-page works!</p>
+@if (store.canAddGroup()) {
+    <button mat-fab color="accent" class="add-button" routerLink="add">
+        <mat-icon>add</mat-icon>
+    </button>
+}
