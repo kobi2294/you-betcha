@@ -6,6 +6,17 @@
     .page-area {
         padding: min(1vh, 10px) min(1vw, 10px);
         flex-grow: 1;
+        position: relative;
+
+        .scroller {
+            position: absolute;
+            top: 5px;
+            inset-inline-start: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            overflow-y: auto;
+        }
+        
     }
 
     .nav-area {
