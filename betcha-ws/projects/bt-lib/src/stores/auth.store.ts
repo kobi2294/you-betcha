@@ -2,7 +2,7 @@ import { getState, patchState, signalStore, withComputed, withHooks, withMethods
 import { initialAuthSlice } from "./auth.slice";
 import { computed, effect, inject } from "@angular/core";
 import { Auth, Unsubscribe } from "@angular/fire/auth";
-import { canAccessAdminApp, claimsFromUser, isInProgress } from "./store.helpers";
+import { canAccessAdminApp, claimsFromUser, isInProgress, permissions } from "./store.helpers";
 import { ApiService } from "../services/api.service";
 import { firstValueFrom } from "rxjs";
 
@@ -16,6 +16,7 @@ export const AuthStore = signalStore(
     withComputed(store => ({
         adminAppForbidden: computed(() => !store.isInProgress() && !canAccessAdminApp(store.claims())), 
         photoUrl: computed(() => store.user()?.photoUrl || 'assets/images/guest.png'),
+        permissions: computed(() => permissions(store.claims()))
     })),    
     withMethods((_, afAuth = inject(Auth)) => ({
         signOut: () => afAuth.signOut()

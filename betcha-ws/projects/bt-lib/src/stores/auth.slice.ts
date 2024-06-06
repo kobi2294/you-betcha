@@ -7,6 +7,12 @@ export interface AuthSlice {
     claims: DbModel.AuthClaims | null;
 }
 
+export interface PermissionSlice {
+    canManageGroups: boolean;
+    canManageUsers: boolean;
+    canManageMatches: boolean;
+}
+
 export const initialAuthSlice: AuthSlice = {
     fireUser: undefined,
     user: null,

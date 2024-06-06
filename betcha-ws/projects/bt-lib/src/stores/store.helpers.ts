@@ -1,5 +1,6 @@
 import { User } from "@angular/fire/auth";
 import { DbModel } from "@tscommon";
+import { PermissionSlice } from "./auth.slice";
 
 export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
     await user.reload();
@@ -26,4 +27,24 @@ export function isInProgress(fireuser: User | null | undefined, user: DbModel.Us
     if (fireuser === null) return false;
     if (!user || !claims) return true;
     return false;
+}
+
+export function permissions(claims: DbModel.AuthClaims | null): PermissionSlice {
+    if (claims === null) return {
+        canManageGroups: false,
+        canManageUsers: false,
+        canManageMatches: false,
+    }
+
+    if (claims.role === 'super') return {
+        canManageGroups: true,
+        canManageUsers: true,
+        canManageMatches: true,
+    }
+
+    return {
+        canManageGroups: claims.adminGroups.length > 0,
+        canManageUsers: false,
+        canManageMatches: claims.role === 'trustee'
+    }
 }
