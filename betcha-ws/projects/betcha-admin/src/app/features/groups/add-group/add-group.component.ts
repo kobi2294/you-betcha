@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FirebaseError } from '@angular/fire/app';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService, NotificationsService, SharedModule } from '@lib';
+import { ApiService, NotificationsService, PagesModule, SharedModule } from '@lib';
 import { Api } from '@tscommon';
 import { delay, firstValueFrom } from 'rxjs';
 import { doesNotStartWithLetter, isIdFree } from './group-id.validators';
@@ -10,7 +10,7 @@ import { doesNotStartWithLetter, isIdFree } from './group-id.validators';
 @Component({
   selector: 'app-add-group',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, PagesModule],
   templateUrl: './add-group.component.html',
   styleUrl: './add-group.component.scss'
 })
@@ -21,7 +21,7 @@ export default class AddGroupComponent {
   readonly busy = signal(false);
 
   form = inject(FormBuilder).group({
-    groupId: ['', [Validators.required, Validators.pattern(/^[a-z0-9-]+$/), Validators.minLength(5), doesNotStartWithLetter], [isIdFree()]], 
+    groupId: ['', [Validators.required, Validators.pattern(/^[a-z0-9-]+$/), Validators.minLength(5), doesNotStartWithLetter()], [isIdFree()]], 
     name: ['', Validators.required],
   });
 

@@ -1,29 +1,66 @@
 <lib-busy [busy]="busy()" caption="Adding Group...">
-    <div class="form-container">
-        <div class="form" [formGroup]="form">
-            <mat-form-field>
-                <mat-label>Group Identifier</mat-label>
-                <input matInput formControlName="groupId" required (blur)="fixId()">
-                <mat-icon matSuffix class="valid" *ngIf="groupId.valid">check</mat-icon>
-                <mat-spinner matSuffix [diameter]="32" *ngIf="groupId.pending"/>
-                <mat-icon matSuffix class="invalid" *ngIf="groupId.errors?.['isIdFree']??false">close</mat-icon>
 
-                <mat-error *ngIf="groupId.errors?.['minlength']??false">Please enter at least 5 characters</mat-error>
-                <mat-error *ngIf="groupId.errors?.['pattern']??false">only lower case letters, numbers and '-' are allowed</mat-error>
-                <mat-error *ngIf="groupId.errors?.['doesNotStartWithLetter']??false">Group Identifier must start with a letter</mat-error>
-                <mat-error *ngIf="groupId.errors?.['isIdFree']??false">Identifier is already in use</mat-error>
-            </mat-form-field>
-        
-            <mat-form-field>
-                <mat-label>Group Name</mat-label>
-                <input matInput formControlName="name" required>
-                <mat-icon matSuffix class="valid" *ngIf="name.valid">check</mat-icon>
-            </mat-form-field>
-        
-            <div class="toolbar">
-                <button mat-raised-button color="accent" [disabled]="!form.valid" (click)="ok()">Create Group</button>
-                <button mat-button color="accent" (click)="cancel()">Cancel</button>
-            </div>
-        </div>    
+  <lib-sk-dialog>
+    <sk-dialog-header>New Group</sk-dialog-header>
+    <sk-dialog-content [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Group Identifier</mat-label>
+        <input matInput formControlName="groupId" required (blur)="fixId()" />
+        <mat-icon matSuffix class="valid" *ngIf="groupId.valid">check</mat-icon>
+        <mat-spinner matSuffix [diameter]="32" *ngIf="groupId.pending" />
+        <mat-icon
+          matSuffix
+          class="invalid"
+          *ngIf="groupId.errors?.['isIdFree']??false"
+          >close</mat-icon
+        >
+
+        <mat-error *ngIf="groupId.errors?.['minlength']??false"
+          >Please enter at least 5 characters</mat-error
+        >
+        <mat-error *ngIf="groupId.errors?.['doesNotStartWithLetter']??false"
+          >Group Identifier must start with a letter</mat-error
+        >
+        <mat-error *ngIf="groupId.errors?.['isIdFree']??false"
+          >Identifier is already in use</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Group Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-icon matSuffix class="valid" *ngIf="name.valid">check</mat-icon>
+      </mat-form-field>
+
+    </sk-dialog-content>
+    <sk-dialog-actions>
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="!form.valid"
+        (click)="ok()"
+      >
+        Create Group
+      </button>
+      <button mat-button color="accent" (click)="cancel()">Cancel</button>
+    </sk-dialog-actions> 
+    </lib-sk-dialog>
+
+  <!-- <div skDialogHeader>New Group</div>
+  <div skDialogContent class="form-container">
+    <div class="form" [formGroup]="form">
     </div>
+  </div>
+  <div skDialogActions class="toolbar">
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!form.valid"
+      (click)="ok()"
+    >
+      Create Group
+    </button>
+    <button mat-button color="accent" (click)="cancel()">Cancel</button>
+  </div> 
+-->
 </lib-busy>

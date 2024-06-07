@@ -16,11 +16,17 @@
         .scroller {
             --my-pad: min(20px, 1vw);
             position: absolute;
+            display: flex;
+            flex-direction: column;
             top: 10px;
             inset-inline-start: var(--my-pad);
             width: calc(100% - calc(2 * var(--my-pad)) + 0.5px);
             height: calc(100% - 20px);
             overflow-y: auto;
+
+            router-outlet {
+                display: none;
+            }
         }
         
     }

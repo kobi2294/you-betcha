@@ -10,12 +10,20 @@ import { ProfilePicComponent } from "./components/profile-pic/profile-pic.compon
 import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { NavItemComponent } from "./components/nav-bar/nav-item/nav-item.component";
 import { SkNavComponent } from "./skeletons/sk-nav/sk-nav.component";
+import { SkDialogComponent } from "./skeletons/sk-dialog/sk-dialog.component";
+import { SkDialogActionsDirective } from "./skeletons/sk-dialog/sk-dialog-actions.directive";
+import { SkDialogContentDirective } from "./skeletons/sk-dialog/sk-dialog-content.directive";
+import { SkDialogHeaderDirective } from "./skeletons/sk-dialog/sk-dialog-header.directive";
 
 const declarations: Type<any>[] = [
     LoginPageComponent, 
     BusyPageComponent, 
     SkFullComponent, 
     SkNavComponent,
+    SkDialogComponent, 
+    SkDialogActionsDirective, 
+    SkDialogContentDirective, 
+    SkDialogHeaderDirective,
     FullTitleComponent, 
     ToolbarComponent, 
     ProfilePicComponent, 
