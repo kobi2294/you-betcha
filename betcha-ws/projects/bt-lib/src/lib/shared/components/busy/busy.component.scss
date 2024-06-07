@@ -1,0 +1,36 @@
+:host {
+    display: grid;
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 100%;
+
+    .busy {
+        position: absolute;
+        top: 0;
+        inset-inline-start: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;  
+        display: flex;
+        flex-direction: column;  
+        gap: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+
+        .message {
+            font-size: 2em;
+            color: var(--p-800);
+            padding: 1em;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        &.content-busy {
+            opacity: 0.4;
+        }
+    }
+}

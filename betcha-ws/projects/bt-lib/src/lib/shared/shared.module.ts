@@ -15,9 +15,11 @@ import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { ScrollingModule } from "@angular/cdk/scrolling";
+import { BusyComponent } from "./components/busy/busy.component";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
+    BusyComponent
 ]
 
 const privateDeclared: Type<any>[] = [

@@ -1,10 +1,14 @@
-import { Injector, Signal, inject, runInInjectionContext } from "@angular/core";
+import { Injector, Input, Signal, inject, runInInjectionContext } from "@angular/core";
 import { patchState, signalStoreFeature, withHooks, withMethods } from "@ngrx/signals";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
-import { EmptyFeatureResult, SignalStoreFeature, SignalStoreFeatureResult, SignalStoreSlices } from "@ngrx/signals/src/signal-store-models";
+import { EmptyFeatureResult, InnerSignalStore, MergeFeatureResults, SignalStoreFeature, SignalStoreFeatureResult, SignalStoreSlices } from "@ngrx/signals/src/signal-store-models";
 import { Prettify } from "@ngrx/signals/src/ts-helpers";
 import { Observable, switchMap, tap } from "rxjs";
-import { withLoadState } from "./with-load-state.feature";
+import { LoadStateFeatureResult, withLoadState } from "./with-load-state.feature";
+import { RxMethod } from "./_types";
+
+
+
 
 export type RxMethodInput<Input> = Input | Observable<Input> | Signal<Input>;
 
@@ -15,10 +19,13 @@ export type InputStore<Input extends SignalStoreFeatureResult> = Prettify<
 
 type LoadMethod<Input extends SignalStoreFeatureResult, T> = (store: InputStore<Input>) => Observable<T>;
 
-type AddedState = { methods: { load: (inp: RxMethodInput<void>) => void } };
+type InnerStore<Input extends SignalStoreFeatureResult> =  InnerSignalStore<Input["state"], Input["signals"], Input["methods"]>;
 
-export function withLoadMethod<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean): SignalStoreFeature<Input, EmptyFeatureResult & AddedState> {
-    return store => {
+type LoadMethodFeatureResult = MergeFeatureResults<[LoadStateFeatureResult, {state: {}, signals: {}, methods: {load: RxMethod<void>}}]>;
+
+export function withLoadMethod<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean)
+: SignalStoreFeature<Input, LoadMethodFeatureResult> {
+    return (store) => {
         const injector = inject(Injector);
         const storeContent = {
             ...store.slices, 
@@ -46,7 +53,9 @@ export function withLoadMethod<Input extends SignalStoreFeatureResult, T>(loadMe
             })
         );
 
-        return feature(store);
+        const res = feature(store);
+        
+        return res as unknown as InnerSignalStore<LoadMethodFeatureResult["state"], LoadMethodFeatureResult["signals"], LoadMethodFeatureResult["methods"]>;
     }
 
 }

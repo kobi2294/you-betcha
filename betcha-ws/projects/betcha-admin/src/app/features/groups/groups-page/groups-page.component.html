@@ -1,13 +1,19 @@
-@if (store.canAddGroup()) {
-    <button mat-fab color="accent" class="add-button" routerLink="add">
-        <mat-icon>add</mat-icon>
-    </button>
-}
+<lib-busy [busy]="store.isLoading()" caption="Loading groups...">
+  @if (store.canAddGroup()) {
+  <button mat-fab color="accent" class="add-button" routerLink="add">
+    <mat-icon>add</mat-icon>
+  </button>
+  }
 
-<cdk-virtual-scroll-viewport itemSize="60">
-    <div *cdkVirtualFor="let group of store.groups()" class="group" [routerLink]="['details', group.groupId]">
-        <mat-icon symbol>group</mat-icon>
-        <h1>{{group.displayName}}</h1>
-        <h2>{{group.groupId}}</h2>
+  <cdk-virtual-scroll-viewport itemSize="60">
+    <div
+      *cdkVirtualFor="let group of store.groups()"
+      class="group"
+      [routerLink]="['details', group.groupId]"
+    >
+      <mat-icon symbol>group</mat-icon>
+      <h1>{{ group.displayName }}</h1>
+      <h2>{{ group.groupId }}</h2>
     </div>
-</cdk-virtual-scroll-viewport>
+  </cdk-virtual-scroll-viewport></lib-busy
+>

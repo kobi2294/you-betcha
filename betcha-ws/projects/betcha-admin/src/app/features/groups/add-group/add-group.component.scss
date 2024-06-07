@@ -1,23 +1,27 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     --mdc-filled-text-field-container-color: transparent;
     --mat-form-field-state-layer-color: transparent;
     
-
-    .form {
-        margin-top: 20px;
-        width: min(calc(100% - 20px), 400px);
+    .form-container {
         display: flex;
-        gap: 20px;
         flex-direction: column;
+        align-items: center;
 
-        .toolbar {
+        .form {        
+            margin-top: 20px;
+            width: min(calc(100% - 20px), 400px);
             display: flex;
-            flex-direction: row;
             gap: 20px;
-
+            flex-direction: column;
+    
+            .toolbar {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+    
+            }
         }
+    
     }
+
 }

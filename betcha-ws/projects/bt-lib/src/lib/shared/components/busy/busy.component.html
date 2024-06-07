@@ -1,0 +1,9 @@
+<div class="content" [class.content-busy]="busy()">
+    <ng-content></ng-content>
+</div>
+@if(busy()) {
+    <div class="busy">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <div class="message">{{caption()}}</div>
+    </div>
+}

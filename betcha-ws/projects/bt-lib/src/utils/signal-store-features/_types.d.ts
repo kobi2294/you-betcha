@@ -1,3 +1,7 @@
+export type RxMethodInput<Input> = Input | Observable<Input> | Signal<Input>;
+export type RxMethod<Input> = ((input: RxMethodInput<Input>) => Unsubscribable) & Unsubscribable;
+
+
 export interface ReduxDevtoolsStartMessage {
     readonly type: 'START';
     readonly state: undefined;
