@@ -3,10 +3,11 @@
         <div class="form" [formGroup]="form">
             <mat-form-field>
                 <mat-label>Group Identifier</mat-label>
-                <input matInput formControlName="groupId" required>
+                <input matInput formControlName="groupId" required (blur)="fixId()">
                 <mat-icon matSuffix>group</mat-icon>
-                <mat-error *ngIf="groupId.errors?.['minLength']??false">Please enter at least 5 characters</mat-error>
+                <mat-error *ngIf="groupId.errors?.['minlength']??false">Please enter at least 5 characters</mat-error>
                 <mat-error *ngIf="groupId.errors?.['pattern']??false">only lower case letters, numbers and '-' are allowed</mat-error>
+                <mat-error *ngIf="groupId.errors?.['doesNotStartWithLetter']??false">Group Identifier must start with a letter</mat-error>
             </mat-form-field>
         
             <mat-form-field>
@@ -19,6 +20,9 @@
                 <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="ok()">Create Group</button>
                 <button mat-button color="accent" (click)="cancel()">Cancel</button>
             </div>
+            <pre>
+                {{groupId.errors|json}}
+            </pre>
         </div>    
     </div>
 </lib-busy>

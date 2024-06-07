@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService, NotificationsService, SharedModule } from '@lib';
 import { Api } from '@tscommon';
 import { delay, firstValueFrom } from 'rxjs';
+import { doesNotStartWithLetter } from './group-id.validators';
 
 @Component({
   selector: 'app-add-group',
@@ -20,7 +21,7 @@ export default class AddGroupComponent {
   readonly busy = signal(false);
 
   form = inject(FormBuilder).group({
-    groupId: ['', [Validators.required, Validators.pattern(/^[a-z][a-z0-9-]+$/), Validators.minLength(5)], ], 
+    groupId: ['', [Validators.required, Validators.pattern(/^[a-z0-9-]+$/), Validators.minLength(5), doesNotStartWithLetter], ], 
     name: ['', Validators.required],
   });
 
@@ -32,7 +33,6 @@ export default class AddGroupComponent {
     if (this.form.valid) {
       try {
         this.busy.set(true);
-        await new Promise(resolve => setTimeout(resolve, 20000));
         const data = this.form.value;
         const req: Api.CreateGroupRequest = {id: data.groupId!, displayName: data.name!};
         await firstValueFrom(this.api.createGroup(req));
@@ -45,7 +45,18 @@ export default class AddGroupComponent {
         this.busy.set(false);
       }
     }
+  }
 
+  fixId() {
+    let id = this.groupId.value;
+    if (id === null) return;
+
+    id = id.toLowerCase(); // convert to lower case
+    id = id.replace(/[^a-z0-9- ]/g, ' '); // remove all characters except a-z, 0-9, and dash
+    id = id.trim(); // remove leading/trailing spaces
+    id = id.replace(/\s+/g, '-'); // replace sequence of spaces with single dash
+
+    this.groupId.setValue(id);
   }
 
   cancel() {
