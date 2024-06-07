@@ -76,7 +76,6 @@ export function getSuperApi(authData: MaybeAuthData) {
     async function _setGroupBlocked(groupId: string, blocked: boolean) {
         await dal.groups.updateOne(groupId, _ => ({ blocked }));
     }
-
     async function _setUserRole(email: string, role: DbModel.UserRole) {
         const user = await dal.users.getOne(email);
         if (!user) throw notFound('User does not exist');
@@ -84,6 +83,11 @@ export function getSuperApi(authData: MaybeAuthData) {
         await dal.users.updateOne(email, _ => ({ role }));
         const dalAuth = getDalAuth();
         await dalAuth.setRole(email, role);
+    }
+
+    async function _isGroupIdFree(id: string) {
+        const group = await dal.groups.getOne(id);
+        return !group;
     }
 
 
@@ -94,6 +98,7 @@ export function getSuperApi(authData: MaybeAuthData) {
         removeAdminFromGroup: _removeAdminFromGroup, 
         setGroupUsersLimit: _setGroupUsersLimit,
         setGroupBlocked: _setGroupBlocked,
-        _setUserRole: _setUserRole
+        _setUserRole: _setUserRole, 
+        isGroupIdFree: _isGroupIdFree
     }
 }

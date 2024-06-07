@@ -14,6 +14,18 @@
             gap: 20px;
             flex-direction: column;
     
+            mat-spinner[matSuffix] {
+                padding: 0 12px;
+                box-sizing: content-box;
+            }
+
+            .valid {
+                color: green
+            }
+            .invalid {
+                color: var(--w-400);
+            }
+
             .toolbar {
                 display: flex;
                 flex-direction: row;

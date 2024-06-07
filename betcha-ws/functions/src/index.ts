@@ -10,7 +10,7 @@
 import { CallableOptions, onCall } from 'firebase-functions/v2/https';
 import { getUserApi } from './apis/user.api';
 import { initializeApp } from 'firebase-admin/app';
-import { DbModel } from './common/public-api';
+import { Api, DbModel } from './common/public-api';
 import { CreateGroupRequest } from './common/models/api/create-group.api';
 import { getSuperApi } from './apis/super.api';
 
@@ -21,20 +21,25 @@ const options: CallableOptions = {
   region: 'europe-west3',
 } 
 
-export const getUserDetails = onCall<void>(options, req => {
+export const getUserDetails = onCall<void, Promise<DbModel.User>>(options, req => {
   const api = getUserApi(req.auth);
   return api.getUserDetails();  
 });
 
-export const getUserManagedGroups = onCall<DbModel.Group[]>(options, req => {
+export const getUserManagedGroups = onCall<void, Promise<Api.GroupInfo[]>>(options, req => {
   const api = getUserApi(req.auth);
   return api.getManagedGroups();
 });
 
-export const createGroup = onCall<CreateGroupRequest, void>(options, req => {
+export const createGroup = onCall<CreateGroupRequest, Promise<void>>(options, req => {
   const api = getSuperApi(req.auth);
   const data = req.data;
   return api.createGroup(data.id, data.displayName);
+})
+
+export const isGroupIdFree = onCall<string, Promise<boolean>>(options, req => {
+  const api = getSuperApi(req.auth);
+  return api.isGroupIdFree(req.data);
 })
 
 

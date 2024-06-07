@@ -4,25 +4,26 @@
             <mat-form-field>
                 <mat-label>Group Identifier</mat-label>
                 <input matInput formControlName="groupId" required (blur)="fixId()">
-                <mat-icon matSuffix>group</mat-icon>
+                <mat-icon matSuffix class="valid" *ngIf="groupId.valid">check</mat-icon>
+                <mat-spinner matSuffix [diameter]="32" *ngIf="groupId.pending"/>
+                <mat-icon matSuffix class="invalid" *ngIf="groupId.errors?.['isIdFree']??false">close</mat-icon>
+
                 <mat-error *ngIf="groupId.errors?.['minlength']??false">Please enter at least 5 characters</mat-error>
                 <mat-error *ngIf="groupId.errors?.['pattern']??false">only lower case letters, numbers and '-' are allowed</mat-error>
                 <mat-error *ngIf="groupId.errors?.['doesNotStartWithLetter']??false">Group Identifier must start with a letter</mat-error>
+                <mat-error *ngIf="groupId.errors?.['isIdFree']??false">Identifier is already in use</mat-error>
             </mat-form-field>
         
             <mat-form-field>
                 <mat-label>Group Name</mat-label>
                 <input matInput formControlName="name" required>
-                <mat-icon matSuffix>group</mat-icon>
+                <mat-icon matSuffix class="valid" *ngIf="name.valid">check</mat-icon>
             </mat-form-field>
         
             <div class="toolbar">
-                <button mat-raised-button color="accent" [disabled]="form.invalid" (click)="ok()">Create Group</button>
+                <button mat-raised-button color="accent" [disabled]="!form.valid" (click)="ok()">Create Group</button>
                 <button mat-button color="accent" (click)="cancel()">Cancel</button>
             </div>
-            <pre>
-                {{groupId.errors|json}}
-            </pre>
         </div>    
     </div>
 </lib-busy>

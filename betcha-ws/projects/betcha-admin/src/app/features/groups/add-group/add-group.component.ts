@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService, NotificationsService, SharedModule } from '@lib';
 import { Api } from '@tscommon';
 import { delay, firstValueFrom } from 'rxjs';
-import { doesNotStartWithLetter } from './group-id.validators';
+import { doesNotStartWithLetter, isIdFree } from './group-id.validators';
 
 @Component({
   selector: 'app-add-group',
@@ -21,7 +21,7 @@ export default class AddGroupComponent {
   readonly busy = signal(false);
 
   form = inject(FormBuilder).group({
-    groupId: ['', [Validators.required, Validators.pattern(/^[a-z0-9-]+$/), Validators.minLength(5), doesNotStartWithLetter], ], 
+    groupId: ['', [Validators.required, Validators.pattern(/^[a-z0-9-]+$/), Validators.minLength(5), doesNotStartWithLetter], [isIdFree()]], 
     name: ['', Validators.required],
   });
 
