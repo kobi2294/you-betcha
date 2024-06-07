@@ -19,8 +19,6 @@ export type InputStore<Input extends SignalStoreFeatureResult> = Prettify<
 
 type LoadMethod<Input extends SignalStoreFeatureResult, T> = (store: InputStore<Input>) => Observable<T>;
 
-type InnerStore<Input extends SignalStoreFeatureResult> =  InnerSignalStore<Input["state"], Input["signals"], Input["methods"]>;
-
 type LoadMethodFeatureResult = MergeFeatureResults<[LoadStateFeatureResult, {state: {}, signals: {}, methods: {load: RxMethod<void>}}]>;
 
 export function withLoadMethod<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean)
