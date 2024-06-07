@@ -9,8 +9,10 @@ export * from './utils/provide-version';
 export * from './utils/provide-lib';
 export * from './utils/provide-pwa';
 export * from './utils/rxjs/on-change-map';
+export * from './utils/rxjs/repeat-not-null';
 export * from './utils/signal-store-features/with-load-state.feature';
-export * from './utils/signal-store-features/with-load-method.feature';
+export * from './utils/signal-store-features/with-load.feature';
+export * from './utils/signal-store-features/with-load-reload.feature';
 export * from './utils/signal-store-features/with-devtools.feature';
 export * from './utils/filter-not-null';
 

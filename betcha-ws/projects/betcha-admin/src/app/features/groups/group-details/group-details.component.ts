@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedModule, onChangeMap } from '@lib';
+import { SharedModule, onChangeMap, repeatNotNull } from '@lib';
 import { Subject, delay, of, tap } from 'rxjs';
 
 @Component({
@@ -10,9 +10,10 @@ import { Subject, delay, of, tap } from 'rxjs';
   styleUrl: './group-details.component.scss'
 })
 export default class GroupDetailsComponent {
-  readonly subj$ = new Subject<number>();
+  readonly subj$ = new Subject<number | null>();
 
   readonly res$ = this.subj$.pipe(
+    repeatNotNull(),
     onChangeMap(n => of(n).pipe(
       tap(n => console.log(`started ${n}`)), 
       delay(5000),
