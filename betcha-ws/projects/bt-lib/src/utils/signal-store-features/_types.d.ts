@@ -1,6 +1,11 @@
 export type RxMethodInput<Input> = Input | Observable<Input> | Signal<Input>;
 export type RxMethod<Input> = ((input: RxMethodInput<Input>) => Unsubscribable) & Unsubscribable;
 
+export type InputStore<Input extends SignalStoreFeatureResult> = Prettify<
+  SignalStoreSlices<Input['state']> &
+    Input['signals'] &
+    Input['methods']>;
+
 
 export interface ReduxDevtoolsStartMessage {
     readonly type: 'START';

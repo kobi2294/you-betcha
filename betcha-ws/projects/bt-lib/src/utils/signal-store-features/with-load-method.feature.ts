@@ -1,21 +1,10 @@
-import { Injector, Input, Signal, inject, runInInjectionContext } from "@angular/core";
+import { Injector, inject, runInInjectionContext } from "@angular/core";
 import { patchState, signalStoreFeature, withHooks, withMethods } from "@ngrx/signals";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
-import { EmptyFeatureResult, InnerSignalStore, MergeFeatureResults, SignalStoreFeature, SignalStoreFeatureResult, SignalStoreSlices } from "@ngrx/signals/src/signal-store-models";
-import { Prettify } from "@ngrx/signals/src/ts-helpers";
+import { InnerSignalStore, MergeFeatureResults, SignalStoreFeature, SignalStoreFeatureResult } from "@ngrx/signals/src/signal-store-models";
 import { Observable, switchMap, tap } from "rxjs";
 import { LoadStateFeatureResult, withLoadState } from "./with-load-state.feature";
-import { RxMethod } from "./_types";
-
-
-
-
-export type RxMethodInput<Input> = Input | Observable<Input> | Signal<Input>;
-
-export type InputStore<Input extends SignalStoreFeatureResult> = Prettify<
-  SignalStoreSlices<Input['state']> &
-    Input['signals'] &
-    Input['methods']>;
+import { InputStore, RxMethod } from "./_types";
 
 type LoadMethod<Input extends SignalStoreFeatureResult, T> = (store: InputStore<Input>) => Observable<T>;
 
