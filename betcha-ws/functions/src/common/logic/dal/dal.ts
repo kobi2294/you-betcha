@@ -33,6 +33,11 @@ export function getDal() {
     return groups;
   }
 
+  async function _getUsersInGroup(groupId: string): Promise<DbModel.User[]> {
+    const users = await access.collection('users').getAll(['groups', 'array-contains', groupId]);
+    return users;
+  }
+
   return {
     batch: access.batch,
     audits: _collectionMethods('audits'),
@@ -48,7 +53,10 @@ export function getDal() {
       set: (data: Partial<DbModel.Metadata>) =>
         x.doc('metadata').update((_) => data),
     })),
-    users: _collectionMethods('users'),
+    users: {
+      ..._collectionMethods('users'), 
+      getAllInGroup: _getUsersInGroup
+    },
     calculatedGroups: _collectionMethods('calculated-groups'),
     calculatedMatches: _collectionMethods('calculated-matches'),
     clearAllData: access.clearAllData,

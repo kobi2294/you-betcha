@@ -1,10 +1,22 @@
-import { MaybeAuthData, authorize } from "../common/api/authorize";
+import { Api, DbModel } from "src/common/public-api";
+import { MaybeAuthData, authorize, notFound } from "../common/api/authorize";
 import { getDal } from "../common/logic/dal/dal";
-import { DbModel } from "../common/models/db/db.alias";
 
 export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
     authorize(authData, 'group-admin', groupId);
     const dal = getDal();
+
+    async function _getGroupForAdmin(): Promise<Api.GetGroupForAdminResponse> {
+        const group = await dal.groups.getOne(groupId);
+        if (!group) throw notFound('Group not found');
+
+        const members = await dal.users.getAllInGroup(groupId);
+        return {
+            groupId,
+            group,
+            members
+        }
+    }
 
     async function _setGroupMessage(message: string) {
         await dal.groups.updateOne(groupId, _ => ({ message }));
@@ -26,6 +38,7 @@ export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
         setGroupMessage: _setGroupMessage, 
         setGroupSlogan: _setGroupSlogan, 
         setGroupTheme: _setGroupTheme, 
-        setGroupDisplayName: _setGroupDisplayName
+        setGroupDisplayName: _setGroupDisplayName, 
+        getGroupForAdmin: _getGroupForAdmin
     }
 }

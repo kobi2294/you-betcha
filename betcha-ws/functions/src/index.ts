@@ -13,6 +13,7 @@ import { initializeApp } from 'firebase-admin/app';
 import { Api, DbModel } from './common/public-api';
 import { CreateGroupRequest } from './common/models/api/create-group.api';
 import { getSuperApi } from './apis/super.api';
+import { getGroupAdminApi } from './apis/group-admin.api';
 
 
 initializeApp();
@@ -40,6 +41,12 @@ export const createGroup = onCall<CreateGroupRequest, Promise<void>>(options, re
 export const isGroupIdFree = onCall<string, Promise<boolean>>(options, req => {
   const api = getSuperApi(req.auth);
   return api.isGroupIdFree(req.data);
+})
+
+export const getGroupForAdmin = onCall<string, Promise<Api.GetGroupForAdminResponse>>(options, req => {
+  const groupId = req.data;
+  const api = getGroupAdminApi(req.auth, groupId);
+  return api.getGroupForAdmin();
 })
 
 

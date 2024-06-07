@@ -11,6 +11,7 @@ export class ApiService {
     private _getManagedGroups = httpsCallableData<void, DbModel.Group[]>(this.functions, 'getUserManagedGroups');
     private _createGroup = httpsCallableData<Api.CreateGroupRequest, void>(this.functions, 'createGroup');
     private _isGroupIdFree = httpsCallableData<string, boolean>(this.functions, 'isGroupIdFree');
+    private _getGroupForAdmin = httpsCallableData<string, Api.GetGroupForAdminResponse>(this.functions, 'getGroupForAdmin');
 
 
     getUserDetails(): Observable<DbModel.User> {
@@ -27,6 +28,10 @@ export class ApiService {
 
     isGroupIdFree(id: string): Observable<boolean> {
         return this._isGroupIdFree(id);
+    }
+
+    getGroupForAdmin(groupId: string): Observable<Api.GetGroupForAdminResponse> {
+        return this._getGroupForAdmin(groupId);
     }
 
 }
