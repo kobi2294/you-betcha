@@ -4,16 +4,22 @@
     height: 100%;
 
     .page-area {
-        padding: min(1vh, 10px) min(1vw, 10px);
+        --my-width: min(800px, 100%);
+        --my-start: max(0px, calc((100% - var(--my-width)) / 2));
+        background-color: rgba(255, 255, 255, 0.4);
+
+        width: var(--my-width);
+        inset-inline-start: var(--my-start);
         flex-grow: 1;
         position: relative;
 
         .scroller {
+            --my-pad: min(20px, 1vw);
             position: absolute;
-            top: 5px;
-            inset-inline-start: 5px;
-            width: calc(100% - 10px);
-            height: calc(100% - 10px);
+            top: 10px;
+            inset-inline-start: var(--my-pad);
+            width: calc(100% - calc(2 * var(--my-pad)) + 0.5px);
+            height: calc(100% - 20px);
             overflow-y: auto;
         }
         
