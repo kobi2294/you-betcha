@@ -1,0 +1,5 @@
+<img [src]="imageUrl()" altImage="assets/images/fallback.svg">
+
+<mat-icon libIconButton (click)="onOpenFileDialog()">edit</mat-icon>
+
+<input hidden type="file" accept=".jpg, .jpeg, .png, .gif" #fileInput (change)="onSelect()">

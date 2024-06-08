@@ -53,7 +53,7 @@
                 <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
             </lib-edit-select>
             <div class="label">Logo</div>
-            <img class="logo-image" [src]="group.logoUrl" />
+            <lib-edit-image [value]="store.group()!.logoUrl" fallback="assets/images/logo-placeholder.png"/>
         </div>
 
 

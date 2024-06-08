@@ -78,4 +78,13 @@
         }
     }
   }
+
+  .customize {
+    display: flex;
+    flex-direction: column;
+    lib-edit-image {
+      width: 175px;
+      height: 175px;
+    }
+  }
 }

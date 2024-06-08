@@ -6,6 +6,7 @@ import { EditPrefixDirective } from "./components/edit-list/edit-prefix.directiv
 import { EditSelectComponent } from "./components/edit-select/edit-select.component";
 import { SharedModule } from "../shared/shared.module";
 import { OptionTemplateDirective } from "./components/edit-select/option-template.directive";
+import { EditImageComponent } from "./components/edit-image/edit-image.component";
 
 const declareables: Type<any>[] = [
     EditStringComponent, 
@@ -16,15 +17,21 @@ const declareables: Type<any>[] = [
     OptionTemplateDirective
 ]
 
+const publicImports: Type<any>[] = [
+    EditImageComponent
+]
+
 @NgModule({
     declarations: [
         ...declareables
     ], 
     imports: [
-        SharedModule
+        SharedModule, 
+        ...publicImports
     ], 
     exports: [
-        ...declareables
+        ...declareables, 
+        ...publicImports
     ]
 })
 export class EditModule {
