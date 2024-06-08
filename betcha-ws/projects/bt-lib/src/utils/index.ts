@@ -13,3 +13,4 @@ export * from './signal-store-features/with-load-reload.feature';
 export * from './signal-store-features/with-devtools.feature';
 export * from './signal-store-features/get-signal-values';
 
+export * from './helpers/string.helpers';

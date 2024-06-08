@@ -1,18 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import { OptionTemplateDirective } from './option-template.directive';
 
-type Option = {value: any, displayName: string};
+export type SelectionOption = {value: any, displayName: string};
 
 @Component({
   selector: 'lib-edit-select',
   templateUrl: './edit-select.component.html',
   styleUrl: './edit-select.component.scss'
 })
-export class EditSelectComponent {
+export class EditSelectComponent implements AfterContentInit{
+  @ContentChild(OptionTemplateDirective, {static: false})
+  optionTemplate: OptionTemplateDirective | undefined = undefined;
+
+  ngAfterContentInit(): void {
+    console.log('the template is', this.optionTemplate);
+  }
+
+
   @Input({required: true})
   value: any = null;
 
   @Input({required: true})
-  options: Option[] = [];
+  options: SelectionOption[] = [];
 
 
   get selectedOption() {

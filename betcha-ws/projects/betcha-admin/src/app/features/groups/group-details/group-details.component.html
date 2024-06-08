@@ -25,11 +25,11 @@
             </div>
         </div>
 
-        <div class="quota" *ngIf="authStore.isSuper()">
+        <div class="quota">
             <div class="label">Users</div>
-            <lib-edit-string [value]="group.usersLimit.toString()" type="number" caption="Maximum" />
+            <lib-edit-string [value]="group.usersLimit.toString()" type="number" caption="Maximum" [enabled]="authStore.isSuper()"/>
             <lib-edit-string [value]="store.members().length.toString()" caption="Registered" [enabled]="false"/>
-            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" caption="Registration Status">
+            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" caption="Registration Status" [enabled]="authStore.isSuper()">
 
             </lib-edit-select>
         </div>
@@ -39,6 +39,7 @@
             <lib-edit-string [value]="group.slogan" caption="Slogan" [required]="false"/>
             <lib-edit-string [value]="group.message" caption="Message" [required]="false"/>
             <lib-edit-select [options]="themeOptions" [value]="group.theme" caption="Theme">
+                <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
             </lib-edit-select>
         </div>
 

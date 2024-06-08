@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { AuthStore, EditModule, PagesModule, SharedModule } from '@lib';
+import { AuthStore, EditModule, PagesModule, SelectionOption, SharedModule, capitalize } from '@lib';
 import { GroupDetailsStore } from './store/group-details.store';
 import { environment } from '../../../../environments/environment';
 import { DbModel } from '@tscommon';
@@ -24,12 +24,14 @@ export default class GroupDetailsComponent {
     ? `Loading group ${this.groupId()}...`
     : `Saving...`);
 
-  readonly blockingOptions = [
+  readonly blockingOptions: SelectionOption[] = [
     { value: true, displayName: 'Blocked'}, 
     { value: false, displayName: 'Open'}
   ]
 
-  readonly themeOptions = DbModel.COLOR_THEMES.map(theme => ({value: theme, displayName: theme}));
+  readonly themeOptions: SelectionOption[] = DbModel.COLOR_THEMES
+    .map(theme => ({value: theme, displayName: capitalize(theme)}));
+
 
 
   constructor() {
