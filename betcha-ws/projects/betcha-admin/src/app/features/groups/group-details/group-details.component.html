@@ -1,4 +1,4 @@
-<lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.isIdle()">
+<lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.groupId() !== ''">
     @if(store.group(); as group) {
         <lib-header>
             <mat-icon symbol>group</mat-icon>

@@ -18,7 +18,9 @@ export default class GroupDetailsComponent {
 
   readonly joinLink = computed(() => `${environment.appUrl}/join/${this.store.group()?.secret??''}`);
   readonly dashboardLink = computed(() => `${environment.dashboardUrl}/groups/${this.store.group()?.secret??''}`);
-  readonly loadCaption = computed(() => `Loading group ${this.groupId()}...`);
+  readonly loadCaption = computed(() => (this.store.group() === null)
+    ? `Loading group ${this.groupId()}...`
+    : `Saving...`);
 
 
   constructor() {

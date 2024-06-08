@@ -49,4 +49,10 @@ export const getGroupForAdmin = onCall<string, Promise<Api.GetGroupForAdminRespo
   return api.getGroupForAdmin();
 })
 
+export const setGroupDisplayName = onCall<Api.SetGroupDisplayNameRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getGroupAdminApi(req.auth, data.groupId);
+  return api.setGroupDisplayName(data.displayName);
+})
+
 

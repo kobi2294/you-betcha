@@ -12,6 +12,7 @@ export class ApiService {
     private _createGroup = httpsCallableData<Api.CreateGroupRequest, void>(this.functions, 'createGroup');
     private _isGroupIdFree = httpsCallableData<string, boolean>(this.functions, 'isGroupIdFree');
     private _getGroupForAdmin = httpsCallableData<string, Api.GetGroupForAdminResponse>(this.functions, 'getGroupForAdmin');
+    private _setGroupDisplayName = httpsCallableData<Api.SetGroupDisplayNameRequest, void>(this.functions, 'setGroupDisplayName');
 
 
     getUserDetails(): Observable<DbModel.User> {
@@ -31,7 +32,11 @@ export class ApiService {
     }
 
     getGroupForAdmin(groupId: string): Observable<Api.GetGroupForAdminResponse> {
-        return this._getGroupForAdmin(groupId).pipe(delay(2000));
+        return this._getGroupForAdmin(groupId);
+    }
+
+    setGroupDisplayName(req: Api.SetGroupDisplayNameRequest): Observable<void> {
+        return this._setGroupDisplayName(req);
     }
 
 }
