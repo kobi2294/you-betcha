@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    flex-direction: row;
+
+    .caption {
+        color: var(--lib-edit-caption-color, currentColor);
+        font-size: var(--lib-edit-caption-font-size, 1em);  
+        margin-inline-end: var(--lib-edit-caption-margin, 20px);      
+    }    
+
+    .selectedValue {
+        margin-inline-end: var(--lib-edit-caption-value-margin, 8px);
+    }
+
+    mat-icon.action-icon {
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        overflow: visible;
+        opacity: 0.8;
+
+        &.disabled {
+            pointer-events: none;
+            opacity: 0.2;
+        }
+    }
+}
+
+button[mat-menu-item] {
+    &.selected {
+        color: var(--p-500);
+    }
+}

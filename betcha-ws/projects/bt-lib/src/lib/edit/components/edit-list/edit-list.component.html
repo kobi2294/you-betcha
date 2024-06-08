@@ -1,0 +1,43 @@
+<div class="items">
+  @for(item of items; track item) {
+  <div class="item">
+    <div class="item-content">
+      @if (listItemDirective) {
+      <ng-container
+        *ngTemplateOutlet="
+          listItemDirective.template;
+          context: { $implicit: item, index: $index }
+        "
+      />
+      } @else {
+      {{ item }}
+      }
+    </div>
+    @if (canDelete) {
+    <button mat-icon-button color="primary" (click)="deleted.emit($index)">
+      <mat-icon fontSet="material-symbols-outlined">delete</mat-icon>
+    </button>
+    }
+  </div>
+  }
+</div>
+@if(canAdd) {
+    <div class="add">
+        @if(editPrefixDirective) {
+            <ng-container *ngTemplateOutlet="editPrefixDirective.template"/>
+        }
+        <input type="text" class="lib-edit" [formControl]="addText"
+          (keydown.enter)="commitAdd()"
+          (keydown.escape)="cancelAdd()"
+          select-on-focus
+        >
+        <button mat-icon-button color="primary" 
+          [disabled]="addText.invalid"
+          (click)="commitAdd();"
+          
+          >
+          <mat-icon fontSet="material-symbols-outlined">add</mat-icon>
+        </button>    
+
+    </div>    
+}

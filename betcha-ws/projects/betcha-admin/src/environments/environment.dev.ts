@@ -2,6 +2,9 @@ export const environment = {
   name: 'dev',
   production: false,
   simulation: true,
+  appUrl: 'http://localhost:4200',
+  adminUrl: 'http://localhost:4220',
+  dashboardUrl: 'http://localhost:4210',
   firebaseConfig: {
     apiKey: 'AIzaSyC-sVnTn7ZBTSJ7_jTEV9K9yCtPhETPnac',
     authDomain: 'you-betcha-stage.firebaseapp.com',
@@ -11,3 +14,5 @@ export const environment = {
     appId: '1:436644278366:web:1090ae2d9d8fc8e5f404cf',
   },
 };
+
+

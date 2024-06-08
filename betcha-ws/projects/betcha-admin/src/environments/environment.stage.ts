@@ -2,6 +2,9 @@ export const environment = {
   name: 'stage',
   production: false,
   simulation: false,
+  appUrl: 'https://you-betcha-stage.web.app',
+  adminUrl: 'https://you-betcha-admin-stage.web.app',
+  dashboardUrl: 'https://you-betcha-dashboard-stage.web.app',
   firebaseConfig: {
     apiKey: 'AIzaSyC-sVnTn7ZBTSJ7_jTEV9K9yCtPhETPnac',
     authDomain: 'you-betcha-admin-stage.web.app',

@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    flex-direction: row;
+
+    &[h-level="1"] {
+        color: var(--p-700);
+        font-size: 24px;    
+    }
+    &[h-level="2"] {
+        color: var(--pc-100);
+        font-size: 20px; 
+    }
+
+}

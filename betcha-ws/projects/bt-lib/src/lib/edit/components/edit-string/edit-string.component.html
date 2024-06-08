@@ -1,0 +1,26 @@
+@if(caption) {
+<div class="caption">{{ caption }}</div>
+} @if (mode === 'edit') {
+<input
+  class="lib-edit"
+  [formControl]="form"
+  type="text"
+  [value]="value"
+  (keydown.enter)="commit()"
+  (keydown.escape)="cancel()"
+  [placeholder]="hint"
+  select-and-focus
+/>
+<mat-icon libIconButton [disabled]="!canCommit" matRipple (click)="commit()"
+  >check</mat-icon
+>
+<mat-icon libIconButton [disabled]="!canCancel" matRipple (click)="cancel()"
+  >close</mat-icon
+>
+} @else {
+<span class="value-readonly">{{ value }}</span>
+@if(canStartEdit) {
+<mat-icon class="action-icon" color="primary" matRipple (click)="startEdit()"
+  >edit</mat-icon
+>
+} }

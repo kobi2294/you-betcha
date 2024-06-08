@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
 import { Api, DbModel } from "@tscommon";
-import { Observable } from "rxjs";
+import { Observable, delay } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
@@ -31,7 +31,7 @@ export class ApiService {
     }
 
     getGroupForAdmin(groupId: string): Observable<Api.GetGroupForAdminResponse> {
-        return this._getGroupForAdmin(groupId);
+        return this._getGroupForAdmin(groupId).pipe(delay(2000));
     }
 
 }

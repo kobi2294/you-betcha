@@ -1,0 +1,37 @@
+<ng-template #defaultCellTemplate let-value>
+  {{value}}</ng-template>
+<ng-template #defaultHeaderTemplate let-header>
+  {{header}}
+</ng-template>
+
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="header-area">
+    <div class="row">
+      <div
+        class="cell"
+        *ngFor="let col of vm.columns; trackBy: trackByColId"
+        [class.sortable]="col.sortable && vm.sortable"
+        [style.--width]="col.width"
+        (click)="toggleSort(col)"
+      >
+        <div class="header-content">
+          <ng-container
+            *ngTemplateOutlet="col.template; context: { $implicit: col.header, id: col.id}"
+          ></ng-container>
+        </div>
+        <div class="header-tools" *ngIf="vm.sortable">
+          <lib-sort-arrow [direction]="col.sortDirection"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="56" [scroll]="scrollNow$" [style.--rows-count]="vm.rows.length">
+    <lib-data-row
+      class="row" [row]="row"
+      [class.clickable]="vm.selection !== 'none'"
+      *cdkVirtualFor="let row of vm.rows; trackBy: trackByRowKey"
+      [class.selected]="(row.isSelected) && (vm.selection === 'select')"
+      (click)="toggleSelection(row.key)"
+    />
+  </cdk-virtual-scroll-viewport>
+</ng-container>

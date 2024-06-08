@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+    .caption {
+        color: var(--lib-edit-caption-color, var(--n-400));
+        margin-inline-end: var(--lib-edit-caption-margin, 8px);
+    }
+
+    .lib-edit {
+        flex-grow: 1;
+    }
+
+    span.value-readonly {
+        margin-inline-end: 8px;
+    }
+    
+    mat-icon[libIconButton] {
+        margin: 0px 5px;
+    }
+
+    mat-icon.action-icon {
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        overflow: visible;
+        opacity: 0.8;
+
+        &.disabled {
+            pointer-events: none;
+            opacity: 0.2;
+        }
+    }
+}

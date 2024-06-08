@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { BusyComponent } from "./components/busy/busy.component";
+import { IconButtonDirective } from "./directives/icon-button.directive";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -32,6 +33,7 @@ const publicImports: Type<any>[] = [
     MatIconSymbolDirective, 
     AltImageDirective,
     NoDoubleClickDirective,
+    IconButtonDirective,
     CommonModule, 
     RouterModule,
     ReactiveFormsModule,

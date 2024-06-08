@@ -1,4 +1,4 @@
-<div class="content" [class.content-busy]="busy()">
+<div class="content" *ngIf="showContent()" [class.content-busy]="busy()">
     <ng-content></ng-content>
 </div>
 @if(busy()) {

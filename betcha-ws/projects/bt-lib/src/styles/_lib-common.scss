@@ -1,5 +1,7 @@
 @use 'lib-scrolls' as scrolls;
+@use 'lib-icon' as icon;
 
 @mixin go() {
     @include scrolls.go();
+    @include icon.go();
 }

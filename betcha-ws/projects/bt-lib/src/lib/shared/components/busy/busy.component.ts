@@ -8,5 +8,7 @@ import { Component, input } from '@angular/core';
 export class BusyComponent {
   readonly busy = input.required<boolean>();
   readonly caption = input('Please wait...');
+  readonly showContent = input(true);
+
 
 }

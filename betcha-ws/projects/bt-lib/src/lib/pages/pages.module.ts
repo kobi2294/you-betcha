@@ -14,6 +14,7 @@ import { SkDialogComponent } from "./skeletons/sk-dialog/sk-dialog.component";
 import { SkDialogActionsDirective } from "./skeletons/sk-dialog/sk-dialog-actions.directive";
 import { SkDialogContentDirective } from "./skeletons/sk-dialog/sk-dialog-content.directive";
 import { SkDialogHeaderDirective } from "./skeletons/sk-dialog/sk-dialog-header.directive";
+import { HeaderComponent } from "./components/header/header.component";
 
 const declarations: Type<any>[] = [
     LoginPageComponent, 
@@ -28,7 +29,8 @@ const declarations: Type<any>[] = [
     ToolbarComponent, 
     ProfilePicComponent, 
     NavBarComponent, 
-    NavItemComponent
+    NavItemComponent, 
+    HeaderComponent
 ];
 
 @NgModule({

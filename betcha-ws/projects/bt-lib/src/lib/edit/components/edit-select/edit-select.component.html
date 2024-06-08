@@ -1,0 +1,17 @@
+@if(caption) {
+    <div class="caption">{{ caption }}</div>
+}
+<div class="selectedValue">{{selectedCaption}}</div>
+
+<mat-icon class="action-icon" color="primary" matRipple [matMenuTriggerFor]="menu"
+  >edit</mat-icon>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item 
+        *ngFor="let option of options" (click)="select(option.value)"
+        [class.selected]="option.value === selectedValue"
+        >
+        {{option.displayName}}
+        <mat-icon color="primary" *ngIf="option.value === selectedValue" class="selected-icon">check</mat-icon>
+    </button>
+</mat-menu>

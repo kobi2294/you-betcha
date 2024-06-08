@@ -2,6 +2,9 @@ export const environment = {
   name: 'prod',
   production: true,
   simulation: false,
+  appUrl: 'https://u-betcha.web.app',
+  adminUrl: 'tps://u-betcha-admin.web.app',
+  dashboardUrl: 'https://u-betcha-dashboard.web.app',
   firebaseConfig: {
     apiKey: 'AIzaSyAUc2vtanIKSmIz2bHCUOFd3A0elIPLjN0',
     authDomain: 'u-betcha-admin.web.app',

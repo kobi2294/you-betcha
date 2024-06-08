@@ -1,0 +1,1 @@
+export type RowKey = number | string | Object;

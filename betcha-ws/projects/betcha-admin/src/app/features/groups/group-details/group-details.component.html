@@ -1,0 +1,32 @@
+<lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.isIdle()">
+    @if(store.group(); as group) {
+        <lib-header>{{group.displayName}}</lib-header>
+        <lib-header [level]="2">Id: {{groupId()}}</lib-header>        
+    }
+</lib-busy>
+
+
+
+
+<!--
+    Data: 
+        1. Link to Join (copy)
+        2. Link to Dashboard (copy)
+        
+
+    Super: 
+    1. package size, current members count
+    2. Block / Unblock
+    3. Add Remove Admins
+
+    Customization:
+    0. Display Name
+    1. Slogan
+    2. Message
+    3. Logo
+    4. Theme
+
+
+
+
+-->

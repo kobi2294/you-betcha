@@ -1,0 +1,12 @@
+<div
+  class="cell"
+  *ngFor="let cell of row.cells; trackBy: trackByColId"
+  [style.--width]="cell.width"
+>
+  <ng-container
+    *ngTemplateOutlet="
+      cell.template;
+      context: { $implicit: cell.value, item: cell.item }
+    "
+  ></ng-container>
+</div>
