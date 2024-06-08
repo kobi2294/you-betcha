@@ -55,4 +55,27 @@ export const setGroupDisplayName = onCall<Api.SetGroupDisplayNameRequest, Promis
   return api.setGroupDisplayName(data.displayName);
 })
 
+export const setGroupUsersLimit = onCall<Api.SetGroupUsersLimitRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getSuperApi(req.auth);
+  return api.setGroupUsersLimit(data.groupId, data.limit);
+})
+
+export const setGroupBlocked = onCall<Api.SetGroupBlockedRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getSuperApi(req.auth);
+  return api.setGroupBlocked(data.groupId, data.blocked);
+})
+
+export const customizeGroup = onCall<Api.CustomizeGroupRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getGroupAdminApi(req.auth, data.groupId);
+
+  const promises: Promise<void>[] = [];
+  if (data.message !== undefined) promises.push(api.setGroupMessage(data.message));
+  if (data.slogan !== undefined) promises.push(api.setGroupSlogan(data.slogan));
+  if (data.theme !== undefined) promises.push(api.setGroupTheme(data.theme));
+
+  return Promise.all(promises).then(() => {});
+})
 

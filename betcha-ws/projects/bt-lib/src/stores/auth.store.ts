@@ -16,7 +16,9 @@ export const AuthStore = signalStore(
     withComputed(store => ({
         adminAppForbidden: computed(() => !store.isInProgress() && !canAccessAdminApp(store.claims())), 
         photoUrl: computed(() => store.user()?.photoUrl || 'assets/images/guest.png'),
-        permissions: computed(() => permissions(store.claims()))
+        permissions: computed(() => permissions(store.claims())), 
+        isTrustee: computed(() => store.claims()?.role === 'trustee' || store.claims()?.role === 'super'),
+        isSuper : computed(() => store.claims()?.role === 'super'),
     })),    
     withMethods((_, afAuth = inject(Auth)) => ({
         signOut: () => afAuth.signOut()

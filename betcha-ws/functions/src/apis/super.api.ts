@@ -73,6 +73,7 @@ export function getSuperApi(authData: MaybeAuthData) {
     async function _setGroupUsersLimit(groupId: string, usersLimit: number) {
         await dal.groups.updateOne(groupId, _ => ({ usersLimit }));
     }
+    
     async function _setGroupBlocked(groupId: string, blocked: boolean) {
         await dal.groups.updateOne(groupId, _ => ({ blocked }));
     }

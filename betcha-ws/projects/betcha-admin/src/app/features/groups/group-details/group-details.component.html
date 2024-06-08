@@ -25,6 +25,23 @@
             </div>
         </div>
 
+        <div class="quota" *ngIf="authStore.isSuper()">
+            <div class="label">Users</div>
+            <lib-edit-string [value]="group.usersLimit.toString()" type="number" caption="Maximum" />
+            <lib-edit-string [value]="store.members().length.toString()" caption="Registered" [enabled]="false"/>
+            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" caption="Registration Status">
+
+            </lib-edit-select>
+        </div>
+
+        <div class="customize">
+            <div class="label">Customize</div>
+            <lib-edit-string [value]="group.slogan" caption="Slogan" [required]="false"/>
+            <lib-edit-string [value]="group.message" caption="Message" [required]="false"/>
+            <lib-edit-select [options]="themeOptions" [value]="group.theme" caption="Theme">
+            </lib-edit-select>
+        </div>
+
 
     }
 </lib-busy>

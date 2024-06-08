@@ -24,12 +24,23 @@ export class EditStringComponent implements OnChanges {
   @Input()
   required = true;
 
+  @Input()
+  type: 'text' | 'number' = 'text';
+
   @Output()
   changed = new EventEmitter<string>();
 
   form = new FormControl('');
 
   mode: Mode = 'readonly';
+
+  get pattern() {
+    return this.type === 'number' ? '^[0-9]*$' : '';
+  }
+
+  get inputMode() {
+    return this.type === 'number' ? 'numeric' : 'text';
+  }
 
   get readonlyModeAllowed() {
     if (!this.enabled) return true;

@@ -4,11 +4,13 @@
 <input
   class="lib-edit"
   [formControl]="form"
-  type="text"
+  [type]="type"
   [value]="value"
   (keydown.enter)="commit()"
   (keydown.escape)="cancel()"
   [placeholder]="hint"
+  [pattern]="pattern"
+  [inputMode]="inputMode"
   select-and-focus
 />
 <mat-icon libIconButton [disabled]="!canCommit" matRipple (click)="commit()"

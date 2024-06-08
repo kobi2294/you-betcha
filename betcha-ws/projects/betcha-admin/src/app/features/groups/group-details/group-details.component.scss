@@ -1,4 +1,6 @@
 :host {
+  font-size: 20px;
+
   .header-area {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -9,16 +11,16 @@
 
     mat-icon {
         grid-area: icon;
-        font-size: 48px;
+        font-size: 64px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 64px;
-        height: 64px;
+        width: 82px;
+        height: 82px;
         color: var(--p-700);
         background-color: var(--n-200);
-        border-radius: 32px;
+        border-radius: 41px;
         margin-inline-end: 10px;
     }
 
@@ -36,18 +38,21 @@
     }
   }
 
+  .label {
+    margin-top: 16px;
+    font-size: 0.8em;
+    color: var(--n-500);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
   .links {
     display: flex;
     flex-direction: column;
 
     .label {
-        margin-top: 16px;
-        font-size: 0.8em;
-        color: var(--n-500);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
         mat-icon {
             margin-inline-start: 10px;
             font-size: 16px;
@@ -57,6 +62,20 @@
     .value {
         display: flex;
         color: var(--p-700);
+    }
+  }
+
+  .quota {
+    --lib-edit-max-width: min(150px, calc(100% - 30px));
+
+    .key-value {
+        display: flex;
+        flex-direction: row;
+
+        .key {
+            color: var(--n-600);
+            margin-inline-end: 10px;
+        }
     }
   }
 }
