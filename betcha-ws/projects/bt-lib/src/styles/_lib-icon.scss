@@ -1,13 +1,13 @@
 @mixin go() {     
     mat-icon[libIconButton] {
-        --pr-bg: var(--lib-icon-button-background, var(--n-800));
-        --pr-color: var(--lib-icon-button-color, var(--p-500));
-        --pr-bg-hover: var(--lib-icon-button-background-hover, var(--p-500));
-        --pr-color-hover: var(--lib-icon-button-color-hover, var(--pc-500));
-        --pr-bg-active: var(--lib-icon-button-background-active, var(--p-100));
-        --pr-color-active: var(--lib-icon-button-color-active, var(--pc-100));
-        --pr-bg-disabled: var(--lib-icon-button-background-disabled, var(--n-800));
-        --pr-color-disabled: var(--lib-icon-button-color-disabled, var(--pc-500));
+        --pr-bg: var(--lib-icon-button-background, transparent);
+        --pr-color: var(--lib-icon-button-color, var(--a-400));
+        --pr-bg-hover: var(--lib-icon-button-background-hover, transparent);
+        --pr-color-hover: var(--lib-icon-button-color-hover, var(--a-700));
+        --pr-bg-active: var(--lib-icon-button-background-active, transparent);
+        --pr-color-active: var(--lib-icon-button-color-active, var(--a-100));
+        --pr-bg-disabled: var(--lib-icon-button-background-disabled, transparent);
+        --pr-color-disabled: var(--lib-icon-button-color-disabled, var(--n-400));
 
         background-color: var(--pr-bg);
         border-radius: 50%;

@@ -17,6 +17,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { BusyComponent } from "./components/busy/busy.component";
 import { IconButtonDirective } from "./directives/icon-button.directive";
+import { SelectAndFocusDirective } from "./directives/select-and-focus.directive";
+import { SelectOnFocusDirective } from "./directives/select-on-focus.directive";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -34,6 +36,8 @@ const publicImports: Type<any>[] = [
     AltImageDirective,
     NoDoubleClickDirective,
     IconButtonDirective,
+    SelectAndFocusDirective, 
+    SelectOnFocusDirective,
     CommonModule, 
     RouterModule,
     ReactiveFormsModule,

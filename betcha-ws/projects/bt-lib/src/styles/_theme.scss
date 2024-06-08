@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @use "sass:map";
 @use "vars";
+@use "palettes" as pal;
 
 @mixin go($primary, $accent, $is-light: true) {
   $theme: _create_theme_map($primary, $accent, $is-light);
@@ -63,5 +64,8 @@
 
   @include vars.go("b", $background);
   @include vars.go("f", $foreground);
+
+  @include vars.go("n", pal.$neutrals);
+  @include vars.go("nc", pal.$neutrals-contrast);
 }
 

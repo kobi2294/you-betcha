@@ -5,7 +5,7 @@
 
 
     .caption {
-        color: var(--lib-edit-caption-color, var(--n-400));
+        color: var(--lib-edit-caption-color, var(--n-600));
         margin-inline-end: var(--lib-edit-caption-margin, 8px);
     }
 
@@ -15,6 +15,7 @@
 
     span.value-readonly {
         margin-inline-end: 8px;
+        padding-bottom: 5px;
     }
     
     mat-icon[libIconButton] {
