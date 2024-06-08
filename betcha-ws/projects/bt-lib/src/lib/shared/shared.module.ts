@@ -15,6 +15,7 @@ import { MatInputModule } from "@angular/material/input";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { ScrollingModule } from "@angular/cdk/scrolling";
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import { BusyComponent } from "./components/busy/busy.component";
 import { IconButtonDirective } from "./directives/icon-button.directive";
 import { SelectAndFocusDirective } from "./directives/select-and-focus.directive";
@@ -49,7 +50,8 @@ const publicImports: Type<any>[] = [
     MatFormFieldModule, 
     MatSnackBarModule,
     MatInputModule, 
-    ScrollingModule
+    ScrollingModule, 
+    ClipboardModule
 ]
 
 @NgModule({

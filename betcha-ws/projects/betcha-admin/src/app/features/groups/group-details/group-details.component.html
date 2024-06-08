@@ -1,10 +1,31 @@
 <lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.groupId() !== ''">
     @if(store.group(); as group) {
-        <lib-header>
+        <div class="header-area">
             <mat-icon symbol>group</mat-icon>
-            <lib-edit-string [value]="group.displayName" (changed)="store.setDisplayName($event)"></lib-edit-string>
-        </lib-header>
-        <lib-header [level]="2">{{groupId()}}</lib-header>        
+            <lib-header [level]="1">
+                <lib-edit-string [value]="group.displayName" (changed)="store.setDisplayName($event)"></lib-edit-string>
+            </lib-header>
+            <lib-header [level]="2">{{groupId()}}</lib-header>            
+        </div>
+
+        <div class="links">
+            <div class="label">
+                Join Group Link
+                <mat-icon libIconButton [cdkCopyToClipboard]="joinLink()">content_copy</mat-icon>
+            </div>
+            <div class="value">
+                {{joinLink()}}
+            </div>
+            <div class="label">
+                Dashboard Link
+                <mat-icon libIconButton [cdkCopyToClipboard]="dashboardLink()">content_copy</mat-icon>
+            </div>
+            <div class="value">
+                {{dashboardLink()}}
+            </div>
+        </div>
+
+
     }
 </lib-busy>
 

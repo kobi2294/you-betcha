@@ -1,18 +1,62 @@
 :host {
-    lib-header {
+  .header-area {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "icon h1"
+      "icon h2";
+
+    mat-icon {
+        grid-area: icon;
+        font-size: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        color: var(--p-700);
+        background-color: var(--n-200);
+        border-radius: 32px;
+        margin-inline-end: 10px;
+    }
+
+    lib-header[h-level="1"] {
+      grid-area: h1;
+      lib-edit-string {
+        flex-grow: 1;
+        --lib-edit-max-width: min(500px, calc(100% - 30px));
+      }
+    }
+
+    lib-header[h-level="2"] {
+      grid-area: h2;
+      color: var(--n-500);
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+        margin-top: 16px;
+        font-size: 0.8em;
+        color: var(--n-500);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
         mat-icon {
-            font-size: 26px;
-            margin-inline-end: 6px;
-            align-self: center;
-        }
-
-        lib-edit-string {
-            flex-grow: 1;
-            --lib-edit-max-width: min(500px, calc(100% - 30px));
-        }
-
-        &[h-level="2"] {
-            color: var(--n-500);
+            margin-inline-start: 10px;
+            font-size: 16px;
         }
     }
+
+    .value {
+        display: flex;
+        color: var(--p-700);
+    }
+  }
 }
