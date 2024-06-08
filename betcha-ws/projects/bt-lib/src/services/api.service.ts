@@ -13,6 +13,10 @@ export class ApiService {
     private _isGroupIdFree = httpsCallableData<string, boolean>(this.functions, 'isGroupIdFree');
     private _getGroupForAdmin = httpsCallableData<string, Api.GetGroupForAdminResponse>(this.functions, 'getGroupForAdmin');
     private _setGroupDisplayName = httpsCallableData<Api.SetGroupDisplayNameRequest, void>(this.functions, 'setGroupDisplayName');
+    private _setGroupUsersLimit = httpsCallableData<Api.SetGroupUsersLimitRequest, void>(this.functions, 'setGroupUsersLimit');
+    private _setGroupBlocked = httpsCallableData<Api.SetGroupBlockedRequest, void>(this.functions, 'setGroupBlocked');
+    private _customizeGroup = httpsCallableData<Api.CustomizeGroupRequest, void>(this.functions, 'customizeGroup');
+
 
 
     getUserDetails(): Observable<DbModel.User> {
@@ -37,6 +41,18 @@ export class ApiService {
 
     setGroupDisplayName(req: Api.SetGroupDisplayNameRequest): Observable<void> {
         return this._setGroupDisplayName(req);
+    }
+
+    setGroupUsersLimit(req: Api.SetGroupUsersLimitRequest): Observable<void> {
+        return this._setGroupUsersLimit(req);
+    }
+
+    setGroupBlocked(req: Api.SetGroupBlockedRequest): Observable<void> {
+        return this._setGroupBlocked(req);
+    }
+
+    customizeGroup(req: Api.CustomizeGroupRequest): Observable<void> {
+        return this._customizeGroup(req);
     }
 
 }

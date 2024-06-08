@@ -27,18 +27,29 @@
 
         <div class="quota">
             <div class="label">Users</div>
-            <lib-edit-string [value]="group.usersLimit.toString()" type="number" caption="Maximum" [enabled]="authStore.isSuper()"/>
-            <lib-edit-string [value]="store.members().length.toString()" caption="Registered" [enabled]="false"/>
-            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" caption="Registration Status" [enabled]="authStore.isSuper()">
-
-            </lib-edit-select>
+            <lib-edit-string [value]="group.usersLimit.toString()" 
+                type="number" caption="Maximum" [enabled]="authStore.isSuper()"
+                (changed)="store.setUsersLimit($event)"/>
+            <lib-edit-string [value]="store.members().length.toString()" 
+                caption="Registered" [enabled]="false"
+                />
+            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" 
+                caption="Registration Status" [enabled]="authStore.isSuper()"
+                (changed)="store.setBlocked($event)"/>
         </div>
 
         <div class="customize">
             <div class="label">Customize</div>
-            <lib-edit-string [value]="group.slogan" caption="Slogan" [required]="false"/>
-            <lib-edit-string [value]="group.message" caption="Message" [required]="false"/>
-            <lib-edit-select [options]="themeOptions" [value]="group.theme" caption="Theme">
+            <lib-edit-string [value]="group.slogan" caption="Slogan" 
+                [required]="false"
+                (changed)="store.setSlogan($event)"/>
+            <lib-edit-string [value]="group.message" caption="Message" [required]="false"
+                (changed)="store.setMessage($event)"
+                />
+            <lib-edit-select [options]="themeOptions" [value]="group.theme" 
+                caption="Theme"
+                (changed)="store.setTheme($event)"
+                >
                 <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
             </lib-edit-select>
         </div>
