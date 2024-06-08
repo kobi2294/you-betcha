@@ -1,12 +1,12 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { PagesModule, SharedModule } from '@lib';
+import { EditModule, PagesModule, SharedModule } from '@lib';
 import { GroupDetailsStore } from './store/group-details.store';
 import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-group-details',
   standalone: true,
-  imports: [SharedModule, PagesModule],
+  imports: [SharedModule, PagesModule, EditModule],
   templateUrl: './group-details.component.html',
   styleUrl: './group-details.component.scss', 
   providers: [GroupDetailsStore]
