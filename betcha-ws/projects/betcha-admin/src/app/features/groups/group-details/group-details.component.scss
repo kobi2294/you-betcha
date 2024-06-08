@@ -1,0 +1,18 @@
+:host {
+    lib-header {
+        mat-icon {
+            font-size: 26px;
+            margin-inline-end: 6px;
+            align-self: center;
+        }
+
+        lib-edit-string {
+            flex-grow: 1;
+            --lib-edit-max-width: min(500px, calc(100% - 30px));
+        }
+
+        &[h-level="2"] {
+            color: var(--n-500);
+        }
+    }
+}

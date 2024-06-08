@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    max-width: var(--lib-edit-max-width, unset);
 
 
     .caption {
@@ -10,16 +11,19 @@
     }
 
     .lib-edit {
-        flex-grow: 1;
+        flex: 1 1 0;
+        width: 50px;
     }
 
     span.value-readonly {
         margin-inline-end: 8px;
-        padding-bottom: 5px;
+        padding-bottom: 3px;
+        padding-top: 2px;
     }
     
     mat-icon[libIconButton] {
         margin: 0px 5px;
+        flex-shrink: 0;
     }
 
     mat-icon.action-icon {

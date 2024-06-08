@@ -1,9 +1,10 @@
 <lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.isIdle()">
     @if(store.group(); as group) {
         <lib-header>
+            <mat-icon symbol>group</mat-icon>
             <lib-edit-string [value]="group.displayName" (changed)="store.setDisplayName($event)"></lib-edit-string>
         </lib-header>
-        <lib-header [level]="2">Id: {{groupId()}}</lib-header>        
+        <lib-header [level]="2">{{groupId()}}</lib-header>        
     }
 </lib-busy>
 
