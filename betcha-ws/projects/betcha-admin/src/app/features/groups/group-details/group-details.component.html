@@ -39,7 +39,7 @@
         </div>
 
         <div class="customize">
-            <div class="label">Customize</div>
+            <div class="label">Customize</div>            
             <lib-edit-string [value]="group.slogan" caption="Slogan" 
                 [required]="false"
                 (changed)="store.setSlogan($event)"/>
@@ -52,7 +52,10 @@
                 >
                 <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
             </lib-edit-select>
+            <div class="label">Logo</div>
+            <img class="logo-image" [src]="group.logoUrl" />
         </div>
+
 
 
     }
