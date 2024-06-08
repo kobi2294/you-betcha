@@ -1,5 +1,5 @@
 import { Observable, OperatorFunction, filter, scan } from 'rxjs';
-import { filterNotNull } from '../filter-not-null';
+import { filterNotNull } from './filter-not-null';
 
 export function repeatNotNull<T>(): OperatorFunction<T | null, T> {
   return (source) =>

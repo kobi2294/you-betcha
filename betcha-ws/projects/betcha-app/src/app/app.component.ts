@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { APP_VERSION } from '../../../bt-lib/src/utils/provide-version';
+import { APP_VERSION } from '../../../bt-lib/src/utils/provide/provide-version';
 import { environment } from '../environments/environment';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 

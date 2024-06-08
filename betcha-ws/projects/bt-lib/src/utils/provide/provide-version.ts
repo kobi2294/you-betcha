@@ -1,5 +1,5 @@
 import { EnvironmentProviders, InjectionToken, makeEnvironmentProviders } from "@angular/core";
-import packageJson from '../../package.json';
+import packageJson from '../../../package.json';
 
 
 export const APP_VERSION = new InjectionToken<string>('APP_VERSION');
