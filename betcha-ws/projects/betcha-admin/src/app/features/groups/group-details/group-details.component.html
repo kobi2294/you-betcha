@@ -8,6 +8,12 @@
             <lib-header [level]="2">{{groupId()}}</lib-header>            
         </div>
 
+        <div class="customize">
+            <div class="label">Logo</div>
+            <lib-edit-image [value]="store.group()!.logoUrl" fallback="assets/images/logo-placeholder.png"
+                (changed)="store.uploadLogo($event)"/>
+        </div>
+
         <div class="links">
             <div class="label">
                 Join Group Link
@@ -52,9 +58,6 @@
                 >
                 <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
             </lib-edit-select>
-            <div class="label">Logo</div>
-            <lib-edit-image [value]="store.group()!.logoUrl" fallback="assets/images/logo-placeholder.png"
-                (changed)="store.uploadLogo($event)"/>
         </div>
 
 
