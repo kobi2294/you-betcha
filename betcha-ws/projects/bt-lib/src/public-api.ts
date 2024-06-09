@@ -6,6 +6,7 @@ export * from './models/load-state.model';
 
 
 export * from './services/api.service';
+export * from './services/query.service';
 export * from './services/notifications.service';
 
 export * from './lib/standalones/login-ui/login-ui.directive';

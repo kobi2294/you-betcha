@@ -1,0 +1,48 @@
+<lib-busy [busy]="store.isLoading()" caption="Saving...">
+  <lib-header [level]="1">
+    Metadata
+    <mat-icon
+      *ngIf="!store.isEditing()"
+      libIconButton
+      (click)="store.startEdit()"
+      >edit</mat-icon
+    >
+  </lib-header>
+  <div class="content">
+    @if(store.isEditing()) {
+    <textarea #textarea></textarea>
+    <div class="toolbar">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="store.save(textarea.value)"
+      >
+        Save
+      </button>
+      <button mat-button color="accent" (click)="store.cancel()">Cancel</button>
+    </div>
+    } @else {
+    <div class="viewing">
+        <lib-header [level]="2">Stages</lib-header>
+        <div class="stages">
+          @for(stage of store.stages(); track stage) {
+          <div class="stage">
+            <div class="stage-id">{{stage.id}}</div>
+            <div class="stage-name">{{stage.displayName}}</div>
+            <div class="stage-points">{{stage.points}} pts</div>
+          </div>
+          }
+        </div>
+        <lib-header [level]="2">Countries</lib-header>
+      <div class="countries">
+        @for(country of store.countries(); track country) {
+        <div class="country">
+          <lib-flag [country]="country" />
+          {{ country }}
+        </div>
+        }
+      </div>
+    </div>
+    }
+</div>
+</lib-busy>

@@ -11,6 +11,7 @@ export interface PermissionSlice {
     canManageGroups: boolean;
     canManageUsers: boolean;
     canManageMatches: boolean;
+    canManageMetadata: boolean;
 }
 
 export const initialAuthSlice: AuthSlice = {

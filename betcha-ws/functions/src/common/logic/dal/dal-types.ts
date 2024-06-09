@@ -18,7 +18,7 @@ export type DalQuery<T extends DalCollection> = [keyof CollectionType<T> & strin
 
 export type DalDocAccess<T extends DalCollection> = {
     readonly get: () => Promise<CollectionType<T> | undefined>,
-    readonly update: (updater: DalUpdater<T>) => Promise<void>,
+    readonly update: (updater: DalUpdater<T>, defaultValue?: CollectionType<T>) => Promise<void>,
     readonly delete: () => Promise<void>,
 }
 

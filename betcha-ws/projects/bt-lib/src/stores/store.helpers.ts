@@ -33,17 +33,20 @@ export function permissions(claims: DbModel.AuthClaims | null): PermissionSlice 
         canManageGroups: false,
         canManageUsers: false,
         canManageMatches: false,
+        canManageMetadata: false
     }
 
     if (claims.role === 'super') return {
         canManageGroups: true,
         canManageUsers: true,
         canManageMatches: true,
+        canManageMetadata: true
     }
 
     return {
         canManageGroups: claims.adminGroups.length > 0,
         canManageUsers: false,
-        canManageMatches: claims.role === 'trustee'
+        canManageMatches: claims.role === 'trustee', 
+        canManageMetadata: false
     }
 }

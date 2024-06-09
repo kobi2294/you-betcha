@@ -48,10 +48,17 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
   async function _updateDoc<T extends DalCollection>(
     collection: T,
     id: string,
-    updater: DalUpdater<T>
+    updater: DalUpdater<T>, 
+    defaultValue?: CollectionType<T>
   ) {
-    const entity = await _getDoc(collection, id);
-    if (!entity) return;
+    let entity = await _getDoc(collection, id);
+    if (!entity) {
+      if (defaultValue) {
+        entity = defaultValue;
+      } else {
+        return
+      }
+    }
 
     const updated = {
       ...entity,
@@ -115,7 +122,7 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
         _getCollection(collection, ...queries),
       doc: (id: string) => ({
         get: () => _getDoc(collection, id),
-        update: (updater: DalUpdater<T>) => _updateDoc(collection, id, updater),
+        update: (updater: DalUpdater<T>, defaultValue?: CollectionType<T>) => _updateDoc(collection, id, updater, defaultValue),
         delete: () => _delDoc(collection, id),
       }),
       setDoc: (entity: CollectionType<T>) => _setDoc(collection, entity),

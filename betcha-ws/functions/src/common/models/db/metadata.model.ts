@@ -5,6 +5,14 @@ export interface Metadata {
     countries: string[];
 }
 
+export const defaultMetadata: Metadata = {
+    id: 'metadata',
+    matches: [],
+    stages: [],
+    countries: []
+
+}
+
 export interface Match {
     readonly id: string;
     readonly stage: string;

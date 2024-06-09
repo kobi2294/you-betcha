@@ -1,0 +1,73 @@
+:host {
+
+    .content {
+        flex-grow: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+            flex-grow: 1;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            overflow: hidden;
+            padding: 5px;
+        }
+
+        .viewing {
+            display: flex;
+            flex-direction: column;
+            lib-header {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+            .countries {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                overflow: hidden;
+                padding: 5px;
+
+                .country {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+                    width: 110px;
+                }
+    
+            }
+
+            .stages {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .stage {
+                    display: flex;
+                    flex-direction: row;
+
+                    .stage-id {
+                        width: 120px;
+                        font-weight: bold;
+                    }
+                    .stage-name {
+                        flex-grow: 1;
+                    }
+                    .stage-points {
+                        color: var(--p-700);
+                        width: 120px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+    
+}

@@ -49,9 +49,9 @@ export function getDal() {
     metadata: on(access.collection('metadata'), (x) => ({
       get: () => x.doc('metadata').get(),
       update: (updater: DalUpdater<'metadata'>) =>
-        x.doc('metadata').update(updater),
+        x.doc('metadata').update(updater, DbModel.defaultMetadata),
       set: (data: Partial<DbModel.Metadata>) =>
-        x.doc('metadata').update((_) => data),
+        x.doc('metadata').update((_) => data, DbModel.defaultMetadata),
     })),
     users: {
       ..._collectionMethods('users'), 

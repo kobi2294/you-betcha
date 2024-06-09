@@ -15,3 +15,10 @@
     <h2>Manage match schedule and results</h2>
     <mat-icon symbol>calendar_today</mat-icon>
 </div>
+
+<div class="action" routerLink="/metadata" *ngIf="authStore.permissions().canManageMetadata">
+    <h1>Metadata</h1>
+    <h2>Manage coutries list and stages</h2>
+    <mat-icon symbol>analytics</mat-icon>
+</div>
+

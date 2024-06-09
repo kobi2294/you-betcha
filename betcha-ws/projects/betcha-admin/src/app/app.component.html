@@ -13,6 +13,7 @@
           <lib-nav-item caption="Groups" page="groups" icon="group" *ngIf="authStore.permissions().canManageGroups"/>
           <lib-nav-item caption="Users" page="users" icon="face" *ngIf="authStore.permissions().canManageUsers"/>
           <lib-nav-item caption="Matches" page="matches" icon="calendar_today" *ngIf="authStore.permissions().canManageMatches"/>
+          <lib-nav-item caption="Metadata" page="metadata" icon="analytics" *ngIf="authStore.permissions().canManageMetadata"/>
       </lib-nav-bar>  
     </lib-sk-nav>
   } } }

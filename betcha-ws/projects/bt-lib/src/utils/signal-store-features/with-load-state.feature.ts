@@ -17,7 +17,7 @@ export type LoadStateFeatureResult = {
 
 export type LoadStateFeature = SignalStoreFeature<EmptyFeatureResult, EmptyFeatureResult & LoadStateFeatureResult>
 
-export function withLoadState(): LoadStateFeature {
+export function withLoadState() {
     return signalStoreFeature(
         withState(initialLoadSlice), 
         withComputed(store => ({
