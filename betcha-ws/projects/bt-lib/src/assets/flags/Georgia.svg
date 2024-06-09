@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232.14 174.79">
+  <rect id="rect956" style="fill-rule:evenodd;stroke-opacity:0;fill:#ffffff" height="174.54" width="231.91" y=".25427"
+    x="0" />
+  <g id="g887" transform="matrix(.68243 0 0 .69076 .00634 -1.3598)">
+    <rect id="horizontal" style="fill-rule:evenodd;stroke-width:0pt;fill:#cc0000" height="42.52" width="340.16"
+      y="106.18" x="0" />
+    <rect id="vertical" style="fill-rule:evenodd;stroke-width:0pt;fill:#cc0000" height="253.03" width="42.52" y="1.9685"
+      x="148.82" />
+    <g id="g866" style="fill:#cc0000" transform="matrix(.47408 0 0 .47408 -4.4939 -1.0358)">
+      <path id="path1167" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(13.463,0,0,16.817,-1687.4,-1735.8)" />
+      <path id="path865" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(0,-13.463,16.817,0,-1683.4,1967.9)" />
+    </g>
+    <g id="g878" style="fill:#cc0000" transform="matrix(.47408 0 0 .47408 -4.4939 147.78)">
+      <path id="path879" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(13.463,0,0,16.817,-1687.4,-1735.8)" />
+      <path id="path880" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(0,-13.463,16.817,0,-1683.4,1967.9)" />
+    </g>
+    <g id="g881" style="fill:#cc0000" transform="matrix(.47408 0 0 .47408 186.84 147.78)">
+      <path id="path882" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(13.463,0,0,16.817,-1687.4,-1735.8)" />
+      <path id="path883" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(0,-13.463,16.817,0,-1683.4,1967.9)" />
+    </g>
+    <g id="g884" style="fill:#cc0000" transform="matrix(.47408 0 0 .47408 186.84 -1.0358)">
+      <path id="path885" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(13.463,0,0,16.817,-1687.4,-1735.8)" />
+      <path id="path886" d="m135.39 106c1.65 2.67 2.02 5.48 0 8h4.61c-1.66-3.26-1.47-5.48 0-8h-4.61z"
+        transform="matrix(0,-13.463,16.817,0,-1683.4,1967.9)" />
+    </g>
+  </g>
+
+</svg>
