@@ -85,3 +85,15 @@ export const uploadGroupLogoImage = onCall<Api.UploadFileRequest, Promise<void>>
   return api.uploadLogoImage(data.content, data.fileType);
 })
 
+export const addAdminToGroup = onCall<Api.AddRemoveGroupAdminRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getSuperApi(req.auth);
+  return api.addAdminToGroup(data.email, data.groupId);
+})
+
+export const removeAdminFromGroup = onCall<Api.AddRemoveGroupAdminRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getSuperApi(req.auth);
+  return api.removeAdminFromGroup(data.email, data.groupId);
+})
+

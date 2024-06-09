@@ -63,6 +63,20 @@ export const GroupDetailsStore = signalStore(
                 tap(_ => store.reload()), 
                 rxNotify('Group Logo updated')
             ))
+        )), 
+        addAdmin: rxMethod<string>(trigger$ => trigger$.pipe(
+            tap(_ => store.setLoading()), 
+            switchMap(val => api.addAdminToGroup({groupId: store.groupId(), email: val}).pipe(
+                tap(_ => store.reload()), 
+                rxNotify('Admin added')
+            ))
+        )),
+        removeAdmin: rxMethod<string>(trigger$ => trigger$.pipe(
+            tap(_ => store.setLoading()), 
+            switchMap(val => api.removeAdminFromGroup({groupId: store.groupId(), email: val}).pipe(
+                tap(_ => store.reload()), 
+                rxNotify('Admin removed')
+            ))
         ))
     }))
 )

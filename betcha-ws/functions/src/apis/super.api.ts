@@ -91,7 +91,6 @@ export function getSuperApi(authData: MaybeAuthData) {
         return !group;
     }
 
-
     return {
         createGroup: _createGroup,
         deleteGroup: _deleteGroup, 

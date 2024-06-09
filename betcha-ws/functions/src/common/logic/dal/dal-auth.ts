@@ -1,4 +1,4 @@
-import { getAuth } from "firebase-admin/auth";
+import { UserRecord, getAuth } from "firebase-admin/auth";
 import { DbModel } from "../../models/db/db.alias"
 import { arrayWith, arrayWithout } from "../../utils/arrays";
 
@@ -11,8 +11,15 @@ export const DEFAULT_CLAIMS: DbModel.AuthClaims = {
 export function getDalAuth() {
     const auth = getAuth();
 
-    async function _setUserClaims(email: string, claims: (src: DbModel.AuthClaims) => Partial<DbModel.AuthClaims>) {
-        const authUser = await auth.getUserByEmail(email);
+    async function _setUserClaims(email: string, claims: (src: DbModel.AuthClaims) => Partial<DbModel.AuthClaims>, errorIfNotFound = true) {
+        let authUser: UserRecord;
+        try {
+            authUser = await auth.getUserByEmail(email);
+        }
+        catch (e) {
+            if (errorIfNotFound) throw e;
+            return;
+        }
         const sourceClaims = (authUser.customClaims as DbModel.AuthClaims) || DEFAULT_CLAIMS;
         const targetClaims = { ...sourceClaims, ...claims(sourceClaims) };
         await auth.setCustomUserClaims(authUser.uid, targetClaims);
@@ -27,11 +34,11 @@ export function getDalAuth() {
     }
 
     async function _addAdminToGroup(email: string, group: string) {
-        await _setUserClaims(email, claims => ({ adminGroups: arrayWith(claims.adminGroups, group) }));
+        await _setUserClaims(email, claims => ({ adminGroups: arrayWith(claims.adminGroups, group) }), false);
     }
 
     async function _removeAdminFromGroup(email: string, group: string) {
-        await _setUserClaims(email, claims => ({ adminGroups: arrayWithout(claims.adminGroups, group) }));
+        await _setUserClaims(email, claims => ({ adminGroups: arrayWithout(claims.adminGroups, group) }), false);
     }
 
     async function _setRole(email: string, role: DbModel.UserRole) {

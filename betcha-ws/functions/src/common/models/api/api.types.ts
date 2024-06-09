@@ -1,3 +1,4 @@
+import { AddRemoveGroupAdminRequest } from "./add-remove-group-admin.api";
 import { CreateGroupRequest } from "./create-group.api";
 import { CustomizeGroupRequest } from "./customize-group.api";
 import { GetGroupForAdminResponse } from "./get-group-for-admin.api";
@@ -17,6 +18,7 @@ export {
     CustomizeGroupRequest,
     SetGroupUsersLimitRequest,
     GetGroupForAdminResponse, 
-    UploadFileRequest
+    UploadFileRequest, 
+    AddRemoveGroupAdminRequest
 
 }

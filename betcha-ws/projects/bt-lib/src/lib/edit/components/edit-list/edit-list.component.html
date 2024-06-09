@@ -14,9 +14,7 @@
       }
     </div>
     @if (canDelete) {
-    <button mat-icon-button color="primary" (click)="deleted.emit($index)">
-      <mat-icon fontSet="material-symbols-outlined">delete</mat-icon>
-    </button>
+      <mat-icon symbol libIconButton (click)="deleted.emit($index)">delete</mat-icon>
     }
   </div>
   }
@@ -31,13 +29,10 @@
           (keydown.escape)="cancelAdd()"
           select-on-focus
         >
-        <button mat-icon-button color="primary" 
-          [disabled]="addText.invalid"
-          (click)="commitAdd();"
-          
-          >
-          <mat-icon fontSet="material-symbols-outlined">add</mat-icon>
-        </button>    
+        <mat-icon symbol libIconButton
+        [disabled]="addText.invalid"
+        (click)="commitAdd();"
+        >add</mat-icon>
 
     </div>    
 }

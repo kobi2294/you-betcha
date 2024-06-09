@@ -16,7 +16,15 @@
     <span>Back to group</span>
   </button>
 
-  <lib-edit-list [items]="group.admins">
+  <lib-edit-list [items]="group.admins" 
+    validator="email"
+    (added)="store.addAdmin($event)"
+    (deleted)="store.removeAdmin(group.admins[$event])"
+    >
+    <span *libListItem="let admin" class="admin-item">
+      <mat-icon symbol>shield_person</mat-icon>
+      {{ admin }}
+    </span>
 
   </lib-edit-list>
 

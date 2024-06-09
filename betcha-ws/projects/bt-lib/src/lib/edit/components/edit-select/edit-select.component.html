@@ -10,7 +10,10 @@
     }
 </div>
 
-<mat-icon class="action-icon" libIconButton matRipple [matMenuTriggerFor]="menu"
+@if(enabled) {
+    <mat-icon class="action-icon" 
+
+    libIconButton matRipple [matMenuTriggerFor]="menu"
   >edit</mat-icon>
 
 <mat-menu #menu="matMenu">
@@ -26,3 +29,5 @@
         <mat-icon color="primary" *ngIf="option.value === selectedValue" class="selected-icon">check</mat-icon>
     </button>
 </mat-menu>
+}
+

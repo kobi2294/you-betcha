@@ -19,7 +19,8 @@ export class ApiService {
     private _setGroupBlocked = httpsCallableData<Api.SetGroupBlockedRequest, void>(this.functions, 'setGroupBlocked');
     private _customizeGroup = httpsCallableData<Api.CustomizeGroupRequest, void>(this.functions, 'customizeGroup');
     private _uploadGroupLogoImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadGroupLogoImage');
-
+    private _addAdminToGroup = httpsCallableData<Api.AddRemoveGroupAdminRequest, void>(this.functions, 'addAdminToGroup');
+    private _removeAdminFromGroup = httpsCallableData<Api.AddRemoveGroupAdminRequest, void>(this.functions, 'removeAdminFromGroup');
 
 
     getUserDetails(): Observable<DbModel.User> {
@@ -66,6 +67,14 @@ export class ApiService {
         return from(req$).pipe(
             switchMap(req => this._uploadGroupLogoImage(req))
         );
+    }
+
+    addAdminToGroup(req: Api.AddRemoveGroupAdminRequest): Observable<void> {
+        return this._addAdminToGroup(req);
+    }
+
+    removeAdminFromGroup(req: Api.AddRemoveGroupAdminRequest): Observable<void> {
+        return this._removeAdminFromGroup(req);
     }
 
  

@@ -37,5 +37,19 @@
     .go-back {
         align-self: flex-start;
     }
+
+    lib-edit-list {
+      max-width: 400px;
+      .admin-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        mat-icon {
+          color: var(--p-500);
+        }
+      }
+  
+    }
   
 }
