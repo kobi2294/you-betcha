@@ -2,6 +2,7 @@ export interface Metadata {
     id: 'metadata'
     matches: Match[];
     stages: Stage[];
+    countries: string[];
 }
 
 export interface Match {

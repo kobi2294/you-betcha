@@ -87,10 +87,12 @@ export function getSuperApi(authData: MaybeAuthData) {
     async function _searchUsers(keyword: string) {
         return dal.users.getAll(['id', '>=', keyword], ['id', '<=', keyword + '\uf8ff']);
     }
-
     async function _isGroupIdFree(id: string) {
         const group = await dal.groups.getOne(id);
         return !group;
+    }
+    async function _updateMetadata(metadata: Partial<DbModel.Metadata>) {
+        await dal.metadata.update(_ => metadata);
     }
 
     return {
@@ -102,6 +104,7 @@ export function getSuperApi(authData: MaybeAuthData) {
         setGroupBlocked: _setGroupBlocked,
         setUserRole: _setUserRole, 
         isGroupIdFree: _isGroupIdFree, 
-        searchUsers: _searchUsers
+        searchUsers: _searchUsers, 
+        updateMetadata: _updateMetadata
     }
 }

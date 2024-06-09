@@ -1,0 +1,40 @@
+{
+    "countries": [
+        "Albania", 
+        "Austria", 
+        "Belgium", 
+        "Croatia", 
+        "Czech Republic", 
+        "Denmark",
+        "England",
+        "France",
+        "Georgia",
+        "Germany",
+        "Hungary",
+        "Italy",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Scotland",
+        "Serbia",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Switzerland",
+        "Turkey",
+        "Ukraine"
+    ], 
+    "stages": [
+        { "id": "group-a", "displayName": "Group A", "points": 120}, 
+        { "id": "group-b", "displayName": "Group B", "points": 120}, 
+        { "id": "group-c", "displayName": "Group C", "points": 120}, 
+        { "id": "group-d", "displayName": "Group D", "points": 120}, 
+        { "id": "group-e", "displayName": "Group E", "points": 120}, 
+        { "id": "group-f", "displayName": "Group F", "points": 120},
+        { "id": "round-of-16", "displayName": "Round of 16", "points": 180},
+        { "id": "quarter-finals", "displayName": "Quarter Finals", "points": 240},
+        { "id": "semi-finals", "displayName": "Semi Finals", "points": 360},
+        { "id": "final", "displayName": "Final", "points": 540} 
+    ]
+}
