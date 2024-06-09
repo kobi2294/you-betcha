@@ -1,4 +1,4 @@
-<img [src]="imageUrl()" altImage="assets/images/fallback.svg">
+<img [src]="imageUrl()" (click)="onOpenFileDialog()" altImage="assets/images/fallback.svg">
 
 <mat-icon libIconButton (click)="onOpenFileDialog()">edit</mat-icon>
 

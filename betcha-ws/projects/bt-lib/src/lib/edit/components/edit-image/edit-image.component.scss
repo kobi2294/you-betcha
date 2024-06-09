@@ -4,11 +4,14 @@
 
     img {
         object-fit: cover;
+        cursor: pointer;
     }
 
     mat-icon {
         position: absolute;
         inset-inline-end: 4px;
         top: 4px;
+        --lib-icon-button-background: var(--n-200);
+
     }
 }
