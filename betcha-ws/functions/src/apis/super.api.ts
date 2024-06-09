@@ -72,8 +72,7 @@ export function getSuperApi(authData: MaybeAuthData) {
     }
     async function _setGroupUsersLimit(groupId: string, usersLimit: number) {
         await dal.groups.updateOne(groupId, _ => ({ usersLimit }));
-    }
-    
+    }    
     async function _setGroupBlocked(groupId: string, blocked: boolean) {
         await dal.groups.updateOne(groupId, _ => ({ blocked }));
     }
@@ -84,6 +83,9 @@ export function getSuperApi(authData: MaybeAuthData) {
         await dal.users.updateOne(email, _ => ({ role }));
         const dalAuth = getDalAuth();
         await dalAuth.setRole(email, role);
+    }
+    async function _searchUsers(keyword: string) {
+        return dal.users.getAll(['id', '>=', keyword], ['id', '<=', keyword + '\uf8ff']);
     }
 
     async function _isGroupIdFree(id: string) {
@@ -98,7 +100,8 @@ export function getSuperApi(authData: MaybeAuthData) {
         removeAdminFromGroup: _removeAdminFromGroup, 
         setGroupUsersLimit: _setGroupUsersLimit,
         setGroupBlocked: _setGroupBlocked,
-        _setUserRole: _setUserRole, 
-        isGroupIdFree: _isGroupIdFree
+        setUserRole: _setUserRole, 
+        isGroupIdFree: _isGroupIdFree, 
+        searchUsers: _searchUsers
     }
 }

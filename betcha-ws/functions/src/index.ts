@@ -97,3 +97,14 @@ export const removeAdminFromGroup = onCall<Api.AddRemoveGroupAdminRequest, Promi
   return api.removeAdminFromGroup(data.email, data.groupId);
 })
 
+export const searchUsers = onCall<string, Promise<DbModel.User[]>>(options, req => {
+  const api = getSuperApi(req.auth);
+  return api.searchUsers(req.data);
+});
+
+export const setUserRole = onCall<Api.SetUserRoleRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getSuperApi(req.auth);
+  return api.setUserRole(data.email, data.role);
+});
+

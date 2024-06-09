@@ -10,7 +10,7 @@ type LoadMethod<Input extends SignalStoreFeatureResult, T> = (store: InputStore<
 
 type LoadMethodFeatureResult = MergeFeatureResults<[LoadStateFeatureResult, {state: {}, signals: {}, methods: {load: RxMethod<void>}}]>;
 
-export function withLoad<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean)
+export function withLoad<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean = false)
 : SignalStoreFeature<Input, LoadMethodFeatureResult> {
     return (store) => {
         const injector = inject(Injector);

@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
 import { Api, DbModel } from "@tscommon";
-import { Observable, delay, from, switchMap } from "rxjs";
+import { Observable, delay, from, of, switchMap } from "rxjs";
 import { fileToNumberArray, imageResizer } from "../utils/helpers/image.helpers";
 
 @Injectable({providedIn: 'root'})
@@ -21,6 +21,8 @@ export class ApiService {
     private _uploadGroupLogoImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadGroupLogoImage');
     private _addAdminToGroup = httpsCallableData<Api.AddRemoveGroupAdminRequest, void>(this.functions, 'addAdminToGroup');
     private _removeAdminFromGroup = httpsCallableData<Api.AddRemoveGroupAdminRequest, void>(this.functions, 'removeAdminFromGroup');
+    private _searchUsers = httpsCallableData<string, DbModel.User[]>(this.functions, 'searchUsers');
+    private _setUserRole = httpsCallableData<Api.SetUserRoleRequest, void>(this.functions, 'setUserRole');
 
 
     getUserDetails(): Observable<DbModel.User> {
@@ -75,6 +77,15 @@ export class ApiService {
 
     removeAdminFromGroup(req: Api.AddRemoveGroupAdminRequest): Observable<void> {
         return this._removeAdminFromGroup(req);
+    }
+
+    searchUsers(keyword: string): Observable<DbModel.User[]> {
+        if (keyword.length < 3) return of([]);        
+        return this._searchUsers(keyword);
+    }
+
+    setUserRole(req: Api.SetUserRoleRequest): Observable<void> {
+        return this._setUserRole(req);
     }
 
  

@@ -1,1 +1,22 @@
-<p>users-page works!</p>
+<div class="search-area">
+    <mat-form-field>
+        <mat-label>Search Users</mat-label>
+        <input matInput 
+            type="text" #searchbox (input)="store.load(searchbox.value)"/>
+            <mat-spinner matSuffix [diameter]="32" *ngIf="store.isLoading()" />
+
+    </mat-form-field>
+</div>
+<div class="results-area">
+  <cdk-virtual-scroll-viewport itemSize="60" class="results">
+    <div *cdkVirtualFor="let user of store.users()" class="result">
+        <mat-icon symbol>person</mat-icon>
+        <span class="display-name">{{user.displayName}}</span>
+        <span class="email">{{user.id}}</span>
+        <lib-edit-select 
+            [options]="roleOptions" [value]="user.role" (changed)="store.setUserRole({email: user.id, role: $event})"
+            [enabled]="user.id !== auth.user()?.id"
+            />
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

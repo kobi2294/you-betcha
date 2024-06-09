@@ -1,6 +1,7 @@
 import { inject } from "@angular/core";
 import { NotificationsService } from "../../services/notifications.service";
 import { Observable, catchError, of, tap } from "rxjs";
+import { confirmPasswordReset } from "@angular/fire/auth";
 
 
 
@@ -11,10 +12,9 @@ export function rxNotifier(postAction: () => void = () => {}) {
         const action = localPostAction || postAction;
         return (source: Observable<T>) => source.pipe(
             tap({
-                next: () => {if (onSuccess) {notify.success(onSuccess)}}, 
-                error: err => notify.error(err), 
-                finalize: () => action()
-            }),
+                complete: () => {action(); if (onSuccess) {notify.success(onSuccess)}}, 
+                error: err => {action(); notify.error(err)}
+                }),
             catchError(() => of(null))
         );
     }
