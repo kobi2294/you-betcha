@@ -26,6 +26,21 @@ export function permissionGuard(premission: (p: PermissionSlice) => boolean): Ca
     }
 }
 
+export function adminOfGroupGuard(): CanActivateFn {
+    return async (route) => {
+        const groupId = route.paramMap.get('groupId');
+        if (!groupId) return true;
+        const auth = inject(AuthStore);
+        if (auth.claims()?.role === 'super') return true;
+        const router = inject(Router);
+        const adminOfGroups = auth.claims()?.adminGroups || [];
+        const isOk = adminOfGroups.includes(groupId);
+        if (isOk) return true;
+        return router.parseUrl('/home');
+    }
+
+}
+
 async function getClaims(): Promise<DbModel.AuthClaims> {
     const authStore = inject(AuthStore);
     const claims$ = toObservable(authStore.claims);
