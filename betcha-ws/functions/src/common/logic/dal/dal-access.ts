@@ -4,12 +4,11 @@ import {
   CollectionType,
   DalAccess,
   DalCollection,
-  DalFileContentType,
   DalQuery,
   DalUpdater,
 } from './dal-types';
 import { dalBatch } from './dal-batch';
-import { PassThrough } from 'stream';
+import { DbModel } from 'src/common/models/db/db.alias';
 
 export function dalAccess(firestore = getFirestore()): DalAccess {
   async function _getCollection<T extends DalCollection>(
@@ -86,34 +85,23 @@ export function dalAccess(firestore = getFirestore()): DalAccess {
     await _clearAllData([coll]);
   }
 
-  function _uploadFile(
+  async function _uploadFile(
     path: string,
-    content: string,
-    contentType: DalFileContentType
+    content: number[],
+    contentType: DbModel.ImageContentType
   ): Promise<string> {
+    const fileData = new Uint8Array(content);
+    const buffer = Buffer.from(fileData);
     const bucket = getStorage().bucket();
 
-    return new Promise((resolve, reject) => {
-      const blob = bucket.file(path);
-      const bufferStream = new PassThrough();
+    const file = bucket.file(path);
+    await file.save(buffer, { metadata: { contentType } });
+    await file.makePublic();
 
-      bufferStream.pipe(
-        blob.createWriteStream({
-          metadata: { contentType },
-        })
-      );
+    const [metadata] = await file.getMetadata();
+    const url = metadata.mediaLink!;
 
-      bufferStream.on('error', (err) => {
-        reject(err);
-      });
-
-      bufferStream.on('finish', () => {
-        resolve(path);
-      });
-
-      bufferStream.end(Buffer.from(content, 'base64'));
-
-    });
+    return url;
   }
 
   async function _deleteFile(path: string): Promise<void> {

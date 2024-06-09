@@ -48,5 +48,11 @@ export const GroupDetailsStore = signalStore(
                 tap(_ => store.reload())
             ))
         )),
+        uploadLogo: rxMethod<File>(trigger$ => trigger$.pipe(
+            tap(_ => store.setLoading()), 
+            switchMap(val => api.uploadGroupLogoImage(store.groupId(), val).pipe(
+                tap(_ => store.reload())
+            ))
+        ))
     }))
 )

@@ -5,6 +5,7 @@ import { GroupInfo } from "./group-info.model";
 import { SetGroupBlockedRequest } from "./set-group-blocked.api";
 import { SetGroupDisplayNameRequest } from "./set-group-display-name.api";
 import { SetGroupUsersLimitRequest } from "./set-group-users.limit.api";
+import { UploadFileRequest } from "./upload-file.api";
 import { UserInfo } from "./user-info.model";
 
 export {
@@ -16,5 +17,6 @@ export {
     CustomizeGroupRequest,
     SetGroupUsersLimitRequest,
     GetGroupForAdminResponse, 
+    UploadFileRequest
 
 }

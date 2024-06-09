@@ -34,11 +34,22 @@ export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
         await dal.groups.updateOne(groupId, _ => ({ displayName }));
     }
 
+    async function _uploadLogoImage(image: number[], contentType: DbModel.ImageContentType) {
+        const group = await dal.groups.getOne(groupId);
+        if (!group) throw notFound('Group not found');
+
+        const path = `groups/logo-${group.secret}`;
+        const url = await dal.file.upload(path, image, contentType);
+        await dal.groups.updateOne(group.id, _ => ({logoUrl: url}));
+    }
+
+
     return {
         setGroupMessage: _setGroupMessage, 
         setGroupSlogan: _setGroupSlogan, 
         setGroupTheme: _setGroupTheme, 
         setGroupDisplayName: _setGroupDisplayName, 
-        getGroupForAdmin: _getGroupForAdmin
+        getGroupForAdmin: _getGroupForAdmin, 
+        uploadLogoImage: _uploadLogoImage
     }
 }

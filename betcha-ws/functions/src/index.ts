@@ -79,3 +79,9 @@ export const customizeGroup = onCall<Api.CustomizeGroupRequest, Promise<void>>(o
   return Promise.all(promises).then(() => {});
 })
 
+export const uploadGroupLogoImage = onCall<Api.UploadFileRequest, Promise<void>>(options, req => {
+  const data = req.data;
+  const api = getGroupAdminApi(req.auth, data.id);
+  return api.uploadLogoImage(data.content, data.fileType);
+})
+

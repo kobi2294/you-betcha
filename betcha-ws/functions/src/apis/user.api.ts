@@ -2,7 +2,6 @@ import { getDal } from "../common/logic/dal/dal";
 import { GuessValue } from "../common/models/db/enums.model";
 import { MaybeAuthData, authorize, badRequest, notFound } from "../common/api/authorize";
 import { getDalAuth } from "../common/logic/dal/dal-auth";
-import { DalFileContentType } from "../common/logic/dal/dal-types";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
 import { getAutomaticApi } from "./automatic.api";
 import { getAuth } from "firebase-admin/auth";
@@ -31,10 +30,10 @@ export function getUserApi(authData: MaybeAuthData) {
         await dal.users.updateOne(auth.email, _ => ({ displayName }));
     }
 
-    async function _uploadProfileImage(image: string, contentType: DalFileContentType) {
+    async function _uploadProfileImage(image: number[], contentType: DbModel.ImageContentType) {
         const path = `users/${auth.email}/profile-image`;
-        await dal.file.upload(path, image, contentType);
-        await dal.users.updateOne(auth.email, _ => ({ photoUrl: path }));
+        const url = await dal.file.upload(path, image, contentType);
+        await dal.users.updateOne(auth.email, _ => ({ photoUrl: url }));
     }
 
     async function _joinGroup(groupSecret: string) {

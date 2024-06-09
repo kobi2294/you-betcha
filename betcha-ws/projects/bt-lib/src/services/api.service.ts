@@ -1,11 +1,13 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
 import { Api, DbModel } from "@tscommon";
-import { Observable, delay } from "rxjs";
+import { Observable, from, switchMap } from "rxjs";
+import { fileToNumberArray, imageResizer } from "../utils/helpers/image.helpers";
 
 @Injectable({providedIn: 'root'})
 export class ApiService {
     readonly functions = inject(Functions);
+    readonly resizer = imageResizer();
 
     private _getUserDetails = httpsCallableData<void, DbModel.User>(this.functions, 'getUserDetails');
     private _getManagedGroups = httpsCallableData<void, DbModel.Group[]>(this.functions, 'getUserManagedGroups');
@@ -16,6 +18,7 @@ export class ApiService {
     private _setGroupUsersLimit = httpsCallableData<Api.SetGroupUsersLimitRequest, void>(this.functions, 'setGroupUsersLimit');
     private _setGroupBlocked = httpsCallableData<Api.SetGroupBlockedRequest, void>(this.functions, 'setGroupBlocked');
     private _customizeGroup = httpsCallableData<Api.CustomizeGroupRequest, void>(this.functions, 'customizeGroup');
+    private _uploadGroupLogoImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadGroupLogoImage');
 
 
 
@@ -55,4 +58,15 @@ export class ApiService {
         return this._customizeGroup(req);
     }
 
+    uploadGroupLogoImage(groupId: string, imageFile: File): Observable<void> {
+        const req$ = this.resizer.resize(imageFile, 175, 175)
+            .then(smallFile => fileToNumberArray(smallFile))
+            .then(arr => ({id: groupId, fileType: imageFile.type as DbModel.ImageContentType, content: arr}));
+
+        return from(req$).pipe(
+            switchMap(req => this._uploadGroupLogoImage(req))
+        );
+    }
+
+ 
 }

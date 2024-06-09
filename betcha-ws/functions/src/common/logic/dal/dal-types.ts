@@ -58,9 +58,7 @@ export type DalAccess = {
     batch: () => DalBatchAccess,
     clearAllData: () => Promise<void>,
     file: {
-        upload: (path: string, content: string, contentType: DalFileContentType) => Promise<string>,
+        upload: (path: string, content: number[], contentType: DbModel.ImageContentType) => Promise<string>,
         delete: (path: string) => Promise<void>,
     }
 }
-
-export type DalFileContentType = 'image/png' | 'image/jpg';
