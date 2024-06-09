@@ -108,3 +108,7 @@ export const setUserRole = onCall<Api.SetUserRoleRequest, Promise<void>>(options
   return api.setUserRole(data.email, data.role);
 });
 
+export const updateMetadata = onCall<Partial<DbModel.Metadata>, Promise<void>>(options, req => {
+  const api = getSuperApi(req.auth);
+  return api.updateMetadata(req.data);
+});

@@ -23,7 +23,7 @@ export class ApiService {
     private _removeAdminFromGroup = httpsCallableData<Api.AddRemoveGroupAdminRequest, void>(this.functions, 'removeAdminFromGroup');
     private _searchUsers = httpsCallableData<string, DbModel.User[]>(this.functions, 'searchUsers');
     private _setUserRole = httpsCallableData<Api.SetUserRoleRequest, void>(this.functions, 'setUserRole');
-
+    private _updateMetadata = httpsCallableData<Partial<DbModel.Metadata>, void>(this.functions, 'updateMetadata');
 
     getUserDetails(): Observable<DbModel.User> {
         return this._getUserDetails();
@@ -88,5 +88,8 @@ export class ApiService {
         return this._setUserRole(req);
     }
 
+    updateMetadata(metadata: Partial<DbModel.Metadata>): Observable<void> {
+        return this._updateMetadata(metadata);
+    }
  
 }
