@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
 import { Api, DbModel } from "@tscommon";
-import { Observable, from, switchMap } from "rxjs";
+import { Observable, delay, from, switchMap } from "rxjs";
 import { fileToNumberArray, imageResizer } from "../utils/helpers/image.helpers";
 
 @Injectable({providedIn: 'root'})
@@ -55,7 +55,7 @@ export class ApiService {
     }
 
     customizeGroup(req: Api.CustomizeGroupRequest): Observable<void> {
-        return this._customizeGroup(req);
+        return this._customizeGroup(req).pipe();
     }
 
     uploadGroupLogoImage(groupId: string, imageFile: File): Observable<void> {

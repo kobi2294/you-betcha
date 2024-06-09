@@ -45,6 +45,37 @@ $neutrals: (
     900: $white,
     950: $white,
     1000: $white,
-  )
+  );
+
+  // a palette of shades from #e8f5e9 to #102c10,
+  $success: (
+    50: #f1f8f2,
+    100: #d2e9d4,
+    200: #a5d6a7,
+    300: #7cc47b,
+    400: #5eae5e,
+    500: #3f9e3f,
+    600: #3a8f3a,
+    700: #347f34,
+    800: #2e6f2e,
+    900: #225022,
+    950: #1a3a1a,
+    1000: #102c10,
+  );
+
+  $success-contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $black,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+    950: $white,
+    1000: $white,
+  );
 
 

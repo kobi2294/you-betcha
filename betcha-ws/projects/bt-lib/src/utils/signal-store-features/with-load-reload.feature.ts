@@ -7,6 +7,7 @@ import { LoadStateFeatureResult, withLoadState } from "./with-load-state.feature
 import { InputStore, RxMethod } from "./_types";
 import { repeatNotNull } from "../rxjs/repeat-not-null";
 import { onChangeMap } from "../rxjs/on-change-map";
+import { rxNotifier } from "../rxjs/catch-and-notify";
 
 type LoadMethod<Input extends SignalStoreFeatureResult, Params, T> = (store: InputStore<Input>, prm: Params) => Observable<T>;
 
@@ -21,6 +22,7 @@ export function withLoadReload<Input extends SignalStoreFeatureResult, Params, T
             ...store.signals, 
             ...store.methods
         };
+        const rxNotify = rxNotifier();
 
         const loader = (prm: Params) => runInInjectionContext(injector, () => loadMethod(storeContent, prm));
         const feature = signalStoreFeature(
@@ -30,7 +32,8 @@ export function withLoadReload<Input extends SignalStoreFeatureResult, Params, T
                     repeatNotNull(),
                     tap(_ => patchState(store, { loadState: 'loading' })),
                     onChangeMap(prm => loader(prm).pipe(
-                        tap(data => patchState(store, { ...data, loadState: 'idle'}))
+                        tap(data => patchState(store, { ...data, loadState: 'idle'})), 
+                        rxNotify('', () => patchState(store, { loadState: 'idle'}))
                     ))
                 ));
                 return {

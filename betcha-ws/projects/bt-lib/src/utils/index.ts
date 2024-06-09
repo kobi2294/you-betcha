@@ -6,6 +6,7 @@ export * from './provide/provide-version';
 export * from './rxjs/on-change-map';
 export * from './rxjs/repeat-not-null';
 export * from './rxjs/filter-not-null';
+export * from './rxjs/catch-and-notify'
 
 export * from './signal-store-features/with-load-state.feature';
 export * from './signal-store-features/with-load.feature';

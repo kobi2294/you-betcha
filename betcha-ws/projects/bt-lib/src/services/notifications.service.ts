@@ -14,11 +14,11 @@ export class NotificationsService {
 
   error(err: unknown) {
     if (err instanceof FirebaseError) {
-      this.openSnackBar(err.message, '', 'error-snackbar');
+      this.openSnackBar(`Error: ${err.message}`, 'Ok', 'error-snackbar');
     } else if (typeof err === 'string') {
-      this.openSnackBar(err, '', 'error-snackbar');
+      this.openSnackBar(`Error: ${err}`, 'Ok', 'error-snackbar');
     } else {
-      this.openSnackBar(`${err}`, '', 'error-snackbar');
+      this.openSnackBar(`Error: ${err}`, 'Ok', 'error-snackbar');
     }
   }
 

@@ -62,10 +62,14 @@
   @include vars.go("w", $warn, $keys);
   @include vars.go("wc", $warn-contrast, $keys);
 
-  @include vars.go("b", $background);
-  @include vars.go("f", $foreground);
+  @include vars.go("s", pal.$success);
+  @include vars.go("sc", pal.$success-contrast);
 
   @include vars.go("n", pal.$neutrals);
   @include vars.go("nc", pal.$neutrals-contrast);
+
+  @include vars.go("b", $background);
+  @include vars.go("f", $foreground);
+
 }
 

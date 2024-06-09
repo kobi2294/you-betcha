@@ -1,12 +1,14 @@
 @mixin go() {
     .success-snackbar {
-        --mdc-snackbar-container-color: var(--a-400) !important; // https://github.com/angular/components/issues/26928
+        --mdc-snackbar-container-color: var(--s-600) !important; // https://github.com/angular/components/issues/26928
         --mdc-snackbar-supporting-text-color: white !important;
+        --mat-snack-bar-button-color: white !important;
     }
 
     .error-snackbar {
         --mdc-snackbar-container-color: var(--w-700) !important;
         --mdc-snackbar-supporting-text-color: white !important;
+        --mat-snack-bar-button-color: white !important;
     }
 
 }
