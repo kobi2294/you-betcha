@@ -10,7 +10,6 @@ import { DbModel } from '@tscommon';
   imports: [SharedModule, PagesModule, EditModule],
   templateUrl: './group-details.component.html',
   styleUrl: './group-details.component.scss', 
-  providers: [GroupDetailsStore]
 })
 export default class GroupDetailsComponent {
   readonly groupId = input.required<string>();

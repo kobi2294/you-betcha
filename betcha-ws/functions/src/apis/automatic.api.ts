@@ -30,9 +30,6 @@ export function getAutomaticApi(authData: MaybeAuthData) {
             (email === 'kobihari@gmail.com' || email === 'adva30@gmail.com') &&
             userRecord.providerData.some(pd => pd.providerId === 'google.com');
 
-        console.log('user record', userRecord);
-
-
         const user: DbModel.User = {
             id: email,
             displayName: displayName, 

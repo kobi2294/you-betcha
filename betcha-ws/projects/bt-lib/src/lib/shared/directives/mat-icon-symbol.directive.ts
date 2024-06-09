@@ -12,8 +12,6 @@ export class MatIconSymbolDirective {
 
 
     constructor() {
-        console.log('MatIconHelpDirective', this.matIcon);
-        console.log('Icon symbol', this.symbol());
         this.matIcon.fontSet = 'material-symbols-outlined'
     }
 }

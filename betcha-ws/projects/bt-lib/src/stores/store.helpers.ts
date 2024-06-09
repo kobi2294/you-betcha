@@ -5,7 +5,6 @@ import { PermissionSlice } from "./auth.slice";
 export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
     await user.reload();
     const token = await user.getIdTokenResult(true);
-    console.log('token for user', user.email, token);
     return {
         adminGroups: token.claims['adminGroups'] as string[] || [],
         role: token.claims['role'] as DbModel.UserRole || 'user', 

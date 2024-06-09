@@ -38,10 +38,6 @@ export const AuthStore = signalStore(
                         patchState(store, {claims: null, user: null});
                     }
                 });
-
-                effect(() => {
-                    console.log('user store', getState(store));
-                });
             },
             onDestroy: () => {
                 if (sub) {

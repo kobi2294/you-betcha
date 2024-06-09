@@ -1,0 +1,41 @@
+:host {
+    font-size: 20px;
+  
+    .header-area {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "icon h1"
+        "icon h2";
+  
+      mat-icon {
+          grid-area: icon;
+          font-size: 64px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 82px;
+          height: 82px;
+          color: var(--p-700);
+          background-color: var(--n-200);
+          border-radius: 41px;
+          margin-inline-end: 10px;
+      }
+  
+      lib-header[h-level="1"] {
+        grid-area: h1;
+      }
+  
+      lib-header[h-level="2"] {
+        grid-area: h2;
+        color: var(--n-500);
+      }
+    }
+
+    .go-back {
+        align-self: flex-start;
+    }
+  
+}

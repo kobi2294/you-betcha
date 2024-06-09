@@ -1,1 +1,24 @@
-<p>group-admins works!</p>
+<lib-busy
+  [busy]="store.isLoading()"
+  [caption]="loadCaption()"
+  [showContent]="store.groupId() !== ''"
+>
+  @if(store.group(); as group) {
+  <div class="header-area">
+    <mat-icon symbol>group</mat-icon>
+    <lib-header [level]="1">
+      {{ group.displayName }}
+    </lib-header>
+    <lib-header [level]="2">Admins</lib-header>
+  </div>
+  <button mat-button class="go-back" [routerLink]="['../']">
+    <mat-icon symbol libIconButton>arrow_back</mat-icon>
+    <span>Back to group</span>
+  </button>
+
+  <lib-edit-list [items]="group.admins">
+
+  </lib-edit-list>
+
+  }
+</lib-busy>

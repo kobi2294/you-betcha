@@ -33,6 +33,7 @@
 
         <div class="quota">
             <div class="label">Users</div>
+            <a routerLink="admins" *ngIf="authStore.isSuper()">Manage admins...</a>
             <lib-edit-string [value]="group.usersLimit.toString()" 
                 type="number" caption="Maximum" [enabled]="authStore.isSuper()"
                 (changed)="store.setUsersLimit($event)"/>

@@ -8,13 +8,10 @@ export type SelectionOption = {value: any, displayName: string};
   templateUrl: './edit-select.component.html',
   styleUrl: './edit-select.component.scss'
 })
-export class EditSelectComponent implements AfterContentInit{
+export class EditSelectComponent {
   @ContentChild(OptionTemplateDirective, {static: false})
   optionTemplate: OptionTemplateDirective | undefined = undefined;
 
-  ngAfterContentInit(): void {
-    console.log('the template is', this.optionTemplate);
-  }
 
 
   @Input({required: true})
