@@ -24,7 +24,6 @@ export const GroupsStore = signalStore(
         onInit: () => {
             toObservable(auth.user).pipe(
                 map(user => user?.groups || []),
-                filter(groups => groups.length > 0), 
                 switchMap(groupIds => query.getGroupsData(groupIds).pipe(
                     tap(({groups, calculatedGroups}) => patchState(store, {groups, calculatedGroups,  selectedGroupId: fixSelectedGroup(store.selectedGroupId(), Object.keys(groups))})), 
                     catchError(err => of())

@@ -1,0 +1,15 @@
+@if(groupsStore.selectedGroup(); as group) {
+    <div class="group">
+        <img [src]="group.logoUrl" alt="group image"/>
+        <div class="slogan">
+            <h1 *ngIf="group.slogan">{{group.slogan}}</h1>
+            <h2 *ngIf="group.message">{{group.message}}</h2>    
+        </div>
+
+    </div>
+} @else {
+    <div class="no-group">
+        <h1>Welcome to You Betcha</h1>
+        <h2>To play please refer to your group admin for a link to join in the group</h2>    
+    </div>
+}

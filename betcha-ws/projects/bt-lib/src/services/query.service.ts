@@ -21,6 +21,8 @@ export class QueryService {
     }
 
     getGroups(groupIds: string[]): Observable<DbModel.Group[]> {
+        if (groupIds.length === 0) return of([]);
+
         const queries = groupIds
             .map(groupId => doc(this.firestore, `groups/${groupId}`))
             .map(q => docData(q) as Observable<DbModel.Group>);
@@ -30,6 +32,8 @@ export class QueryService {
     }
 
     getCalculatedGroups(groupIds: string[]): Observable<DbModel.CalculatedGroup[]> {
+        if (groupIds.length === 0) return of([]);
+
         const queries = groupIds
             .map(groupId => doc(this.firestore, `calculated-groups/${groupId}`))
             .map(q => docData(q) as Observable<DbModel.CalculatedGroup>);
@@ -39,6 +43,7 @@ export class QueryService {
     }
 
     getGroupsData(groupIds: string[]) {
+        if (groupIds.length === 0) return of({groups: {}, calculatedGroups: {}});
 
         return combineLatest({
             groups: this.getGroups(groupIds),
