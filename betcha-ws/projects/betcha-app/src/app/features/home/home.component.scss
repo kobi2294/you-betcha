@@ -18,8 +18,8 @@
 
     .group {
         display: grid;
-        grid-template-rows: 120px;
-        grid-template-columns: 120px 1fr;
+        grid-template-rows: auto;
+        grid-template-columns: auto 1fr;
         grid-template-areas:
             "img title"
             "img description";
@@ -27,9 +27,12 @@
 
         img {
             grid-area: img;
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid var(--p-800);
+            box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
         }
         h1 {
             grid-area: title;
