@@ -10,6 +10,7 @@
         width: min(400px, calc(100% - 20px));
         gap: 20px;
         padding: 20px;
+        --lib-icon-button-color: var(--p-700);
 
         lib-edit-image {
             width: 175px;
@@ -20,7 +21,7 @@
 
         lib-edit-string {
             align-self: stretch;
-            font-size: 36px;
+            font-size: 48px;
             color: var(--p-700);
         }
     }
