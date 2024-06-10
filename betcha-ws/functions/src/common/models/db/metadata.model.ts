@@ -16,8 +16,8 @@ export const defaultMetadata: Metadata = {
 export interface Match {
     readonly id: string;
     readonly stage: string;
-    readonly away: string;
-    readonly home: string;
+    readonly away: string | null;
+    readonly home: string | null;
     readonly awayScore: number | null;
     readonly homeScore: number | null;
     readonly date: string;
