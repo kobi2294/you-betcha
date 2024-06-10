@@ -1,11 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, computed, effect, inject, input } from '@angular/core';
-import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { APP_VERSION } from '../../../bt-lib/src/utils/provide/provide-version';
-import { environment } from '../environments/environment';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { Component, computed, inject } from '@angular/core';
 import { AuthStore, PagesModule, RouterStore, SharedModule } from '@lib';
-import { filter, map } from 'rxjs';
+import { GroupsStore } from './stores/groups.store';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +11,8 @@ import { filter, map } from 'rxjs';
   imports: [SharedModule, PagesModule],
 })
 export class AppComponent {
-  authStore = inject(AuthStore)
-  user = this.authStore.user;
+  authStore = inject(AuthStore);
+  groupsStore = inject(GroupsStore);
 
   readonly routerStore = inject(RouterStore);
   readonly hideNavBar = computed(() => Boolean(this.routerStore.data()['hideNavBar']));

@@ -5,6 +5,7 @@ import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { exhaustMap, tap } from "rxjs";
 import { effect, inject } from "@angular/core";
 import { Router } from "@angular/router";
+import { GroupsStore } from "../../../stores/groups.store";
 
 export const JoinStore = signalStore(
     withState(initialJoinSlice), 
@@ -22,16 +23,17 @@ export const JoinStore = signalStore(
         ))
     })),
     withDevtools('join store'), 
-    withHooks((store, router = inject(Router), auth = inject(AuthStore)) => ({
+    withHooks((store, router = inject(Router), auth = inject(AuthStore), groupsStore = inject(GroupsStore)) => ({
         onInit: () => {
             effect(() => {
                 const group = store.joinedGroup();
-                const userGroups = auth.user()?.groups ?? [];
+                const userGroups = auth.user()?.groups || [];
                 if (group === undefined) {
                     return;
                 }
 
-                if ((group === null) || (userGroups.includes(group.id))) {
+                if ((group === null) || (!!userGroups.includes(group.id))) {
+                    if (group !== null) { groupsStore.setSelectedGroup(group.id) }
                     router.navigate(['home']);
                     return;
                 }

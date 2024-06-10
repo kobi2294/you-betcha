@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Firestore, collection, collectionData, doc, docData, query, where } from "@angular/fire/firestore";
-import { DbModel } from "@tscommon";
-import { Observable, combineLatest, debounceTime, map } from "rxjs";
+import { DbModel, toRecord } from "@tscommon";
+import { Observable, combineLatest, debounceTime, forkJoin, map, of, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class QueryService {
@@ -27,5 +27,27 @@ export class QueryService {
         const res = combineLatest(queries).pipe(debounceTime(0));
 
         return res;
+    }
+
+    getCalculatedGroups(groupIds: string[]): Observable<DbModel.CalculatedGroup[]> {
+        const queries = groupIds
+            .map(groupId => doc(this.firestore, `calculated-groups/${groupId}`))
+            .map(q => docData(q) as Observable<DbModel.CalculatedGroup>);
+        const res = combineLatest(queries).pipe(debounceTime(0));
+
+        return res;
+    }
+
+    getGroupsData(groupIds: string[]) {
+
+        return combineLatest({
+            groups: this.getGroups(groupIds),
+            calculatedGroups: this.getCalculatedGroups(groupIds),
+        }).pipe(
+            map(({groups, calculatedGroups}) => ({
+                groups: toRecord(groups, g => g.id),
+                calculatedGroups: toRecord(calculatedGroups, g => g.id),
+            }))
+        );
     }
 }
