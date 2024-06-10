@@ -6,7 +6,7 @@
     } @else {
       <lib-sk-nav>
         <lib-toolbar/>
-        <lib-nav-bar>
+        <lib-nav-bar *ngIf="!hideNavBar()">
             <lib-nav-item caption="Home" page="home" icon="home"/>
         </lib-nav-bar>  
       </lib-sk-nav>

@@ -28,8 +28,12 @@ service cloud.firestore {
       allow read: if isSuper() || isGroupMember(groupId);
     }
 
+    match /metadata/{id} {
+      allow read: if true;
+    }
+
     match /{document=**} {
-    allow read: if true;
+    allow read: if false;
     }
   }
 }

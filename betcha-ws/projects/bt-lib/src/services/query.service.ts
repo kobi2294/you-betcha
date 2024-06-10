@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
-import { Firestore, doc, docData } from "@angular/fire/firestore";
+import { Firestore, collection, collectionData, doc, docData, query, where } from "@angular/fire/firestore";
 import { DbModel } from "@tscommon";
-import { Observable, map } from "rxjs";
+import { Observable, combineLatest, debounceTime, map } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class QueryService {
@@ -18,5 +18,14 @@ export class QueryService {
     getUser(id: string): Observable<DbModel.User> {
         const docReference = doc(this.firestore, `users/${id}`);
         return docData(docReference) as Observable<DbModel.User>;
+    }
+
+    getGroups(groupIds: string[]): Observable<DbModel.Group[]> {
+        const queries = groupIds
+            .map(groupId => doc(this.firestore, `groups/${groupId}`))
+            .map(q => docData(q) as Observable<DbModel.Group>);
+        const res = combineLatest(queries).pipe(debounceTime(0));
+
+        return res;
     }
 }

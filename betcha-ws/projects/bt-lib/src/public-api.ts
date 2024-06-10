@@ -21,3 +21,5 @@ export * from './utils';
 
 export * from './stores/auth.store';
 export * from './stores/auth.slice';
+export * from './stores/router.store';
+export * from './stores/router.slice';
