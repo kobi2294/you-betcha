@@ -1,6 +1,8 @@
-import { User } from "@angular/fire/auth";
+import { Auth, User, user } from "@angular/fire/auth";
 import { DbModel } from "@tscommon";
 import { PermissionSlice } from "./auth.slice";
+import { Observable, combineLatest, from, of } from "rxjs";
+import { QueryService } from "../services/query.service";
 
 export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
     await user.reload();
@@ -10,6 +12,29 @@ export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
         role: token.claims['role'] as DbModel.UserRole || 'user', 
         userGroups: token.claims['userGroups'] as string[] || []
     }
+}
+
+export function observeAuthStateChange(afAuth: Auth): Observable<User | null> {
+    return new Observable(subscriber => {
+        const unsubscribe = afAuth.onAuthStateChanged(subscriber);
+        return unsubscribe;
+    });
+}
+
+export interface UserDetails {
+    user: DbModel.User | null;
+    claims: DbModel.AuthClaims | null;
+}
+
+export function getUserDetails(fireUser: User | null, query: QueryService): Observable<UserDetails> {
+    if (fireUser === null) {
+        return of({user: null, claims: null});
+    }
+
+    return combineLatest({
+        user: query.getUser(fireUser.email!),
+        claims: from(claimsFromUser(fireUser))
+    })    
 }
 
 

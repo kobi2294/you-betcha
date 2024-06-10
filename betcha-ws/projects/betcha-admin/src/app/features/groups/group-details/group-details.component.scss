@@ -82,6 +82,10 @@
   .customize {
     display: flex;
     flex-direction: column;
+    lib-edit-select {
+      align-self: flex-start;
+    }
+
     lib-edit-image {
       width: 175px;
       height: 175px;

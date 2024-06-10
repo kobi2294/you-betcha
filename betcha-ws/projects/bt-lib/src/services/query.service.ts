@@ -14,4 +14,9 @@ export class QueryService {
             map(md => md || {id: 'metadata', countries: [], matches: [], stages: []})
         )
     }
+
+    getUser(id: string): Observable<DbModel.User> {
+        const docReference = doc(this.firestore, `users/${id}`);
+        return docData(docReference) as Observable<DbModel.User>;
+    }
 }

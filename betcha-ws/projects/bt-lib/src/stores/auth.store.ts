@@ -1,10 +1,13 @@
-import { getState, patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
+import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
 import { initialAuthSlice } from "./auth.slice";
-import { computed, effect, inject } from "@angular/core";
+import { DestroyRef, computed, inject } from "@angular/core";
 import { Auth, Unsubscribe } from "@angular/fire/auth";
-import { canAccessAdminApp, claimsFromUser, isInProgress, permissions } from "./store.helpers";
+import { canAccessAdminApp, claimsFromUser, getUserDetails, isInProgress, observeAuthStateChange, permissions } from "./store.helpers";
 import { ApiService } from "../services/api.service";
-import { firstValueFrom } from "rxjs";
+import { firstValueFrom, switchMap, tap } from "rxjs";
+import { withDevtools } from "../utils";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { QueryService } from "../services/query.service";
 
 export const AuthStore = signalStore(
     {providedIn: 'root'},
@@ -23,26 +26,17 @@ export const AuthStore = signalStore(
     withMethods((_, afAuth = inject(Auth)) => ({
         signOut: () => afAuth.signOut()
     })),
-    withHooks((store, afAuth = inject(Auth), api = inject(ApiService)) => {
-        let sub: Unsubscribe | null = null;
-        return {
+    withHooks((store, destroyRef=inject(DestroyRef), afAuth = inject(Auth), query = inject(QueryService)) => ({
             onInit: () => {
-                sub = afAuth.onAuthStateChanged(async fireUser => {
-                    patchState(store, {fireUser});
-                    if (fireUser) {
-                        const user = await firstValueFrom(api.getUserDetails());
-                        const claims = await claimsFromUser(fireUser);
-
-                        patchState(store, {claims, user});
-                    } else {
-                        patchState(store, {claims: null, user: null});
-                    }
+                observeAuthStateChange(afAuth).pipe(
+                    takeUntilDestroyed(destroyRef), 
+                    tap(fireUser => patchState(store, {fireUser})),
+                    switchMap(fireUser => getUserDetails(fireUser, query))                    
+                ).subscribe(({user, claims}) => {
+                    patchState(store, {user, claims});
                 });
-            },
-            onDestroy: () => {
-                if (sub) {
-                    sub();
             }
         }
-    }})
+    )), 
+    withDevtools('auth store')
 )
