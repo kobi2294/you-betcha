@@ -3,6 +3,7 @@ export * from './shared.module';
 export * from './components/busy/busy.component';
 export * from './components/deco-bg/deco-bg.component';
 export * from './components/flag/flag.component';
+export * from './components/country/country.component';
 
 export * from './models/item-type.model';
 

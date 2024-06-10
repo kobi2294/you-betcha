@@ -1,15 +1,47 @@
 @if(groupsStore.selectedGroup(); as group) {
-    <div class="group">
-        <img [src]="group.logoUrl" alt="group image"/>
-        <div class="slogan">
-            <h1 *ngIf="group.slogan">{{group.slogan}}</h1>
-            <h2 *ngIf="group.message">{{group.message}}</h2>    
-        </div>
+<div class="group">
+  <img [src]="group.logoUrl" alt="group image" />
+  <h1 *ngIf="group.slogan">{{ group.slogan }}</h1>
+  <h2 *ngIf="group.message">{{ group.message }}</h2>
+</div>
 
+<div class="next" *ngIf="metadataStore.next() as upNext">
+  <h3>Coming Up!
+    <div class="time-remaining">
+        <div class="days box">
+          <div class="value">{{ upNext.days }}</div>
+          <div class="label">Days</div>
+        </div>
+        :
+        <div class="hours box">
+          <div class="value">{{ upNext.hours }}</div>
+          <div class="label">Hrs</div>
+        </div>
+        :
+        <div class="minutes box">
+          <div class="value">{{ upNext.minutes }}</div>
+          <div class="label">Mins</div>
+        </div>
+      </div>    
+  </h3>
+  <div class="match">
+    <lib-country [name]="upNext.home!" />
+    <div class="details">
+      <span class="stage"
+        >{{ upNext.stage }}
+        <span class="points">({{ upNext.points }} pts)</span></span
+      >
+      <div class="time">{{ upNext.date | date : "MMM d HH:mm" }}</div>
     </div>
+    <lib-country [name]="upNext.away"/>
+  </div>
+</div>
+
 } @else {
-    <div class="no-group">
-        <h1>Welcome to You Betcha</h1>
-        <h2>To play please refer to your group admin for a link to join in the group</h2>    
-    </div>
+<div class="no-group">
+  <h1>Welcome to You Betcha</h1>
+  <h2>
+    To play please refer to your group admin for a link to join in the group
+  </h2>
+</div>
 }

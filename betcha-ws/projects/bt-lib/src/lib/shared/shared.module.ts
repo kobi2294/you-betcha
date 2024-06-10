@@ -21,11 +21,13 @@ import { IconButtonDirective } from "./directives/icon-button.directive";
 import { SelectAndFocusDirective } from "./directives/select-and-focus.directive";
 import { SelectOnFocusDirective } from "./directives/select-on-focus.directive";
 import { FlagComponent } from "./components/flag/flag.component";
+import { CountryComponent } from "./components/country/country.component";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
     BusyComponent, 
     FlagComponent,
+    CountryComponent
 ]
 
 const privateDeclared: Type<any>[] = [
