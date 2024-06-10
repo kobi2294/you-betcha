@@ -2,9 +2,12 @@
     display: flex;
     position: relative;
 
+
     img {
         object-fit: cover;
         cursor: pointer;
+        border-radius: var(--lib-edit-border-radius, 0px);
+        border: 2px solid var(--lib-edit-border-color, transparent);
     }
 
     mat-icon {

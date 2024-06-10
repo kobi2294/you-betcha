@@ -26,6 +26,11 @@ export class ApiService {
     private _updateMetadata = httpsCallableData<Partial<DbModel.Metadata>, void>(this.functions, 'updateMetadata');
     private _joinGroup = httpsCallableData<string, DbModel.Group>(this.functions, 'joinGroup');
     private _setUserGuess = httpsCallableData<Api.SetUserGuessRequest, void>(this.functions, 'setUserGuess');
+    private _uploadUserProfileImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadUserProfileImage');
+    private _setUserDisplayName = httpsCallableData<string, void>(this.functions, 'setUserDisplayName');
+
+    
+
     getUserDetails(): Observable<DbModel.User> {
         return this._getUserDetails();
     }
@@ -99,6 +104,20 @@ export class ApiService {
 
     setUserGuess(matchId: string, guess: DbModel.GuessValue): Observable<void> {
         return this._setUserGuess({matchId, guess});
+    }
+
+    uploadUserProfileImage(userEmail: string, imageFile: File): Observable<void> {
+        const req$ = this.resizer.resize(imageFile, 175, 175)
+            .then(smallFile => fileToNumberArray(smallFile))
+            .then(arr => ({id: userEmail, fileType: imageFile.type as DbModel.ImageContentType, content: arr}));
+
+        return from(req$).pipe(
+            switchMap(req => this._uploadUserProfileImage(req))
+        );
+    }
+
+    setUserDisplayName(name: string): Observable<void> {
+        return this._setUserDisplayName(name);
     }
  
 }

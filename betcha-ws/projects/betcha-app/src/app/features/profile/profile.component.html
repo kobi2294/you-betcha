@@ -1,1 +1,15 @@
-<p>profile works!</p>
+<lib-busy [busy]="busy()" caption="Saving..." [showContent]="true">
+  @if(store.user(); as user) {
+  <div class="edit">
+    <lib-edit-image
+      [value]="user.photoUrl"
+      fallback="assets/images/guest.png"
+      (changed)="uploadPhoto($event)"
+    />
+    <lib-edit-string
+      [value]="user.displayName"
+      (changed)="updateDisplayName($event)"
+    ></lib-edit-string>
+  </div>
+  }
+</lib-busy>

@@ -8,8 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NotificationsService {
   private snackbar = inject(MatSnackBar);
 
-  success(message: string) {
-    this.openSnackBar(message, '', 'success-snackbar');
+  success(message: string, action: string = '') {
+    this.openSnackBar(message, action, 'success-snackbar');
   }
 
   error(err: unknown) {

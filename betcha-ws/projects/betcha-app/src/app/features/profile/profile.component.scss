@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .edit {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: min(400px, calc(100% - 20px));
+        gap: 20px;
+        padding: 20px;
+
+        lib-edit-image {
+            width: 175px;
+            height: 175px;
+            --lib-edit-border-radius: 50%;
+            --lib-edit-border-color: var(--p-700);
+        }
+
+        lib-edit-string {
+            align-self: stretch;
+            font-size: 36px;
+            color: var(--p-700);
+        }
+    }
+}

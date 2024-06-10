@@ -130,3 +130,13 @@ export const setUserGuess = onCall<Api.SetUserGuessRequest, Promise<void>>(optio
   const api = getUserApi(req.auth);
   return api.setGuess(req.data.matchId, req.data.guess);
 });
+
+export const uploadUserProfileImage = onCall<Api.UploadFileRequest, Promise<void>>(options, req => {
+  const api = getUserApi(req.auth);
+  return api.uploadProfileImage(req.data.content, req.data.fileType);
+});
+
+export const setUserDisplayName = onCall<string, Promise<void>>(options, req => {
+  const api = getUserApi(req.auth);
+  return api.setDisplayName(req.data);
+});
