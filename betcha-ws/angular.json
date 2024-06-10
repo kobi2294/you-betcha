@@ -42,6 +42,7 @@
             "tsConfig": "projects/betcha-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "projects/betcha-app/src/manifest.webmanifest",
               "projects/betcha-app/src/favicon.ico",
               "projects/betcha-app/src/assets", 
               {
@@ -57,7 +58,6 @@
               "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
               "node_modules/material-icons/iconfont/material-icons.css", 
               "node_modules/material-symbols/index.scss"
-
             ],
             "scripts": []
           },

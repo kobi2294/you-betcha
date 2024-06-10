@@ -1,6 +1,16 @@
-<h1>You Betcha</h1>
-<h2>Ver {{version}}, Env: {{env}}</h2>
-
-<pre>
-    Message : {{msg$ | async | json}}
-</pre>
+<lib-deco-bg>
+    @if (authStore.isInProgress()) {
+      <lib-busy-page/>
+    } @else { @if (authStore.loginRequired()) {
+    <lib-login-page />
+    } @else {
+      <lib-sk-nav>
+        <lib-toolbar/>
+        <lib-nav-bar>
+            <lib-nav-item caption="Home" page="home" icon="home"/>
+        </lib-nav-bar>  
+      </lib-sk-nav>
+    } }    
+  </lib-deco-bg>
+  
+  

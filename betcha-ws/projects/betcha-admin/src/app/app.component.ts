@@ -9,7 +9,7 @@ import { ForbiddenComponent } from "./components/forbidden/forbidden.component";
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     providers: [],
-    imports: [RouterModule, SharedModule, PagesModule, ForbiddenComponent]
+    imports: [SharedModule, PagesModule, ForbiddenComponent]
 })
 export class AppComponent {
   authStore = inject(AuthStore)
