@@ -1,10 +1,12 @@
 :host {
-    display: flex;
+    display: grid;
     position: relative;
 
 
     img {
         object-fit: cover;
+        width: 100%;
+        height: 100%;
         cursor: pointer;
         border-radius: var(--lib-edit-border-radius, 0px);
         border: 2px solid var(--lib-edit-border-color, transparent);

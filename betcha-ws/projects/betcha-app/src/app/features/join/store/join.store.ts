@@ -27,16 +27,26 @@ export const JoinStore = signalStore(
         onInit: () => {
             effect(() => {
                 const group = store.joinedGroup();
-                const userGroups = auth.user()?.groups || [];
                 if (group === undefined) {
                     return;
                 }
-
-                if ((group === null) || (!!userGroups.includes(group.id))) {
-                    if (group !== null) { groupsStore.setSelectedGroup(group.id) }                    
+                if (group === null) {   // failed to join group - so move to home
                     router.navigate(['home']);
                     return;
                 }
+
+                // ok so if we got here, we have succesfully joined the group. Nowe we can leave the 
+                // page when both the user groups and claim groups contain the new group
+
+                const userGroups = auth.user()?.groups || [];
+                const claimGroups = auth.claims()?.userGroups || [];
+
+                if (userGroups.includes(group.id) && claimGroups.includes(group.id)) {
+                    groupsStore.setSelectedGroup(group.id);
+                    router.navigate(['home']);
+                }
+
+                // otherwise, we wait for the next change
             })
         }
     }))

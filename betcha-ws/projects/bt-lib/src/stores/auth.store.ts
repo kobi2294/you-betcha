@@ -1,13 +1,15 @@
 import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
 import { initialAuthSlice } from "./auth.slice";
-import { DestroyRef, computed, inject } from "@angular/core";
-import { Auth, Unsubscribe } from "@angular/fire/auth";
+import { DestroyRef, computed, effect, inject } from "@angular/core";
+import { Auth, User } from "@angular/fire/auth";
 import { canAccessAdminApp, claimsFromUser, getUserDetails, isInProgress, observeAuthStateChange, permissions } from "./store.helpers";
-import { ApiService } from "../services/api.service";
-import { firstValueFrom, switchMap, tap } from "rxjs";
-import { withDevtools } from "../utils";
+import { catchError, exhaustMap, filter, from, interval, of, switchMap, takeWhile, tap } from "rxjs";
+import { filterNotNull, withDevtools } from "../utils";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { QueryService } from "../services/query.service";
+import { arrayContentEquals } from "@tscommon";
+import internal from "stream";
+import { rxMethod } from "@ngrx/signals/rxjs-interop";
 
 export const AuthStore = signalStore(
     {providedIn: 'root'},
@@ -23,19 +25,49 @@ export const AuthStore = signalStore(
         isTrustee: computed(() => store.claims()?.role === 'trustee' || store.claims()?.role === 'super'),
         isSuper : computed(() => store.claims()?.role === 'super'),
     })),    
-    withMethods((_, afAuth = inject(Auth)) => ({
-        signOut: () => afAuth.signOut()
+    withMethods((store, afAuth = inject(Auth), query = inject(QueryService)) => ({
+        signOut: () => afAuth.signOut(), 
+        refreshDetails: rxMethod<User | null>(user$ => user$.pipe(
+            tap(fireUser => patchState(store, {fireUser})),
+            switchMap(fireUser => getUserDetails(fireUser, query).pipe(
+                tap(({user, claims}) => patchState(store, {user, claims})), 
+                catchError(_ => of(null))
+            ))                    
+        )),
     })),
     withHooks((store, destroyRef=inject(DestroyRef), afAuth = inject(Auth), query = inject(QueryService)) => ({
             onInit: () => {
                 observeAuthStateChange(afAuth).pipe(
                     takeUntilDestroyed(destroyRef), 
-                    tap(fireUser => patchState(store, {fireUser})),
-                    switchMap(fireUser => getUserDetails(fireUser, query))                    
-                ).subscribe(({user, claims}) => {
-                    patchState(store, {user, claims});
-                });
+                    tap(fireUser => store.refreshDetails(fireUser)))
+                    .subscribe();
+
+                effect(() => {
+                    // when the user claims and the claims are not the same, it means we lag behind
+                    // in refreshing one of them. since the user keeps updating automatically, we dont need to 
+                    // refresh it, but we do need to refresh the claims
+
+                    const user = store.user();
+                    if (user == null) return;
+
+                    const claims = store.claims();
+                    const groups = claims?.userGroups || [];
+                    const role = claims?.role || 'user';
+
+                    if ((!claims) || (!arrayContentEquals(groups, user.groups)) || (role !== user.role)) {
+                        // user and claims are not synchronized
+                        // we register to an observable which forces refresh every 2 seconds until we are  in sync
+                        interval(2000).pipe(
+                            tap(_ => console.log('refreshing claims details')),
+                            tap(_ => store.refreshDetails(afAuth.currentUser)),
+                            takeWhile(_ => (!store.claims() || (!arrayContentEquals(store.claims()!.userGroups, store.user()?.groups??[]) || store.claims()?.role !== store.user()?.role)))
+                        ).subscribe();
+                    }
+
+                })
             }
+
+
         }
     )), 
     withDevtools('auth store')
