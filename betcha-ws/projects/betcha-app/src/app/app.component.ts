@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, HostBinding, computed, inject } from '@angular/core';
 import { AuthStore, PagesModule, RouterStore, SharedModule } from '@lib';
 import { GroupsStore } from './stores/groups.store';
 
@@ -19,6 +19,12 @@ export class AppComponent {
 
   logout() {
     this.authStore.signOut();
+  }
+
+  @HostBinding('class')
+  get themeClass() {
+    const color = this.groupsStore.selectedGroup()?.theme || 'blue';
+    return `theme-${color}`;
   }
 
   constructor() {

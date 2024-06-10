@@ -5,3 +5,31 @@
 
 @include core.go();
 @include theme.go(pal.$blue, pal.$green);
+
+.theme-blue {
+    @include theme.go(pal.$blue, pal.$orange);
+}
+
+.theme-teal {
+    @include theme.go(pal.$teal, pal.$orange);
+}
+
+.theme-green {
+    @include theme.go(pal.$green, pal.$brown);
+}
+
+.theme-red {
+    @include theme.go(pal.$red, pal.$blue);
+}
+
+.theme-purple {
+    @include theme.go(pal.$purple, pal.$orange);
+}
+
+.theme-orange {
+    @include theme.go(pal.$orange, pal.$blue);
+}
+
+.theme-brown {
+    @include theme.go(pal.$brown, pal.$green);
+}
