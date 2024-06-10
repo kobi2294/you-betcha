@@ -22,12 +22,15 @@ import { SelectAndFocusDirective } from "./directives/select-and-focus.directive
 import { SelectOnFocusDirective } from "./directives/select-on-focus.directive";
 import { FlagComponent } from "./components/flag/flag.component";
 import { CountryComponent } from "./components/country/country.component";
+import { OnOffPendingButtonComponent } from "./components/on-off-pending-button/on-off-pending-button.component";
+import { MatCardModule } from "@angular/material/card";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
     BusyComponent, 
     FlagComponent,
-    CountryComponent
+    CountryComponent, 
+    OnOffPendingButtonComponent
 ]
 
 const privateDeclared: Type<any>[] = [
@@ -54,6 +57,7 @@ const publicImports: Type<any>[] = [
     MatFormFieldModule, 
     MatSnackBarModule,
     MatInputModule, 
+    MatCardModule,
     ScrollingModule, 
     ClipboardModule
 ]

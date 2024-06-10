@@ -1,5 +1,25 @@
-import { DbModel } from "@tscommon";
-import { ComingUp } from "./metadata.slice";
+import { DbModel, toRecord } from "@tscommon";
+import { ComingUp, Guess } from "./metadata.slice";
+
+export function nextGuesses(matches: DbModel.Match[], stages: DbModel.Stage[], guesses: Record<string, DbModel.GuessValue>): Guess[] {
+    const now = Date.now();
+    const futureMatches = matches
+        .filter((m) => Date.parse(m.date) > now)
+        .filter(m => !!m.home && !!m.away);
+    const statesMap = toRecord(stages, (s) => s.id);
+    return futureMatches.map((m) => {
+        return {
+            matchId: m.id,
+            guess: guesses[m.id] || null,
+            matchDate: Date.parse(m.date),
+            home: m.home!,
+            away: m.away!,
+            stage: statesMap[m.stage].displayName!, 
+        };
+    });
+
+}
+
 
 export function nextMatch(matches: DbModel.Match[], stages: DbModel.Stage[]): ComingUp | null {
     // by date, find the closest match to now

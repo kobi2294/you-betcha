@@ -26,6 +26,7 @@
 
         img {
             width: min(calc(100% - 20px), 175px);
+            max-height: 175px;
             object-fit: cover;
             border: 1px solid var(--p-800);
             box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);

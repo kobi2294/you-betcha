@@ -5,7 +5,16 @@ export interface MetadataSlice {
     countries: string[];
     stages: DbModel.Stage[];
     next: ComingUp | null;
+    guesses: Guess[]
+}
 
+export interface Guess { 
+    readonly matchId: string;
+    readonly guess: DbModel.GuessValue | null;
+    readonly matchDate: number;
+    readonly home: string;
+    readonly away: string;
+    readonly stage: string;
 }
 
 export interface ComingUp {
@@ -24,5 +33,6 @@ export const initialMetadataSlice: MetadataSlice = {
     matches: [], 
     countries: [],
     stages: [], 
-    next: null
+    next: null, 
+    guesses: []
 };
