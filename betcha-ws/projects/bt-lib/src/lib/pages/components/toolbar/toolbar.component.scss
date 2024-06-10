@@ -17,22 +17,19 @@
     }
 
     h1 {
-        font-size: 36px;
+        font-size: 20px;
         min-width: max-content;
 
-        &.admin {
-            font-size: 24px;
-        }
     }
 
     h3 {
-        font-size: 12px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 1;
-        color: var(--a-700);
     }
 
     .end {
+        display: flex;
         margin-inline-start: auto;
     }
 }

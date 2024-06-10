@@ -4,7 +4,7 @@ import { DestroyRef, computed, inject } from "@angular/core";
 import { AuthStore, QueryService, withDevtools } from "@lib";
 import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
 import { catchError, debounceTime, filter, forkJoin, map, of, switchMap, tap } from "rxjs";
-import { fixSelectedGroup } from "./groups.helper";
+import { fixSelectedGroup, getSelectedGroup } from "./groups.helper";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
 
 export const GroupsStore = signalStore(
@@ -17,7 +17,8 @@ export const GroupsStore = signalStore(
         )),
     })),    
     withComputed(store => ({
-        selectedGroup: computed(() => store.groups()[store.selectedGroupId()]),
+        selectedGroup: computed(() => getSelectedGroup(store.groups(), store.selectedGroupId())),
+        groupsArray: computed(() => Object.values(store.groups()).sort((a, b) => a.displayName.localeCompare(b.displayName))),
     })),
     withHooks((store, auth=inject(AuthStore), query = inject(QueryService), destroyRef = inject(DestroyRef)) => ({
         onInit: () => {

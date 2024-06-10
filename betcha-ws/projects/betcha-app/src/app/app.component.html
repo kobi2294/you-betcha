@@ -5,7 +5,21 @@
     <lib-login-page />
     } @else {
       <lib-sk-nav>
-        <lib-toolbar/>
+        <lib-toolbar>
+          <div class="group" [mat-menu-trigger-for]="menu" [class.disabled]="groupsStore.groupsArray().length <= 1">
+            <mat-icon>group</mat-icon>
+            {{groupsStore.selectedGroup()?.displayName ?? 'No Group'}}
+            <mat-icon *ngIf="groupsStore.groupsArray().length > 1">arrow_drop_down</mat-icon>
+          </div>
+          <mat-menu #menu>
+            @for(group of groupsStore.groupsArray(); track group.id) {
+              <button mat-menu-item (click)="groupsStore.setSelectedGroup(group.id)">
+                <mat-icon>group</mat-icon>
+                {{group.displayName}}
+              </button>
+            }
+          </mat-menu>
+        </lib-toolbar>
         <lib-nav-bar *ngIf="!hideNavBar()">
             <lib-nav-item caption="Home" page="home" icon="home"/>
         </lib-nav-bar>  

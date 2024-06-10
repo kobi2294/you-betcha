@@ -1,5 +1,29 @@
 :host {
     display: flex;
     flex-direction: column;
+
+    .group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-self: center;
+        margin: 0px 6px;
+        padding: 2px;
+        cursor: pointer;
+
+        &.disabled {
+            cursor: unset;
+            pointer-events: none;
+        }
+        
+        mat-icon {
+            margin-inline-end: 4px;
+        }
+
+        user-select: none;
+        &:hover {
+            background-color: var(--p-300);
+        }
+    }
 }
 

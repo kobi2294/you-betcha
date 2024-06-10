@@ -1,9 +1,23 @@
 <mat-icon symbol>sports_soccer</mat-icon>
 <div class="title">
-  <h1 [class.admin]="admin()">You Betcha</h1>
-  <h3 *ngIf="admin()">Admin</h3>
+  <h1>
+    @if(admin()) {
+      You Betcha
+    } @else {
+      You  
+    }
+  </h1>
+  <h3>
+    @if(admin()) {
+      Admin
+    } @else {
+      Betcha      
+    }
+  </h3>
 </div>
+
 <div class="end">
+  <ng-content/>
   <lib-profile-pic [matMenuTriggerFor]="menu" />
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="store.signOut()">Sign out</button>
