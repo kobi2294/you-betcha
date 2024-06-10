@@ -33,7 +33,7 @@ export const JoinStore = signalStore(
                 }
 
                 if ((group === null) || (!!userGroups.includes(group.id))) {
-                    if (group !== null) { groupsStore.setSelectedGroup(group.id) }
+                    if (group !== null) { groupsStore.setSelectedGroup(group.id) }                    
                     router.navigate(['home']);
                     return;
                 }

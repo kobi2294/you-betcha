@@ -67,6 +67,12 @@
 
   .quota {
     --lib-edit-max-width: min(150px, calc(100% - 30px));
+    display: flex;
+    flex-direction: column;
+
+    lib-edit-select {
+      align-self: flex-start;
+    }
 
     .key-value {
         display: flex;

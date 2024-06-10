@@ -59,7 +59,9 @@
               "node_modules/material-icons/iconfont/material-icons.css", 
               "node_modules/material-symbols/index.scss"
             ],
-            "scripts": []
+            "scripts": [], 
+            "serviceWorker": "ngsw-config.json"
+
           },
           "configurations": {
             "prod": {
@@ -346,7 +348,8 @@
               "node_modules/material-symbols/index.scss"
             
             ],
-            "scripts": []
+            "scripts": [], 
+            "serviceWorker": "ngsw-config.json"
           },
           "configurations": {
             "prod": {

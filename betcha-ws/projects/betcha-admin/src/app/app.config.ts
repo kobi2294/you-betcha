@@ -15,7 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideFirebaseServices(environment.firebaseConfig, environment.simulation),
     provideLoginUi(),
     provideServiceWorker('ngsw-worker.js', {
-        enabled: !isDevMode(),
+        // enabled: !isDevMode(),
+        enabled: true,
         registrationStrategy: 'registerWhenStable:30000'
     })
 ]
