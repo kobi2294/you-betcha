@@ -25,7 +25,7 @@ export class ApiService {
     private _setUserRole = httpsCallableData<Api.SetUserRoleRequest, void>(this.functions, 'setUserRole');
     private _updateMetadata = httpsCallableData<Partial<DbModel.Metadata>, void>(this.functions, 'updateMetadata');
     private _joinGroup = httpsCallableData<string, DbModel.Group>(this.functions, 'joinGroup');
-
+    private _setUserGuess = httpsCallableData<Api.SetUserGuessRequest, void>(this.functions, 'setUserGuess');
     getUserDetails(): Observable<DbModel.User> {
         return this._getUserDetails();
     }
@@ -95,6 +95,10 @@ export class ApiService {
 
     joinGroup(secret: string): Observable<DbModel.Group> {
         return this._joinGroup(secret);
+    }
+
+    setUserGuess(matchId: string, guess: DbModel.GuessValue): Observable<void> {
+        return this._setUserGuess({matchId, guess});
     }
  
 }

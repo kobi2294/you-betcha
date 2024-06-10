@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { MetadataStore } from '../../stores/metadata.store';
-import { SharedModule } from '@lib';
+import { ApiService, SharedModule } from '@lib';
 import { DbModel } from '@tscommon';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-guesses',
@@ -12,9 +13,10 @@ import { DbModel } from '@tscommon';
 })
 export default class GuessesComponent {
   readonly store = inject(MetadataStore);
+  readonly api = inject(ApiService);
 
-  setGuess(matchId: string, guess: DbModel.GuessValue) {
-    
+  async setGuess(matchId: string, guess: DbModel.GuessValue) {
+    await firstValueFrom(this.api.setUserGuess(matchId, guess));
 
   }
 

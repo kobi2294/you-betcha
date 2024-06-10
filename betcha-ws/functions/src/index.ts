@@ -125,3 +125,8 @@ export const userCreateTrigger = functions.auth.user().onCreate(async user => {
   const api = getAutomaticApi(authorize.upgrateToSuper(null));
   await api.onNewUserCreated(user);
 });
+
+export const setUserGuess = onCall<Api.SetUserGuessRequest, Promise<void>>(options, req => {
+  const api = getUserApi(req.auth);
+  return api.setGuess(req.data.matchId, req.data.guess);
+});

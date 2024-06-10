@@ -6,6 +6,7 @@ import { GroupInfo } from "./group-info.model";
 import { SetGroupBlockedRequest } from "./set-group-blocked.api";
 import { SetGroupDisplayNameRequest } from "./set-group-display-name.api";
 import { SetGroupUsersLimitRequest } from "./set-group-users.limit.api";
+import { SetUserGuessRequest } from "./set-user-guess.api";
 import { SetUserRoleRequest } from "./set-user-role.api";
 import { UploadFileRequest } from "./upload-file.api";
 import { UserInfo } from "./user-info.model";
@@ -21,6 +22,7 @@ export {
     GetGroupForAdminResponse, 
     UploadFileRequest, 
     AddRemoveGroupAdminRequest, 
-    SetUserRoleRequest
+    SetUserRoleRequest, 
+    SetUserGuessRequest
 
 }
