@@ -1,6 +1,6 @@
 @if(groupsStore.selectedGroup(); as group) {
 <div class="group">
-  <img [src]="group.logoUrl" alt="group image" />
+  <img [src]="group.logoUrl" altImage="assets/images/logo-placeholder.png" alt="group image" />
   <h1 *ngIf="group.slogan">{{ group.slogan }}</h1>
   <h2 *ngIf="group.message">{{ group.message }}</h2>
 </div>

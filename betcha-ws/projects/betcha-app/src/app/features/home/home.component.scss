@@ -2,6 +2,8 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    max-width: 600px;
     .no-group {
         display: flex;
         flex-direction: column;
