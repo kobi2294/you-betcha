@@ -36,16 +36,20 @@ export function getUserApi(authData: MaybeAuthData) {
         await dal.users.updateOne(auth.email, _ => ({ photoUrl: url }));
     }
 
-    async function _joinGroup(groupSecret: string) {
+    async function _joinGroup(groupSecret: string): Promise<DbModel.Group> {
         const group = await dal.groups.getBySecret(groupSecret);
         if (!group) throw notFound('Group does not exist');
 
         const user = (await dal.users.getOne(auth.email))!;
-        const dalAuth = getDalAuth();
+        if (!user.groups.includes(group.id)) {
+            const dalAuth = getDalAuth();
         
-        const userGroups = arrayWith(user?.groups, group.id);
-        await dal.users.updateOne(auth.email, _ => ({ groups: userGroups }));
-        await dalAuth.addUserToGroup(auth.email, group.id);
+            const userGroups = arrayWith(user?.groups, group.id);
+            await dal.users.updateOne(auth.email, _ => ({ groups: userGroups }));
+            await dalAuth.addUserToGroup(auth.email, group.id);    
+        }
+
+        return group;
     }
 
     async function _leaveGroup(groupId: string) {

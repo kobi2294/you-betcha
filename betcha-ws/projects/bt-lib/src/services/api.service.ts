@@ -24,6 +24,7 @@ export class ApiService {
     private _searchUsers = httpsCallableData<string, DbModel.User[]>(this.functions, 'searchUsers');
     private _setUserRole = httpsCallableData<Api.SetUserRoleRequest, void>(this.functions, 'setUserRole');
     private _updateMetadata = httpsCallableData<Partial<DbModel.Metadata>, void>(this.functions, 'updateMetadata');
+    private _joinGroup = httpsCallableData<string, DbModel.Group>(this.functions, 'joinGroup');
 
     getUserDetails(): Observable<DbModel.User> {
         return this._getUserDetails();
@@ -90,6 +91,10 @@ export class ApiService {
 
     updateMetadata(metadata: Partial<DbModel.Metadata>): Observable<void> {
         return this._updateMetadata(metadata);
+    }
+
+    joinGroup(secret: string): Observable<DbModel.Group> {
+        return this._joinGroup(secret);
     }
  
 }

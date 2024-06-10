@@ -14,6 +14,9 @@ import { Api, DbModel } from './common/public-api';
 import { CreateGroupRequest } from './common/models/api/create-group.api';
 import { getSuperApi } from './apis/super.api';
 import { getGroupAdminApi } from './apis/group-admin.api';
+import * as functions from 'firebase-functions';
+import { getAutomaticApi } from './apis/automatic.api';
+import { authorize } from './common/api/authorize';
 
 
 initializeApp();
@@ -111,4 +114,14 @@ export const setUserRole = onCall<Api.SetUserRoleRequest, Promise<void>>(options
 export const updateMetadata = onCall<Partial<DbModel.Metadata>, Promise<void>>(options, req => {
   const api = getSuperApi(req.auth);
   return api.updateMetadata(req.data);
+});
+
+export const joinGroup = onCall<string, Promise<DbModel.Group>>(options, req => {
+  const api = getUserApi(req.auth);
+  return api.joinGroup(req.data);
+});
+
+export const userCreateTrigger = functions.auth.user().onCreate(async user => {
+  const api = getAutomaticApi(authorize.upgrateToSuper(null));
+  await api.onNewUserCreated(user);
 });
