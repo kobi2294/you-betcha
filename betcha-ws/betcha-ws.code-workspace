@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "betcha-ws",
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#18511f",
+			"titleBar.activeBackground": "#21713d",
+			"titleBar.activeForeground": "#fcfefd"
+		}
+	}
+}

@@ -6,6 +6,32 @@
     padding: 4px;
     background-color: var(--p-100);
     color: var(--p-700);
+    position: relative;
+
+    .env {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        inset-inline-start: 14px;
+        border-radius: 50%;
+        border: 1px solid darkred;
+        color: darkred;
+        background-color: white;
+        font-weight: bold;
+        font-size: 20px;
+
+        &.env-dev {
+            background-color: white;
+            color: green;
+            border: 1px solid green;
+        
+        }
+
+    }
 
     .title {
         display: flex;

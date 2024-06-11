@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
-    provideVersion(),
+    provideVersion(environment),
     provideFirebaseServices(environment.firebaseConfig, environment.simulation),   
   ]
 };

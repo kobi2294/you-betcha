@@ -1,6 +1,6 @@
 {
   "name": "betcha-ws",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve betcha-app\" \"ng serve betcha-dashboard\" \"ng serve betcha-admin\"",

@@ -16,6 +16,7 @@ export class AppComponent {
 
   readonly routerStore = inject(RouterStore);
   readonly hideNavBar = computed(() => Boolean(this.routerStore.data()['hideNavBar']));
+  readonly isPublic = computed(() => Boolean(this.routerStore.data()['public']));
 
   logout() {
     this.authStore.signOut();

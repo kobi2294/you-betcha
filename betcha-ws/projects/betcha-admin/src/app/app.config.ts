@@ -9,7 +9,7 @@ import { provideServiceWorker } from '@angular/service-worker';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
-    provideVersion(),
+    provideVersion(environment),
     provideLib(),
     providePwa(),
     provideFirebaseServices(environment.firebaseConfig, environment.simulation),

@@ -1,4 +1,5 @@
 <mat-icon symbol>sports_soccer</mat-icon>
+<span class="env" [ngClass]="'env-' + env" *ngIf="envLabel">{{envLabel}}</span>
 <div class="title">
   <h1>
     @if(admin()) {
