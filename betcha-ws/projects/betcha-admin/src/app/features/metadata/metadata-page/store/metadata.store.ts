@@ -11,7 +11,6 @@ import {
   NotificationsService,
   QueryService,
   withDevtools,
-  withLoad,
   withLoadState,
 } from '@lib';
 import { inject } from '@angular/core';
