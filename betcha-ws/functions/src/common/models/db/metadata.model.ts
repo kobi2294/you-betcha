@@ -5,7 +5,7 @@ export interface Metadata {
     matches: Match[];
     stages: Stage[];
     countries: string[];
-    statistics: MatchStatistics[];
+    statistics: Record<string, MatchStatistics>;
 }
 
 export const defaultMetadata: Metadata = {
@@ -13,7 +13,7 @@ export const defaultMetadata: Metadata = {
     matches: [],
     stages: [],
     countries: [], 
-    statistics: []
+    statistics: {}
 }
 
 export type MatchStatistics = Record<GuessValue, number>;

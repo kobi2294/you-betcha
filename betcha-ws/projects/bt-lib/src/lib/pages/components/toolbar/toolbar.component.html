@@ -21,6 +21,14 @@
   <ng-content/>
   <lib-profile-pic [matMenuTriggerFor]="menu" />
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="store.signOut()">Sign out</button>
+    <div class="menu-container">
+      <lib-profile-pic/>
+      <h3>{{store.user()!.displayName}}</h3>
+      <p>{{store.user()!.id}}</p>
+    <button mat-menu-item color="primary" (click)="store.signOut()">
+        <mat-icon>logout</mat-icon>
+        Sign out
+      </button>  
+    </div>
   </mat-menu>
 </div>

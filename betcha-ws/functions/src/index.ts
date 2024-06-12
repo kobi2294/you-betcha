@@ -8,6 +8,7 @@
  */
 
 import { CallableOptions, onCall } from 'firebase-functions/v2/https';
+import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { getUserApi } from './apis/user.api';
 import { initializeApp } from 'firebase-admin/app';
 import { Api, DbModel } from './common/public-api';
@@ -17,6 +18,7 @@ import { getGroupAdminApi } from './apis/group-admin.api';
 import * as functions from 'firebase-functions';
 import { getAutomaticApi } from './apis/automatic.api';
 import { authorize } from './common/api/authorize';
+import { getTrusteeApi } from './apis/trustee.api';
 
 
 initializeApp();
@@ -145,3 +147,30 @@ export const resetCalculatedGroups = onCall<void, Promise<void>>(options, req =>
   const api = getSuperApi(req.auth);
   return api.resetAllCalculatedGroups();
 });
+
+export const calculateForMatches = onCall<void, Promise<void>>({...options, memory: "2GiB"}, req => {
+  const api = getTrusteeApi(req.auth);
+  return api.calculateForMatches();
+});
+
+export const resetAllMatchCalculations = onCall<void, Promise<void>>({...options, memory: "2GiB"}, req => {
+  const api = getTrusteeApi(req.auth);
+  return api.resetAllMatchCalculations();
+})
+
+
+export const publishScores = onSchedule({schedule: '0 * * * *', memory: '2GiB', region: 'europe-west3'}, async () => {
+  console.log('Publishing scores');
+  const token = await authorize.upgrateToSuper(null);
+  const api = getTrusteeApi(token);
+
+  await api.calculateForMatches();
+  await new Promise(res => setTimeout(res, 3000));
+  await api.calculateForMatches();
+  await new Promise(res => setTimeout(res, 3000));
+  await api.calculateForMatches();
+
+});
+
+
+

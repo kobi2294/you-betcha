@@ -10,12 +10,12 @@ import {
   NotificationsService,
   QueryService,
   withDevtools,
-  withLoadState,
   withQuery,
 } from '@lib';
 import { inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { validatePartialMetadata } from './metadata.validator';
+import { DbModel } from '@tscommon';
 
 export const MetadataStore = signalStore(
   withState(initialMetadataSlice),
@@ -28,12 +28,16 @@ export const MetadataStore = signalStore(
     ) => ({
       startEdit: () => patchState(store, { isEditing: true }),
       save: async (str: string) => {
-        store.setLoading();
-        
+        store.setLoading();        
         try {
           const obj = JSON.parse(str) as any;
           if (validatePartialMetadata(obj)) {
-            await firstValueFrom(api.updateMetadata(obj));
+            const md = {
+              ...DbModel.defaultMetadata, 
+              ...{matches: store.matches(), stages: store.stages(), countries: store.countries()},
+              ...obj
+            }
+            await firstValueFrom(api.updateMetadata(md));
             notify.success('Metadata updated');
             patchState(store, { isEditing: false, loadState: 'idle' });
           } else {

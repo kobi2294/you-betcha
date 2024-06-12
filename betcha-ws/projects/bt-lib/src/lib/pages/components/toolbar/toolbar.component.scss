@@ -58,4 +58,29 @@
         display: flex;
         margin-inline-start: auto;
     }
+
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 4px;
+    padding: 4px;
+
+    lib-profile-pic {
+        align-self: center;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 4px;
+    }
+
+    h3 {
+        color: var(--p-700);
+        align-self: center;  
+    }
+    p {
+        color: var(--p-500);
+        align-self: center;
+    }
+
 }

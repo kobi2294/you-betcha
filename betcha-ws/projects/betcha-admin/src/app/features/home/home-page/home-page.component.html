@@ -1,8 +1,14 @@
 <lib-busy [busy]="busy()" caption="Please wait...">
     <div class="content">
-        <div class="tools" *ngIf="authStore.isSuper()">
-            <button mat-raised-button color="accent" (click)="resetAllCalculatedGroups()">
+        <div class="tools" *ngIf="authStore.isTrustee()">
+            <button mat-raised-button color="accent" (click)="resetAllCalculatedGroups()" *ngIf="authStore.isSuper()">
                 Reset Calculated Groups
+            </button>
+            <button mat-raised-button color="accent" (click)="calculateForMatches()">
+                Publish Available Data
+            </button>
+            <button mat-raised-button color="warn" (click)="resetAllMatchCalculations()">
+                Reset All Match Calculations
             </button>
         </div>
         

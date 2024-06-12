@@ -29,7 +29,36 @@ export default class HomePageComponent {
       finally {
         this.busy.set(false);
       }
+    }
 
+    async calculateForMatches() {
+      this.busy.set(true);
+      try {
+        await firstValueFrom(this.api.calculateForMatches());
+        this.notifications.success('Calculations completed', 'Ok');
+      }
+      catch (err) {
+        console.error(err);
+        this.notifications.error(err);
+      }
+      finally {
+        this.busy.set(false);
+      }
+    }
+
+    async resetAllMatchCalculations() {
+      this.busy.set(true);
+      try {
+        await firstValueFrom(this.api.resetAllMatchCalculations());
+        this.notifications.success('All match calculations have been reset', 'Ok');
+      }
+      catch (err) {
+        console.error(err);
+        this.notifications.error(err);
+      }
+      finally {
+        this.busy.set(false);
+      }
     }
 
 }

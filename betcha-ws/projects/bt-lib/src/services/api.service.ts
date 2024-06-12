@@ -29,6 +29,8 @@ export class ApiService {
     private _uploadUserProfileImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadUserProfileImage');
     private _setUserDisplayName = httpsCallableData<string, void>(this.functions, 'setUserDisplayName');
     private _resetCalculatedGroups = httpsCallableData<void, void>(this.functions, 'resetCalculatedGroups');
+    private _calculateForMatches = httpsCallableData<void, void>(this.functions, 'calculateForMatches');
+    private _resetAllMatchCalculations = httpsCallableData<void, void>(this.functions, 'resetAllMatchCalculations');
 
     
 
@@ -123,6 +125,14 @@ export class ApiService {
 
     resetCalculatedGroups(): Observable<void> {
         return this._resetCalculatedGroups();
+    }
+
+    calculateForMatches(): Observable<void> {
+        return this._calculateForMatches();
+    }
+
+    resetAllMatchCalculations(): Observable<void> {
+        return this._resetAllMatchCalculations();
     }
  
 }
