@@ -2,13 +2,12 @@ import { patchState, signalStore, withComputed, withHooks, withMethods, withStat
 import { initialAuthSlice } from "./auth.slice";
 import { DestroyRef, computed, effect, inject } from "@angular/core";
 import { Auth, User } from "@angular/fire/auth";
-import { canAccessAdminApp, claimsFromUser, getUserDetails, isInProgress, observeAuthStateChange, permissions } from "./store.helpers";
-import { catchError, exhaustMap, filter, from, interval, of, switchMap, takeWhile, tap } from "rxjs";
-import { filterNotNull, withDevtools } from "../utils";
+import { canAccessAdminApp, getUserDetails, isInProgress, observeAuthStateChange, permissions } from "../router/store.helpers";
+import { catchError, interval, of, switchMap, takeWhile, tap } from "rxjs";
+import { withDevtools } from "../../utils";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { QueryService } from "../services/query.service";
+import { QueryService } from "../../services/query.service";
 import { arrayContentEquals } from "@tscommon";
-import internal from "stream";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
 
 export const AuthStore = signalStore(

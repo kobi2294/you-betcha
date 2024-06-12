@@ -1,28 +1,28 @@
-@for(match of store.guesses(); track match.matchId) {
+@for(match of store.guesses() ; track match.id) {
 <div class="card">
   <div class="card-header">
-    {{ match.stage }}: {{ match.matchDate | date : "MMMM dd, HH:mm" }}
+    {{ match.stageName }}: {{ match.date | date : "MMMM dd, HH:mm" }}
   </div>
   <div class="card-content">
     <lib-country [name]="match.home" />
     <lib-on-off-pending-button
       [clickWhenOn]="false"
       [value]="match.guess === 'home'"
-      (change)="setGuess(match.matchId, 'home')"
+      (change)="store.setGuess(match.id, 'home')"
       >Home</lib-on-off-pending-button
     >
 
     <lib-on-off-pending-button
       [clickWhenOn]="false"
       [value]="match.guess === 'tie'"
-      (change)="setGuess(match.matchId, 'tie')"
+      (change)="store.setGuess(match.id, 'tie')"
       >Tie</lib-on-off-pending-button
     >
 
     <lib-on-off-pending-button
       [clickWhenOn]="false"
       [value]="match.guess === 'away'"
-      (change)="setGuess(match.matchId, 'away')"
+      (change)="store.setGuess(match.id, 'away')"
       >Away</lib-on-off-pending-button
     >
     <lib-country [name]="match.away" />

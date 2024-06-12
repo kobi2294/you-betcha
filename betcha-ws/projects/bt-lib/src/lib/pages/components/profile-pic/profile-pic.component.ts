@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthStore } from '../../../../stores/auth.store';
+import { AuthStore } from '../../../../stores/auth/auth.store';
 
 @Component({
   selector: 'lib-profile-pic',

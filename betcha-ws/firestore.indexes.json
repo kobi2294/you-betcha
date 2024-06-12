@@ -43,13 +43,28 @@
     }, 
     {
       "collectionGroup": "calculated-groups", 
-      "fieldPath": "matchScores",
+      "fieldPath": "users",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "calculated-group-match-scores", 
+      "fieldPath": "userScores",
       "indexes": []
     }, 
     {
-      "collectionGroup": "calculated-matches", 
-      "fieldPath": "statistics",
+      "collectionGroup": "calculated-group-match-scores", 
+      "fieldPath": "points",
+      "indexes": []
+    }, 
+    {
+      "collectionGroup": "calculated-group-match-scores", 
+      "fieldPath": "stageName",
+      "indexes": []
+    }, 
+    {
+      "collectionGroup": "calculated-group-match-scores", 
+      "fieldPath": "date",
       "indexes": []
     }
-  ]
+]
 }

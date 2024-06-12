@@ -1,9 +1,6 @@
-import { Component, effect, inject } from '@angular/core';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { AuthStore, QueryService, SharedModule } from '@lib';
-import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
-import { GroupsStore } from '../../stores/groups.store';
-import { MetadataStore } from '../../stores/metadata.store';
+import { Component, inject } from '@angular/core';
+import { SharedModule } from '@lib';
+import { HomeStore } from './store/home.store';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +8,8 @@ import { MetadataStore } from '../../stores/metadata.store';
   imports: [SharedModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  providers: [HomeStore]
 })
 export default class HomeComponent {
-  readonly groupsStore = inject(GroupsStore);
-  readonly metadataStore = inject(MetadataStore);
+  readonly store = inject(HomeStore);
 }

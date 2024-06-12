@@ -58,7 +58,7 @@ export function getDal() {
       getAllInGroup: _getUsersInGroup
     },
     calculatedGroups: _collectionMethods('calculated-groups'),
-    calculatedGroupMatches: _collectionMethods('calculated-group-matches'),
+    calculatedGroupMatchScores: _collectionMethods('calculated-group-match-scores'),
     clearAllData: access.clearAllData,
     file: access.file,
   };

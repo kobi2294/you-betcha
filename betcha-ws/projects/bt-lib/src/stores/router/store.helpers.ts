@@ -1,8 +1,8 @@
 import { Auth, User } from "@angular/fire/auth";
 import { DbModel } from "@tscommon";
-import { PermissionSlice } from "./auth.slice";
+import { PermissionSlice } from "../auth/auth.slice";
 import { Observable, combineLatest, from, of } from "rxjs";
-import { QueryService } from "../services/query.service";
+import { QueryService } from "../../services/query.service";
 
 export async function claimsFromUser(user: User): Promise<DbModel.AuthClaims> {
     await user.reload();

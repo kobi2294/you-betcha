@@ -1,14 +1,41 @@
 import { DbModel, groupBy, toRecord } from '@tscommon';
+import { FutureMatchVm, GameVm, GroupMatchesVm, GroupTableVm, InProgressMatchVm, PastMatchVm, ScheduledMatch, PastMatch, UserGuess, UserScore, UserTableRowVm, FilledMatch } from './game.vm';
+
+
+export function buildVm(
+  allMatches: DbModel.Match[],
+  globalStatistics: Record<string, DbModel.MatchStatistics>,
+  stages: DbModel.Stage[],
+  calcedGroup: DbModel.CalculatedGroup | null,
+  calcedScores: DbModel.CalculatedGroupMatchScore[]
+): GameVm {
+  const split = splitMatches(allMatches, globalStatistics, stages);
+
+  const grpMatchVm = groupMatchesVm(
+    split,
+    globalStatistics,
+    calcedGroup,
+    calcedScores
+  );
+
+    const table = buildTable(calcedGroup, grpMatchVm.pastMatches);
+
+    return {
+        ...grpMatchVm,
+        table
+    }
+}
+
 
 //#region Match Splitting
 
 
 type MatchSplit = {
-    pastMatches: ScoredMatch[];
-    recentMatches: ScoredMatch[];
-    inProgressMatches: ScheduledMatch[];
-    futureMatches: ScheduledMatch[];
-    nextMacthes: ScheduledMatch[];
+    pastMatches: PastMatch[];
+    recentMatches: PastMatch[];
+    inProgressMatches: FilledMatch[];
+    futureMatches: FilledMatch[];
+    nextMacthes: FilledMatch[];
   };
   
   export function splitMatches(
@@ -61,20 +88,6 @@ type MatchSplit = {
     }
   }
   
-type ScheduledMatch = DbModel.Match & {
-  home: string;
-  away: string;
-  date: string;
-  stage: string;
-};
-
-type FilledMatch = ScheduledMatch & {
-  dateValue: number;
-  points: number;
-  stageName: string;
-};
-
-type ScoredMatch = FilledMatch & { homeScore: number; awayScore: number };
 
 function isMatchScheduled(match: DbModel.Match): match is ScheduledMatch {
   return (
@@ -85,27 +98,20 @@ function isMatchScheduled(match: DbModel.Match): match is ScheduledMatch {
   );
 }
 
-function isPastMatch(match: ScheduledMatch): match is ScoredMatch {
+function isPastMatch(match: FilledMatch): match is PastMatch {
   return match.homeScore !== null && match.awayScore !== null;
 }
 //#endregion
 
 //#region Match Enriching
-export type GroupMatchesVm = {
-    readonly pastMatches: PastMatchVm[];
-    readonly recentMatches: PastMatchVm[];
-    readonly inProgressMatches: InProgressMatchVm[];
-    readonly futureMatches: FutureMatchVm[];
-    readonly nextMacthes: FutureMatchVm[];
-  };
   
   function groupMatchesVm(
     split: MatchSplit,
     globalStatistics: Record<string, DbModel.MatchStatistics>,
-    calcedGroup: DbModel.CalculatedGroup,
+    calcedGroup: DbModel.CalculatedGroup | null,
     calculatedGroupMatchScores: DbModel.CalculatedGroupMatchScore[]
   ): GroupMatchesVm {
-    const users = toRecord(calcedGroup.users, (user) => user.id);
+    const users = toRecord(calcedGroup?.users || [], (user) => user.id);
     const calcedMatches = toRecord(calculatedGroupMatchScores, (m) => m.matchId);
   
     return {
@@ -116,24 +122,17 @@ export type GroupMatchesVm = {
         pastMatchVm(match, globalStatistics, users, calcedMatches[match.id])
       ),
       inProgressMatches: split.inProgressMatches.map((match) =>
-        inProgressMatchVm(match, users, calcedMatches[match.id], globalStatistics)
+        inProgressMatchVm(match, users, calcedMatches[match.id] || null, globalStatistics)
       ),
       futureMatches: split.futureMatches.map(futureMatchVm),
       nextMacthes: split.nextMacthes.map(futureMatchVm),
     };
   }
   
-export type FutureMatchVm = ScheduledMatch & {};
-export function futureMatchVm(match: ScheduledMatch): FutureMatchVm {
+export function futureMatchVm(match: FilledMatch): FutureMatchVm {
   return match;
 }
 
-export type UserGuess = {
-    readonly id: string;
-  readonly displayName: string;
-  readonly photoUrl: string;
-  readonly guess: DbModel.GuessValue | '---';
-};
 function userGuess(
   users: Record<string, DbModel.GroupUserRecord>,
   model: DbModel.CalculatedUserScore
@@ -147,18 +146,15 @@ function userGuess(
   };
 }
 
-export type InProgressMatchVm = ScheduledMatch & {
-  globalStatistics: DbModel.MatchStatistics;
-  groupStatistics: DbModel.MatchStatistics;
-  userGuesses: UserGuess[];
-};
 function inProgressMatchVm(
-  match: ScheduledMatch,
+  match: FilledMatch,
   users: Record<string, DbModel.GroupUserRecord>,
-  groupScores: DbModel.CalculatedGroupMatchScore,
+  groupScores: DbModel.CalculatedGroupMatchScore | null,
   stats: Record<string, DbModel.MatchStatistics>
 ): InProgressMatchVm {
-  const userGuesses = groupScores.userScores.map((model) =>
+  const userScores = groupScores?.userScores ?? [];
+
+  const userGuesses = userScores.map((model) =>
     userGuess(users, model)
   );
 
@@ -168,7 +164,7 @@ function inProgressMatchVm(
     tie: 0,
   };
 
-  groupScores.userScores.forEach((model) => {
+  userScores.forEach((model) => {
     if (model.guess) {
       groupStatistics[model.guess]++;
     }
@@ -182,11 +178,6 @@ function inProgressMatchVm(
   };
 }
 
-export type UserScore = UserGuess & {
-  readonly points: number;
-  readonly isCorrect: boolean;
-  readonly isSolo: boolean;
-};
 function userScore(
   users: Record<string, DbModel.GroupUserRecord>,
   model: DbModel.CalculatedUserScore,
@@ -207,19 +198,11 @@ function userScore(
   };
 }
 
-export type PastMatchVm = ScoredMatch & {
-  globalStatistics: DbModel.MatchStatistics;
-  groupStatistics: DbModel.MatchStatistics;
-  correctCount: number;
-  pointsEach: number;
-  correctGuess: DbModel.GuessValue;
-  userScores: UserScore[];
-};
 function pastMatchVm(
-  match: ScoredMatch,
+  match: PastMatch,
   globalStatistics: Record<string, DbModel.MatchStatistics>,
   users: Record<string, DbModel.GroupUserRecord>,
-  calculatedGroupMatchScore: DbModel.CalculatedGroupMatchScore
+  calculatedGroupMatchScore: DbModel.CalculatedGroupMatchScore | null
 ): PastMatchVm {
   const inprg = inProgressMatchVm(
     match,
@@ -230,7 +213,7 @@ function pastMatchVm(
   const currectGuess = calcCorrectGuess(match);
   const correctCount = inprg.groupStatistics[currectGuess];
   const pointsEach = correctCount > 0 ? match.points / correctCount : 0;
-  const userScores = calculatedGroupMatchScore.userScores.map((model) =>
+  const userScores = (calculatedGroupMatchScore?.userScores ?? []).map((model) =>
     userScore(users, model, currectGuess, pointsEach, correctCount)
   );
 
@@ -245,7 +228,7 @@ function pastMatchVm(
   };
 }
 
-function calcCorrectGuess(match: ScoredMatch): DbModel.GuessValue {
+function calcCorrectGuess(match: PastMatch): DbModel.GuessValue {
   if (match.homeScore === match.awayScore) {
     return 'tie';
   }
@@ -255,17 +238,9 @@ function calcCorrectGuess(match: ScoredMatch): DbModel.GuessValue {
 //#endregion
 
 //#region table building
-export type GroupTableVm = UserTableRowVm[];
 
-export type UserTableRowVm = {
-  readonly displayName: string;
-  readonly photoUrl: string;
-  readonly totalPoints: number;
-  readonly correctCount: number;
-  readonly soloCount: number;
-};
-
-export function buildTable(group: DbModel.CalculatedGroup, pastMatches: PastMatchVm[]): GroupTableVm {
+export function buildTable(group: DbModel.CalculatedGroup | null, pastMatches: PastMatchVm[]): GroupTableVm {
+  if (!group) { return [];}
     const scores = pastMatches.flatMap(m => m.userScores);    
     const userScores = groupBy(scores, s => s.id);
 
@@ -300,28 +275,3 @@ export function buildTable(group: DbModel.CalculatedGroup, pastMatches: PastMatc
 
 //#endregion
 
-export type GameVm = GroupMatchesVm & {table: GroupTableVm}
-
-export function buildVm(
-  allMatches: DbModel.Match[],
-  globalStatistics: Record<string, DbModel.MatchStatistics>,
-  stages: DbModel.Stage[],
-  calcedGroup: DbModel.CalculatedGroup,
-  calcedScores: DbModel.CalculatedGroupMatchScore[]
-): GameVm {
-  const split = splitMatches(allMatches, globalStatistics, stages);
-
-  const grpMatchVm = groupMatchesVm(
-    split,
-    globalStatistics,
-    calcedGroup,
-    calcedScores
-  );
-
-    const table = buildTable(calcedGroup, grpMatchVm.pastMatches);
-
-    return {
-        ...grpMatchVm,
-        table
-    }
-}

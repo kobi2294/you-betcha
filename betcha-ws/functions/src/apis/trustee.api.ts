@@ -46,7 +46,7 @@ export function getTrusteeApi(data: MaybeAuthData) {
               matchId: match.id,
               groupId: group.id,
               points: stagesMap[match.stage].points,
-              stageName: match.stage,
+              stage: match.stage,
               away: match.away!,
               home: match.home!,
               date: match.date,
@@ -89,14 +89,14 @@ export function getTrusteeApi(data: MaybeAuthData) {
     
         await dal.metadata.set({ statistics: newStatistics });
         const batch = dal.batch();
-        batch.setMany('calculated-group-matches', Object.values(resRecords));
+        batch.setMany('calculated-group-match-scores', Object.values(resRecords));
         await batch.commit();
     }
 
     async function _resetAllMatchCalculations() {
       // empty the metadata statistics, and delete the calculated-group-matches collection
       await dal.metadata.set({ statistics: {} });
-      await dal.calculatedGroupMatches.deleteAll();
+      await dal.calculatedGroupMatchScores.deleteAll();
 
       await _calculateForMatches();
     }

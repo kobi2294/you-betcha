@@ -24,35 +24,42 @@ export class QueryService {
         if (groupIds.length === 0) return of([]);
 
         const queries = groupIds
-            .map(groupId => doc(this.firestore, `groups/${groupId}`))
-            .map(q => docData(q) as Observable<DbModel.Group>);
+            .map(id => this.getGroup(id));
         const res = combineLatest(queries).pipe(debounceTime(0));
 
         return res;
     }
 
-    getCalculatedGroups(groupIds: string[]): Observable<DbModel.CalculatedGroup[]> {
-        if (groupIds.length === 0) return of([]);
-
-        const queries = groupIds
-            .map(groupId => doc(this.firestore, `calculated-groups/${groupId}`))
-            .map(q => docData(q) as Observable<DbModel.CalculatedGroup>);
-        const res = combineLatest(queries).pipe(debounceTime(0));
-
-        return res;
+    getGroup(groupId: string): Observable<DbModel.Group> {
+        const docReference = doc(this.firestore, `groups/${groupId}`);
+        return docData(docReference) as Observable<DbModel.Group>;
     }
 
-    getGroupsData(groupIds: string[]) {
-        if (groupIds.length === 0) return of({groups: {}, calculatedGroups: {}});
+    getCalculatedGroups(groupId: string): Observable<DbModel.CalculatedGroup> {
+        const docReference = doc(this.firestore, `calculated-groups/${groupId}`);
+        return docData(docReference) as Observable<DbModel.CalculatedGroup>;
+    }
+
+    getCalculatedGroupMatchScores(groupId: string): Observable<DbModel.CalculatedGroupMatchScore[]> {
+        const queryReference = query(collection(this.firestore, 'calculated-group-match-scores'), where('groupId', '==', groupId));
+        return collectionData(queryReference) as Observable<DbModel.CalculatedGroupMatchScore[]>;
+    }
+
+
+    getGroupCalculatedData(groupId: string | null): Observable<CalculatedDataResult> {
+        if ((groupId === null) || (groupId.trim() === '')) return of({
+            calculatedGroup: null, 
+            calculatedGroupMatchScores: []
+        });
 
         return combineLatest({
-            groups: this.getGroups(groupIds),
-            calculatedGroups: this.getCalculatedGroups(groupIds),
-        }).pipe(
-            map(({groups, calculatedGroups}) => ({
-                groups: toRecord(groups, g => g.id),
-                calculatedGroups: toRecord(calculatedGroups, g => g.id),
-            }))
-        );
+            calculatedGroup: this.getCalculatedGroups(groupId),
+            calculatedGroupMatchScores: this.getCalculatedGroupMatchScores(groupId)
+        })
     }
+}
+
+type CalculatedDataResult = {
+    calculatedGroup: DbModel.CalculatedGroup | null;
+    calculatedGroupMatchScores: DbModel.CalculatedGroupMatchScore[];  
 }

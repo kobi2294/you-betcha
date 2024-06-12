@@ -9,7 +9,7 @@ import { DbModel } from "@tscommon";
 export const GroupDetailsStore = signalStore(
     withState(initialGroupDetailsSlice),
     withLoadReload((_, id: string, api = inject(ApiService)) => api.getGroupForAdmin(id)), 
-    withDevtools('group details'), 
+    withDevtools('Admin - Group Detials'), 
     withMethods((store, api = inject(ApiService), rxNotify = rxNotifier(() => store.setIdle())) => ({
         setDisplayName: rxMethod<string>(trigger$ => trigger$.pipe(
             tap(_ => store.setLoading()), 

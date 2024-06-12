@@ -10,6 +10,7 @@ service cloud.firestore {
       return (request.auth != null) && (request.auth.token.userGroups != null) && (groupId in request.auth.token.userGroups);
     }
 
+
     function isUser(userEmail) {
       return (request.auth != null && request.auth.token.email == userEmail);
     }
@@ -27,6 +28,11 @@ service cloud.firestore {
     match /calculated-groups/{groupId} {
       allow read: if isSuper() || isGroupMember(groupId);
     }
+
+    match /calculated-group-match-scores/{id} {
+      allow read: if isSuper() || isGroupMember(request.resource.data.groupId)
+    }
+
 
     match /metadata/{id} {
       allow read: if true;

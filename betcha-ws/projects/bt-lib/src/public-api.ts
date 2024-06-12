@@ -17,9 +17,6 @@ export * from './lib/shared';
 export * from './lib/edit';
 export * from './lib/table';
 export * from './utils';
+export * from './stores';
 
 
-export * from './stores/auth.store';
-export * from './stores/auth.slice';
-export * from './stores/router.store';
-export * from './stores/router.slice';

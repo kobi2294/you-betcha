@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { AuthStore } from '../../../../stores/auth.store';
+import { AuthStore } from '../../../../stores/auth/auth.store';
 import { APP_ENV, EnvironmentType } from '../../../../utils';
 
 @Component({

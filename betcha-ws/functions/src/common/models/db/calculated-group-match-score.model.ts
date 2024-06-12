@@ -5,7 +5,7 @@ export interface CalculatedGroupMatchScore {
     readonly matchId: string;
     readonly groupId: string;
     readonly points: number;
-    readonly stageName: string;
+    readonly stage: string;
     readonly away: string;
     readonly home: string;
     readonly date: string;

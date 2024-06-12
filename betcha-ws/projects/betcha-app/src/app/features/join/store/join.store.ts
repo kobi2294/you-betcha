@@ -5,7 +5,7 @@ import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { exhaustMap, tap } from "rxjs";
 import { effect, inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { GroupsStore } from "../../../stores/groups.store";
+import { GroupsStore } from "../../../stores/groups/groups.store";
 
 export const JoinStore = signalStore(
     withState(initialJoinSlice), 

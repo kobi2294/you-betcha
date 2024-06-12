@@ -1,6 +1,6 @@
 import { Component, HostBinding, computed, inject } from '@angular/core';
 import { AuthStore, PagesModule, RouterStore, SharedModule } from '@lib';
-import { GroupsStore } from './stores/groups.store';
+import { GroupsStore } from './stores/groups/groups.store';
 
 @Component({
   selector: 'app-root',
