@@ -13,5 +13,6 @@ export * from './signal-store-features/with-load.feature';
 export * from './signal-store-features/with-load-reload.feature';
 export * from './signal-store-features/with-devtools.feature';
 export * from './signal-store-features/get-signal-values';
+export * from './signal-store-features/with-query.feature';
 
 export * from './helpers/string.helpers';

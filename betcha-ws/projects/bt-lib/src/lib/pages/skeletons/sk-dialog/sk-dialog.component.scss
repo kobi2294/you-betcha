@@ -27,7 +27,8 @@
     }
 
     ::ng-deep>sk-dialog-content {
-      flex: 0 1 auto;
+      flex-shrink: 1;
+      flex-basis: auto;
       overflow-y: auto;
     }
 

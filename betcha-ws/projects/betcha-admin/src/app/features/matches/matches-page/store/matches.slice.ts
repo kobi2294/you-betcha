@@ -5,3 +5,9 @@ export interface MatchesSlice {
     stages: DbModel.Stage[];
     countries: string[];
 }
+
+export const initialMatchesSlice: MatchesSlice = {
+    matches: [],
+    stages: [],
+    countries: [],
+};

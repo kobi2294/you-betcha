@@ -1,0 +1,16 @@
+<button
+  mat-raised-button
+  color="accent"
+  [disabled]="okDisabled()"
+  (click)="ok.emit()"
+>
+  {{ okLabel() }}
+</button>
+<button
+  mat-button
+  color="accent"
+  [disabled]="cancelDisabled()"
+  (click)="cancel.emit()"
+>
+  {{ cancelLabel() }}
+</button>

@@ -6,8 +6,11 @@ import { Component, computed, input } from '@angular/core';
   styleUrl: './flag.component.scss'
 })
 export class FlagComponent {
-  readonly country = input.required<string>();
+  readonly country = input.required<string | null>();
 
-  readonly imageUrl = computed(() => `assets/flags/${this.country()}.svg`);
+  readonly imageUrl = computed(() => (this.country() !== null) 
+    ? `assets/flags/${this.country()}.svg`
+    : `assets/images/fallback.svg`
+  );
 
 }

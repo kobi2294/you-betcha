@@ -11,10 +11,10 @@ import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { NavItemComponent } from "./components/nav-bar/nav-item/nav-item.component";
 import { SkNavComponent } from "./skeletons/sk-nav/sk-nav.component";
 import { SkDialogComponent } from "./skeletons/sk-dialog/sk-dialog.component";
-import { SkDialogActionsDirective } from "./skeletons/sk-dialog/sk-dialog-actions.directive";
 import { SkDialogContentDirective } from "./skeletons/sk-dialog/sk-dialog-content.directive";
 import { SkDialogHeaderDirective } from "./skeletons/sk-dialog/sk-dialog-header.directive";
 import { HeaderComponent } from "./components/header/header.component";
+import { SkDialogActionsComponent } from "./skeletons/sk-dialog/sk-dialog-actions/sk-dialog-actions.component";
 
 const declarations: Type<any>[] = [
     LoginPageComponent, 
@@ -22,7 +22,7 @@ const declarations: Type<any>[] = [
     SkFullComponent, 
     SkNavComponent,
     SkDialogComponent, 
-    SkDialogActionsDirective, 
+    SkDialogActionsComponent, 
     SkDialogContentDirective, 
     SkDialogHeaderDirective,
     FullTitleComponent, 

@@ -1,7 +1,6 @@
 import {
   patchState,
   signalStore,
-  withHooks,
   withMethods,
   withState,
 } from '@ngrx/signals';
@@ -12,15 +11,15 @@ import {
   QueryService,
   withDevtools,
   withLoadState,
+  withQuery,
 } from '@lib';
 import { inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { firstValueFrom, tap } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { validatePartialMetadata } from './metadata.validator';
 
 export const MetadataStore = signalStore(
   withState(initialMetadataSlice),
-  withLoadState(),
+  withQuery((_, query = inject(QueryService)) => query.getMetadata()),
   withMethods(
     (
       store,
@@ -48,23 +47,6 @@ export const MetadataStore = signalStore(
       cancel: () => patchState(store, { isEditing: false }),
     })
   ),
-  withHooks((store, query = inject(QueryService)) => ({
-    onInit: () => {
-      query
-        .getMetadata()
-        .pipe(
-          takeUntilDestroyed(),
-          tap((v) => console.log('metadata', v))
-        )
-        .subscribe((m) =>
-          patchState(store, {
-            countries: m.countries,
-            matches: m.matches,
-            stages: m.stages,
-          })
-        );
-    },
-  })), 
   withDevtools('metadata'),
 
 );

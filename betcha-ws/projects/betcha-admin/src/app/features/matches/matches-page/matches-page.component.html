@@ -1,1 +1,41 @@
-<p>matches-page works!</p>
+<lib-sk-dialog>
+  <sk-dialog-content>
+    <cdk-virtual-scroll-viewport itemSize="110" class="matches">
+      <div class="match" *cdkVirtualFor="let match of store.matches(); let $index = index">
+        <span class="index">
+          {{ $index + 1 }}
+        </span>
+        <lib-edit-select
+          class="country"
+          [options]="countryOptions()"
+          [value]="match.home ?? null"
+          [showIcon]="false"
+        >
+          <lib-country *libOption="let item" [name]="item.value" />
+        </lib-edit-select>
+        <lib-edit-select
+          class="number"
+          [options]="scoreOptions"
+          [showIcon]="false"
+          [value]="match.homeScore"
+        />
+        :
+        <lib-edit-select
+          class="number"
+          [options]="scoreOptions"
+          [showIcon]="false"
+          [value]="match.awayScore"
+        />
+        <lib-edit-select
+          class="country"
+          [options]="countryOptions()"
+          [value]="match.away ?? null"
+          [showIcon]="false"
+        >
+          <lib-country *libOption="let item" [name]="item.value" />
+        </lib-edit-select>
+      </div>
+     </cdk-virtual-scroll-viewport> 
+  </sk-dialog-content>
+  <sk-dialog-actions okLabel="Save Matches" />
+</lib-sk-dialog>

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output, input } from '@angular/core';
 import { OptionTemplateDirective } from './option-template.directive';
 
 export type SelectionOption = {value: any, displayName: string};
@@ -12,6 +12,7 @@ export class EditSelectComponent {
   @ContentChild(OptionTemplateDirective, {static: false})
   optionTemplate: OptionTemplateDirective | undefined = undefined;
 
+  showIcon = input(true);
 
 
   @Input({required: true})

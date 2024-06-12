@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Functions, httpsCallableData } from "@angular/fire/functions";
 import { Api, DbModel } from "@tscommon";
-import { Observable, delay, from, of, switchMap } from "rxjs";
+import { Observable, from, of, switchMap } from "rxjs";
 import { fileToNumberArray, imageResizer } from "../utils/helpers/image.helpers";
 
 @Injectable({providedIn: 'root'})

@@ -1,10 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
-import { FirebaseError } from '@angular/fire/app';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService, NotificationsService, PagesModule, SharedModule } from '@lib';
 import { Api } from '@tscommon';
-import { delay, firstValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { doesNotStartWithLetter, isIdFree } from './group-id.validators';
 
 @Component({

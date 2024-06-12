@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 import { ApiService } from '@lib';
-import { catchError, delay, firstValueFrom, map, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 
 export function doesNotStartWithLetter(): ValidatorFn {
   return (control) => {
@@ -20,7 +20,6 @@ export function isIdFree(): AsyncValidatorFn {
     if (!value) return of(null);
 
     return api.isGroupIdFree(value).pipe(
-        delay(2000),
       map(isFree => (isFree ? null : { isIdFree: true })),
       catchError(() => of(null))
     );

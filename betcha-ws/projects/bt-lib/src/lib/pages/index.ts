@@ -8,7 +8,7 @@ export * from './components/profile-pic/profile-pic.component';
 export * from './components/toolbar/toolbar.component';
 
 export * from './skeletons/sk-dialog/sk-dialog.component';
-export * from './skeletons/sk-dialog/sk-dialog-actions.directive';
+export * from './skeletons/sk-dialog/sk-dialog-actions/sk-dialog-actions.component';
 export * from './skeletons/sk-dialog/sk-dialog-content.directive';
 export * from './skeletons/sk-dialog/sk-dialog-header.directive';
 
