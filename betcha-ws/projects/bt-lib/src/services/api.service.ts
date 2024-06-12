@@ -28,6 +28,7 @@ export class ApiService {
     private _setUserGuess = httpsCallableData<Api.SetUserGuessRequest, void>(this.functions, 'setUserGuess');
     private _uploadUserProfileImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadUserProfileImage');
     private _setUserDisplayName = httpsCallableData<string, void>(this.functions, 'setUserDisplayName');
+    private _resetCalculatedGroups = httpsCallableData<void, void>(this.functions, 'resetCalculatedGroups');
 
     
 
@@ -118,6 +119,10 @@ export class ApiService {
 
     setUserDisplayName(name: string): Observable<void> {
         return this._setUserDisplayName(name);
+    }
+
+    resetCalculatedGroups(): Observable<void> {
+        return this._resetCalculatedGroups();
     }
  
 }

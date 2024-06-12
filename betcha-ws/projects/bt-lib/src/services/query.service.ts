@@ -11,7 +11,7 @@ export class QueryService {
         const docReference = doc(this.firestore, 'metadata/metadata');
         const res = docData(docReference) as Observable<DbModel.Metadata | undefined>;
         return res.pipe(
-            map(md => md || {id: 'metadata', countries: [], matches: [], stages: []})
+            map(md => md || DbModel.defaultMetadata)
         )
     }
 

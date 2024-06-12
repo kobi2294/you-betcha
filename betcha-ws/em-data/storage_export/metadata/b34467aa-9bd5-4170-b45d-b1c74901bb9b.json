@@ -1,14 +1,16 @@
 {
   "name": "groups/logo-3102359553",
   "bucket": "you-betcha-stage.appspot.com",
-  "metageneration": 2,
+  "metageneration": 3,
   "generation": 1717949146228,
   "contentType": "image/jpeg",
   "storageClass": "STANDARD",
-  "downloadTokens": [],
+  "downloadTokens": [
+    "ebbec8e8-3c31-4511-808e-360b21cb59b9"
+  ],
   "etag": "C7/6PshEFOtnYyKmlxfDRvMdbcw",
   "timeCreated": "2024-06-09T16:05:46.228Z",
-  "updated": "2024-06-09T16:05:46.239Z",
+  "updated": "2024-06-12T10:34:06.372Z",
   "size": 4517,
   "md5Hash": "eyd5qj3VjWH5dEp9MfVWEg==",
   "crc32c": "3284187796"

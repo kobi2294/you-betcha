@@ -7,6 +7,7 @@ import { getAutomaticApi } from "./automatic.api";
 import { getAuth } from "firebase-admin/auth";
 import { Api } from "src/common/models/api/api.alias";
 import { DbModel } from "src/common/public-api";
+import { getOpenApi } from "./open.api";
 
 export function getUserApi(authData: MaybeAuthData) {
     const auth = authorize(authData, 'user');
@@ -46,8 +47,11 @@ export function getUserApi(authData: MaybeAuthData) {
         
             const userGroups = arrayWith(user?.groups, group.id);
             await dal.users.updateOne(auth.email, _ => ({ groups: userGroups }));
-            await dalAuth.addUserToGroup(auth.email, group.id);    
+            await dalAuth.addUserToGroup(auth.email, group.id);
         }
+
+        const openApi = getOpenApi();
+        await openApi.createCalculatedGroup(group);
 
         return group;
     }
@@ -60,6 +64,8 @@ export function getUserApi(authData: MaybeAuthData) {
         await dal.users.updateOne(auth.email, _ => ({ groups: userGroups }));
         await dalAuth.removeUserFromGroup(auth.email, groupId);
 
+        const openApi = getOpenApi();
+        await openApi.createCalculatedGroup(groupId);
     }
 
     async function _setGuess(matchId: string, guess: GuessValue) {

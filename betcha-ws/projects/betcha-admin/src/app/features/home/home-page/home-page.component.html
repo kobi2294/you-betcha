@@ -1,24 +1,35 @@
-<div class="action" routerLink="/groups" *ngIf="authStore.permissions().canManageGroups">
-    <h1>Groups</h1>
-    <h2>Manage and customize groups</h2>
-    <mat-icon symbol>groups</mat-icon>
-</div>
-
-<div class="action" routerLink="/users" *ngIf="authStore.permissions().canManageUsers">
-    <h1>Users</h1>
-    <h2>Manage user roles and group association</h2>
-    <mat-icon symbol>face</mat-icon>
-</div>
-
-<div class="action" routerLink="/matches" *ngIf="authStore.permissions().canManageMatches">
-    <h1>Matches</h1>
-    <h2>Manage match schedule and results</h2>
-    <mat-icon symbol>calendar_today</mat-icon>
-</div>
-
-<div class="action" routerLink="/metadata" *ngIf="authStore.permissions().canManageMetadata">
-    <h1>Metadata</h1>
-    <h2>Manage coutries list and stages</h2>
-    <mat-icon symbol>analytics</mat-icon>
-</div>
+<lib-busy [busy]="busy()" caption="Please wait...">
+    <div class="content">
+        <div class="tools" *ngIf="authStore.isSuper()">
+            <button mat-raised-button color="accent" (click)="resetAllCalculatedGroups()">
+                Reset Calculated Groups
+            </button>
+        </div>
+        
+        <div class="action" routerLink="/groups" *ngIf="authStore.permissions().canManageGroups">
+            <h1>Groups</h1>
+            <h2>Manage and customize groups</h2>
+            <mat-icon symbol>groups</mat-icon>
+        </div>
+        
+        <div class="action" routerLink="/users" *ngIf="authStore.permissions().canManageUsers">
+            <h1>Users</h1>
+            <h2>Manage user roles and group association</h2>
+            <mat-icon symbol>face</mat-icon>
+        </div>
+        
+        <div class="action" routerLink="/matches" *ngIf="authStore.permissions().canManageMatches">
+            <h1>Matches</h1>
+            <h2>Manage match schedule and results</h2>
+            <mat-icon symbol>calendar_today</mat-icon>
+        </div>
+        
+        <div class="action" routerLink="/metadata" *ngIf="authStore.permissions().canManageMetadata">
+            <h1>Metadata</h1>
+            <h2>Manage coutries list and stages</h2>
+            <mat-icon symbol>analytics</mat-icon>
+        </div>    
+    </div>
+        
+</lib-busy>
 

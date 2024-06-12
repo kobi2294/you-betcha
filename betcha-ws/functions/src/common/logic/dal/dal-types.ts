@@ -1,7 +1,7 @@
 import { WhereFilterOp } from "firebase-admin/firestore";
 import { DbModel } from "../../models/db/db.alias";
 
-export const DAL_COLLECTIONS = ['audits', 'groups', 'metadata', 'users', 'calculated-groups', 'calculated-matches'] as const;
+export const DAL_COLLECTIONS = ['audits', 'groups', 'metadata', 'users', 'calculated-groups', 'calculated-group-matches'] as const;
 export type DalCollection = typeof DAL_COLLECTIONS[number];
 export type CollectionType<T extends DalCollection> =
     T extends 'audits' ? DbModel.UserAudit
@@ -9,7 +9,7 @@ export type CollectionType<T extends DalCollection> =
     : T extends 'metadata' ? DbModel.Metadata
     : T extends 'users' ? DbModel.User
     : T extends 'calculated-groups' ? DbModel.CalculatedGroup 
-    : T extends 'calculated-matches' ? DbModel.CalculatedMatch
+    : T extends 'calculated-group-matches' ? DbModel.CalculatedGroupMatchScore
     : unknown;
 
 export type DalUpdater<T extends DalCollection> = (state: CollectionType<T>) => Partial<CollectionType<T>>;

@@ -1,17 +1,22 @@
+import { GuessValue } from "./enums.model";
+
 export interface Metadata {
     id: 'metadata'
     matches: Match[];
     stages: Stage[];
     countries: string[];
+    statistics: MatchStatistics[];
 }
 
 export const defaultMetadata: Metadata = {
     id: 'metadata',
     matches: [],
     stages: [],
-    countries: []
-
+    countries: [], 
+    statistics: []
 }
+
+export type MatchStatistics = Record<GuessValue, number>;
 
 export interface Match {
     readonly id: string;

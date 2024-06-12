@@ -140,3 +140,8 @@ export const setUserDisplayName = onCall<string, Promise<void>>(options, req => 
   const api = getUserApi(req.auth);
   return api.setDisplayName(req.data);
 });
+
+export const resetCalculatedGroups = onCall<void, Promise<void>>(options, req => {
+  const api = getSuperApi(req.auth);
+  return api.resetAllCalculatedGroups();
+});

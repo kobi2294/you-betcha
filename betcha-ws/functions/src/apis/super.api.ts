@@ -3,6 +3,7 @@ import { getDal } from "../common/logic/dal/dal";
 import { DbModel } from "../common/models/db/db.alias";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
 import { getDalAuth } from "../common/logic/dal/dal-auth";
+import { getOpenApi } from "./open.api";
 
 export function getSuperApi(authData: MaybeAuthData) {
     authorize(authData, 'super');
@@ -27,7 +28,7 @@ export function getSuperApi(authData: MaybeAuthData) {
 
         const calcGroup: DbModel.CalculatedGroup = {
             id, 
-            matchScores: []
+            users: []
         }
 
         await Promise.all([
@@ -95,6 +96,12 @@ export function getSuperApi(authData: MaybeAuthData) {
         await dal.metadata.update(_ => metadata);
     }
 
+    async function _resetAllCalculatedGroups() {
+        const groups = await dal.groups.getAll();
+        const openApi = getOpenApi();
+        await Promise.all(groups.map(group => openApi.createCalculatedGroup(group)));
+    }
+
     return {
         createGroup: _createGroup,
         deleteGroup: _deleteGroup, 
@@ -105,6 +112,7 @@ export function getSuperApi(authData: MaybeAuthData) {
         setUserRole: _setUserRole, 
         isGroupIdFree: _isGroupIdFree, 
         searchUsers: _searchUsers, 
-        updateMetadata: _updateMetadata
+        updateMetadata: _updateMetadata, 
+        resetAllCalculatedGroups: _resetAllCalculatedGroups
     }
 }
