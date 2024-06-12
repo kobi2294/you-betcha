@@ -21,9 +21,9 @@ export function comingUp(matches: FutureMatchVm[], now: number): ComingUp | null
     const effectiveDate = matches[0].dateValue;
 
     const total = effectiveDate - now;
-    const minutes = Math.floor( (total/1000/60) % 60 );
-    const hours = Math.floor( (total/(1000*60*60)) % 24 );
-    const days = Math.floor( total/(1000*60*60*24) );
+    const minutes = Math.max(0, Math.ceil( (total/1000/60) % 60 ));
+    const hours = Math.max(0, Math.floor( (total/(1000*60*60)) % 24 ));
+    const days = Math.max(0, Math.floor( total/(1000*60*60*24) ));
 
     return {
         matches,

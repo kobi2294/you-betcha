@@ -16,7 +16,7 @@ export const HomeStore = signalStore(
     withDevtools('Home Store'),
     withHooks((store, destroyRef = inject(DestroyRef)) => ({
         onInit: () => {
-            interval(10000).pipe(
+            interval(3000).pipe(
                 takeUntilDestroyed(destroyRef)    
             ).subscribe(() => {
                 patchState(store, { now: Date.now() })
