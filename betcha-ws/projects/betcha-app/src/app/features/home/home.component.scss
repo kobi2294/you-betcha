@@ -4,10 +4,10 @@
     flex-direction: column;
     align-items: center;
     max-width: 600px;
+
     .no-group {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
         gap: 20px;
         color: var(--p-700);
         justify-content: center;

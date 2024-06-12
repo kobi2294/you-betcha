@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { inAnyGroupGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' }, 
@@ -10,6 +11,7 @@ export const routes: Routes = [
     { path: 'join/:secret', loadComponent: () => import('./features/join/join.component'), data: { hideNavBar: true} },
     { path: 'guesses', loadComponent: () => import('./features/guesses/guesses.component') },
     { path: 'profile', loadComponent: () => import('./features/profile/profile.component') },
+    { path: 'scores', canActivate: [inAnyGroupGuard()], loadComponent: () => import('./features/scores/scores.component') },
 
 
 ];

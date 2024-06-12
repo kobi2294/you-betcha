@@ -4,44 +4,47 @@
   <h1 *ngIf="group.slogan">{{ group.slogan }}</h1>
   <h2 *ngIf="group.message">{{ group.message }}</h2>
 </div>
-
-<div class="next" *ngIf="store.comingUp() as comingUp">
-  <h3>Coming Up!
-    <div class="time-remaining">
-        <div class="days box">
-          <div class="value">{{ comingUp.days }}</div>
-          <div class="label">Days</div>
-        </div>
-        :
-        <div class="hours box">
-          <div class="value">{{ comingUp.hours }}</div>
-          <div class="label">Hrs</div>
-        </div>
-        :
-        <div class="minutes box">
-          <div class="value">{{ comingUp.minutes }}</div>
-          <div class="label">Mins</div>
-        </div>
-      </div>    
-  </h3>
-  <div class="match" *ngFor="let match of comingUp.matches">
-    <lib-country [name]="match.home" />
-    <div class="details">
-      <span class="stage"
-        >{{ match.stage }}
-        <span class="points">({{ match.points }} pts)</span></span
-      >
-      <div class="time">{{ match.date | date : "MMM d HH:mm" }}</div>
-    </div>
-    <lib-country [name]="match.away"/>
-  </div>
-</div>
-
-} @else {
-<div class="no-group">
-  <h1>Welcome to You Betcha</h1>
-  <h2>
-    To play please refer to your group admin for a link to join in the group
-  </h2>
-</div>
 }
+
+@if(store.hasNoGroups()) {
+  <div class="no-group">
+    <h1>Welcome to You Betcha</h1>
+    <h2>
+      To play please refer to your group admin for a link to join in the group
+    </h2>
+  </div>  
+}
+
+@if(store.comingUp(); as comingUp) {
+  <div class="next">
+    <h3>Coming Up!
+      <div class="time-remaining">
+          <div class="days box">
+            <div class="value">{{ comingUp.days }}</div>
+            <div class="label">Days</div>
+          </div>
+          :
+          <div class="hours box">
+            <div class="value">{{ comingUp.hours }}</div>
+            <div class="label">Hrs</div>
+          </div>
+          :
+          <div class="minutes box">
+            <div class="value">{{ comingUp.minutes }}</div>
+            <div class="label">Mins</div>
+          </div>
+        </div>    
+    </h3>
+    <div class="match" *ngFor="let match of comingUp.matches">
+      <lib-country [name]="match.home" />
+      <div class="details">
+        <span class="stage"
+          >{{ match.stage }}
+          <span class="points">({{ match.points }} pts)</span></span
+        >
+        <div class="time">{{ match.date | date : "MMM d HH:mm" }}</div>
+      </div>
+      <lib-country [name]="match.away"/>
+    </div>
+  </div>
+  }

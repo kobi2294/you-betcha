@@ -23,6 +23,7 @@ export const AuthStore = signalStore(
         permissions: computed(() => permissions(store.claims())), 
         isTrustee: computed(() => store.claims()?.role === 'trustee' || store.claims()?.role === 'super'),
         isSuper : computed(() => store.claims()?.role === 'super'),
+        hasAnyGroups: computed(() => (store.claims()?.userGroups ?? []).length > 0),
     })),    
     withMethods((store, afAuth = inject(Auth), query = inject(QueryService)) => ({
         signOut: () => afAuth.signOut(), 
