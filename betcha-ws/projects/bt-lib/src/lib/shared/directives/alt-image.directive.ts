@@ -11,10 +11,14 @@ export class AltImageDirective {
 
 
   @HostListener('error')
-  onError() {
+  onError(ev: Event) {
     const fallback = this.altImage || 'assets/images/guest.png';
     const element = this.eRef.nativeElement as HTMLImageElement;
 
+
+    const fullFallback = new URL(fallback, window.location.href).href;
+
+    if (fullFallback === element.src) return; // already trying to get the fallback image, no point to try again
     element.src = fallback;
   }
 
@@ -22,3 +26,4 @@ export class AltImageDirective {
   constructor(private eRef: ElementRef) { }
 
 }
+

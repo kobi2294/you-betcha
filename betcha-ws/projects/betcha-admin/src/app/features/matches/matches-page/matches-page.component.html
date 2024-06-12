@@ -1,41 +1,71 @@
-<lib-sk-dialog>
-  <sk-dialog-content>
-    <cdk-virtual-scroll-viewport itemSize="110" class="matches">
-      <div class="match" *cdkVirtualFor="let match of store.matches(); let $index = index">
-        <span class="index">
-          {{ $index + 1 }}
-        </span>
-        <lib-edit-select
-          class="country"
-          [options]="countryOptions()"
-          [value]="match.home ?? null"
-          [showIcon]="false"
+<lib-busy [busy]="store.isLoading()" caption="Saving..." [showContent]="true">
+  <lib-sk-dialog>
+    <sk-dialog-content>
+      <cdk-virtual-scroll-viewport itemSize="110" class="matches">
+        <div
+          class="match"
+          *cdkVirtualFor="
+            let match of store.editedMatches();
+            let $index = index
+          "
         >
-          <lib-country *libOption="let item" [name]="item.value" />
-        </lib-edit-select>
-        <lib-edit-select
-          class="number"
-          [options]="scoreOptions"
-          [showIcon]="false"
-          [value]="match.homeScore"
-        />
-        :
-        <lib-edit-select
-          class="number"
-          [options]="scoreOptions"
-          [showIcon]="false"
-          [value]="match.awayScore"
-        />
-        <lib-edit-select
-          class="country"
-          [options]="countryOptions()"
-          [value]="match.away ?? null"
-          [showIcon]="false"
-        >
-          <lib-country *libOption="let item" [name]="item.value" />
-        </lib-edit-select>
-      </div>
-     </cdk-virtual-scroll-viewport> 
-  </sk-dialog-content>
-  <sk-dialog-actions okLabel="Save Matches" />
-</lib-sk-dialog>
+          <span class="index">
+            {{ $index + 1 | pad:2:'0' }}
+          </span>
+          <lib-edit-select
+            class="country"
+            [options]="countryOptions()"
+            [value]="match.home ?? null"
+            [showIcon]="false"
+            (changed)="store.updateMatch($index, { home: $event })"
+          >
+            <lib-country *libOption="let item" [name]="item.value" />
+          </lib-edit-select>
+
+          <div class="middle">
+            <div class="stage">
+              {{stageMap()[match.stage].displayName}}
+            </div>
+            <div class="score">
+              <lib-edit-select
+                class="number"
+                [options]="scoreOptions"
+                [showIcon]="false"
+                [value]="match.homeScore"
+                (changed)="store.updateMatch($index, { homeScore: $event })"
+              />
+              :
+              <lib-edit-select
+                class="number"
+                [options]="scoreOptions"
+                [showIcon]="false"
+                [value]="match.awayScore"
+                (changed)="store.updateMatch($index, { awayScore: $event })"
+              />
+            </div>
+            <div class="time">
+              {{ match.date | date: 'MMM d HH:mm' }}
+            </div>
+          </div>
+          <lib-edit-select
+            class="country"
+            [options]="countryOptions()"
+            [value]="match.away ?? null"
+            [showIcon]="false"
+            (changed)="store.updateMatch($index, { away: $event })"
+          >
+            <lib-country *libOption="let item" [name]="item.value" />
+          </lib-edit-select>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </sk-dialog-content>
+    <sk-dialog-actions
+      okLabel="Save Matches"
+      [okDisabled]="!store.dirty()"
+      cancelLabel="Cancel"
+      [cancelDisabled]="!store.dirty()"
+      (ok)="store.save()"
+      (cancel)="store.cancelChanges()"
+    />
+  </lib-sk-dialog>
+</lib-busy>

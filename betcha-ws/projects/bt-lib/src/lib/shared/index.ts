@@ -14,3 +14,5 @@ export * from './directives/icon-button.directive';
 export * from './directives/no-double-click.directive';
 export * from './directives/select-and-focus.directive';
 export * from './directives/select-on-focus.directive';
+
+export * from './pipes/pad.pipe';

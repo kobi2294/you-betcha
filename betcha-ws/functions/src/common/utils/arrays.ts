@@ -30,3 +30,7 @@ export function arrayContentEquals<T>(a: T[], b: T[]): boolean {
 
 }
 
+export function replaceArrayItem<T>(source: T[], index: number, itemFactory: (item: T) => T): T[] {
+  return source.map((item, i) => i === index ? itemFactory(item) : item);
+}
+
