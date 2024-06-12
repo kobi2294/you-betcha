@@ -68,7 +68,7 @@ export class ApiService {
     }
 
     uploadGroupLogoImage(groupId: string, imageFile: File): Observable<void> {
-        const req$ = this.resizer.resize(imageFile, 175, 175)
+        const req$ = this.resizer.resize(imageFile, 300, 300)
             .then(smallFile => fileToNumberArray(smallFile))
             .then(arr => ({id: groupId, fileType: imageFile.type as DbModel.ImageContentType, content: arr}));
 

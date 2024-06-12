@@ -35,6 +35,8 @@ export function imageResizer() {
     function _resizeImageToCanvas(image: HTMLImageElement, maxWidth: number, maxHeight: number): HTMLCanvasElement {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d')!;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
     
         let width = image.width;
         let height = image.height;
@@ -72,18 +74,25 @@ export function imageResizer() {
     }
 
 
-    async function _resizeImage(file: File, maxWidth: number, maxHeight: number, quality: number = 0.8): Promise<File> {
+    async function _resizeImage(file: File, maxWidth: number, maxHeight: number, quality: number = 1): Promise<File> {
         const arrayBuffer = await readFile(file);
         const image = await loadImageFromArrayBuffer(arrayBuffer, file.type);
         const canvas = _resizeImageToCanvas(image, maxWidth, maxHeight);
         const res = await _canvasToFile(canvas, file.type, quality);
         return res;    
     }
+
+    async function _resize(file: File, maxWidth: number, maxHeight: number, quality: number = 1): Promise<File> {
+        file = await _resizeImage(file, maxWidth * 4, maxHeight * 4, quality);
+        file = await _resizeImage(file, maxWidth * 2, maxHeight * 2, quality);
+        file = await _resizeImage(file, maxWidth , maxHeight, quality);
+        return file;
+    }
     
     
 
     return {
-        resize: _resizeImage
+        resize: _resize
     }
 }
 
