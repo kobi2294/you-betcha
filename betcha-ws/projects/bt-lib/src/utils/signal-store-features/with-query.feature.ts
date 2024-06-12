@@ -26,11 +26,9 @@ export function withQuery<Input extends SignalStoreFeatureResult, T>(queryMethod
             withLoadState(),
             withHooks({
                 onInit: (store, destroyRef = inject(DestroyRef)) => {
-                    console.log('onInit');
                     loader().pipe(
                         takeUntilDestroyed(destroyRef), 
                     ).subscribe((data: any) => {
-                        console.log('query', data);
                         patchState(store, {...data});
                     })
                 }

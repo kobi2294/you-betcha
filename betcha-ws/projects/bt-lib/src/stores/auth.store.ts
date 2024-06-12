@@ -58,7 +58,6 @@ export const AuthStore = signalStore(
                         // user and claims are not synchronized
                         // we register to an observable which forces refresh every 2 seconds until we are  in sync
                         interval(2000).pipe(
-                            tap(_ => console.log('refreshing claims details')),
                             tap(_ => store.refreshDetails(afAuth.currentUser)),
                             takeWhile(_ => (!store.claims() || (!arrayContentEquals(store.claims()!.userGroups, store.user()?.groups??[]) || store.claims()?.role !== store.user()?.role)))
                         ).subscribe();
