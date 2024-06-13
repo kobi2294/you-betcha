@@ -8,7 +8,7 @@ import {
   DalUpdater,
 } from './dal-types';
 import { dalBatch } from './dal-batch';
-import { DbModel } from 'src/common/models/db/db.alias';
+import { DbModel } from '../../../common/models/db/db.alias';
 
 export function dalAccess(firestore = getFirestore()): DalAccess {
   async function _getCollection<T extends DalCollection>(

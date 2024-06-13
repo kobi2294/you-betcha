@@ -9,6 +9,7 @@ import { SetGroupUsersLimitRequest } from "./set-group-users.limit.api";
 import { SetUserGuessRequest } from "./set-user-guess.api";
 import { SetUserRoleRequest } from "./set-user-role.api";
 import { UploadFileRequest } from "./upload-file.api";
+import { UserGroupRequest } from "./user-group.api";
 import { UserInfo } from "./user-info.model";
 
 export {
@@ -23,6 +24,7 @@ export {
     UploadFileRequest, 
     AddRemoveGroupAdminRequest, 
     SetUserRoleRequest, 
-    SetUserGuessRequest
+    SetUserGuessRequest, 
+    UserGroupRequest
 
 }

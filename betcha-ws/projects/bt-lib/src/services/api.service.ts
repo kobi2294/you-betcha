@@ -31,6 +31,7 @@ export class ApiService {
     private _resetCalculatedGroups = httpsCallableData<void, void>(this.functions, 'resetCalculatedGroups');
     private _calculateForMatches = httpsCallableData<void, void>(this.functions, 'calculateForMatches');
     private _resetAllMatchCalculations = httpsCallableData<void, void>(this.functions, 'resetAllMatchCalculations');
+    private _removeUserFromGroup = httpsCallableData<Api.UserGroupRequest, void>(this.functions, 'removeUserFromGroup');
 
     
 
@@ -133,6 +134,10 @@ export class ApiService {
 
     resetAllMatchCalculations(): Observable<void> {
         return this._resetAllMatchCalculations();
+    }
+
+    removeUserFromGroup(req: Api.UserGroupRequest): Observable<void> {
+        return this._removeUserFromGroup(req);
     }
  
 }

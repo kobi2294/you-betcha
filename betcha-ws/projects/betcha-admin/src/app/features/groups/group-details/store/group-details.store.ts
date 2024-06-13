@@ -77,6 +77,13 @@ export const GroupDetailsStore = signalStore(
                 tap(_ => store.reload()), 
                 rxNotify('Admin removed')
             ))
-        ))
+        )), 
+        removeUser: rxMethod<string>(trigger$ => trigger$.pipe(
+            tap(_ => store.setLoading()), 
+            switchMap(val => api.removeUserFromGroup({groupId: store.groupId(), userId: val}).pipe(
+                tap(_ => store.reload()), 
+                rxNotify('User removed')
+            ))
+        )),
     }))
 )

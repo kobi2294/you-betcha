@@ -1,6 +1,8 @@
-import { Api, DbModel } from "src/common/public-api";
+import { Api, DbModel, arrayWithout } from "../common/public-api";
 import { MaybeAuthData, authorize, notFound } from "../common/api/authorize";
 import { getDal } from "../common/logic/dal/dal";
+import { getDalAuth } from "../common/logic/dal/dal-auth";
+import { getOpenApi } from "./open.api";
 
 export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
     authorize(authData, 'group-admin', groupId);
@@ -43,6 +45,18 @@ export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
         await dal.groups.updateOne(group.id, _ => ({logoUrl: url}));
     }
 
+    async function _removeUserFromGroup(userId: string) {
+            const user = (await dal.users.getOne(userId))!;
+            const dalAuth = getDalAuth();
+            
+            const userGroups = arrayWithout(user?.groups, groupId);
+            await dal.users.updateOne(userId, _ => ({ groups: userGroups }));
+            await dalAuth.removeUserFromGroup(userId, groupId);
+    
+            const openApi = getOpenApi();
+            await openApi.createCalculatedGroup(groupId);
+        }    
+
 
     return {
         setGroupMessage: _setGroupMessage, 
@@ -50,6 +64,7 @@ export function getGroupAdminApi(authData: MaybeAuthData, groupId: string) {
         setGroupTheme: _setGroupTheme, 
         setGroupDisplayName: _setGroupDisplayName, 
         getGroupForAdmin: _getGroupForAdmin, 
-        uploadLogoImage: _uploadLogoImage
+        uploadLogoImage: _uploadLogoImage, 
+        removeUserFromGroup: _removeUserFromGroup
     }
 }

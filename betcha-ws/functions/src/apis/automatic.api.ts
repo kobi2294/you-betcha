@@ -1,4 +1,4 @@
-import { DbModel } from "src/common/public-api";
+import { DbModel } from "../common/public-api";
 import { MaybeAuthData, authorize, unauthenticated } from "../common/api/authorize";
 import { getDal } from "../common/logic/dal/dal";
 import { getDalAuth } from "../common/logic/dal/dal-auth";

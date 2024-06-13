@@ -158,6 +158,11 @@ export const resetAllMatchCalculations = onCall<void, Promise<void>>({...options
   return api.resetAllMatchCalculations();
 })
 
+export const removeUserFromGroup = onCall<Api.UserGroupRequest, Promise<void>>(options, req => {
+  const api = getGroupAdminApi(req.auth, req.data.groupId);
+  return api.removeUserFromGroup(req.data.userId);
+});
+
 
 export const publishScores = onSchedule({schedule: '0 * * * *', memory: '2GiB', region: 'europe-west3'}, async () => {
   console.log('Publishing scores');

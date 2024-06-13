@@ -20,7 +20,7 @@ export default class GroupUsersComponent {
 
   readonly vm = computed(() => buildUsersVm(this.store.members(), this.store.group()?.admins || []));
 
-  async leaveGroup(id: string) {
+  async removeUser(userId: string) {
     const result = await firstValueFrom(this.workflow.confirm({
       title: 'Remove User From Group',
       message: 'Please confirm that you want to remove this user from the group.', 
@@ -30,7 +30,7 @@ export default class GroupUsersComponent {
     }));
 
     if (result && result.ok) {
-      
+      this.store.removeUser(userId);
     }
 
   }

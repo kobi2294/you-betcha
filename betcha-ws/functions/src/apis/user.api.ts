@@ -5,8 +5,8 @@ import { getDalAuth } from "../common/logic/dal/dal-auth";
 import { arrayWith, arrayWithout } from "../common/utils/arrays";
 import { getAutomaticApi } from "./automatic.api";
 import { getAuth } from "firebase-admin/auth";
-import { Api } from "src/common/models/api/api.alias";
-import { DbModel } from "src/common/public-api";
+import { Api } from "../common/models/api/api.alias";
+import { DbModel } from "../common/public-api";
 import { getOpenApi } from "./open.api";
 
 export function getUserApi(authData: MaybeAuthData) {
