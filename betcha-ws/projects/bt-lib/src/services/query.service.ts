@@ -65,9 +65,58 @@ export class QueryService {
             calculatedGroupMatchScores: this.getCalculatedGroupMatchScores(groupId)
         })
     }
+
+    getGroupBySecret(secret: string): Observable<DbModel.Group> {
+        const queryReference = query(collection(this.firestore, 'groups'), where('secret', '==', secret));
+        const res = collectionData(queryReference) as Observable<DbModel.Group[]>;
+        return res.pipe(
+            retry({
+                count: 3, 
+                delay: 3000, 
+                resetOnSuccess: true
+            }),
+            map(groups => groups[0] ?? null)
+        )
+    }
+
+    getCalculatedGroupBySecret(secret: string): Observable<DbModel.CalculatedGroup> {
+        const queryReference = query(collection(this.firestore, 'calculated-groups'), where('secret', '==', secret));
+        const res = collectionData(queryReference) as Observable<DbModel.CalculatedGroup[]>;
+        return res.pipe(
+            retry({
+                count: 3, 
+                delay: 3000, 
+                resetOnSuccess: true
+            }),
+            map(groups => groups[0] ?? null)
+        )
+    }
+
+    getCalculatedGroupMatchScoresBySecret(secret: string): Observable<DbModel.CalculatedGroupMatchScore[]> {
+        const queryReference = query(collection(this.firestore, 'calculated-group-match-scores'), where('secret', '==', secret));   
+        const res = collectionData(queryReference) as Observable<DbModel.CalculatedGroupMatchScore[]>;
+        return res.pipe(
+            retry({
+                count: 3, 
+                delay: 3000, 
+                resetOnSuccess: true
+            })
+        )
+    }
+
+
+    getGroupCalculatedDateBySecret(secret: string): Observable<ExtendedCalculatedDataResult> {
+        return combineLatest({
+            group: this.getGroupBySecret(secret),
+            calculatedGroup: this.getCalculatedGroupBySecret(secret),
+            calculatedGroupMatchScores: this.getCalculatedGroupMatchScoresBySecret(secret)
+        })
+    }
 }
 
 type CalculatedDataResult = {
     calculatedGroup: DbModel.CalculatedGroup | null;
     calculatedGroupMatchScores: DbModel.CalculatedGroupMatchScore[];  
 }
+
+type ExtendedCalculatedDataResult = CalculatedDataResult & { readonly group: DbModel.Group | null; }

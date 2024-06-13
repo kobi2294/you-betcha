@@ -14,7 +14,7 @@ import {
   FilledMatch,
 } from './game.vm';
 
-export function buildVm(
+export function buildGameVm(
   allMatches: DbModel.Match[],
   globalStatistics: Record<string, DbModel.MatchStatistics>,
   stages: DbModel.Stage[],

@@ -1,7 +1,7 @@
 import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
 import { initialGameSlice } from "./game.slice";
 import { computed, effect, inject } from "@angular/core";
-import { buildVm } from "./game.helpers";
+import { buildGameVm } from "../../../../../bt-lib/src/stores/game/game.helpers";
 import { MetadataStore, QueryService, withDevtools } from "@lib";
 import { GroupsStore } from "../groups/groups.store";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
@@ -11,7 +11,7 @@ export const GameStore = signalStore(
     {providedIn: 'root'}, 
     withState(initialGameSlice), 
     withComputed((store, metadata = inject(MetadataStore)) => ({
-        vm: computed(() => buildVm(metadata.matches(), metadata.statistics(),metadata.stages(), 
+        vm: computed(() => buildGameVm(metadata.matches(), metadata.statistics(),metadata.stages(), 
             store.calculatedGroup(), store.calculatedGroupMatchScores()))
     })), 
     withMethods((store, query = inject(QueryService)) => ({

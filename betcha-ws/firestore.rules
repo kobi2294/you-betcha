@@ -15,6 +15,10 @@ service cloud.firestore {
       return (request.auth != null && request.auth.token.email == userEmail);
     }
 
+    function knowsSecret() {
+      return (resource.data.keys().hasAll(['secret']));
+    }
+
     allow write: if false;
 
     match /users/{userEmail} {
@@ -22,15 +26,15 @@ service cloud.firestore {
     }
 
     match /groups/{groupId} {
-      allow read: if isSuper() || isGroupMember(groupId);
+      allow read: if isSuper() || isGroupMember(groupId) || knowsSecret();
     }
 
     match /calculated-groups/{groupId} {
-      allow read: if isSuper() || isGroupMember(groupId);
+      allow read: if isSuper() || isGroupMember(groupId) || knowsSecret();
     }
 
     match /calculated-group-match-scores/{id} {
-      allow read: if isSuper() || isGroupMember(resource.data.groupId);      
+      allow read: if isSuper() || isGroupMember(resource.data.groupId) || knowsSecret();   
     }
 
 

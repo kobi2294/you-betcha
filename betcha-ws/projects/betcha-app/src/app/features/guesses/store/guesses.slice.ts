@@ -1,5 +1,5 @@
 import { DbModel } from "@tscommon";
-import { FutureMatchVm } from "../../../stores/game/game.vm";
+import { FutureMatchVm } from "../../../../../../bt-lib/src/stores/game/game.vm";
 
 export interface MatchGuess {
     readonly id: string;

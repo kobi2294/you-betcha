@@ -6,3 +6,6 @@ export * from './router/router.helpers';
 export * from './router/router.slice';
 export * from './router/store.helpers';
 export * from './router/router.store';
+export * from './game/game.helpers';
+export * from './game/game.vm';
+export * from './game/game-teasers';
