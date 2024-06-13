@@ -1,0 +1,15 @@
+{
+  "name": "users/panda.mountain.756@example.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718238732073,
+  "contentType": "image/png",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "fheajKiIKkGrkDIBb6GQYBM4oP4",
+  "timeCreated": "2024-06-13T00:32:12.073Z",
+  "updated": "2024-06-13T00:32:12.079Z",
+  "size": 48384,
+  "md5Hash": "WE0bASRWtOi5BQWQC3+yRw==",
+  "crc32c": "851847249"
+}

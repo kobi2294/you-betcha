@@ -4,6 +4,7 @@ export interface CalculatedGroupMatchScore {
     readonly id: string;    // match-id
     readonly matchId: string;
     readonly groupId: string;
+    readonly secret: string;
     readonly points: number;
     readonly stage: string;
     readonly away: string;

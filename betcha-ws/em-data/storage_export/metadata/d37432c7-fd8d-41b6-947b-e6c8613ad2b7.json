@@ -1,0 +1,15 @@
+{
+  "name": "users/raccoon.otter.579@example.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718238556119,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "h1QhxYtXTBOqRsnYvSp1Z1ALfHw",
+  "timeCreated": "2024-06-13T00:29:16.119Z",
+  "updated": "2024-06-13T00:29:16.127Z",
+  "size": 30241,
+  "md5Hash": "xFgW/P+QkWab+/rsM/XxHg==",
+  "crc32c": "1029752576"
+}

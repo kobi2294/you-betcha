@@ -45,6 +45,7 @@ export function getTrusteeApi(data: MaybeAuthData) {
               id: idOf(match.id, group.id),
               matchId: match.id,
               groupId: group.id,
+              secret: group.secret,
               points: stagesMap[match.stage].points,
               stage: match.stage,
               away: match.away!,

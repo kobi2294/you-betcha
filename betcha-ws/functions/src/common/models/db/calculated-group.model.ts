@@ -1,5 +1,6 @@
 export interface CalculatedGroup {
     readonly id: string;    // group-id
+    readonly secret: string;
     readonly users: GroupUserRecord[];
 }
 

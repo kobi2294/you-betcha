@@ -19,6 +19,7 @@ export function getOpenApi() {
 
     const calcGroup: DbModel.CalculatedGroup = {
       id: group.id,
+      secret: group.secret,
       users: userRecords,
     };
     await dal.calculatedGroups.saveOne(calcGroup);

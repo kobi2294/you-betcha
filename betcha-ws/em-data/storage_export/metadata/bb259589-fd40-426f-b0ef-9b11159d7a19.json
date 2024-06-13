@@ -1,0 +1,15 @@
+{
+  "name": "users/algae.panda.419@example.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718238219116,
+  "contentType": "image/png",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "nnV5l1xWAFRK+NPli5EJTTgherc",
+  "timeCreated": "2024-06-13T00:23:39.117Z",
+  "updated": "2024-06-13T00:23:39.123Z",
+  "size": 43939,
+  "md5Hash": "APgG5Z1qPQJGofCrCokBxw==",
+  "crc32c": "2310053961"
+}

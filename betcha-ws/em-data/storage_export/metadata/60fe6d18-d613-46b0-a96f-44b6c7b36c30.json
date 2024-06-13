@@ -1,0 +1,15 @@
+{
+  "name": "users/panda.chicken.666@example.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718238882816,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "IIBtM1K8JigSzGOYqhzB2PrfGFM",
+  "timeCreated": "2024-06-13T00:34:42.816Z",
+  "updated": "2024-06-13T00:34:42.821Z",
+  "size": 28010,
+  "md5Hash": "Pgemcd6FTk4JVJA2rg1ndg==",
+  "crc32c": "3505967736"
+}

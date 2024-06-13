@@ -28,6 +28,7 @@ export function getSuperApi(authData: MaybeAuthData) {
 
         const calcGroup: DbModel.CalculatedGroup = {
             id, 
+            secret: group.secret,
             users: []
         }
 

@@ -1,0 +1,15 @@
+{
+  "name": "users/otter.orange.462@example.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718239031997,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "LA/0yPfoDRi3GbFvZ3eIR834Fxs",
+  "timeCreated": "2024-06-13T00:37:11.997Z",
+  "updated": "2024-06-13T00:37:12.001Z",
+  "size": 34315,
+  "md5Hash": "3X3ZDQPL8dUghXhBpBmjBA==",
+  "crc32c": "990592242"
+}
