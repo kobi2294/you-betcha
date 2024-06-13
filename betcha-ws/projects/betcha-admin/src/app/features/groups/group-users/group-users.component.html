@@ -30,7 +30,7 @@
                     <div class="email">{{rec.user.id}}</div>
                 </div>
                 <div class="actions">
-                    <mat-icon symbol libIconButton [class.is-off]="!rec.isAdmin" (click)="toggleAdmin(rec.user.id)">shield_person</mat-icon>
+                    <mat-icon symbol libIconButton [disabled]="!auth.isSuper()" [class.is-off]="!rec.isAdmin" (click)="toggleAdmin(rec.user.id)">shield_person</mat-icon>
                     <mat-icon symbol libIconButton (click)="leaveGroup(rec.user.id)">move_item</mat-icon>
                 </div>
 
