@@ -2,10 +2,10 @@
     <div class="content">
         <div class="tools" *ngIf="authStore.isTrustee()">
             <button mat-raised-button color="accent" (click)="resetAllCalculatedGroups()" *ngIf="authStore.isSuper()">
-                Reset Calculated Groups
+                Reset Calced Groups
             </button>
             <button mat-raised-button color="accent" (click)="calculateForMatches()">
-                Publish Available Data
+                Calc Started Matches
             </button>
             <button mat-raised-button color="warn" (click)="resetAllMatchCalculations()">
                 Reset All Match Calculations
