@@ -5,6 +5,7 @@ export type GameVm = GroupMatchesVm & { table: GroupTableVm };
 export type GroupTableVm = UserTableRowVm[];
 
 export type UserTableRowVm = {
+  readonly id: string;
   readonly displayName: string;
   readonly photoUrl: string;
   readonly totalPoints: number;

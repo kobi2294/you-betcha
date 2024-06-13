@@ -1,1 +1,31 @@
-<p>scores works!</p>
+@if(table(); as table) {
+    <div class="title row">
+        <div>{{ table.length }} Players</div> 
+    </div>
+    <div class="header row">
+        <div class="cell index">#</div>
+        <div class="cell name">Name</div>
+        <div class="cell points">Pts</div>
+        <div class="cell correct"><mat-icon symbol>done_all</mat-icon></div>
+        <div class="cell solos"><mat-icon symbol>new_releases</mat-icon></div>
+    </div>
+    <div class="body">
+        <div class="scroller">
+            @for(player of table; track player.id) {
+                <div class="row">
+                    <div class="cell index">{{$index + 1}}</div>
+                    <div class="cell name">
+                        <lib-profile-pic [url]="player.photoUrl"/>
+                        <div>{{player.displayName}}</div>
+                    </div>
+                    <div class="cell points">{{player.totalPoints}}</div>
+                    <div class="cell correct">{{player.correctCount}}</div>
+                    <div class="cell solos">{{player.soloCount}}</div>
+                </div>
+
+            }
+        </div>
+    </div>
+} @else {
+    No scores in this group
+}

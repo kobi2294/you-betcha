@@ -30,7 +30,7 @@ service cloud.firestore {
     }
 
     match /calculated-group-match-scores/{id} {
-      allow read: if isSuper() || isGroupMember(request.resource.data.groupId)
+      allow read: if isSuper() || isGroupMember(resource.data.groupId);      
     }
 
 

@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
-import { Firestore, collection, collectionData, doc, docData, query, where } from "@angular/fire/firestore";
+import { CollectionReference, Firestore, collection, collectionData, doc, docData, query, where } from "@angular/fire/firestore";
 import { DbModel, toRecord } from "@tscommon";
-import { Observable, combineLatest, debounceTime, forkJoin, map, of, tap } from "rxjs";
+import { Observable, combineLatest, debounceTime, delay, forkJoin, map, of, retry, tap } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class QueryService {
@@ -32,7 +32,14 @@ export class QueryService {
 
     getGroup(groupId: string): Observable<DbModel.Group> {
         const docReference = doc(this.firestore, `groups/${groupId}`);
-        return docData(docReference) as Observable<DbModel.Group>;
+        const res$ = docData(docReference) as Observable<DbModel.Group>;
+        return res$.pipe(
+            retry({
+                count: 3, 
+                delay: 3000, 
+                resetOnSuccess: true
+            })
+        )
     }
 
     getCalculatedGroups(groupId: string): Observable<DbModel.CalculatedGroup> {
@@ -42,6 +49,7 @@ export class QueryService {
 
     getCalculatedGroupMatchScores(groupId: string): Observable<DbModel.CalculatedGroupMatchScore[]> {
         const queryReference = query(collection(this.firestore, 'calculated-group-match-scores'), where('groupId', '==', groupId));
+
         return collectionData(queryReference) as Observable<DbModel.CalculatedGroupMatchScore[]>;
     }
 

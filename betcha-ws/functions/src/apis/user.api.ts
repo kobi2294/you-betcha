@@ -27,14 +27,22 @@ export function getUserApi(authData: MaybeAuthData) {
         return user;
     }
 
+    async function _createCalculatedGroups() {
+        const user = await dal.users.getOne(auth.email);
+        const open = getOpenApi();
+        await Promise.all((user?.groups??[]).map(g => open.createCalculatedGroup(g)));
+    }
+
     async function _setDisplayName(displayName: string) {
         await dal.users.updateOne(auth.email, _ => ({ displayName }));
+        await _createCalculatedGroups();
     }
 
     async function _uploadProfileImage(image: number[], contentType: DbModel.ImageContentType) {
         const path = `users/${auth.email}/profile-image`;
         const url = await dal.file.upload(path, image, contentType);
         await dal.users.updateOne(auth.email, _ => ({ photoUrl: url }));
+        await _createCalculatedGroups();
     }
 
     async function _joinGroup(groupSecret: string): Promise<DbModel.Group> {
