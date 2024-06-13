@@ -1,0 +1,15 @@
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+
+    .verify-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        strong {
+            color: var(--w-500);
+        }
+
+    }
+}

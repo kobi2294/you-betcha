@@ -51,6 +51,10 @@ export const routes: Routes = [
                     './features/groups/group-admins/group-admins.component'
                   ),
               },
+              {
+                path: 'users', 
+                loadComponent: () => import('./features/groups/group-users/group-users.component')
+              }
             ],
           },
         ],

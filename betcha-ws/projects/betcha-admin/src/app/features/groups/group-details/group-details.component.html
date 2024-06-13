@@ -1,73 +1,100 @@
-<lib-busy [busy]="store.isLoading()" [caption]="loadCaption()" [showContent]="store.groupId() !== ''">
-    @if(store.group(); as group) {
-        <div class="header-area">
-            <mat-icon symbol>group</mat-icon>
-            <lib-header [level]="1">
-                <lib-edit-string [value]="group.displayName" (changed)="store.setDisplayName($event)"></lib-edit-string>
-            </lib-header>
-            <lib-header [level]="2">{{groupId()}}</lib-header>            
-        </div>
+<lib-busy
+  [busy]="store.isLoading()"
+  [caption]="loadCaption()"
+  [showContent]="store.groupId() !== ''"
+>
+  @if(store.group(); as group) {
+  <div class="header-area">
+    <lib-edit-image
+      [value]="store.group()!.logoUrl"
+      fallback="assets/images/logo-placeholder.png"
+      (changed)="store.uploadLogo($event)"
+    />
+    <lib-header [level]="1">
+      <lib-edit-string
+        [value]="group.displayName"
+        (changed)="store.setDisplayName($event)"
+      ></lib-edit-string>
+    </lib-header>
+    <lib-header [level]="2">{{ groupId() }}</lib-header>
+  </div>
 
-        <div class="customize">
-            <div class="label">Logo</div>
-            <lib-edit-image [value]="store.group()!.logoUrl" fallback="assets/images/logo-placeholder.png"
-                (changed)="store.uploadLogo($event)"/>
-        </div>
+  <div class="links">
+    <div class="label">
+      Join Group Link
+      <mat-icon libIconButton [cdkCopyToClipboard]="joinLink()"
+        >content_copy</mat-icon
+      >
+    </div>
+    <div class="value">
+      {{ joinLink() }}
+    </div>
+    <div class="label">
+      Dashboard Link
+      <mat-icon libIconButton [cdkCopyToClipboard]="dashboardLink()"
+        >content_copy</mat-icon
+      >
+    </div>
+    <div class="value">
+      {{ dashboardLink() }}
+    </div>
+  </div>
 
-        <div class="links">
-            <div class="label">
-                Join Group Link
-                <mat-icon libIconButton [cdkCopyToClipboard]="joinLink()">content_copy</mat-icon>
-            </div>
-            <div class="value">
-                {{joinLink()}}
-            </div>
-            <div class="label">
-                Dashboard Link
-                <mat-icon libIconButton [cdkCopyToClipboard]="dashboardLink()">content_copy</mat-icon>
-            </div>
-            <div class="value">
-                {{dashboardLink()}}
-            </div>
-        </div>
+  <div class="quota">
+    <div class="label">Users</div>
+    <lib-edit-string
+      [value]="group.usersLimit.toString()"
+      type="number"
+      caption="Maximum"
+      [enabled]="authStore.isSuper()"
+      (changed)="store.setUsersLimit($event)"
+    />
+    <lib-edit-string
+      [value]="store.members().length.toString()"
+      caption="Registered"
+      [enabled]="false"
+    />
+    <lib-edit-select
+      [options]="blockingOptions"
+      [value]="group.blocked"
+      caption="Registration Status"
+      [enabled]="authStore.isSuper()"
+      (changed)="store.setBlocked($event)"
+    />
+    <div class="nav">
+      <a routerLink="admins" *ngIf="authStore.isSuper()">Manage admins</a>
+      <a routerLink="users">Manage users</a>
+    </div>
+  </div>
 
-        <div class="quota">
-            <div class="label">Users</div>
-            <a routerLink="admins" *ngIf="authStore.isSuper()">Manage admins...</a>
-            <lib-edit-string [value]="group.usersLimit.toString()" 
-                type="number" caption="Maximum" [enabled]="authStore.isSuper()"
-                (changed)="store.setUsersLimit($event)"/>
-            <lib-edit-string [value]="store.members().length.toString()" 
-                caption="Registered" [enabled]="false"
-                />
-            <lib-edit-select [options]="blockingOptions" [value]="group.blocked" 
-                caption="Registration Status" [enabled]="authStore.isSuper()"
-                (changed)="store.setBlocked($event)"/>
-        </div>
+  <div class="customize">
+    <div class="label">Customize</div>
+    <lib-edit-string
+      [value]="group.slogan"
+      caption="Slogan"
+      [required]="false"
+      (changed)="store.setSlogan($event)"
+    />
+    <lib-edit-string
+      [value]="group.message"
+      caption="Message"
+      [required]="false"
+      (changed)="store.setMessage($event)"
+    />
+    <lib-edit-select
+      [options]="themeOptions"
+      [value]="group.theme"
+      caption="Theme"
+      (changed)="store.setTheme($event)"
+    >
+      <span *libOption="let theme" [style.color]="theme.value">{{
+        theme.displayName
+      }}</span>
+    </lib-edit-select>
+  </div>
 
-        <div class="customize">
-            <div class="label">Customize</div>            
-            <lib-edit-string [value]="group.slogan" caption="Slogan" 
-                [required]="false"
-                (changed)="store.setSlogan($event)"/>
-            <lib-edit-string [value]="group.message" caption="Message" [required]="false"
-                (changed)="store.setMessage($event)"
-                />
-            <lib-edit-select [options]="themeOptions" [value]="group.theme" 
-                caption="Theme"
-                (changed)="store.setTheme($event)"
-                >
-                <span *libOption="let theme" [style.color]="theme.value">{{theme.displayName}}</span>
-            </lib-edit-select>
-        </div>
-
-
-
-    }
+  }
 </lib-busy>
-
-
-
 
 <!--
     Data: 

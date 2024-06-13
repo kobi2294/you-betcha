@@ -1,0 +1,44 @@
+<lib-busy
+  [busy]="store.isLoading()"
+  caption="Saving..."
+  [showContent]="store.groupId() !== ''"
+>
+  @if(store.group(); as group) {
+  <div class="header-area">
+    <mat-icon symbol>group</mat-icon>
+    <lib-header [level]="1">
+      {{ group.displayName }}
+    </lib-header>
+    <lib-header [level]="2">Admins</lib-header>
+  </div>
+  <button mat-button class="go-back" [routerLink]="['../']">
+    <mat-icon symbol libIconButton>arrow_back</mat-icon>
+    <span>Back to group</span>
+  </button>
+
+  <div class="summary">
+    {{ store.members().length }} members
+  </div>
+
+  <div class="content">
+    <div class="scroller">
+        @for(rec of vm().records; track rec.user.id) {
+            <div class="user">
+                <lib-profile-pic [url]="rec.user.photoUrl"/>
+                <div class="names">
+                    <div class="displayName">{{rec.user.displayName}}</div>
+                    <div class="email">{{rec.user.id}}</div>
+                </div>
+                <div class="actions">
+                    <mat-icon symbol libIconButton [class.is-off]="!rec.isAdmin" (click)="toggleAdmin(rec.user.id)">shield_person</mat-icon>
+                    <mat-icon symbol libIconButton (click)="leaveGroup(rec.user.id)">move_item</mat-icon>
+                </div>
+
+            </div>
+        }
+
+    </div>
+  </div>
+
+  }
+</lib-busy>
