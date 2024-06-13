@@ -1,10 +1,11 @@
 import { Component, inject, input } from '@angular/core';
 import { DashboardStore } from '../store/dashboard.store';
+import { SharedModule } from '@lib';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

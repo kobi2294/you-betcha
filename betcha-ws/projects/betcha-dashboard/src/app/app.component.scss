@@ -1,4 +1,10 @@
 :host {
-    background-image: url(../assets/soccer-bg1.jpg);
+    background-image: url(../assets/images/soccer-bg1.jpg);
     background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 0px 1fr;
+
+
 }

@@ -1,7 +1,8 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { timer } from 'rxjs';
+import { DashboardStore } from './store/dashboard.store';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,16 @@ import { timer } from 'rxjs';
 })
 export class AppComponent {
   document = inject(DOCUMENT);
+
+  readonly store = inject(DashboardStore);
+
+
+  @HostBinding('class')
+  get themeClass() {
+    const color = this.store.group()?.theme || 'blue';
+    return `theme-${color}`;
+  }
+
 
   constructor() {
     timer(1000 * 60 * 60).subscribe(() => {

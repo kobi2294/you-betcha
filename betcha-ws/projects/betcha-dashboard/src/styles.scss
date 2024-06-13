@@ -4,4 +4,33 @@
 @use 'core';
 
 @include core.go();
-@include theme.go(pal.$blue, pal.$green);
+$light: true;
+@include theme.go(pal.$blue, pal.$green, $is-light: $light);
+
+.theme-blue {
+    @include theme.go(pal.$blue, pal.$orange, $is-light: $light);
+}
+
+.theme-teal {
+    @include theme.go(pal.$teal, pal.$orange, $is-light: $light);
+}
+
+.theme-green {
+    @include theme.go(pal.$green, pal.$brown, $is-light: $light);
+}
+
+.theme-red {
+    @include theme.go(pal.$red, pal.$blue, $is-light: $light);
+}
+
+.theme-purple {
+    @include theme.go(pal.$purple, pal.$orange, $is-light: $light);
+}
+
+.theme-orange {
+    @include theme.go(pal.$orange, pal.$blue, $is-light: $light);
+}
+
+.theme-brown {
+    @include theme.go(pal.$brown, pal.$green, $is-light: $light);
+}

@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class="euro-logo">
+  <img src="assets/images/euro.jpg" alt="Euro Logo" />
+</div>
+<div class="company-logo">
+  <img [src]="store.group()?.logoUrl" alt="Euro Logo" />
+</div>
+
+<div class="timer" *ngIf="store.comingUp() as comingUp">
+    <div class="match" *ngIf="comingUp.matches[0] as match">
+        <lib-flag [country]="match.home"/>
+        <div class="country">{{ match.home }}</div>
+        <div class="seperator">:</div>
+        <div class="country">{{ match.away }}</div>
+        <lib-flag [country]="match.away"/>
+
+    </div>
+  <div class="top">
+    <div>{{ comingUp.days | pad : 2 : "0" }}</div>
+    <div class="dots">:</div>
+    <div>{{ comingUp.hours | pad : 2 : "0" }}</div>
+    <div class="dots">:</div>
+    <div>{{ comingUp.minutes | pad : 2 : "0" }}</div>
+  </div>
+  <div class="bottom">
+    <div>Days</div>
+    <div>Hrs</div>
+    <div>Min</div>
+  </div>
+</div>
+
+
+<div class="message">
+    <div class="text">Place your guesses, NOW!</div>
+</div>
