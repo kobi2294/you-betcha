@@ -19,16 +19,16 @@ export const GroupsStore = signalStore(
             debounceTime(0),
             tap(id => patchState(store, {selectedGroupId: id})),
         )),
-        setGroupIds: rxMethod<string[]>(ids$ => ids$.pipe(
+        setGroupIds: rxMethod<string[] | 'super'>(ids$ => ids$.pipe(
             tap(ids => console.log('Groups Store - setGroupIds', ids)),
-            switchMap(ids => query.getGroups(ids)), 
+            switchMap(ids => (ids === 'super' ? query.getAllGroups() : query.getGroups(ids))), 
             tap(groups => patchState(store, {groups: toRecord(groups, g => g.id), selectedGroupId: store.selectedGroupId() || groups[0]?.id || ''}))
-        ))
+        )),
     })),    
     withHooks((store, auth=inject(AuthStore)) => ({
         onInit: () => {
-            const groupIds = computed(() => auth.user()?.groups || []);
-            store.setGroupIds(groupIds);
+                const groupIds = computed(() => auth.claims()?.role === 'super' ? 'super' : auth.user()?.groups || []);
+                store.setGroupIds(groupIds);    
         }
     })), 
 

@@ -30,6 +30,11 @@ export class QueryService {
         return res;
     }
 
+    getAllGroups(): Observable<DbModel.Group[]> {
+        const queryReference = collection(this.firestore, 'groups');
+        return collectionData(queryReference) as Observable<DbModel.Group[]>;
+    }
+
     getGroup(groupId: string): Observable<DbModel.Group> {
         const docReference = doc(this.firestore, `groups/${groupId}`);
         const res$ = docData(docReference) as Observable<DbModel.Group>;
