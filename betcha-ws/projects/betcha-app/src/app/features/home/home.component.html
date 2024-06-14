@@ -50,6 +50,15 @@
         />
     </div>
     }
+
+  @if (store.recent().length > 0) {
+    <div class="recent">
+      <h3>Recent Scores</h3>
+      <app-past-match *ngFor="let match of store.recent()" 
+        [match]="match"
+        />
+    </div>
+  }
   
 }
 

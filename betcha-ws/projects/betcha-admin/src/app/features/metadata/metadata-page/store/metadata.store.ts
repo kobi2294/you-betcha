@@ -37,7 +37,6 @@ export const MetadataStore = signalStore(
           const obj = JSON.parse(str) as any;
           if (validatePartialMetadata(obj)) {
             const md = {
-              ...DbModel.defaultMetadata, 
               ...{matches: store.matches(), stages: store.stages(), countries: store.countries()},
               ...obj
             }

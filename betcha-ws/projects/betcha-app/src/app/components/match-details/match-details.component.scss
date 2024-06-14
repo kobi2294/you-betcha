@@ -2,13 +2,76 @@
     display: flex;
     flex-direction: column;
 
+    .summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        border: 1px solid var(--p-200);
+        background-color: var(--p-50);
+
+        .entry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-inline-start: 1px solid var(--p-100);
+
+            &:first {
+                border-inline-start: none;
+            }
+            &.correct {
+                background-color: var(--p-100);
+                color: var(--p-700);
+            }
+
+            .count {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                mat-icon {
+                    font-size: 1em;
+                }    
+            }
+
+            .label {
+                margin: 2px;
+                font-size: 0.8em;
+            }
+        }
+
+
+
+
+    }
+
+    .each {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+
+        mat-icon {
+            color: var(--p-500);
+        }
+
+        .points {
+            font-weight: bold;
+            color: var(--p-500);
+        }
+    }
+
 
     .record {
         display: grid;
-        grid-template-columns: 1fr 100px;
+        grid-template-columns: 1fr clamp(130px, 45%, 240px);
         background-color: rgba(255, 255, 255, 0.6);
-        padding: 8px;
+        padding: 8px clamp(2px, 1vw , 8px);
         border-top: 1px solid var(--n-300);
+        font-size: clamp(12px, 4vw, 20px);
+
+        mat-icon {
+            font-size: clamp(18px, 5vw, 24px);
+        }
 
         .name {
             display: flex;
@@ -20,10 +83,11 @@
             overflow: hidden;
             padding: 0px 6px;
         }
-        .value {
+        .guess {
             display: flex;
             flex-direction: row;
             align-items: center;
+            gap: 2px;
             &.correct {
                 color: var(--s-500);                
             }

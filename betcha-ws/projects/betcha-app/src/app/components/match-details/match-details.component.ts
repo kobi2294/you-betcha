@@ -15,6 +15,7 @@ export class MatchDetailsComponent {
 
   readonly completed = computed(() => this.score() !== null); 
   readonly stats = input<DbModel.MatchStatistics | null>()
+  readonly pointsEach = input(0);
 
   readonly vms: Signal<UserScore[]> = computed(() =>
     this.records().map((r) =>

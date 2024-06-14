@@ -3,6 +3,7 @@ import { SharedModule } from '@lib';
 import { HomeStore } from './store/home.store';
 import { FutureMatchComponent } from "../../components/future-match/future-match.component";
 import { CurrentMatchComponent } from "../../components/current-match/current-match.component";
+import { PastMatchComponent } from "../../components/past-match/past-match.component";
 
 @Component({
     selector: 'app-home',
@@ -10,7 +11,7 @@ import { CurrentMatchComponent } from "../../components/current-match/current-ma
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
     providers: [HomeStore],
-    imports: [SharedModule, FutureMatchComponent, CurrentMatchComponent]
+    imports: [SharedModule, FutureMatchComponent, CurrentMatchComponent, PastMatchComponent]
 })
 export default class HomeComponent {
   readonly store = inject(HomeStore);

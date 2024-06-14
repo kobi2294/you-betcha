@@ -180,11 +180,11 @@ function inProgressMatchVm(
     if (model.guess) {
       groupStatistics[model.guess]++;
     }
-  });
+  });  
 
   return {
     ...match,
-    globalStatistics: stats[match.id],
+    globalStatistics: stats[match.id] ?? { home: 0, away: 0, tie: 0 },
     groupStatistics,
     userGuesses,
   };
@@ -231,7 +231,7 @@ function pastMatchVm(
 
   return {
     ...match,
-    globalStatistics: globalStatistics[match.id],
+    globalStatistics: inprg.globalStatistics,
     groupStatistics: inprg.groupStatistics,
     correctCount,
     pointsEach,

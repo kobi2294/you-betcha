@@ -1,1 +1,20 @@
-<p>past-match works!</p>
+<app-match-base [match]="match()">
+  <div class="match-score">
+      <div class="num">{{match().homeScore}}</div>
+      :
+      <div class="num">{{match().awayScore}}</div>
+  </div>
+</app-match-base>
+  <app-match-stats
+    [homeName]="match().home"
+    [awayName]="match().away"
+    [home]="match().globalStatistics.home"
+    [tie]="match().globalStatistics.tie"
+    [away]="match().globalStatistics.away"
+  />
+  <app-match-details
+    [records]="match().userScores"
+    [score]="match().correctGuess"
+    [stats]="match().groupStatistics"
+    [pointsEach]="match().pointsEach"
+  />
