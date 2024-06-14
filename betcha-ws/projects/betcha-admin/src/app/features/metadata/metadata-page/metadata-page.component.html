@@ -10,7 +10,7 @@
   </lib-header>
   <div class="content">
     @if(store.isEditing()) {
-    <textarea #textarea></textarea>
+    <textarea #textarea [value]="store.editData()"></textarea>
     <div class="toolbar">
       <button
         mat-raised-button

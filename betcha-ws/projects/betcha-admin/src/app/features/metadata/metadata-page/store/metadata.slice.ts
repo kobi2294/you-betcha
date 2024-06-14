@@ -5,12 +5,14 @@ export interface MetadataSlice {
     stages: DbModel.Stage[];
     countries: string[];
     isEditing: boolean;
+    editData: string;
 }
 
 export const initialMetadataSlice: MetadataSlice = {
     matches: [],
     stages: [],
     countries: [], 
-    isEditing: false
+    isEditing: false, 
+    editData: ''
 }
 

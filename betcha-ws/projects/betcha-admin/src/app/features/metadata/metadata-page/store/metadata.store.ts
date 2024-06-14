@@ -26,7 +26,11 @@ export const MetadataStore = signalStore(
       api = inject(ApiService),
       notify = inject(NotificationsService)
     ) => ({
-      startEdit: () => patchState(store, { isEditing: true }),
+      startEdit: () => patchState(store, { isEditing: true, editData: JSON.stringify({
+        countries: store.countries(), 
+        stages: store.stages(),
+        matches: store.matches()
+      }, null, 4)}),
       save: async (str: string) => {
         store.setLoading();        
         try {
