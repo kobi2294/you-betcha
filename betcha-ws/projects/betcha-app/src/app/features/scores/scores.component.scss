@@ -1,12 +1,14 @@
 :host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  .tab-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-
-    .tab-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
+  }
+  mat-icon {
+    margin-inline-end: 4px;
+  }
 }

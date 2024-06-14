@@ -1,0 +1,80 @@
+<app-content>
+  <h3>Guesses</h3>
+  <ul>
+    <li>
+      Place your guesses in the <b><mat-icon symbol>sports_esports</mat-icon> Guesses Page</b>.
+    </li>
+  </ul>
+    <img class="screenshot" src="assets/screenshots/guess.png" />
+  <ul>
+    <li>You may change them only until the match begins.</li>
+    <li>You only need to guess who wins, (or a tie).</li>
+    <li>
+      In knockout games, guess the result up to 120 minutes, not including
+      penalties, so a <b>tie is possible</b>.
+    </li>
+    <li>You can't see what other players guessed before the match begins.</li>
+  </ul>
+
+  <h3>Scoring</h3>
+  <p>
+    In the <b>Scores Page <mat-icon symbol>leaderboard</mat-icon></b>, in the <b>Details Tab <mat-icon>subject</mat-icon></b> you can see 
+    what your friends have guessed and how they have scored, in all past matches.
+  </p>
+  <img class="screenshot" src="assets/screenshots/results.png" style="max-width: min(calc(100% - 50px), 400px)">
+  <p>
+    Each match has a pre-allocated amount of points. The points will be
+    distributed evenly between players who have guessed correctly. So the more
+    players guess the match result correctly, the less points each player
+    receives.
+  </p>
+  <p>
+    <b>Example: </b> if the match is worth <b>120</b> points, and
+    <b>4</b> players have guessed it correctly, they each receive
+    <b>30</b> points.
+  </p>
+  <p>
+    In the <b>Scores page <mat-icon symbol>leaderboard</mat-icon></b> in the <b>Table tab<mat-icon symbol>list_alt</mat-icon></b> you can see the current standings of all players in your group.    
+  </p>
+  <img class="screenshot" src="assets/screenshots/scoreboard.png">
+  <p>The table is sorted by points, and also shows the amount of correct guesses <mat-icon>done_all</mat-icon>
+    , and the number of "solo" guesses <mat-icon symbol>new_releases</mat-icon></p>
+
+    <h3>Match Points</h3>
+    <p>The matches total points are according to the stage of the tournament:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stage of stages()">
+          <td>{{ stage.displayName }}</td>
+          <td>{{ stage.points }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Strategy</h3>
+  <ul>
+    <li>
+      The less players guess the match correctly, the more points each one gets.
+      Therefore, it is a good idea to bet on supprises every once in a while.
+    </li>
+    <li>
+      Scoring a <b>Solo Bet <mat-icon symbol color="accent">new_releases</mat-icon></b
+      >, where you are the only player in your group to have guessed the score,
+      earns you a substantial amount of points.
+    </li>
+    <li>
+      However, it is not a good idea to look <b>only</b> for surprises. The
+      winners are usually those who find the right balance between surprises and
+      predicted results (and of course those who guess correctly
+      <mat-icon symbol>insert_emoticon</mat-icon>)
+    </li>
+  </ul>
+
+  <h2>Good Luck!</h2>
+</app-content>

@@ -16,6 +16,11 @@ export const routes: Routes = [
         {path: 'table', loadComponent: () => import('./features/scores/score-table/score-table.component')},
         {path: 'details', loadComponent: () => import('./features/scores/score-details/score-details.component')},
     ] },
+    {path: 'info', loadComponent: () => import('./features/info/info.component'), children: [
+        {path: '', redirectTo: 'rules', pathMatch: 'full'},
+        {path: 'rules', loadComponent: () => import('./features/info/rules/rules.component')},
+        {path: 'help', loadComponent: () => import('./features/info/help/help.component')},
+    ]}
 
 
 ];

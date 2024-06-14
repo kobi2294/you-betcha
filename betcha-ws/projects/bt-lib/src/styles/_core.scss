@@ -42,6 +42,9 @@
     }
 
     --mdc-filled-text-field-label-text-size: 24px;
+    .mat-mdc-tab-link.mdc-tab--active .mdc-tab__text-label  {
+      --mat-tab-header-active-label-text-color: var(--p-700);
+    }
 
     input[matinput] {
       font-size: 24px;
