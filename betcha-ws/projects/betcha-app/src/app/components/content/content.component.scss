@@ -4,6 +4,14 @@ app-content {
   padding: 4px;
   font-size: 14px;
 
+  mat-icon {
+    color: var(--a-700);
+  }
+
+  b {
+    color: var(--a-700);
+  }
+
   .content {
     padding: 0px 4px 0px 8px;
     display: flex;
@@ -42,7 +50,7 @@ app-content {
       mat-icon {
         width: auto;
         height: auto;
-        color: var(--p500);
+        color: var(--a-700);
         font-size: 1.5em;
         vertical-align: bottom;
       }
