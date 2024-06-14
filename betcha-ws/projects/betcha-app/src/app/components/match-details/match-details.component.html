@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="each" *ngIf="pointsEach() > 0">
-        <mat-icon symbol>check</mat-icon><div class="points">{{pointsEach()}}</div> pts each
+        <mat-icon symbol>check</mat-icon><div class="points">{{pointsEach() | number:'1.0-1'}}</div> pts each
     </div>
     <button mat-button color="primary" (click)="expanded.set(true)">Click for details</button>
 
@@ -42,7 +42,7 @@
                 <mat-icon *ngIf="completed()" [class.correct]="vm.isCorrect">{{vm.isCorrect ? 'check' : 'clear'}}</mat-icon>
                 <div class="value">{{vm.guess}}</div>
                 @if (completed() && vm.isCorrect) {
-                    <div class="points">({{vm.points}}) pts</div>
+                    <div class="points">({{vm.points | number:'1.0-1'}}) pts</div>
                     <mat-icon symbol color="accent" class="solo" *ngIf="vm.isSolo">new_releases</mat-icon>
                 }
             </div>

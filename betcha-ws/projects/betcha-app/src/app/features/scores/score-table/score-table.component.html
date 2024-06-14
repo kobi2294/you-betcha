@@ -19,7 +19,7 @@
                         <lib-profile-pic [url]="player.photoUrl"/>
                         <div>{{player.displayName}}</div>
                     </div>
-                    <div class="cell points">{{player.totalPoints}}</div>
+                    <div class="cell points">{{player.totalPoints | number:'1.0-1'}}</div>
                     <div class="cell correct">{{player.correctCount}}</div>
                     <div class="cell solos">{{player.soloCount}}</div>
                 </div>
