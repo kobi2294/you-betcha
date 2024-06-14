@@ -11,7 +11,11 @@ export const routes: Routes = [
     { path: 'join/:secret', loadComponent: () => import('./features/join/join.component'), data: { hideNavBar: true} },
     { path: 'guesses', loadComponent: () => import('./features/guesses/guesses.component') },
     { path: 'profile', loadComponent: () => import('./features/profile/profile.component') },
-    { path: 'scores', canActivate: [inAnyGroupGuard()], loadComponent: () => import('./features/scores/scores.component') },
+    { path: 'scores', canActivate: [inAnyGroupGuard()], loadComponent: () => import('./features/scores/scores.component'), children: [
+        {path: '', redirectTo: 'table', pathMatch: 'full'},
+        {path: 'table', loadComponent: () => import('./features/scores/score-table/score-table.component')},
+        {path: 'details', loadComponent: () => import('./features/scores/score-details/score-details.component')},
+    ] },
 
 
 ];

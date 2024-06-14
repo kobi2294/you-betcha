@@ -1,0 +1,9 @@
+<div class="scroller">
+    @for(match of matches(); track match.id) {
+        <app-past-match
+            [match]="match"
+            />
+
+    }
+
+</div>

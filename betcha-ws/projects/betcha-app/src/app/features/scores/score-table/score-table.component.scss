@@ -1,0 +1,80 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4px 2px;
+        background-color: var(--p-50);
+        border-bottom: 1px solid var(--p-100);
+
+        &:nth-child(odd) {
+            background-color: var(--p-100);
+        }
+
+        mat-icon {
+            color: var(--a-400);
+        }
+
+        .index, .points, .correct, .solos {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .index {
+            width: 40px;
+        }
+
+        .solos, .correct {
+            width: 30px;
+            color: var(--a-400);
+            font-weight: bold;
+        }
+
+        .points {
+            width: 50px;
+        }
+
+        .name {
+            flex-grow: 1;
+            flex-basis: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+            overflow: hidden;
+
+            lib-profile-pic {
+                min-width: 40px;
+            }
+        }
+
+    }
+
+    .title.row {
+        background-color: var(--p-400);
+        color: var(--pc-400);
+        justify-content: space-around;
+    }
+
+    .body {
+        flex-grow: 1;
+        position: relative;
+
+        .scroller {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+    }
+    
+    
+}

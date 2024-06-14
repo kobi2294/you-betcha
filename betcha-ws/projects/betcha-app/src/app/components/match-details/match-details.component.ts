@@ -28,6 +28,8 @@ export class MatchDetailsComponent {
             isSolo: false,
           }
     )
+    .sort((a, b) => (b.displayName > a.displayName ? -1 : 1))
+    .sort((a, b) => (b.points - a.points))
   );
 
  

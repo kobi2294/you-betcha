@@ -1,0 +1,22 @@
+:host {
+    flex-grow: 1;
+    position: relative;
+
+    .scroller {
+        position: absolute;
+        top: 0;
+        inset-inline-start: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px 4px;
+
+        app-past-match {
+            box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    }
+}

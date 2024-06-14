@@ -26,6 +26,7 @@ import { OnOffPendingButtonComponent } from "./components/on-off-pending-button/
 import { MatCardModule } from "@angular/material/card";
 import { PadPipe } from "./pipes/pad.pipe";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatTabsModule } from "@angular/material/tabs";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -62,6 +63,7 @@ const publicImports: Type<any>[] = [
     MatInputModule, 
     MatCardModule,
     MatDialogModule,
+    MatTabsModule,
     ScrollingModule, 
     ClipboardModule
 ]
