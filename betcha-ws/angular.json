@@ -43,6 +43,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/betcha-app/src/manifest.webmanifest",
+              "projects/betcha-app/src/manifest-blue.webmanifest",
+              "projects/betcha-app/src/manifest-brown.webmanifest",
+              "projects/betcha-app/src/manifest-green.webmanifest",
+              "projects/betcha-app/src/manifest-orange.webmanifest",
+              "projects/betcha-app/src/manifest-purple.webmanifest",
+              "projects/betcha-app/src/manifest-red.webmanifest",
+              "projects/betcha-app/src/manifest-teal.webmanifest",
               "projects/betcha-app/src/favicon.ico",
               "projects/betcha-app/src/assets", 
               {

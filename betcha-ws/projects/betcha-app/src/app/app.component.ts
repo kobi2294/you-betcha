@@ -1,6 +1,8 @@
-import { Component, HostBinding, computed, inject } from '@angular/core';
+import { Component, HostBinding, computed, effect, inject } from '@angular/core';
 import { AuthStore, PagesModule, RouterStore, SharedModule } from '@lib';
 import { GroupsStore } from './stores/groups/groups.store';
+import { changeTheme } from './utils/manifest-colors';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,9 @@ import { GroupsStore } from './stores/groups/groups.store';
 export class AppComponent {
   authStore = inject(AuthStore);
   groupsStore = inject(GroupsStore);
+  doc = inject(DOCUMENT);
 
+ 
   readonly routerStore = inject(RouterStore);
   readonly hideNavBar = computed(() => Boolean(this.routerStore.data()['hideNavBar']));
   readonly isPublic = computed(() => Boolean(this.routerStore.data()['public']));
@@ -29,6 +33,12 @@ export class AppComponent {
   }
 
   constructor() {
+    effect(() => {
+      const theme = this.groupsStore.selectedGroup()?.theme || 'blue';
+
+      changeTheme(theme, this.doc);
+
+    })
   }
 
 
