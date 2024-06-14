@@ -1,41 +1,23 @@
-<div class="home team">
-  <lib-country [name]="match().home" />
-</div>
-
-<div class="match">
-  <div class="stage">
-    <div class="stage-name">
-      {{ match().stageName }}
-    </div>
-    <div class="points">({{ match().points }} pts)</div>
-  </div>
-  <div class="bets">
-    <lib-on-off-pending-button
-      [clickWhenOn]="false"
-      [value]="guess() === 'home'"
-      (change)="setGuess.emit('home')"
-    >
-      Home
-    </lib-on-off-pending-button>
-    <lib-on-off-pending-button
-      [clickWhenOn]="false"
-      [value]="guess() === 'tie'"
-      (change)="setGuess.emit('tie')"
-    >
-      Tie
-    </lib-on-off-pending-button>
-    <lib-on-off-pending-button
+<app-match-base [match]="match()">
+  <lib-on-off-pending-button
+    [clickWhenOn]="false"
+    [value]="guess() === 'home'"
+    (change)="setGuess.emit('home')"
+  >
+    Home
+  </lib-on-off-pending-button>
+  <lib-on-off-pending-button
+    [clickWhenOn]="false"
+    [value]="guess() === 'tie'"
+    (change)="setGuess.emit('tie')"
+  >
+    Tie
+  </lib-on-off-pending-button>
+  <lib-on-off-pending-button
     [clickWhenOn]="false"
     [value]="guess() === 'away'"
     (change)="setGuess.emit('away')"
   >
-      Away
-    </lib-on-off-pending-button>
-  </div>
-  <div class="date">
-    {{ match().date | date : "MMMM dd, HH:mm" }}
-  </div>
-</div>
-<div class="away team">
-    <lib-country [name]="match().away" />
-</div>
+    Away
+  </lib-on-off-pending-button>
+</app-match-base>
