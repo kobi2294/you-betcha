@@ -1,17 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { ApiService, NotificationsService, SharedModule } from '@lib';
-import { DbModel } from '@tscommon';
-import { firstValueFrom } from 'rxjs';
-import { GameStore } from '../../stores/game/game.store';
+import { SharedModule } from '@lib';
 import { GuessesStore } from './store/guesses.store';
+import { FutureMatchComponent } from "../../components/future-match/future-match.component";
 
 @Component({
-  selector: 'app-guesses',
-  standalone: true,
-  imports: [SharedModule],
-  templateUrl: './guesses.component.html',
-  styleUrl: './guesses.component.scss', 
-  providers: [GuessesStore],
+    selector: 'app-guesses',
+    standalone: true,
+    templateUrl: './guesses.component.html',
+    styleUrl: './guesses.component.scss',
+    providers: [GuessesStore],
+    imports: [SharedModule, FutureMatchComponent]
 })
 export default class GuessesComponent {
   readonly store = inject(GuessesStore);

@@ -1,31 +1,3 @@
-@for(match of store.guesses() ; track match.id) {
-<div class="card">
-  <div class="card-header">
-    {{ match.stageName }}: {{ match.date | date : "MMMM dd, HH:mm" }}
-  </div>
-  <div class="card-content">
-    <lib-country [name]="match.home" />
-    <lib-on-off-pending-button
-      [clickWhenOn]="false"
-      [value]="match.guess === 'home'"
-      (change)="store.setGuess(match.id, 'home')"
-      >Home</lib-on-off-pending-button
-    >
-
-    <lib-on-off-pending-button
-      [clickWhenOn]="false"
-      [value]="match.guess === 'tie'"
-      (change)="store.setGuess(match.id, 'tie')"
-      >Tie</lib-on-off-pending-button
-    >
-
-    <lib-on-off-pending-button
-      [clickWhenOn]="false"
-      [value]="match.guess === 'away'"
-      (change)="store.setGuess(match.id, 'away')"
-      >Away</lib-on-off-pending-button
-    >
-    <lib-country [name]="match.away" />
-  </div>
-</div>
+@for(match of store.matches() ; track match.id) {
+  <app-future-match [match]="match" [guess]="store.guesses()[match.id] || null" (setGuess)="store.setGuess(match.id, $event)"/>
 }

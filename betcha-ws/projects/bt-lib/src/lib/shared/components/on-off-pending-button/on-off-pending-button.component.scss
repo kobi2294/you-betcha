@@ -1,21 +1,22 @@
 :host {
     mat-card {
-        margin: 2px;
         cursor:pointer;
         display: grid;
         transition: 0.3s;
         position: relative;
         padding: var(--padding, 16px);
-        border: 2px solid transparent;
+        border: 1px solid transparent;
     
         .content {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
         }
     
         &.on {
             background-color: var(--selected-bg, var(--p-100));
-            border: 2px solid var(--selected-border-color, var(--p-200));
+            border: 1px solid var(--selected-border-color, var(--p-200));
         }
         &.pending {
             opacity: 0.3;

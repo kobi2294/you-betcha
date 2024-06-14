@@ -35,16 +35,9 @@
           </div>
         </div>    
     </h3>
-    <div class="match" *ngFor="let match of comingUp.matches">
-      <lib-country [name]="match.home" />
-      <div class="details">
-        <span class="stage"
-          >{{ match.stage }}
-          <span class="points">({{ match.points }} pts)</span></span
-        >
-        <div class="time">{{ match.date | date : "MMM d HH:mm" }}</div>
-      </div>
-      <lib-country [name]="match.away"/>
-    </div>
+    <app-future-match *ngFor="let match of comingUp.matches" 
+      [match]="match" [guess]="store.guesses()[match.id] || null"
+      (setGuess)="store.setGuess(match.id, $event)"
+      />
   </div>
   }

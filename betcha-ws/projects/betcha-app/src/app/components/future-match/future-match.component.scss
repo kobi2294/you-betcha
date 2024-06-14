@@ -1,0 +1,65 @@
+:host {
+    display: grid;
+    width: 100%;
+    max-width: 500px;
+    min-width: 290px;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2px;
+    font-size: clamp(12.5px, 3.8vw, 20px);
+    
+    // in 320 width: country should be 70px, font size: 13px
+    // in 
+
+    lib-country {
+        width: clamp(55px, 6em ,120px);
+    }
+
+    .match {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 0px 6px 0px;
+
+        .stage {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            color: var(--p-700);
+            border-bottom: 1px solid var(--a-200);
+
+
+            .points {
+                font-weight: bold;
+                color: var(--a-700);
+            }
+        }
+
+        .bets {
+            display: flex;
+            flex-direction: row;  
+            flex-grow: 1;
+            align-items: center;
+            gap: 3px;
+
+               
+            
+            lib-on-off-pending-button {
+                font-weight: 400;
+                width: 3.35em;
+
+                --padding: 3px 3px;
+                --selected-bg: var(--a200);
+                --selected-border-color: var(--a400);
+            }
+        }
+
+        .date {
+            display: flex;
+            flex-direction: row;
+            color: var(--p-700);
+            border-top: 1px solid var(--a-200);
+            padding: 3px;
+
+        }
+    }
+}
