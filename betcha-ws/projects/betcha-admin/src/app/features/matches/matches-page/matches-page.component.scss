@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
 
-
     sk-dialog-content {
         flex-grow: 1;
         position: relative;
@@ -63,7 +62,11 @@
             lib-edit-select.country {
                 --lib-edit-caption-value-margin: 0px;
                 --lib-edit-caption-value-start-margin: 0px;
-        width: 90px;
+                width: 90px;
+
+                lib-country {
+                    width: 80px;
+                }
             }
     
             .index {
@@ -78,4 +81,8 @@
     
     }
 
+}
+
+lib-country {
+    width: 80px;
 }
