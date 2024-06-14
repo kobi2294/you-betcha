@@ -70,7 +70,9 @@
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    app-current-match {
+      margin: 10px 8px;
+    }
   }
 
   .next {

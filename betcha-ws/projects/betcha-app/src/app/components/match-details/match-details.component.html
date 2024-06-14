@@ -1,0 +1,49 @@
+@if (many() && !expanded()) {
+    <div class="summary" *ngIf="stats() as stats">
+        <div class="home" [class.correct]="score() === 'home'">
+            <div class="label">
+                <mat-icon *ngIf="score() === 'home'">check</mat-icon>
+                Home
+            </div>
+            <div class="count">
+                {{stats.home}}
+            </div>
+        </div>
+        <div class="tie" [class.correct]="score() === 'tie'">
+            <div class="label">
+                <mat-icon *ngIf="score() === 'tie'">check</mat-icon>
+                Tie
+            </div>
+            <div class="tie">
+                {{stats.tie}}
+            </div>
+        </div>
+        <div class="away" [class.correct]="score() === 'away'">
+            <div class="label">
+                <mat-icon *ngIf="score() === 'away'">check</mat-icon>
+                Away
+            </div>
+            <div class="count">
+                {{stats.away}}
+            </div>
+        </div>
+    </div>
+    <button mat-button color="primary" (click)="expanded.set(true)">Click for details</button>
+
+} @else {
+    <button mat-button color="primary" *ngIf="expanded()" (click)="expanded.set(false)">Click to hide details</button>
+    @for(vm of vms(); track vm.id) {
+        <div class="record">
+            <div class="name">{{vm.displayName}}</div>
+            <div class="guess" [class.correct]="completed() && vm.isCorrect" [class.wrong]="completed() && !vm.isCorrect">
+                <mat-icon *ngIf="completed()" [class.correct]="vm.isCorrect">{{vm.isCorrect ? 'check' : 'clear'}}</mat-icon>
+                <div class="value">{{vm.guess}}</div>
+                @if (completed() && vm.isCorrect) {
+                    <div class="points">{{vm.points}} points</div>
+                    <mat-icon class="solo" *ngIf="vm.isSolo">new_releases</mat-icon>
+                }
+            </div>
+    
+        </div>
+    }
+}
