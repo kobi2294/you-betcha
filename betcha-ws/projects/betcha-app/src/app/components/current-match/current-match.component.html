@@ -1,1 +1,17 @@
-<p>current-match works!</p>
+<app-match-base [match]="match()">
+  <div class="stats">
+    <div class="label">Home</div>
+    <div class="label">Tie</div>
+    <div class="label">Away</div>
+    <div class="value">{{ match().groupStatistics.home }}</div>
+    <div class="value">{{ match().groupStatistics.tie }}</div>
+    <div class="value">{{ match().groupStatistics.away }}</div>
+  </div>
+</app-match-base>
+<app-match-stats
+  [homeName]="match().home"
+  [awayName]="match().away"
+  [home]="match().globalStatistics.home"
+  [tie]="match().globalStatistics.tie"
+  [away]="match().globalStatistics.away"
+/>

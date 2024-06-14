@@ -1,0 +1,38 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    app-match-base {
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+
+            div {
+                text-align: center;
+                padding: 2px 6px;
+                
+
+                &.label {
+                
+                }
+
+                &.value {
+                    font-weight: bold;
+                    color: var(--a-400);
+                }
+            }
+        }
+    }
+    app-match-stats {
+        --app-stats-gap: clamp(1px, 1vw ,5px);
+        --app-stats-thickness: clamp(4px, 1vw, 8px);
+        font-size: clamp(12.5px, 3.8vw, 20px);
+        align-self: center;
+        max-width: 400px;
+        width: calc(100% - 20px);
+        margin-top: 5px;
+
+    }
+}

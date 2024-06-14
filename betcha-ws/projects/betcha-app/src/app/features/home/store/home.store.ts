@@ -12,6 +12,8 @@ export const HomeStore = signalStore(
     withState(initialHomeSlice),
     withComputed((store, auth = inject(AuthStore), game = inject(GameStore), groups = inject(GroupsStore)) => ({
         comingUp: computed(() => comingUp(game.vm().nextMacthes, store.now())),
+        inProgress: computed(() => game.vm().inProgressMatches),
+        recent: computed(() => game.vm().recentMatches),
         selectedGroup: computed(() => groups.selectedGroup()), 
         hasNoGroups: computed(() => auth.user() && auth.user()!.groups.length === 0), 
         guesses: computed(() => auth.user()!.guesses)
