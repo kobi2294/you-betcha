@@ -44,7 +44,7 @@ export const DashboardStore = signalStore(
             const trig$ = toObservable(store.group).pipe(
                 filter(g => !!g),
                 take(1), 
-                switchMap(_ => interval(5000).pipe(startWith(0), map(() => {}), )), 
+                switchMap(_ => interval(15000).pipe(startWith(0), map(() => {}), )), 
                 takeUntilDestroyed(destroyRef)
             );
             store.recalcSlide(trig$);
