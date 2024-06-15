@@ -23,14 +23,14 @@ export const top3Slide: SlideGen<Top3Slide> = () => ({
   id: 'top-3',
   topLeft: true,
   topRight: true,
-  message: true,
+  message: false,
 });
 export interface Top3Slide {
   readonly type: 'top-3';
   readonly id: 'top-3';
   readonly topLeft: true;
   readonly topRight: true;
-  readonly message: true;
+  readonly message: false;
 }
 
 export const comingUpSlide: MatchSlideGen<ComingUpSlide> = (

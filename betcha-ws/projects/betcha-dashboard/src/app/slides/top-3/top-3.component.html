@@ -1,0 +1,11 @@
+@for(player of top3(); track player.id) {
+<div class="player">
+  <div class="bar">{{ $index + 1 }}</div>
+  <app-player [photoUrl]="player.photoUrl" [displayName]="player.displayName"/>
+  <div class="details">
+    <div class="points">{{ player.totalPoints }} Points</div>
+    <div class="correct">{{ player.correctCount }} <mat-icon symbol>done_all</mat-icon> hits</div>
+    <div class="solo">{{ player.soloCount }} <mat-icon symbol>new_releases</mat-icon> solos</div>
+  </div>
+</div>
+}

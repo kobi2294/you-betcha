@@ -19,7 +19,7 @@ export function slidesForState(gameVm: GameVm): SlideState {
   // - "top 3" slide
   const res: Slide[] = [];
 
-  // res.push(slideGens.top3Slide());
+  res.push(slideGens.top3Slide());
 
   // // if the group has solos in the history - show the last 3 solos in the "solo - summary" slide
   // const anySolos = gameVm.table.some((g) => g.soloCount > 0);
@@ -43,7 +43,8 @@ export function slidesForState(gameVm: GameVm): SlideState {
     if (nextMatches.length > 0) {
       nextMatches.forEach((m) => res.push(slideGens.comingUpSlide(m.id)));
     }
-      // if there were matches in the past 24 hours
+
+    // if there were matches in the past 24 hours
   // - for each match show "match summary" slide
   // - construct table of 24 hours ago and of now, and show the "recent highest scorers" slide
   const matchesInPast24Hours = gameVm.pastMatches.filter(

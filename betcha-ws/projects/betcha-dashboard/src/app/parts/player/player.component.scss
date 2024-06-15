@@ -41,6 +41,8 @@
         border: calc(var(--p-size) / 40) solid var(--p-600);
         position: relative;
         top: calc(var(--p-size) / -8);
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
     }
 }
