@@ -12,20 +12,23 @@ export function slidesForState(gameVm: GameVm): SlideState {
   // during countdown time - 20 seconds before match start, until 10 seconds after - show only one slide - "final countdown"
   if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
 
+
+  
   // otherwise:
   // any other time
   // - "top 3" slide
   const res: Slide[] = [];
-  res.push(slideGens.top3Slide());
 
-  // if the group has solos in the history - show the last 3 solos in the "solo - summary" slide
-  const anySolos = gameVm.table.some((g) => g.soloCount > 0);
-  if (anySolos) res.push(slideGens.soloSummarySlide());
+  // res.push(slideGens.top3Slide());
 
-  // if the group has any surprise catcher - show the last 3 surprise catchers in the "surprise hunters" slide
-  // suprise hunter is a case where somebody guessed correctly a score, that had less than 10% statistical chance of happening
-  const surprises = getSurprises(gameVm);
-  surprises.forEach((s) => res.push(slideGens.surpriseHuntersSlide(s)));
+  // // if the group has solos in the history - show the last 3 solos in the "solo - summary" slide
+  // const anySolos = gameVm.table.some((g) => g.soloCount > 0);
+  // if (anySolos) res.push(slideGens.soloSummarySlide());
+
+  // // if the group has any surprise catcher - show the last 3 surprise catchers in the "surprise hunters" slide
+  // // suprise hunter is a case where somebody guessed correctly a score, that had less than 10% statistical chance of happening
+  // const surprises = getSurprises(gameVm);
+  // surprises.forEach((s) => res.push(slideGens.surpriseHuntersSlide(s)));
 
 
   // during matches
@@ -47,15 +50,15 @@ export function slidesForState(gameVm: GameVm): SlideState {
     (m) => m.dateValue > Date.now() - 24 * 60 * 60 * 1000
   );
 
-  if (matchesInPast24Hours.length > 0) {
-    matchesInPast24Hours
-      .sort((m1, m2) => m1.dateValue - m2.dateValue) 
-      .slice(0, 4)
-      .forEach((m) =>
-      res.push(slideGens.matchSummarySlide(m.id))
-    );
-    res.push(slideGens.recentHighestScorersSlide());
-  }
+  // if (matchesInPast24Hours.length > 0) {
+  //   matchesInPast24Hours
+  //     .sort((m1, m2) => m1.dateValue - m2.dateValue) 
+  //     .slice(0, 4)
+  //     .forEach((m) =>
+  //     res.push(slideGens.matchSummarySlide(m.id))
+  //   );
+  //   res.push(slideGens.recentHighestScorersSlide());
+  // }
 
   }
 

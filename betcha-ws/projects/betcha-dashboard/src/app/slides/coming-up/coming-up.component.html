@@ -1,1 +1,25 @@
-<p>coming-up works!</p>
+@if(coming(); as coming) {
+<div class="match" *ngIf="coming.matches?.[0] as match">
+  <lib-flag [country]="match.home" />
+  <div class="country">{{ match.home }}</div>
+  <div class="seperator">:</div>
+  <div class="country">{{ match.away }}</div>
+  <lib-flag [country]="match.away" />
+</div>
+<div class="timer">
+  <div class="top">
+    <div>{{ coming.days | pad : 2 : "0" }}</div>
+    <div class="dots">:</div>
+    <div>{{ coming.hours | pad : 2 : "0" }}</div>
+    <div class="dots">:</div>
+    <div>{{ coming.minutes | pad : 2 : "0" }}</div>
+  </div>
+  <div class="bottom">
+    <div>Days</div>
+    <div>Hrs</div>
+    <div>Min</div>
+  </div>
+  
+</div>
+
+}

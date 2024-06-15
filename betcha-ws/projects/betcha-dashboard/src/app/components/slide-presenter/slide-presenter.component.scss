@@ -1,160 +1,85 @@
 :host {
-    position: relative;
-    .euro-logo {
-        position: absolute;
-        top: 5%;
-        inset-inline-start: 10%;
-        width: 50vh;
-        height: 20vh;
-        background-color: var(--n-100);
-        border: 0.5vh solid var(--p-500);
-        border-radius: 1vmax;
-        box-shadow: 1vw 1vh 1vmax rgba(0, 0, 0, 0.25);        
+  position: relative;
+  .euro-logo {
+    position: absolute;
+    top: 5%;
+    inset-inline-start: 10%;
+    width: 50vh;
+    height: 20vh;
+    background-color: var(--n-100);
+    border: 0.5vh solid var(--p-500);
+    border-radius: 1vmax;
+    box-shadow: 1vw 1vh 1vmax rgba(0, 0, 0, 0.25);
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
 
-        }
+  .company-logo {
+    position: absolute;
+    top: 5%;
+    inset-inline-end: 10%;
+    width: 50vh;
+    height: 20vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0.5vh solid var(--p-500);
+    border-radius: 1vmax;
+    box-shadow: 1vw 1vh 1vmax rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 
+    img {
+      height: 100%;
+      object-fit: contain;
     }
 
-    .company-logo {
-        position: absolute;
-        top: 5%;
-        inset-inline-end: 10%;
-        width: 50vh;
-        height: 20vh;
-        background-color: rgba(0, 0, 0, 0.2);
-        border: 0.5vh solid var(--p-500);
-        border-radius: 1vmax;
-        box-shadow: 1vw 1vh 1vmax rgba(0, 0, 0, 0.25); 
-        display: flex;       
-        flex-direction: row;
-        overflow: hidden;
-
-
-        img {
-            height: 100%;
-            object-fit: contain;
-
-        }
-
-        .slogan {
-            display: flex;
-            flex-grow: 1;
-            color: var(--p-100);
-            font-size: 5vh;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-        }
-
+    .slogan {
+      display: flex;
+      flex-grow: 1;
+      color: var(--p-100);
+      font-size: 5vh;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
     }
+  }
 
-    @keyframes countdown {
-        0% {opacity: 0; transform: scale(1.5);}    
-        100% {opacity: 1;}    
+  .message {
+    position: absolute;
+    bottom: 5%;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: auto;
+    padding: 2vh;
+    max-height: 90%;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1vmax;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--p-100);
+    box-shadow: 1vmax 1vmax 1vmax rgba(0, 0, 0, 0.25);
+
+    font-size: 2.7vmax;
+
+    .text {
+      opacity: 0.8;
     }
-
-    .timer {
-        position: absolute;
-        top: 35%;
-        inset-inline-start: 30%;
-        width: 40%;
-        height: 40%;
-
-        color: white;
-        display: flex;
-        flex-direction: column;
-
-        .dots {
-            animation: countdown 1s infinite alternate;
-
-        }
-
-        .top, .bottom, .match {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 5vmax;
-            font-weight: bold;
-        }
-
-        .bottom {
-            font-size: 3vmax;
-            font-weight: normal;
-            opacity: 0.5;
-        }
-
-        @keyframes pulse-animation {
-            0% {
-              box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.4);
-            }
-            100% {
-              box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
-            }
-          }
-          
-
-        .match {
-            font-size: 2.5vmax;
-            font-weight: normal;
-            margin-bottom: 2vmax;
-
-            .country {
-                color: var(--p-300);
-            }
-
-            lib-flag {
-                width: 8vmax;
-                height: 8vmax;
-                box-shadow: 0px 0px 1px 1px #0000001a;
-                animation: pulse-animation 2s infinite;
-                border-radius: 50%;
-            }
-        }
-
-    }
-
-    .message {
-        position: absolute;
-        bottom: 5%;
-        inset-inline-start: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        height: auto;
-        padding: 2vh;
-        max-height: 90%;
-
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 1vmax;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-        color: var(--p-100);
-        box-shadow: 1vmax 1vmax 1vmax rgba(0, 0, 0, 0.25);
-
-        font-size: 2.7vmax;
-
-        .text {
-            opacity: 0.8;
-        }
-
-    }
+  }
 }
 
-
-
-
 .main-slide {
-    position: absolute;
-    inset-inline-start: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
+  position: absolute;
+  inset-inline-start: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -15,9 +15,12 @@
 </div>
 } @if (store.currentSlide(); as theSlide) { @for(slide of [theSlide]; track
 slide.id) {
-<div @flyStartEnd class="main-slide">
-  <app-coming-up *ngIf="slide.type === 'coming-up'"/>
-</div>
+<app-coming-up
+  *ngIf="slide.type === 'coming-up'"
+  [matchId]="slide.matchId"
+  @flyStartEnd
+  class="main-slide"
+/>
 } }
 
 <div class="message" @flyDown *ngIf="store.currentSlide()?.message">
