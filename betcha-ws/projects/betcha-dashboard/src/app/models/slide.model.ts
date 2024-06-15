@@ -9,6 +9,7 @@ export const finalCountdounSlide: SlideGen<FinalCountdownSlide> = () => ({
   topLeft: false,
   topRight: false,
   message: false,
+  image: '1',
 });
 export interface FinalCountdownSlide {
   readonly type: 'final-countdown';
@@ -16,6 +17,7 @@ export interface FinalCountdownSlide {
   readonly topLeft: false;
   readonly topRight: false;
   readonly message: false;
+  readonly image: string;
 }
 
 export const top3Slide: SlideGen<Top3Slide> = () => ({
@@ -24,6 +26,7 @@ export const top3Slide: SlideGen<Top3Slide> = () => ({
   topLeft: true,
   topRight: true,
   message: false,
+  image: '2',
 });
 export interface Top3Slide {
   readonly type: 'top-3';
@@ -31,6 +34,7 @@ export interface Top3Slide {
   readonly topLeft: true;
   readonly topRight: true;
   readonly message: false;
+  readonly image: string;
 }
 
 export const comingUpSlide: MatchSlideGen<ComingUpSlide> = (
@@ -42,6 +46,7 @@ export const comingUpSlide: MatchSlideGen<ComingUpSlide> = (
   topRight: true,
   message: true,
   matchId,
+  image: '2',
 });
 export interface ComingUpSlide {
   readonly type: 'coming-up';
@@ -50,6 +55,7 @@ export interface ComingUpSlide {
   readonly topRight: true;
   readonly message: true;
   readonly matchId: string;
+  readonly image: string;
 }
 
 export const nowPlayingSlide: MatchSlideGen<NowPlayingSlide> = (
@@ -61,6 +67,8 @@ export const nowPlayingSlide: MatchSlideGen<NowPlayingSlide> = (
   topRight: true,
   message: true,
   matchId,
+  image: '2',
+
 });
 export interface NowPlayingSlide {
   readonly type: 'now-playing';
@@ -69,6 +77,7 @@ export interface NowPlayingSlide {
   readonly topRight: true;
   readonly message: true;
   readonly matchId: string;
+  readonly image: string;
 }
 
 export const matchSummarySlide: MatchSlideGen<MatchSummarySlide> = (
@@ -80,6 +89,7 @@ export const matchSummarySlide: MatchSlideGen<MatchSummarySlide> = (
   topRight: true,
   message: true,
   matchId,
+  image: '3',
 });
 export interface MatchSummarySlide {
   readonly type: 'match-summary';
@@ -88,6 +98,7 @@ export interface MatchSummarySlide {
   readonly topRight: true;
   readonly message: true;
   readonly matchId: string;
+  readonly image: string;
 }
 
 export const recentHighestScorersSlide: SlideGen<
@@ -98,6 +109,7 @@ export const recentHighestScorersSlide: SlideGen<
   topLeft: false,
   topRight: false,
   message: false,
+  image: '1',
 });
 export interface RecentHighestScorersSlide {
   readonly type: 'recent-highest-scorers';
@@ -105,6 +117,7 @@ export interface RecentHighestScorersSlide {
   readonly topLeft: false;
   readonly topRight: false;
   readonly message: false;
+  readonly image: string;
 }
 
 export type Surprise = {
@@ -124,6 +137,7 @@ export const surpriseHuntersSlide: (s: Surprise) => SurpriseHuntersSlide = (
   topRight: true,
   message: false,
   surprise,
+  image: '1',
 });
 export interface SurpriseHuntersSlide {
   readonly type: 'surprise-hunters';
@@ -132,6 +146,7 @@ export interface SurpriseHuntersSlide {
   readonly topRight: true;
   readonly message: false;
   readonly surprise: Surprise;
+  readonly image: string;
 }
 
 export const soloSummarySlide: SlideGen<SoloSummarySlide> = () => ({
@@ -140,6 +155,7 @@ export const soloSummarySlide: SlideGen<SoloSummarySlide> = () => ({
   topLeft: true,
   topRight: true,
   message: true,
+  image: '1',
 });
 export interface SoloSummarySlide {
   readonly type: 'solo-summary';
@@ -147,6 +163,7 @@ export interface SoloSummarySlide {
   readonly topLeft: true;
   readonly topRight: true;
   readonly message: true;
+  readonly image: string;
 }
 
 export type Slide =

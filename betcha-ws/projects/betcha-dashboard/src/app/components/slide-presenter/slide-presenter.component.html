@@ -1,3 +1,9 @@
+<div class="bg">
+  @for(img of [store.currentSlide()?.image || '1']; track img) {
+    <img [src]="'assets/images/soccer-bg' + img + '.jpg'" alt="Background" @fade/>
+  }
+</div>
+
 <div class="euro-logo" *ngIf="store.currentSlide()?.topLeft" @flyStart>
   <img src="assets/images/euro.jpg" alt="Euro Logo" />
 </div>
