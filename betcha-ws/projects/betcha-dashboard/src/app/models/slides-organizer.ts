@@ -1,29 +1,20 @@
 import { GameVm } from '@lib';
 import { Slide, Surprise, slideGens } from './slide.model';
 
-export function slidesForState(gameVm: GameVm): Slide[] {
+export type SlideState = {
+  slides: Slide[], 
+  index: number
+}
+
+export function slidesForState(gameVm: GameVm): SlideState {
   // during countdown time - 20 seconds before match start, until 10 seconds after - show only one slide - "final countdown"
-  if (shouldShowCountDown(gameVm)) return [slideGens.finalCountdounSlide()];
+  if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
 
   // otherwise:
   // any other time
   // - "top 3" slide
   const res: Slide[] = [];
   res.push(slideGens.top3Slide());
-
-  // if there were matches in the past 24 hours
-  // - for each match show "match summary" slide
-  // - construct table of 24 hours ago and of now, and show the "recent highest scorers" slide
-  const matchesInPast24Hours = gameVm.pastMatches.filter(
-    (m) => m.dateValue > Date.now() - 24 * 60 * 60 * 1000
-  );
-
-  if (matchesInPast24Hours.length > 0) {
-    matchesInPast24Hours.forEach((m) =>
-      res.push(slideGens.matchSummarySlide(m.id))
-    );
-    res.push(slideGens.recentHighestScorersSlide());
-  }
 
   // if the group has solos in the history - show the last 3 solos in the "solo - summary" slide
   const anySolos = gameVm.table.some((g) => g.soloCount > 0);
@@ -47,9 +38,26 @@ export function slidesForState(gameVm: GameVm): Slide[] {
     if (nextMatches.length > 0) {
       nextMatches.forEach((m) => res.push(slideGens.comingUpSlide(m.id)));
     }
+      // if there were matches in the past 24 hours
+  // - for each match show "match summary" slide
+  // - construct table of 24 hours ago and of now, and show the "recent highest scorers" slide
+  const matchesInPast24Hours = gameVm.pastMatches.filter(
+    (m) => m.dateValue > Date.now() - 24 * 60 * 60 * 1000
+  );
+
+  if (matchesInPast24Hours.length > 0) {
+    matchesInPast24Hours.forEach((m) =>
+      res.push(slideGens.matchSummarySlide(m.id))
+    );
+    res.push(slideGens.recentHighestScorersSlide());
   }
 
-  return res;
+  }
+
+  // randomize a number in the range of the slides
+  const index = Math.floor(Math.random() * res.length);
+
+  return {slides: res, index};
 }
 
 // what data do we need:

@@ -5,6 +5,8 @@ import { DestroyRef, computed, inject } from "@angular/core";
 import { catchError, interval, map, of, switchMap, tap } from "rxjs";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { trigger } from "@angular/animations";
+import { slidesForState } from "../models/slides-organizer";
 
 export const DashboardStore = signalStore(
     {providedIn: 'root'}, 
@@ -21,7 +23,7 @@ export const DashboardStore = signalStore(
             store.stages(), store.calculatedGroup(), store.calculatedGroupMatchScores()))
     })),
     withComputed((store) => ({
-        comingUp: computed(() => comingUp(store.vm().nextMacthes, store.now()))
+        currentSlide: computed(() => store.currentSlideIndex() >= 0 ? store.slides()[store.currentSlideIndex()] : null),
     })),
     withMethods((store, query = inject(QueryService)) => ({
         setGroupSecret: rxMethod<string>(secret$ => secret$.pipe(
@@ -30,16 +32,19 @@ export const DashboardStore = signalStore(
                 tap(data => patchState(store, {...data})), 
                 catchError(_ => of())
             ))
+        )), 
+        recalcSlide: rxMethod<void>(trigger$ => trigger$.pipe(
+            tap(() => {
+                const state = slidesForState(store.vm());
+                patchState(store, {slides: state.slides, currentSlideIndex: state.index})
+            })
         ))
     })),
     withDevtools('Dashboard Group Store'), 
     withHooks((store, destroyRef = inject(DestroyRef)) => ({
         onInit: () => {
-            interval(3000).pipe(
-                takeUntilDestroyed(destroyRef)    
-            ).subscribe(() => {
-                patchState(store, { now: Date.now() })
-            })
+            const trigger$ = interval(10000).pipe(map(() => {}), takeUntilDestroyed(destroyRef));
+            store.recalcSlide(trigger$);
         }
     })), 
 

@@ -1,4 +1,5 @@
 import { DbModel } from "@tscommon";
+import { Slide } from "../models/slide.model";
 
 export interface DashboardSlice {
     readonly group: DbModel.Group | null;
@@ -7,7 +8,8 @@ export interface DashboardSlice {
     readonly matches: DbModel.Match[];
     readonly statistics: Record<string, DbModel.MatchStatistics>;
     readonly stages: DbModel.Stage[];
-    readonly now: number;
+    readonly slides: Slide[];
+    readonly currentSlideIndex: number;
     
 }
 
@@ -18,5 +20,6 @@ export const initialDashboardSlice: DashboardSlice = {
     matches: [],
     statistics: {},
     stages: [], 
-    now: Date.now()
+    slides: [],
+    currentSlideIndex: -1
 };

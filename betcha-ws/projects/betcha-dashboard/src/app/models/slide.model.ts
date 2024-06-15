@@ -7,13 +7,13 @@ export const finalCountdounSlide: SlideGen<FinalCountdownSlide> = () => ({
   type: 'final-countdown',
   topLeft: false,
   topRight: false,
-  message: 'Last chance to guess!!!',
+  message: false,
 });
 export interface FinalCountdownSlide {
   readonly type: 'final-countdown';
   readonly topLeft: false;
   readonly topRight: false;
-  readonly message: string;
+  readonly message: false;
 }
 
 export const top3Slide: SlideGen<Top3Slide> = () => ({
@@ -35,14 +35,14 @@ export const comingUpSlide: MatchSlideGen<ComingUpSlide> = (
   type: 'coming-up',
   topLeft: true,
   topRight: true,
-  message: 'Dont forget to guess!',
+  message: true,
   matchId,
 });
 export interface ComingUpSlide {
   readonly type: 'coming-up';
   readonly topLeft: true;
   readonly topRight: true;
-  readonly message: string;
+  readonly message: true;
   readonly matchId: string;
 }
 
@@ -86,13 +86,13 @@ export const recentHighestScorersSlide: SlideGen<
   type: 'recent-highest-scorers',
   topLeft: true,
   topRight: true,
-  message: true,
+  message: false,
 });
 export interface RecentHighestScorersSlide {
   readonly type: 'recent-highest-scorers';
   readonly topLeft: true;
   readonly topRight: true;
-  readonly message: true;
+  readonly message: false;
 }
 
 export type Surprise = {
@@ -109,14 +109,14 @@ export const surpriseHuntersSlide: (s: Surprise) => SurpriseHuntersSlide = (
   type: 'surprise-hunters',
   topLeft: true,
   topRight: true,
-  message: true,
+  message: false,
   surprise,
 });
 export interface SurpriseHuntersSlide {
   readonly type: 'surprise-hunters';
   readonly topLeft: true;
   readonly topRight: true;
-  readonly message: true;
+  readonly message: false;
   readonly surprise: Surprise;
 }
 
