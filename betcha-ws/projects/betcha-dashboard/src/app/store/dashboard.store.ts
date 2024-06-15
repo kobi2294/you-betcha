@@ -1,11 +1,10 @@
 import { patchState, signalStore, withComputed, withHooks, withMethods, withState } from "@ngrx/signals";
 import { initialDashboardSlice } from "./dashboard.slice";
-import { QueryService, buildGameVm, comingUp, withDevtools, withQuery } from "@lib";
+import { QueryService, buildGameVm, withDevtools, withQuery } from "@lib";
 import { DestroyRef, computed, inject } from "@angular/core";
-import { catchError, interval, map, of, switchMap, tap } from "rxjs";
+import { catchError, filter, interval, map, of, startWith, switchMap, take, tap } from "rxjs";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { trigger } from "@angular/animations";
+import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
 import { slidesForState } from "../models/slides-organizer";
 
 export const DashboardStore = signalStore(
@@ -28,7 +27,6 @@ export const DashboardStore = signalStore(
     withMethods((store, query = inject(QueryService)) => ({
         setGroupSecret: rxMethod<string>(secret$ => secret$.pipe(
             switchMap(secret => query.getGroupCalculatedDateBySecret(secret).pipe(
-                tap(data => console.log('Updating dashboard data', data)),
                 tap(data => patchState(store, {...data})), 
                 catchError(_ => of())
             ))
@@ -43,8 +41,13 @@ export const DashboardStore = signalStore(
     withDevtools('Dashboard Group Store'), 
     withHooks((store, destroyRef = inject(DestroyRef)) => ({
         onInit: () => {
-            const trigger$ = interval(10000).pipe(map(() => {}), takeUntilDestroyed(destroyRef));
-            store.recalcSlide(trigger$);
+            const trig$ = toObservable(store.group).pipe(
+                filter(g => !!g),
+                take(1), 
+                switchMap(_ => interval(5000).pipe(startWith(0), map(() => {}), )), 
+                takeUntilDestroyed(destroyRef)
+            );
+            store.recalcSlide(trig$);
         }
     })), 
 

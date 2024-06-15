@@ -1,0 +1,35 @@
+<div class="euro-logo" *ngIf="store.currentSlide()?.topLeft" @flyStart>
+  <img src="assets/images/euro.jpg" alt="Euro Logo" />
+</div>
+
+@if(store.currentSlide()?.topRight) {
+  <div class="company-logo" *ngIf="store.group() as group" @flyEnd>
+    <img [src]="group.logoUrl" alt="Euro Logo" />
+    <div class="slogan">
+      @if(group.slogan) {
+      {{ group.slogan }}
+      } @else {
+      {{ group.displayName }}
+      }
+    </div>
+  </div>
+  }
+
+  @if (store.currentSlide(); as theSlide) {
+    @for(slide of [theSlide]; track slide.id) {
+      <div @flyStartEnd class="main-slide">
+         I am the slide {{slide.id}}
+        </div>
+
+    }
+  
+  }
+
+<div class="message" @flyDown *ngIf="store.currentSlide()?.message">
+  <div class="text">
+    @if(store.group()?.message; as message) {
+    {{ message }}
+    } @else { Welcome to the {{ store.group()?.displayName }} Euro 2024
+    Prediction Game! }
+  </div>
+</div>

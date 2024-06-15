@@ -7,6 +7,8 @@ export type SlideState = {
 }
 
 export function slidesForState(gameVm: GameVm): SlideState {
+  if (gameVm.table.length === 0) return {slides: [], index: -1};
+
   // during countdown time - 20 seconds before match start, until 10 seconds after - show only one slide - "final countdown"
   if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
 
@@ -46,7 +48,10 @@ export function slidesForState(gameVm: GameVm): SlideState {
   );
 
   if (matchesInPast24Hours.length > 0) {
-    matchesInPast24Hours.forEach((m) =>
+    matchesInPast24Hours
+      .sort((m1, m2) => m1.dateValue - m2.dateValue) 
+      .slice(0, 4)
+      .forEach((m) =>
       res.push(slideGens.matchSummarySlide(m.id))
     );
     res.push(slideGens.recentHighestScorersSlide());
@@ -71,9 +76,12 @@ function getSurprises(gameVm: GameVm): Surprise[] {
     const res: Surprise[] = [];
     const pastMatches = gameVm.pastMatches;
 
+    console.log('Checking for surprises');
+
     for (const match of pastMatches) {
-        const totalCount = match.globalStatistics.away + match.globalStatistics.home + match.globalStatistics.tie;
-        if (totalCount < 20) continue;
+      const totalCount = match.globalStatistics.away + match.globalStatistics.home + match.globalStatistics.tie;
+      console.log('total count', totalCount);
+        if (totalCount < 12) continue;
 
         const correctCount = match.globalStatistics[match.correctGuess];
         const correctChance = correctCount / totalCount;
@@ -87,6 +95,7 @@ function getSurprises(gameVm: GameVm): Surprise[] {
         }
     }
 
+    console.log('Found surprises:', res);
     return res;
 }
 
@@ -107,7 +116,8 @@ function shouldShowCountDown(gameVm: GameVm) {
 
   if (nextMatches.length > 0) {
     const nextMatch = nextMatches[0];
-    if (nextMatch.dateValue - now < 20000) {
+    const offset = nextMatch.dateValue - now;
+    if (offset < 20000 && offset > 0) {
       return true;
     }
   }
