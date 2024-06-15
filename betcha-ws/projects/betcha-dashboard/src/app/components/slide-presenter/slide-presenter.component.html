@@ -3,27 +3,22 @@
 </div>
 
 @if(store.currentSlide()?.topRight) {
-  <div class="company-logo" *ngIf="store.group() as group" @flyEnd>
-    <img [src]="group.logoUrl" alt="Euro Logo" />
-    <div class="slogan">
-      @if(group.slogan) {
-      {{ group.slogan }}
-      } @else {
-      {{ group.displayName }}
-      }
-    </div>
-  </div>
-  }
-
-  @if (store.currentSlide(); as theSlide) {
-    @for(slide of [theSlide]; track slide.id) {
-      <div @flyStartEnd class="main-slide">
-         I am the slide {{slide.id}}
-        </div>
-
+<div class="company-logo" *ngIf="store.group() as group" @flyEnd>
+  <img [src]="group.logoUrl" alt="Euro Logo" />
+  <div class="slogan">
+    @if(group.slogan) {
+    {{ group.slogan }}
+    } @else {
+    {{ group.displayName }}
     }
-  
-  }
+  </div>
+</div>
+} @if (store.currentSlide(); as theSlide) { @for(slide of [theSlide]; track
+slide.id) {
+<div @flyStartEnd class="main-slide">
+  <app-coming-up *ngIf="slide.type === 'coming-up'"/>
+</div>
+} }
 
 <div class="message" @flyDown *ngIf="store.currentSlide()?.message">
   <div class="text">
