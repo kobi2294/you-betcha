@@ -9,8 +9,8 @@
   <div></div>
 </div>
 <div class="labels">
-  <div>{{ homeName() }}: {{ homePercent() | percent }}</div>
-  <div>Tie: {{ tiePercent() | percent }}</div>
-  <div>{{ awayName() }}: {{ awayPercent() | percent }}</div>
+  <div>{{ homeName() }}: {{ homePercent() | percent:'1.0-0' }}</div>
+  <div>Tie: {{ tiePercent() | percent:'1.0-0' }}</div>
+  <div>{{ awayName() }}: {{ awayPercent() | percent:'1.0-0' }}</div>
 </div>
 }

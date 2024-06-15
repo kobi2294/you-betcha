@@ -1,0 +1,10 @@
+@if (match(); as match) {
+    <h1>Now Playing...</h1>
+    <app-match [home]="match.home" [away]="match.away"/>
+    <app-stats [home]="match.globalStatistics.home" 
+               [away]="match.globalStatistics.away"
+               [tie]="match.globalStatistics.tie"
+               [homeName]="match.home"
+                [awayName]="match.away"
+               />
+}

@@ -1,0 +1,12 @@
+@if (match(); as match) {
+    <h1>Match Result</h1>
+    <app-match [home]="match.home" [away]="match.away" 
+                [homeScore]="match.homeScore" [awayScore]="match.awayScore"/>
+    <app-match-guesses [home]="match.groupStatistics.home" [away]="match.groupStatistics.away"
+                        [tie]="match.groupStatistics.tie" [score]="match.correctGuess"/>
+    
+    <div class="each" *ngIf="match.pointsEach > 0">
+        <mat-icon symbol>check</mat-icon><div class="points">{{match.pointsEach | number:'1.0-1'}}</div> pts each
+    </div>
+
+}

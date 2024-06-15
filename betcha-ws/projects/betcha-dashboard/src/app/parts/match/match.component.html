@@ -1,0 +1,11 @@
+<lib-flag [country]="home()" />
+<div class="country home" [class.results]="hasScore()">
+    <span>{{ home() }}</span>
+    <span class="home score" *ngIf="hasScore()">{{ homeScore() }}</span>
+</div>
+<div class="seperator">:</div>
+<div class="country away" [class.results]="hasScore()">
+    <span>{{ away() }}</span>
+    <span class="away score" *ngIf="hasScore()">{{ awayScore() }}</span>
+</div>
+<lib-flag [country]="away()" />

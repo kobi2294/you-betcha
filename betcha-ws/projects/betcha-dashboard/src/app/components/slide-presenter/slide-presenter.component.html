@@ -30,6 +30,10 @@ slide.id) {
 
 <app-top-3 *ngIf="slide.type === 'top-3'" @flyStartEnd class="main-slide" />
 
+<app-now-playing *ngIf="slide.type === 'now-playing'" [matchId]="slide.matchId" @flyStartEnd class="main-slide"/>
+
+<app-match-summary *ngIf="slide.type === 'match-summary'" [matchId]="slide.matchId" @flyStartEnd class="main-slide"/>
+
 } }
 
 <div class="message" @flyDown *ngIf="store.currentSlide()?.message">

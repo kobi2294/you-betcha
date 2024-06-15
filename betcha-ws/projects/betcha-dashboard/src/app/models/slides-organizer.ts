@@ -10,7 +10,7 @@ export function slidesForState(gameVm: GameVm): SlideState {
   if (gameVm.table.length === 0) return {slides: [], index: -1};
 
   // during countdown time - 20 seconds before match start, until 10 seconds after - show only one slide - "final countdown"
-  if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
+  // if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
 
 
   
@@ -52,12 +52,12 @@ export function slidesForState(gameVm: GameVm): SlideState {
   );
 
   if (matchesInPast24Hours.length > 0) {
-    // matchesInPast24Hours
-    //   .sort((m1, m2) => m1.dateValue - m2.dateValue) 
-    //   .slice(0, 4)
-    //   .forEach((m) =>
-    //   res.push(slideGens.matchSummarySlide(m.id))
-    // );
+    matchesInPast24Hours
+      .sort((m1, m2) => m1.dateValue - m2.dateValue) 
+      .slice(0, 4)
+      .forEach((m) =>
+      res.push(slideGens.matchSummarySlide(m.id))
+    );
     res.push(slideGens.recentHighestScorersSlide());
   }
 

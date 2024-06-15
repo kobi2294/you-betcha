@@ -1,0 +1,27 @@
+<div class="home entry" [class.correct]="score() === 'home'">
+    <div class="count">
+        <mat-icon symbol *ngIf="score() === 'home'">check</mat-icon>
+        {{home()}}
+    </div>
+    <div class="label">
+        Home
+    </div>
+</div>
+<div class="tie entry" [class.correct]="score() === 'tie'">
+    <div class="count">
+        <mat-icon symbol *ngIf="score() === 'tie'">check</mat-icon>
+        {{tie()}}
+    </div>
+    <div class="label">
+        Tie
+    </div>
+</div>
+<div class="away entry" [class.correct]="score() === 'away'">
+    <div class="count">
+        <mat-icon symbol *ngIf="score() === 'away'">check</mat-icon>
+        {{away()}}
+    </div>
+    <div class="label">
+        Away
+    </div>
+</div>

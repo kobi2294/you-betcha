@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5vmin;
+
+    h1 {
+        font-size: 6vmin;
+        color: var(--a-200); 
+    }
+
+    app-match {
+        --dash-size: 5vmin;
+    }
+
+    app-match-guesses {
+        margin-top: 2.5vmin;
+    }
+
+    .each {
+        color: var(--p-100);
+        font-size: 3vmin;
+        display: flex;
+        flex-direction: row;
+        gap: 1vmin;
+    }
+}
+

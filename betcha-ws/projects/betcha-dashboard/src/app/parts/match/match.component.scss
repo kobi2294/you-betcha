@@ -1,0 +1,49 @@
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 2vmin rgba(255, 255, 255, 0);
+  }
+}
+
+:host {
+  --p-size: var(--dash-size, 2vmin);
+  --p-font: calc(var(--p-size) * 1.25);
+  --p-flag: calc(var(--p-size) * 3.5);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: var(--p-font);
+  gap: 3vmin;
+
+  .country {
+    color: var(--p-200);
+    &.home {
+      align-items: flex-end;
+    }
+    &.away {
+      align-items: flex-start;
+    }
+
+    &.results {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+  .seperator {
+    font-size: var(--p-font);
+    color: var(--n-200);
+  }
+
+  lib-flag {
+    width: var(--p-flag);
+    height: var(--p-flag);
+    box-shadow: 0px 0px 1px 1px #0000001a;
+    animation: pulse-animation 2s infinite;
+    border-radius: 50%;
+  }
+}

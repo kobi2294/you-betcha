@@ -1,0 +1,41 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    border: 1px solid var(--p-200);
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 3.5vmin;
+    width: 70%;
+
+    .entry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-inline-start: 1px solid var(--p-100);
+        color: var(--n-200);
+
+        &:first {
+            border-inline-start: none;
+        }
+        &.correct {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--p-300);
+        }
+
+        .count {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            mat-icon {
+                font-size: 1em;
+            }    
+        }
+
+        .label {
+            margin: 2px;
+            font-size: 0.8em;
+        }
+    }
+
+
+}
