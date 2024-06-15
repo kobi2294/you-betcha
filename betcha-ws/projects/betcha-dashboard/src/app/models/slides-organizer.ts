@@ -40,9 +40,9 @@ export function slidesForState(gameVm: GameVm): SlideState {
     // between matches:
     // - for each match coming up - show coming up slide
     const nextMatches = gameVm.nextMacthes;
-    if (nextMatches.length > 0) {
-      nextMatches.forEach((m) => res.push(slideGens.comingUpSlide(m.id)));
-    }
+    // if (nextMatches.length > 0) {
+    //   nextMatches.forEach((m) => res.push(slideGens.comingUpSlide(m.id)));
+    // }
       // if there were matches in the past 24 hours
   // - for each match show "match summary" slide
   // - construct table of 24 hours ago and of now, and show the "recent highest scorers" slide
@@ -50,15 +50,15 @@ export function slidesForState(gameVm: GameVm): SlideState {
     (m) => m.dateValue > Date.now() - 24 * 60 * 60 * 1000
   );
 
-  // if (matchesInPast24Hours.length > 0) {
-  //   matchesInPast24Hours
-  //     .sort((m1, m2) => m1.dateValue - m2.dateValue) 
-  //     .slice(0, 4)
-  //     .forEach((m) =>
-  //     res.push(slideGens.matchSummarySlide(m.id))
-  //   );
-  //   res.push(slideGens.recentHighestScorersSlide());
-  // }
+  if (matchesInPast24Hours.length > 0) {
+    // matchesInPast24Hours
+    //   .sort((m1, m2) => m1.dateValue - m2.dateValue) 
+    //   .slice(0, 4)
+    //   .forEach((m) =>
+    //   res.push(slideGens.matchSummarySlide(m.id))
+    // );
+    res.push(slideGens.recentHighestScorersSlide());
+  }
 
   }
 

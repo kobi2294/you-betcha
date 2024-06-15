@@ -21,6 +21,14 @@ slide.id) {
   @flyStartEnd
   class="main-slide"
 />
+
+<app-high-scorer
+  *ngIf="slide.type === 'recent-highest-scorers'"
+  @flyStartEnd
+  class="main-slide"
+/>
+
+
 } }
 
 <div class="message" @flyDown *ngIf="store.currentSlide()?.message">

@@ -1,15 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { DashboardStore } from '../../store/dashboard.store';
 import { SharedModule } from '@lib';
-import {
-  animate,
-  keyframes,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { flyDown, flyEnd, flyStart, flyStartEnd } from '../../models/animations';
 import { ComingUpComponent } from "../../slides/coming-up/coming-up.component";
+import { HighScorerComponent } from "../../slides/high-scorer/high-scorer.component";
 
 @Component({
     selector: 'app-slide-presenter',
@@ -22,7 +16,7 @@ import { ComingUpComponent } from "../../slides/coming-up/coming-up.component";
         flyDown,
         flyStartEnd
     ],
-    imports: [SharedModule, ComingUpComponent]
+    imports: [SharedModule, ComingUpComponent, HighScorerComponent]
 })
 export class SlidePresenterComponent {
   readonly store = inject(DashboardStore);

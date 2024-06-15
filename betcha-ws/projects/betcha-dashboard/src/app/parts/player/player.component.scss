@@ -1,0 +1,31 @@
+:host {
+    --p-size: var(--dash-size, 60px);
+    --p-shadow: calc(var(--p-size) / 30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: var(--p-size);
+        height: var(--p-size);
+        border-radius: 50%;
+        border: calc(var(--p-size) / 50) solid var(--p-300);        
+    }
+
+    .name {
+        height: calc(var(--p-size) / 3);        
+        background-color: var(--p-200);
+        font-size: calc(var(--p-size) / 5);
+        min-width: 10em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: calc(var(--p-size) / 10);
+        border-radius: calc(var(--p-size) / 6);
+        border: calc(var(--p-size) / 40) solid var(--p-600);
+        position: relative;
+        top: calc(var(--p-size) / -8);
+
+    }
+}

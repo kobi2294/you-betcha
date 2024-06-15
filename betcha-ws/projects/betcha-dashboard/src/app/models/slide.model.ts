@@ -95,15 +95,15 @@ export const recentHighestScorersSlide: SlideGen<
 > = () => ({
   type: 'recent-highest-scorers',
   id: 'recent-highest-scorers',
-  topLeft: true,
-  topRight: true,
+  topLeft: false,
+  topRight: false,
   message: false,
 });
 export interface RecentHighestScorersSlide {
   readonly type: 'recent-highest-scorers';
   readonly id: 'recent-highest-scorers';
-  readonly topLeft: true;
-  readonly topRight: true;
+  readonly topLeft: false;
+  readonly topRight: false;
   readonly message: false;
 }
 

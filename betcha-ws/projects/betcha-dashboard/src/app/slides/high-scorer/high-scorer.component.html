@@ -1,0 +1,10 @@
+<h1>Top Scorers in the last 24 hours</h1>
+
+<div class="scores">
+    @for(score of highScorers(); track score.userId) {
+        <div class="high-scorer">
+            <app-player [photoUrl]="score.photoUrl" [displayName]="score.displayName"/>
+            <p>+ {{ score.scoreDelta }}</p>
+        </div>
+    }    
+</div>
