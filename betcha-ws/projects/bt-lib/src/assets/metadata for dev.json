@@ -26,476 +26,516 @@
     "Ukraine"
   ],
   "stages": [
-    { "id": "group-a", "displayName": "Group A", "points": 120 },
-    { "id": "group-b", "displayName": "Group B", "points": 120 },
-    { "id": "group-c", "displayName": "Group C", "points": 120 },
-    { "id": "group-d", "displayName": "Group D", "points": 120 },
-    { "id": "group-e", "displayName": "Group E", "points": 120 },
-    { "id": "group-f", "displayName": "Group F", "points": 120 },
-    { "id": "round-of-16", "displayName": "Round of 16", "points": 180 },
-    { "id": "quarter-finals", "displayName": "Quarter Finals", "points": 240 },
-    { "id": "semi-finals", "displayName": "Semi Finals", "points": 360 },
-    { "id": "final", "displayName": "Final", "points": 540 }
+    {
+      "displayName": "Group A",
+      "id": "group-a",
+      "points": 120
+    },
+    {
+      "displayName": "Group B",
+      "id": "group-b",
+      "points": 120
+    },
+    {
+      "displayName": "Group C",
+      "id": "group-c",
+      "points": 120
+    },
+    {
+      "displayName": "Group D",
+      "id": "group-d",
+      "points": 120
+    },
+    {
+      "displayName": "Group E",
+      "id": "group-e",
+      "points": 120
+    },
+    {
+      "displayName": "Group F",
+      "id": "group-f",
+      "points": 120
+    },
+    {
+      "displayName": "Round of 16",
+      "id": "round-of-16",
+      "points": 180
+    },
+    {
+      "displayName": "Quarter Finals",
+      "id": "quarter-finals",
+      "points": 240
+    },
+    {
+      "displayName": "Semi Finals",
+      "id": "semi-finals",
+      "points": 360
+    },
+    {
+      "displayName": "Final",
+      "id": "final",
+      "points": 540
+    }
   ],
   "matches": [
     {
-      "id": "01",
-      "stage": "group-a",
-      "home": "Germany",
+      "date": "2024-06-15T09:00:00Z",
       "away": "Scotland",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:50:00Z"
+      "homeScore": 0,
+      "stage": "group-a",
+      "awayScore": 2,
+      "id": "01",
+      "home": "Germany"
     },
     {
-      "id": "02",
-      "stage": "group-a",
-      "home": "Hungary",
+      "date": "2024-06-15T09:15:00Z",
       "away": "Switzerland",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:50:00Z"
-    },
-    {
-      "id": "03",
-      "stage": "group-b",
-      "home": "Spain",
-      "away": "Croatia",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:52:00Z"
-    },
-    {
-      "id": "04",
-      "stage": "group-b",
-      "home": "Italy",
-      "away": "Albania",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:53:00Z"
-    },
-    {
-      "id": "05",
-      "stage": "group-d",
-      "home": "Poland",
-      "away": "Netherlands",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:55:00Z"
-    },
-    {
-      "id": "06",
-      "stage": "group-c",
-      "home": "Slovenia",
-      "away": "Denmark",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:57:00Z"
-    },
-    {
-      "id": "07",
-      "stage": "group-c",
-      "home": "Serbia",
-      "away": "England",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:58:00Z"
-    },
-    {
-      "id": "08",
-      "stage": "group-e",
-      "home": "Romania",
-      "away": "Ukraine",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:59:00Z"
-    },
-    {
-      "id": "09",
-      "stage": "group-e",
-      "home": "Belgium",
-      "away": "Slovakia",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:59:00Z"
-    },
-    {
-      "id": "10",
-      "stage": "group-d",
-      "home": "Austria",
-      "away": "France",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T22:59:00Z"
-    },
-    {
-      "id": "11",
-      "stage": "group-f",
-      "home": "Turkey",
-      "away": "Georgia",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T23:00:00Z"
-    },
-    {
-      "id": "12",
-      "stage": "group-f",
-      "home": "Portugal",
-      "away": "Czech Republic",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-12T23:05:00Z"
-    },
-    {
-      "id": "13",
-      "stage": "group-b",
-      "home": "Croatia",
-      "away": "Albania",
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-19T13:00:00Z"
-    },
-    {
-      "id": "14",
+      "homeScore": 3,
       "stage": "group-a",
-      "home": "Germany",
+      "awayScore": 2,
+      "id": "02",
+      "home": "Hungary"
+    },
+    {
+      "date": "2024-06-15T09:30:00Z",
+      "away": "Croatia",
+      "homeScore": 4,
+      "stage": "group-b",
+      "awayScore": 2,
+      "id": "03",
+      "home": "Spain"
+    },
+    {
+      "date": "2024-06-15T09:45:00Z",
+      "away": "Albania",
+      "homeScore": 6,
+      "stage": "group-b",
+      "awayScore": 3,
+      "id": "04",
+      "home": "Italy"
+    },
+    {
+      "date": "2024-06-15T10:00:00Z",
+      "away": "Netherlands",
+      "homeScore": 0,
+      "stage": "group-d",
+      "awayScore": 0,
+      "id": "05",
+      "home": "Poland"
+    },
+    {
+      "date": "2024-06-15T10:15:00Z",
+      "away": "Denmark",
+      "homeScore": 2,
+      "stage": "group-c",
+      "awayScore": 1,
+      "id": "06",
+      "home": "Slovenia"
+    },
+    {
+      "date": "2024-06-15T10:30:00Z",
+      "away": "England",
+      "homeScore": 0,
+      "stage": "group-c",
+      "awayScore": 0,
+      "id": "07",
+      "home": "Serbia"
+    },
+    {
+      "date": "2024-06-15T10:45:00Z",
+      "away": "Ukraine",
+      "homeScore": 1,
+      "stage": "group-e",
+      "awayScore": 0,
+      "id": "08",
+      "home": "Romania"
+    },
+    {
+      "date": "2024-06-15T11:00:00Z",
+      "away": "Slovakia",
+      "homeScore": 3,
+      "stage": "group-e",
+      "awayScore": 2,
+      "id": "09",
+      "home": "Belgium"
+    },
+    {
+      "date": "2024-06-15T11:15:00Z",
+      "away": "France",
+      "homeScore": 4,
+      "stage": "group-d",
+      "awayScore": 2,
+      "id": "10",
+      "home": "Austria"
+    },
+    {
+      "date": "2024-06-15T11:30:00Z",
+      "away": "Georgia",
+      "homeScore": 1,
+      "stage": "group-f",
+      "awayScore": 1,
+      "id": "11",
+      "home": "Turkey"
+    },
+    {
+      "date": "2024-06-15T11:45:00Z",
+      "away": "Czech Republic",
+      "homeScore": 1,
+      "stage": "group-f",
+      "awayScore": 0,
+      "id": "12",
+      "home": "Portugal"
+    },
+    {
+      "date": "2024-06-15T12:00:00Z",
+      "away": "Albania",
+      "homeScore": null,
+      "stage": "group-b",
+      "awayScore": null,
+      "id": "13",
+      "home": "Croatia"
+    },
+    {
+      "date": "2024-06-15T12:15:00Z",
       "away": "Hungary",
       "homeScore": null,
+      "stage": "group-a",
       "awayScore": null,
-      "date": "2024-06-19T16:00:00Z"
+      "id": "14",
+      "home": "Germany"
     },
     {
-      "id": "15",
-      "stage": "group-a",
-      "home": "Scotland",
+      "date": "2024-06-15T12:30:00Z",
       "away": "Switzerland",
       "homeScore": null,
+      "stage": "group-a",
       "awayScore": null,
-      "date": "2024-06-19T19:00:00Z"
+      "id": "15",
+      "home": "Scotland"
     },
     {
-      "id": "16",
-      "stage": "group-c",
-      "home": "Slovenia",
+      "date": "2024-06-15T12:45:00Z",
       "away": "Serbia",
       "homeScore": null,
+      "stage": "group-c",
       "awayScore": null,
-      "date": "2024-06-20T13:00:00Z"
+      "id": "16",
+      "home": "Slovenia"
     },
     {
-      "id": "17",
-      "stage": "group-c",
-      "home": "Denmark",
+      "date": "2024-06-15T13:15:00Z",
       "away": "England",
       "homeScore": null,
+      "stage": "group-c",
       "awayScore": null,
-      "date": "2024-06-20T16:00:00Z"
+      "id": "17",
+      "home": "Denmark"
     },
     {
-      "id": "18",
-      "stage": "group-b",
-      "home": "Spain",
+      "date": "2024-06-15T13:30:00Z",
       "away": "Italy",
       "homeScore": null,
+      "stage": "group-b",
       "awayScore": null,
-      "date": "2024-06-20T19:00:00Z"
+      "id": "18",
+      "home": "Spain"
     },
     {
-      "id": "19",
-      "stage": "group-e",
-      "home": "Slovakia",
+      "date": "2024-06-15T13:45:00Z",
       "away": "Ukraine",
       "homeScore": null,
+      "stage": "group-e",
       "awayScore": null,
-      "date": "2024-06-21T13:00:00Z"
+      "id": "19",
+      "home": "Slovakia"
     },
     {
-      "id": "20",
-      "stage": "group-d",
-      "home": "Poland",
+      "date": "2024-06-15T14:00:00Z",
       "away": "Austria",
       "homeScore": null,
+      "stage": "group-d",
       "awayScore": null,
-      "date": "2024-06-21T16:00:00Z"
+      "id": "20",
+      "home": "Poland"
     },
     {
-      "id": "21",
-      "stage": "group-d",
-      "home": "Netherlands",
+      "date": "2024-06-15T14:15:00Z",
       "away": "France",
       "homeScore": null,
+      "stage": "group-d",
       "awayScore": null,
-      "date": "2024-06-21T19:00:00Z"
+      "id": "21",
+      "home": "Netherlands"
     },
     {
-      "id": "22",
-      "stage": "group-f",
-      "home": "Georgia",
+      "date": "2024-06-15T14:30:00Z",
       "away": "Czech Republic",
       "homeScore": null,
+      "stage": "group-f",
       "awayScore": null,
-      "date": "2024-06-22T13:00:00Z"
+      "id": "22",
+      "home": "Georgia"
     },
     {
-      "id": "23",
-      "stage": "group-f",
-      "home": "Turkey",
+      "date": "2024-06-15T14:45:00Z",
       "away": "Portugal",
       "homeScore": null,
+      "stage": "group-f",
       "awayScore": null,
-      "date": "2024-06-22T16:00:00Z"
+      "id": "23",
+      "home": "Turkey"
     },
     {
-      "id": "24",
-      "stage": "group-e",
-      "home": "Belgium",
+      "date": "2024-06-15T15:00:00Z",
       "away": "Romania",
       "homeScore": null,
+      "stage": "group-e",
       "awayScore": null,
-      "date": "2024-06-22T19:00:00Z"
+      "id": "24",
+      "home": "Belgium"
     },
     {
-      "id": "25",
-      "stage": "group-a",
-      "home": "Switzerland",
+      "date": "2024-06-15T15:15:00Z",
       "away": "Germany",
       "homeScore": null,
+      "stage": "group-a",
       "awayScore": null,
-      "date": "2024-06-23T19:00:00Z"
+      "id": "25",
+      "home": "Switzerland"
     },
     {
-      "id": "26",
-      "stage": "group-a",
-      "home": "Scotland",
+      "date": "2024-06-15T15:30:00Z",
       "away": "Hungary",
       "homeScore": null,
+      "stage": "group-a",
       "awayScore": null,
-      "date": "2024-06-23T19:00:00Z"
+      "id": "26",
+      "home": "Scotland"
     },
     {
-      "id": "27",
-      "stage": "group-b",
-      "home": "Croatia",
+      "date": "2024-06-15T15:45:00Z",
       "away": "Italy",
       "homeScore": null,
+      "stage": "group-b",
       "awayScore": null,
-      "date": "2024-06-24T19:00:00Z"
+      "id": "27",
+      "home": "Croatia"
     },
     {
-      "id": "28",
-      "stage": "group-b",
-      "home": "Albania",
+      "date": "2024-06-15T16:00:00Z",
       "away": "Spain",
       "homeScore": null,
+      "stage": "group-b",
       "awayScore": null,
-      "date": "2024-06-24T19:00:00Z"
+      "id": "28",
+      "home": "Albania"
     },
     {
-      "id": "29",
-      "stage": "group-d",
-      "home": "Netherlands",
+      "date": "2024-06-15T16:15:00Z",
       "away": "Austria",
       "homeScore": null,
+      "stage": "group-d",
       "awayScore": null,
-      "date": "2024-06-25T16:00:00Z"
+      "id": "29",
+      "home": "Netherlands"
     },
     {
-      "id": "30",
-      "stage": "group-d",
-      "home": "France",
+      "date": "2024-06-15T16:30:00Z",
       "away": "Poland",
       "homeScore": null,
+      "stage": "group-d",
       "awayScore": null,
-      "date": "2024-06-25T16:00:00Z"
+      "id": "30",
+      "home": "France"
     },
     {
-      "id": "31",
-      "stage": "group-c",
-      "home": "England",
+      "date": "2024-06-15T16:45:00Z",
       "away": "Slovenia",
       "homeScore": null,
+      "stage": "group-c",
       "awayScore": null,
-      "date": "2024-06-25T19:00:00Z"
+      "id": "31",
+      "home": "England"
     },
     {
-      "id": "32",
-      "stage": "group-c",
-      "home": "Denmark",
+      "date": "2024-06-15T17:00:00Z",
       "away": "Serbia",
       "homeScore": null,
+      "stage": "group-c",
       "awayScore": null,
-      "date": "2024-06-25T19:00:00Z"
+      "id": "32",
+      "home": "Denmark"
     },
     {
-      "id": "33",
-      "stage": "group-e",
-      "home": "Slovakia",
+      "date": "2024-06-15T17:00:00Z",
       "away": "Romania",
       "homeScore": null,
+      "stage": "group-e",
       "awayScore": null,
-      "date": "2024-06-26T16:00:00Z"
+      "id": "33",
+      "home": "Slovakia"
     },
     {
-      "id": "34",
-      "stage": "group-e",
-      "home": "Ukraine",
+      "date": "2024-06-15T17:15:00Z",
       "away": "Belgium",
       "homeScore": null,
+      "stage": "group-e",
       "awayScore": null,
-      "date": "2024-06-26T16:00:00Z"
+      "id": "34",
+      "home": "Ukraine"
     },
     {
-      "id": "35",
-      "stage": "group-f",
-      "home": "Czech Republic",
+      "date": "2024-06-15T17:15:00Z",
       "away": "Turkey",
       "homeScore": null,
+      "stage": "group-f",
       "awayScore": null,
-      "date": "2024-06-26T19:00:00Z"
+      "id": "35",
+      "home": "Czech Republic"
     },
     {
-      "id": "36",
-      "stage": "group-f",
-      "home": "Georgia",
+      "date": "2024-06-15T17:30:00Z",
       "away": "Portugal",
       "homeScore": null,
+      "stage": "group-f",
       "awayScore": null,
-      "date": "2024-06-26T19:00:00Z"
+      "id": "36",
+      "home": "Georgia"
     },
     {
+      "date": "2024-06-15T17:30:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "37",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-29T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T17:45:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "38",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-29T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T17:45:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "39",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-30T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T18:15:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "40",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-06-30T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T18:30:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "41",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-01T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T18:45:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "42",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-01T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T19:00:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "43",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-02T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T19:15:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "round-of-16",
+      "awayScore": null,
       "id": "44",
-      "stage": "round-of-16",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-02T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T19:30:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "quarter-finals",
+      "awayScore": null,
       "id": "45",
-      "stage": "quarter-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-05T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T19:45:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "quarter-finals",
+      "awayScore": null,
       "id": "46",
-      "stage": "quarter-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-05T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T20:00:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "quarter-finals",
+      "awayScore": null,
       "id": "47",
-      "stage": "quarter-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-06T17:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T20:15:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "quarter-finals",
+      "awayScore": null,
       "id": "48",
-      "stage": "quarter-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-06T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T20:30:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "semi-finals",
+      "awayScore": null,
       "id": "49",
-      "stage": "semi-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-09T20:00:00Z"
+      "home": null
     },
     {
+      "date": "2024-06-15T20:45:00Z",
+      "away": null,
+      "homeScore": null,
+      "stage": "semi-finals",
+      "awayScore": null,
       "id": "50",
-      "stage": "semi-finals",
-      "home": null,
-      "away": null,
-      "homeScore": null,
-      "awayScore": null,
-      "date": "2024-07-10T20:00:00Z"
+      "home": null
     },
     {
-      "id": "51",
-      "stage": "final",
-      "home": null,
+      "date": "2024-06-15T21:00:00Z",
       "away": null,
       "homeScore": null,
+      "stage": "final",
       "awayScore": null,
-      "date": "2024-07-14T20:00:00Z"
+      "id": "51",
+      "home": null
     }
   ]
 }
