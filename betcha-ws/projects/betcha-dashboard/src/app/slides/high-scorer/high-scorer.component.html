@@ -4,7 +4,7 @@
     @for(score of highScorers(); track score.userId) {
         <div class="high-scorer">
             <app-player [photoUrl]="score.photoUrl" [displayName]="score.displayName"/>
-            <p>+ {{ score.scoreDelta }}</p>
+            <p>+ {{ score.scoreDelta | number:'1.0-1'}}</p>
         </div>
     }    
 </div>

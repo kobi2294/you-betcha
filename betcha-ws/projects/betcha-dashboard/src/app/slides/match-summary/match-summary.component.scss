@@ -23,6 +23,10 @@
         display: flex;
         flex-direction: row;
         gap: 1vmin;
+
+        mat-icon {
+            font-size: 3vmin;
+        }
     }
 }
 

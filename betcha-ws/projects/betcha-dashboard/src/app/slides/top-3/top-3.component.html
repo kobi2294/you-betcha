@@ -3,9 +3,9 @@
   <div class="bar">{{ $index + 1 }}</div>
   <app-player [photoUrl]="player.photoUrl" [displayName]="player.displayName"/>
   <div class="details">
-    <div class="points">{{ player.totalPoints }} Points</div>
-    <div class="correct">{{ player.correctCount }} <mat-icon symbol>done_all</mat-icon> hits</div>
-    <div class="solo">{{ player.soloCount }} <mat-icon symbol>new_releases</mat-icon> solos</div>
+    <div class="points">{{ player.totalPoints | number:'1.0-1' }} Points</div>
+    <div class="correct">{{ player.correctCount | number:'1.0-1'}} <mat-icon symbol>done_all</mat-icon> hits</div>
+    <div class="solo">{{ player.soloCount | number:'1.0-1'}} <mat-icon symbol>new_releases</mat-icon> solos</div>
   </div>
 </div>
 }
