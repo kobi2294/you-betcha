@@ -25,6 +25,7 @@ export class AppComponent {
 
 
   constructor() {
+    console.log('Dashboard starting');
     timer(1000 * 60 * 60).subscribe(() => {
       this.document.location.reload();
     });

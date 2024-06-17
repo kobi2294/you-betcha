@@ -1,4 +1,4 @@
-import { GameVm } from '@lib';
+import { FutureMatchVm, GameVm } from '@lib';
 import { Slide, Surprise, slideGens } from './slide.model';
 
 export type SlideState = {
@@ -10,7 +10,8 @@ export function slidesForState(gameVm: GameVm): SlideState {
   if (gameVm.table.length === 0) return {slides: [], index: -1};
 
   // during countdown time - 20 seconds before match start, until 10 seconds after - show only one slide - "final countdown"
-  // if (shouldShowCountDown(gameVm)) return {slides: [slideGens.finalCountdounSlide()], index: 0};
+  const inCountDown = matchesInCountdown(gameVm);
+  if (inCountDown.length > 0) return {slides: [slideGens.finalCountdounSlide(inCountDown)], index: 0};
 
 
   
@@ -103,28 +104,27 @@ function getSurprises(gameVm: GameVm): Surprise[] {
     return res;
 }
 
-function shouldShowCountDown(gameVm: GameVm) {
+export function matchesInCountdown(gameVm: GameVm): FutureMatchVm[] {
   // we should show the countdown in one of two cases:
   // if the matches in progress are less than 10 seconds old
-  // if the matches next matches are less than 20 seconds away
+  // if the matches next matches are less than 150 seconds away
   const now = Date.now();
   const nextMatches = gameVm.nextMacthes;
   const inProgressMatches = gameVm.inProgressMatches;
 
   if (inProgressMatches.length > 0) {
-    const inProgressMatch = inProgressMatches[0];
-    if (now - inProgressMatch.dateValue < 10000) {
-      return true;
+    const inCountDown = inProgressMatches.filter((m) => now - m.dateValue < 10000);
+    if (inCountDown.length > 0) {
+      return inCountDown;
     }
   }
 
   if (nextMatches.length > 0) {
-    const nextMatch = nextMatches[0];
-    const offset = nextMatch.dateValue - now;
-    if (offset < 20000 && offset > 0) {
-      return true;
+    const inCountDown = nextMatches.filter((m) => (m.dateValue - now < 150000) && (m.dateValue - now > 0));
+    if (inCountDown.length > 0) {
+      return inCountDown;
     }
   }
 
-  return false;
+  return [];
 }

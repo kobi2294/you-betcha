@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @keyframes pulse-animation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(2);
+    }
+  }
+
+  .counter {
+    width: 40%;
+    height: 20vmin;
+    font-size: 12vmin;
+    align-self: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .value {
+      &.pulse {
+        animation: pulse-animation 1s linear;
+      }
+      -webkit-text-stroke-width: 0.2vmin;
+      -webkit-text-stroke-color: black;
+      position: absolute;
+    }
+  }
+
+  .matches {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 2vmin;
+    app-match {
+      --dash-size: 4vmin;
+    }
+  }
+
+  .message {
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 8vmin;
+    align-self: center;
+    color: white;
+    padding: 2vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.1vmin solid var(--p-500);
+    box-shadow: 0px 0px 1px 1px #0000001a;
+  }
+}

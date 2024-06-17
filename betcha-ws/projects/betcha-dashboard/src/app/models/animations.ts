@@ -1,4 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
+import exp from 'constants';
 
 export const flyStart = trigger('flyStart', [
   transition(':enter', [
@@ -81,6 +82,23 @@ export const flyDown = trigger('flyDown', [
       animate(
         '500ms ease-in-out',
         style({ opacity: 0 })
+      ),
+    ]),      
+  ]);
+
+  export const blurOut = trigger('blurOut', [
+    transition(':enter', [
+      style({ opacity: 0 }),
+      animate(
+        '200ms ease-in-out',
+        style({ opacity: 1 })
+      ),
+    ]),
+    transition(':leave', [
+      style({ filter: 'blur(0vmin)', transform: 'scale(2)', opacity: 1 }),
+      animate(
+        '2500ms ease-out',
+        style({ filter: 'blur(2vmin)', transform: 'scale(3)', opacity: 0 })
       ),
     ]),      
   ]);

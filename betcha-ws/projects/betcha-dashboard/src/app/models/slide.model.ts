@@ -1,16 +1,19 @@
 import { DbModel } from '@tscommon';
+import { FutureMatchVm } from '../../../../bt-lib/src/stores';
 
 type SlideGen<T> = () => T;
 type MatchSlideGen<T> = (matchId: string) => T;
 
-export const finalCountdounSlide: SlideGen<FinalCountdownSlide> = () => ({
+export const finalCountdounSlide: (matches: FutureMatchVm[]) => FinalCountdownSlide = (matches: FutureMatchVm[]) => ({
   type: 'final-countdown',
   id: 'final-countdown',
   topLeft: false,
   topRight: false,
   message: false,
-  image: '1',
+  image: '4',
+  matches: matches
 });
+
 export interface FinalCountdownSlide {
   readonly type: 'final-countdown';
   readonly id: 'final-countdown';
@@ -18,6 +21,7 @@ export interface FinalCountdownSlide {
   readonly topRight: false;
   readonly message: false;
   readonly image: string;
+  readonly matches: FutureMatchVm[];
 }
 
 export const top3Slide: SlideGen<Top3Slide> = () => ({

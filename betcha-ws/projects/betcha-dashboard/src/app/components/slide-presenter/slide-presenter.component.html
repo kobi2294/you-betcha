@@ -40,6 +40,8 @@ slide.id) {
 
 <app-match-summary *ngIf="slide.type === 'match-summary'" [matchId]="slide.matchId" @flyStartEnd class="main-slide"/>
 
+<app-countdown *ngIf="slide.type === 'final-countdown'" [matches]="slide.matches" @flyStartEnd class="main-slide"/>
+
 } }
 
 <div class="message" @flyDown *ngIf="store.currentSlide()?.message">
