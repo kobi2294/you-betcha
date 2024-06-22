@@ -118,6 +118,11 @@ export const updateMetadata = onCall<Partial<DbModel.Metadata>, Promise<void>>(o
   return api.updateMetadata(req.data);
 });
 
+export const updateMatches = onCall<DbModel.Match[], Promise<void>>(options, req => {
+  const api = getTrusteeApi(req.auth);
+  return api.setMatches(req.data);
+});
+
 export const joinGroup = onCall<string, Promise<DbModel.Group>>(options, req => {
   const api = getUserApi(req.auth);
   return api.joinGroup(req.data);
@@ -174,7 +179,6 @@ export const publishScores = onSchedule({schedule: '0 * * * *', memory: '2GiB', 
   await api.calculateForMatches();
   await new Promise(res => setTimeout(res, 3000));
   await api.calculateForMatches();
-
 });
 
 

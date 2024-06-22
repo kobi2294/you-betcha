@@ -12,7 +12,7 @@ export const MatchesStore = signalStore(
     withMethods((store, api = inject(ApiService)) => ({
         save: rxMethod<void>(trigger$ => trigger$.pipe(
             tap(_ => store.setLoading()),
-            switchMap(_ => api.updateMetadata({matches: store.editedMatches()}))
+            switchMap(_ => api.updateMatches(store.editedMatches()))
         )), 
         updateMatch: (index: number, state: Partial<DbModel.Match>) => {
             const editedMatches = replaceArrayItem(store.editedMatches(), index, match => ({...match, ...state}))

@@ -1,0 +1,15 @@
+{
+  "name": "users/somebody@somewhere.com/profile-image",
+  "bucket": "you-betcha-stage.appspot.com",
+  "metageneration": 2,
+  "generation": 1718659313767,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "downloadTokens": [],
+  "etag": "EzqrdOI0mByIB12Y1bj1mh99prg",
+  "timeCreated": "2024-06-17T21:21:53.767Z",
+  "updated": "2024-06-17T21:21:53.783Z",
+  "size": 19466,
+  "md5Hash": "xoec2ZrqWCimsZCOqu+1eg==",
+  "crc32c": "3071969880"
+}

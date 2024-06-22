@@ -24,6 +24,7 @@ export class ApiService {
     private _searchUsers = httpsCallableData<string, DbModel.User[]>(this.functions, 'searchUsers');
     private _setUserRole = httpsCallableData<Api.SetUserRoleRequest, void>(this.functions, 'setUserRole');
     private _updateMetadata = httpsCallableData<Partial<DbModel.Metadata>, void>(this.functions, 'updateMetadata');
+    private _updateMatches = httpsCallableData<DbModel.Match[], void>(this.functions, 'updateMatches');
     private _joinGroup = httpsCallableData<string, DbModel.Group>(this.functions, 'joinGroup');
     private _setUserGuess = httpsCallableData<Api.SetUserGuessRequest, void>(this.functions, 'setUserGuess');
     private _uploadUserProfileImage = httpsCallableData<Api.UploadFileRequest, void>(this.functions, 'uploadUserProfileImage');
@@ -100,6 +101,10 @@ export class ApiService {
 
     updateMetadata(metadata: Partial<DbModel.Metadata>): Observable<void> {
         return this._updateMetadata(metadata);
+    }
+
+    updateMatches(matches: DbModel.Match[]): Observable<void> {
+        return this._updateMatches(matches);
     }
 
     joinGroup(secret: string): Observable<DbModel.Group> {
