@@ -1,0 +1,15 @@
+<div class="deco">
+    <mat-icon>new_releases</mat-icon>
+</div>
+<div class="player">
+    <app-player [photoUrl]="solo().photoUrl" [displayName]="solo().displayName"></app-player>
+    <span>+{{solo().points}} pts</span>
+</div>
+
+@if(match(); as match) {
+    <app-match [home]="match.home" [homeScore]="match.homeScore"
+                [away]="match.away" [awayScore]="match.awayScore"           
+    />
+}
+
+<h1>Solo Guess</h1>

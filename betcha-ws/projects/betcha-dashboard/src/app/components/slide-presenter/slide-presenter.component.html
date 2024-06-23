@@ -34,6 +34,13 @@ slide.id) {
   class="main-slide"
 />
 
+<app-solo
+  *ngIf="slide.type === 'solo'"
+  [solo]="slide.solo"
+  @flyStartEnd
+  class="main-slide"
+/>
+
 <app-top-3 *ngIf="slide.type === 'top-3'" @flyStartEnd class="main-slide" />
 
 <app-now-playing *ngIf="slide.type === 'now-playing'" [matchId]="slide.matchId" @flyStartEnd class="main-slide"/>

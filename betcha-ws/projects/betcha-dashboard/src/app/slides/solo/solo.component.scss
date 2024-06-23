@@ -1,0 +1,65 @@
+:host {
+  display: flex;
+  position: relative;    
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 0.1vmin solid var(--n-500);
+  box-shadow: 0 0 1vmin var(--n-500);
+  padding: 4vmin;
+
+
+  .player {
+    display: flex;
+    flex-direction: row;
+    gap: 4vmin;
+    justify-content: center;
+    align-items: center;
+
+    app-player {
+        --dash-size: 13vmin;
+      }
+
+      span {
+        font-size: 6vmin;
+        color: var(--a-100);
+
+    }
+  }
+
+  app-match {
+    --dash-size: 3.5vmin;
+  }
+
+  .deco {
+    position: absolute;
+    color: var(--p-300);
+    font-size: 10vmin;
+    top: -7.5vmin;
+    inset-inline-start: -7.5vmin;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 2vmin;
+
+    mat-icon {
+      font-size: 15vmin;
+      width: auto;
+      height: auto;
+      -webkit-text-stroke-width: 0.2vmin;
+      -webkit-text-stroke-color: black;
+    }
+  }
+
+  h1 {
+    font-size: 8vmin;
+    color: white;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    bottom: 105%;
+    width: 100%;
+    -webkit-text-stroke-width: 0.2vmin;
+    -webkit-text-stroke-color: black;
+  }
+}

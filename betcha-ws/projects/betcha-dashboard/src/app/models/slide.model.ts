@@ -156,6 +156,8 @@ export interface SurpriseSlide {
 export type Solo = {
   matchId: string;
   playerId: string;
+  photoUrl: string;
+  displayName: string;
   guess: DbModel.GuessValue;
   points: number;
 };
@@ -167,6 +169,7 @@ export const soloSlide: (s: Solo) => SoloSlide = (solo) => ({
   topRight: true,
   message: true,
   image: '5',
+  solo
 });
 export interface SoloSlide {
   readonly type: 'solo';
@@ -175,6 +178,7 @@ export interface SoloSlide {
   readonly topRight: true;
   readonly message: true;
   readonly image: string;
+  readonly solo: Solo;
 
 }
 
