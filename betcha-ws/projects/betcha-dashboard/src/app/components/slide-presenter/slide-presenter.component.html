@@ -41,6 +41,13 @@ slide.id) {
   class="main-slide"
 />
 
+<app-surprise
+  *ngIf="slide.type === 'surprise'"
+  [surprise]="slide.surprise"
+  @flyStartEnd
+  class="main-slide"
+/>
+
 <app-top-3 *ngIf="slide.type === 'top-3'" @flyStartEnd class="main-slide" />
 
 <app-now-playing *ngIf="slide.type === 'now-playing'" [matchId]="slide.matchId" @flyStartEnd class="main-slide"/>

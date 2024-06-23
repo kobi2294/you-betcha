@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 0.1vmin solid var(--n-500);
+  box-shadow: 0 0 1vmin var(--n-500);
+  padding: 9vmin 3vmin;
+  width: 50%;
+  gap: 3vmin;
+  position: relative;
+
+  mat-icon.deco {
+    font-size: 20vmin;
+    color: var(--p-700);
+    position: absolute;
+    top: -10vmin;
+    inset-inline-start: -10vmin;
+    background-color: var(--n-800);
+    border-radius: 50%;
+    -webkit-text-stroke-width: 0.2vmin;
+    -webkit-text-stroke-color: black;
+  }
+
+  .player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    top: -25vmin;
+
+
+    app-player {
+      --dash-size: 16vmin;
+    }
+
+    .chance {
+      font-size: 10vmin;
+      color: var(--a-100);
+      font-weight: bold;
+      -webkit-text-stroke-width: 0.2vmin;
+      -webkit-text-stroke-color: var(--a-700);
+    }
+  }
+
+  border: 0.1vmin solid var(--n-300);
+
+  app-match {
+    --dash-size: 3.5vmin;
+  }
+
+  app-stats {
+    width: 100%;
+  }
+}

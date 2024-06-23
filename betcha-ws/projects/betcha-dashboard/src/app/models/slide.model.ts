@@ -130,6 +130,9 @@ export type Surprise = {
   guess: DbModel.GuessValue;
   correctCount: number;
   totalCount: number;
+  displayName: string;
+  photoUrl: string;
+  chance: number;
 };
 
 export const surpriseSlide: (s: Surprise) => SurpriseSlide = (
@@ -137,17 +140,17 @@ export const surpriseSlide: (s: Surprise) => SurpriseSlide = (
 ) => ({
   type: 'surprise',
   id: `surprise-${surprise.matchId}-${surprise.playerId}`,
-  topLeft: true,
-  topRight: true,
+  topLeft: false,
+  topRight: false,
   message: false,
   surprise,
-  image: '5',
+  image: '6',
 });
 export interface SurpriseSlide {
   readonly type: 'surprise';
   readonly id: string;
-  readonly topLeft: true;
-  readonly topRight: true;
+  readonly topLeft: false;
+  readonly topRight: false;
   readonly message: false;
   readonly surprise: Surprise;
   readonly image: string;

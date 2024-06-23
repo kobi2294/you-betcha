@@ -1,0 +1,14 @@
+@if(match(); as match) {
+    <mat-icon class="deco">stars</mat-icon>
+    <div class="player">
+        <app-player [displayName]="surprise().displayName" [photoUrl]="surprise().photoUrl"/>    
+        <div class="chance">A {{surprise().chance | percent:'1.0-0'}} Guess</div>
+    </div>
+    <app-match  [home]="match.home" [homeScore]="match.homeScore"
+                [away]="match.away" [awayScore]="match.awayScore"
+    />
+    <app-stats  [homeName]="match.home" [awayName]="match.away"
+                [home]="match.globalStatistics.home" [away]="match.globalStatistics.away"
+                [tie]="match.globalStatistics.tie"
+    />
+}

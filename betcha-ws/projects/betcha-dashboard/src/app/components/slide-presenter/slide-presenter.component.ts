@@ -9,6 +9,7 @@ import { NowPlayingComponent } from "../../slides/now-playing/now-playing.compon
 import { MatchSummaryComponent } from "../../slides/match-summary/match-summary.component";
 import { CountdownComponent } from "../../slides/countdown/countdown.component";
 import { SoloComponent } from "../../slides/solo/solo.component";
+import { SurpriseComponent } from "../../slides/surprise/surprise.component";
 
 @Component({
     selector: 'app-slide-presenter',
@@ -22,7 +23,7 @@ import { SoloComponent } from "../../slides/solo/solo.component";
         flyStartEnd,
         fade
     ],
-    imports: [SharedModule, ComingUpComponent, HighScorerComponent, Top3Component, NowPlayingComponent, MatchSummaryComponent, CountdownComponent, SoloComponent]
+    imports: [SharedModule, ComingUpComponent, HighScorerComponent, Top3Component, NowPlayingComponent, MatchSummaryComponent, CountdownComponent, SoloComponent, SurpriseComponent]
 })
 export class SlidePresenterComponent {
   readonly store = inject(DashboardStore);

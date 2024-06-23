@@ -22,11 +22,11 @@ export function slidesForState(gameVm: GameVm): SlideState {
 
   // res.push(slideGens.top3Slide());
 
-  const solos = findSolos(gameVm);
-  solos.forEach((s) => res.push(slideGens.soloSlide(s)));
-/*
   const surprises = findSurprise(gameVm);
   surprises.forEach((s) => res.push(slideGens.surpriseSlide(s)));
+
+  const solos = findSolos(gameVm);
+  solos.forEach((s) => res.push(slideGens.soloSlide(s)));
 
   // during matches
   // - for each match in progress - show now playing slide
@@ -56,7 +56,6 @@ export function slidesForState(gameVm: GameVm): SlideState {
       res.push(slideGens.recentHighestScorersSlide());
     }
   }
-*/
   // randomize a number in the range of the slides
   const index = Math.floor(Math.random() * res.length);
 
@@ -119,7 +118,7 @@ export function findSurprise(gameVm: GameVm): Surprise[] {
       match.globalStatistics.away +
       match.globalStatistics.home +
       match.globalStatistics.tie;
-    if (totalCount < 12) continue;
+    if (totalCount < 10) continue;
 
     const correctCount = match.globalStatistics[match.correctGuess];
     const correctChance = correctCount / totalCount;
@@ -134,6 +133,9 @@ export function findSurprise(gameVm: GameVm): Surprise[] {
           guess: userScore.guess,
           correctCount,
           totalCount,
+          displayName: userScore.displayName,
+          photoUrl: userScore.photoUrl,
+          chance: correctCount / totalCount
         });
       }
     }
