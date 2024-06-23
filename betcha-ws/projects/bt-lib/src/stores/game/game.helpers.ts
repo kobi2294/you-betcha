@@ -151,11 +151,11 @@ function userGuess(
   users: Record<string, DbModel.GroupUserRecord>,
   model: DbModel.CalculatedUserScore
 ): UserGuess {
-  const user = users[model.id];
+  const user = users[model.id] || null;
   return {
     id: model.id,
-    displayName: user.displayName,
-    photoUrl: user.photoUrl,
+    displayName: user?.displayName ?? '',
+    photoUrl: user?.photoUrl ?? '',
     guess: model.guess ?? '---',
   };
 }

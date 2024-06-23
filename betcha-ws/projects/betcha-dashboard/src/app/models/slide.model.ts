@@ -132,19 +132,19 @@ export type Surprise = {
   totalCount: number;
 };
 
-export const surpriseHuntersSlide: (s: Surprise) => SurpriseHuntersSlide = (
+export const surpriseSlide: (s: Surprise) => SurpriseSlide = (
   surprise
 ) => ({
-  type: 'surprise-hunters',
-  id: `surprise-hunters-${surprise.matchId}-${surprise.playerId}`,
+  type: 'surprise',
+  id: `surprise-${surprise.matchId}-${surprise.playerId}`,
   topLeft: true,
   topRight: true,
   message: false,
   surprise,
-  image: '1',
+  image: '5',
 });
-export interface SurpriseHuntersSlide {
-  readonly type: 'surprise-hunters';
+export interface SurpriseSlide {
+  readonly type: 'surprise';
   readonly id: string;
   readonly topLeft: true;
   readonly topRight: true;
@@ -153,21 +153,29 @@ export interface SurpriseHuntersSlide {
   readonly image: string;
 }
 
-export const soloSummarySlide: SlideGen<SoloSummarySlide> = () => ({
-  type: 'solo-summary',
-  id: 'solo-summary',
+export type Solo = {
+  matchId: string;
+  playerId: string;
+  guess: DbModel.GuessValue;
+  points: number;
+};
+
+export const soloSlide: (s: Solo) => SoloSlide = (solo) => ({
+  type: 'solo',
+  id: `solo-${solo.matchId}-${solo.playerId}`,
   topLeft: true,
   topRight: true,
   message: true,
-  image: '1',
+  image: '5',
 });
-export interface SoloSummarySlide {
-  readonly type: 'solo-summary';
-  readonly id: 'solo-summary';
+export interface SoloSlide {
+  readonly type: 'solo';
+  readonly id: string;
   readonly topLeft: true;
   readonly topRight: true;
   readonly message: true;
   readonly image: string;
+
 }
 
 export type Slide =
@@ -177,8 +185,8 @@ export type Slide =
   | NowPlayingSlide
   | MatchSummarySlide
   | RecentHighestScorersSlide
-  | SurpriseHuntersSlide
-  | SoloSummarySlide;
+  | SurpriseSlide
+  | SoloSlide;
 
 export type SlideType = Slide['type'];
 export const slideGens = {
@@ -188,6 +196,6 @@ export const slideGens = {
   nowPlayingSlide,
   matchSummarySlide,
   recentHighestScorersSlide,
-  surpriseHuntersSlide,
-  soloSummarySlide,
+  surpriseSlide,
+  soloSlide,
 } as const;

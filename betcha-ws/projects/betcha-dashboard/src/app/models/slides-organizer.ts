@@ -1,5 +1,6 @@
 import { FutureMatchVm, GameVm } from '@lib';
-import { Slide, Surprise, slideGens } from './slide.model';
+import { Slide, Solo, Surprise, slideGens } from './slide.model';
+import { DbModel } from '@tscommon';
 
 export type SlideState = {
   slides: Slide[], 
@@ -22,15 +23,11 @@ export function slidesForState(gameVm: GameVm): SlideState {
 
   res.push(slideGens.top3Slide());
 
-  // // if the group has solos in the history - show the last 3 solos in the "solo - summary" slide
-  // const anySolos = gameVm.table.some((g) => g.soloCount > 0);
-  // if (anySolos) res.push(slideGens.soloSummarySlide());
+  const solos = findSolos(gameVm);
+  solos.forEach((s) => res.push(slideGens.soloSlide(s)));
 
-  // // if the group has any surprise catcher - show the last 3 surprise catchers in the "surprise hunters" slide
-  // // suprise hunter is a case where somebody guessed correctly a score, that had less than 10% statistical chance of happening
-  // const surprises = getSurprises(gameVm);
-  // surprises.forEach((s) => res.push(slideGens.surpriseHuntersSlide(s)));
-
+  const surprises = findSurprise(gameVm);
+  surprises.forEach((s) => res.push(slideGens.surpriseSlide(s)));
 
   // during matches
   // - for each match in progress - show now playing slide
@@ -70,39 +67,6 @@ export function slidesForState(gameVm: GameVm): SlideState {
   return {slides: res, index};
 }
 
-// what data do we need:
-// 1. Next matches
-// 2. Matches ended in the past 24 hours
-// 3. All historical matches
-// 4. Table of now
-// 5. Table of 24 hours ago
-
-function getSurprises(gameVm: GameVm): Surprise[] {
-    const res: Surprise[] = [];
-    const pastMatches = gameVm.pastMatches;
-
-    console.log('Checking for surprises');
-
-    for (const match of pastMatches) {
-      const totalCount = match.globalStatistics.away + match.globalStatistics.home + match.globalStatistics.tie;
-      console.log('total count', totalCount);
-        if (totalCount < 12) continue;
-
-        const correctCount = match.globalStatistics[match.correctGuess];
-        const correctChance = correctCount / totalCount;
-        if (correctChance >= 0.1) continue; // its not considered surprise if the chance is 10% or more
-
-        // now add all the correct guessers
-        for (const userScore of match.userScores) {
-            if (userScore.guess === match.correctGuess) {
-                res.push({matchId: match.id, playerId: userScore.id, guess: userScore.guess, correctCount, totalCount});
-            }
-        }
-    }
-
-    console.log('Found surprises:', res);
-    return res;
-}
 
 export function matchesInCountdown(gameVm: GameVm): FutureMatchVm[] {
   // we should show the countdown in one of two cases:
@@ -127,4 +91,38 @@ export function matchesInCountdown(gameVm: GameVm): FutureMatchVm[] {
   }
 
   return [];
+}
+
+export function findSolos(gameVm: GameVm): Solo[] {
+  const res: Solo[] = [];
+  for (const match of gameVm.pastMatches) {
+    for (const userScore of match.userScores) {
+      if (userScore.isSolo) {
+        res.push({matchId: match.id, playerId: userScore.id, guess: userScore.guess as DbModel.GuessValue, points: userScore.points});
+      }
+    }
+  }
+
+  return res;
+}
+
+export function findSurprise(gameVm: GameVm): Surprise[] {
+  const res: Surprise[] = [];
+  for (const match of gameVm.pastMatches) {
+    const totalCount = match.globalStatistics.away + match.globalStatistics.home + match.globalStatistics.tie;
+    if (totalCount < 12) continue;
+
+    const correctCount = match.globalStatistics[match.correctGuess];
+    const correctChance = correctCount / totalCount;
+    if (correctChance >= 0.10) continue; // its not considered surprise if the chance is 10% or more
+
+    // now add all the correct guessers
+    for (const userScore of match.userScores) {
+      if (userScore.guess === match.correctGuess) {
+        res.push({matchId: match.id, playerId: userScore.id, guess: userScore.guess, correctCount, totalCount});
+      }
+    }
+  }
+
+  return res;
 }
