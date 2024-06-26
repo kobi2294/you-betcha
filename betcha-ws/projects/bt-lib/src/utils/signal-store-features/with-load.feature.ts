@@ -1,7 +1,7 @@
 import { Injector, inject, runInInjectionContext } from "@angular/core";
 import { patchState, signalStoreFeature, withHooks, withMethods } from "@ngrx/signals";
 import { rxMethod } from "@ngrx/signals/rxjs-interop";
-import { InnerSignalStore, MergeFeatureResults, SignalStoreFeature, SignalStoreFeatureResult } from "@ngrx/signals/src/signal-store-models";
+import { MergeFeatureResults, SignalStoreFeature, SignalStoreFeatureResult } from "@ngrx/signals/src/signal-store-models";
 import { Observable, switchMap, tap } from "rxjs";
 import { LoadStateFeatureResult, withLoadState } from "./with-load-state.feature";
 import { InputStore, RxMethod } from "./_types";
@@ -12,7 +12,7 @@ type LoadMethodFeatureResult = MergeFeatureResults<[LoadStateFeatureResult, {sta
 
 export function withLoad<Input extends SignalStoreFeatureResult, T>(loadMethod: LoadMethod<Input, T>, loadOnInit: boolean = false)
 : SignalStoreFeature<Input, LoadMethodFeatureResult> {
-    return (store) => {
+    const res: SignalStoreFeature<Input, LoadMethodFeatureResult> = store => {
         const injector = inject(Injector);
         const storeContent = {
             ...store.slices, 
@@ -40,9 +40,8 @@ export function withLoad<Input extends SignalStoreFeatureResult, T>(loadMethod: 
             })
         );
 
-        const res = feature(store);
-        
-        return res as unknown as InnerSignalStore<LoadMethodFeatureResult["state"], LoadMethodFeatureResult["signals"], LoadMethodFeatureResult["methods"]>;
+        return feature(store);
     }
+    return res;
 
 }

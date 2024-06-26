@@ -19,6 +19,7 @@ export type GroupMatchesVm = {
   readonly inProgressMatches: InProgressMatchVm[];
   readonly futureMatches: FutureMatchVm[];
   readonly nextMacthes: FutureMatchVm[];
+  readonly isKnockout: boolean;
 };
 
 // match with known dates and teams

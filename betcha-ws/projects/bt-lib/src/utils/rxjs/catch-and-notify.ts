@@ -1,7 +1,6 @@
 import { inject } from "@angular/core";
 import { NotificationsService } from "../../services/notifications.service";
 import { Observable, catchError, of, tap } from "rxjs";
-import { confirmPasswordReset } from "@angular/fire/auth";
 
 
 

@@ -7,7 +7,7 @@ import { getSignalValues } from "./get-signal-values";
 
 export function withDevtools<Input extends SignalStoreFeatureResult>(instanceName: string): 
     SignalStoreFeature<Input, EmptyFeatureResult> {
-    return store => {
+    const res: SignalStoreFeature<Input, EmptyFeatureResult> = store => {
         const session = reduxDevtoolsInit(instanceName, store);
 
         const feature = signalStoreFeature(
@@ -25,6 +25,9 @@ export function withDevtools<Input extends SignalStoreFeatureResult>(instanceNam
             })
         );
 
-        return feature(store);    
+        const r = feature(store);    
+        return r;
     }
+
+    return res;
 }

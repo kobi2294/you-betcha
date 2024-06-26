@@ -122,6 +122,7 @@ function groupMatchesVm(
 ): GroupMatchesVm {
   const users = toRecord(calcedGroup?.users || [], (user) => user.id);
   const calcedMatches = toRecord(calculatedGroupMatchScores, (m) => m.matchId);
+  const isKnockout = (split.nextMacthes.length > 0) && (!split.nextMacthes[0].stage.startsWith('group'));
 
   return {
     pastMatches: split.pastMatches.map((match) =>
@@ -140,6 +141,7 @@ function groupMatchesVm(
     ),
     futureMatches: split.futureMatches.map(futureMatchVm),
     nextMacthes: split.nextMacthes.map(futureMatchVm),
+    isKnockout
   };
 }
 

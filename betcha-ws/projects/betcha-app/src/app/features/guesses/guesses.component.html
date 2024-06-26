@@ -1,3 +1,15 @@
-@for(match of store.matches() ; track match.id) {
-  <app-future-match [match]="match" [guess]="store.guesses()[match.id] || null" (setGuess)="store.setGuess(match.id, $event)"/>
+@if (store.isKnockout()) {
+<div class="disclaimer">
+  <mat-icon>warning</mat-icon>
+  <div>
+    In knockout stage, effective result is after <strong>120 minutes</strong> of play.
+  </div>
+</div>
+
+} @for(match of store.matches() ; track match.id) {
+<app-future-match
+  [match]="match"
+  [guess]="store.guesses()[match.id] || null"
+  (setGuess)="store.setGuess(match.id, $event)"
+/>
 }

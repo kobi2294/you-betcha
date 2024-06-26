@@ -1,23 +1,30 @@
 <app-match-base [match]="match()">
-  <lib-on-off-pending-button
-    [clickWhenOn]="false"
-    [value]="guess() === 'home'"
-    (change)="setGuess.emit('home')"
-  >
-    Home
-  </lib-on-off-pending-button>
-  <lib-on-off-pending-button
-    [clickWhenOn]="false"
-    [value]="guess() === 'tie'"
-    (change)="setGuess.emit('tie')"
-  >
-    Tie
-  </lib-on-off-pending-button>
-  <lib-on-off-pending-button
-    [clickWhenOn]="false"
-    [value]="guess() === 'away'"
-    (change)="setGuess.emit('away')"
-  >
-    Away
-  </lib-on-off-pending-button>
+  <div class="container">
+    <div class="disclaimer" *ngIf="isKnockout()">
+      After 120 minutes:
+    </div>
+    <div class="buttons">
+      <lib-on-off-pending-button
+        [clickWhenOn]="false"
+        [value]="guess() === 'home'"
+        (change)="setGuess.emit('home')"
+      >
+        Home
+      </lib-on-off-pending-button>
+      <lib-on-off-pending-button
+        [clickWhenOn]="false"
+        [value]="guess() === 'tie'"
+        (change)="setGuess.emit('tie')"
+      >
+        @if(isKnockout()) { Penal' }  @else {Tie}
+      </lib-on-off-pending-button>
+      <lib-on-off-pending-button
+        [clickWhenOn]="false"
+        [value]="guess() === 'away'"
+        (change)="setGuess.emit('away')"
+      >
+        Away
+      </lib-on-off-pending-button>
+    </div>
+  </div>
 </app-match-base>

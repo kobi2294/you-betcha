@@ -9,7 +9,8 @@ export const GuessesStore = signalStore(
     withState({}), 
     withComputed((_, auth = inject(AuthStore), game = inject(GameStore)) => ({
         matches: computed(() => game.vm().futureMatches), 
-        guesses: computed(() => auth.user()!.guesses)
+        guesses: computed(() => auth.user()!.guesses), 
+        isKnockout: computed(() => game.vm().isKnockout)
     })), 
     withMethods((_, api = inject(ApiService), notify = inject(NotificationsService)) => ({
         setGuess: async (matchId: string, guess: DbModel.GuessValue) => {

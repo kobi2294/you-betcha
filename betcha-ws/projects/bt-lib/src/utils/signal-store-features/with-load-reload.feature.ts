@@ -15,7 +15,7 @@ type LoadMethodFeatureResult<Params> = MergeFeatureResults<[LoadStateFeatureResu
 
 export function withLoadReload<Input extends SignalStoreFeatureResult, Params, T>(loadMethod: LoadMethod<Input, Params, T>)
 : SignalStoreFeature<Input, LoadMethodFeatureResult<Params>> {
-    return (store) => {
+    const res: SignalStoreFeature<Input, LoadMethodFeatureResult<Params>> = store => {
         const injector = inject(Injector);
         const storeContent = {
             ...store.slices, 
@@ -23,8 +23,8 @@ export function withLoadReload<Input extends SignalStoreFeatureResult, Params, T
             ...store.methods
         };
         const rxNotify = rxNotifier();
-
         const loader = (prm: Params) => runInInjectionContext(injector, () => loadMethod(storeContent, prm));
+        
         const feature = signalStoreFeature(
             withLoadState(),
             withMethods((store) => {
@@ -42,11 +42,8 @@ export function withLoadReload<Input extends SignalStoreFeatureResult, Params, T
                 }})
         );
 
-        const res = feature(store);
-        
-        return res as unknown as InnerSignalStore<LoadMethodFeatureResult<Params>["state"], 
-                                                  LoadMethodFeatureResult<Params>["signals"], 
-                                                  LoadMethodFeatureResult<Params>["methods"]>;
+        return feature(store);        
     }
 
+    return res;
 }
