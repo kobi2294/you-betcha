@@ -27,6 +27,7 @@ import { MatCardModule } from "@angular/material/card";
 import { PadPipe } from "./pipes/pad.pipe";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatBadgeModule } from "@angular/material/badge";
 
 const publicDeclared: Type<any>[] = [
     DecoBgComponent, 
@@ -64,6 +65,7 @@ const publicImports: Type<any>[] = [
     MatCardModule,
     MatDialogModule,
     MatTabsModule,
+    MatBadgeModule,
     ScrollingModule, 
     ClipboardModule
 ]

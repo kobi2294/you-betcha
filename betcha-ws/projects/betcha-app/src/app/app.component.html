@@ -31,7 +31,9 @@
         </lib-toolbar>
         <lib-nav-bar *ngIf="!hideNavBar()">
           <lib-nav-item caption="Home" page="home" icon="home" />
-          <lib-nav-item caption="Guesses" page="guesses" icon="sports_esports" />
+          <lib-nav-item caption="Guesses" page="guesses" icon="sports_esports" 
+              [matBadge]="todoCount()" [matBadgeHidden]="todoCount() === 0" [matBadgeOverlap]="true"
+              />
           <lib-nav-item caption="Profile" page="profile" icon="face" />
           <lib-nav-item caption="Scores" page="scores" icon="leaderboard" *ngIf="authStore.hasAnyGroups()" />
           <lib-nav-item caption="Info" page="info" icon="contact_support" />
