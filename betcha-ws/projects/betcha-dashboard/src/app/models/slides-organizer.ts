@@ -19,8 +19,7 @@ export function slidesForState(gameVm: GameVm): SlideState {
   // any other time
   // - "top 3" slide
   const res: Slide[] = [];
-
-  // res.push(slideGens.top3Slide());
+  res.push(slideGens.top3Slide());
 
   const surprises = findSurprise(gameVm);
   surprises.forEach((s) => res.push(slideGens.surpriseSlide(s)));

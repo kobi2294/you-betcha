@@ -2,15 +2,15 @@ import { APP_INITIALIZER, EnvironmentProviders, makeEnvironmentProviders } from 
 
 export function providePwa(): EnvironmentProviders {
     return makeEnvironmentProviders([
-        {provide: APP_INITIALIZER, multi: true, useFactory: () => () => {            
-            const isStandalone = ('standalone' in window.navigator) && ((window.navigator as any).standalone);
-            if (isStandalone) {
+        {provide: APP_INITIALIZER, multi: true, useFactory: () => () => {
+            try {
+                const nextReloadTime = Date.now() + 1000 * 60 * 60 * 3; // 3 hours at least
                 window.addEventListener('visibilitychange', () => {
-                    if (document.visibilityState === 'visible') {
+                    if ((document.visibilityState === 'visible') && (Date.now() > nextReloadTime)) {
                         location.reload();
                     }
                 });    
-            }
+            }catch {}
         }}  
     ])
 }
