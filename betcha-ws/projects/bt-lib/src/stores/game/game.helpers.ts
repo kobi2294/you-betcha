@@ -12,6 +12,7 @@ import {
   UserScore,
   UserTableRowVm,
   FilledMatch,
+  UnscheduledMatch,
 } from './game.vm';
 
 export function buildGameVm(
@@ -46,6 +47,7 @@ type MatchSplit = {
   inProgressMatches: FilledMatch[];
   futureMatches: FilledMatch[];
   nextMacthes: FilledMatch[];
+  unscheduledMatches: UnscheduledMatch[];
 };
 
 export function splitMatches(
@@ -55,6 +57,13 @@ export function splitMatches(
 ): MatchSplit {
   const stageMap = toRecord(stages, (stage) => stage.id);
   const matches = allMatches.filter(isMatchScheduled).map(fill);
+  const unscheduledMatches: UnscheduledMatch[] = allMatches
+    .filter((m) => !isMatchScheduled(m))
+    .map(m => ({
+      ...m,
+      stageName: stageMap[m.stage].displayName,
+      points: stageMap[m.stage].points
+    }))
 
   // match is past if it has a score
   const pastMatches = matches.filter(isPastMatch);
@@ -80,6 +89,7 @@ export function splitMatches(
     .filter((match) => statistics[match.id]);
 
   return {
+    unscheduledMatches,
     pastMatches,
     recentMatches,
     inProgressMatches,
@@ -124,7 +134,13 @@ function groupMatchesVm(
   const calcedMatches = toRecord(calculatedGroupMatchScores, (m) => m.matchId);
   const isKnockout = (split.nextMacthes.length > 0) && (!split.nextMacthes[0].stage.startsWith('group'));
 
+  const undescheduledPoints = split.unscheduledMatches.reduce((acc, m) => acc + m.points, 0);
+  const futurePoints = split.futureMatches.reduce((acc, m) => acc + m.points, 0);
+  const inProgressPoints = split.inProgressMatches.reduce((acc, m) => acc + m.points, 0);
+  const pointsLeft = undescheduledPoints + futurePoints + inProgressPoints;
+
   return {
+    unscheduledMatches: split.unscheduledMatches,    
     pastMatches: split.pastMatches.map((match) =>
       pastMatchVm(match, globalStatistics, users, calcedMatches[match.id])
     ),
@@ -141,7 +157,8 @@ function groupMatchesVm(
     ),
     futureMatches: split.futureMatches.map(futureMatchVm),
     nextMacthes: split.nextMacthes.map(futureMatchVm),
-    isKnockout
+    isKnockout, 
+    pointsLeft,
   };
 }
 

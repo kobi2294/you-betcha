@@ -16,19 +16,7 @@ export default class ScoreTableComponent {
     .vm()
     .table
     .sort((a, b) => (b.totalPoints * 100 + b.soloCount) - (a.totalPoints * 100 + a.soloCount)));
-  pointsLeft = computed(() => pointsLeftInGame(this.game.vm()));
+  pointsLeft = computed(() => this.game.vm().pointsLeft);
 
 }
 
-function pointsLeftInGame(game: GameVm) {
-  const inProgress = game.inProgressMatches
-    .map(m => m.points)
-    .reduce((a, b) => a + b, 0);
-
-  const inFuture = game.futureMatches
-    .map(m => m.points)
-    .reduce((a, b) => a + b, 0);
-
-  return inProgress + inFuture;
-  
-}

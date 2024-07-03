@@ -19,8 +19,15 @@ export type GroupMatchesVm = {
   readonly inProgressMatches: InProgressMatchVm[];
   readonly futureMatches: FutureMatchVm[];
   readonly nextMacthes: FutureMatchVm[];
+  readonly unscheduledMatches: UnscheduledMatch[];
+  readonly pointsLeft: number;
   readonly isKnockout: boolean;
 };
+
+export type UnscheduledMatch = DbModel.Match & {
+  stageName: string;
+  points: number;
+}
 
 // match with known dates and teams
 export type ScheduledMatch = DbModel.Match & {
