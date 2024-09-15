@@ -79,8 +79,8 @@
   ],
   "matches": [
       {
-          "id": "01",
-          "stage": "group-a",
+          "id": "001",
+          "stage": "group",
           "awayScore": null,
           "home": "Germany",
           "away": "Scotland",
