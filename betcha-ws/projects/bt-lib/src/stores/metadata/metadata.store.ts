@@ -12,7 +12,7 @@ export const MetadataStore = signalStore(
             matches: md.matches,
             countries: md.countries,
             stages: md.stages,
-            statistics: md.statistics
+            statistics: md.statistics ?? {}
         }))
     ))),
     withDevtools('metadaa')    

@@ -16,7 +16,7 @@ export const HomeStore = signalStore(
         recent: computed(() => game.vm().recentMatches),
         selectedGroup: computed(() => groups.selectedGroup()), 
         hasNoGroups: computed(() => auth.user() && auth.user()!.groups.length === 0), 
-        guesses: computed(() => auth.user()!.guesses)
+        guesses: computed(() => auth.user()?.guesses ?? {})
     })), 
     withMethods((_, api = inject(ApiService), notify = inject(NotificationsService)) => ({
         setGuess: async (matchId: string, guess: DbModel.GuessValue) => {

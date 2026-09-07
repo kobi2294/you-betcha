@@ -1,0 +1,1370 @@
+{
+    "countries": [
+        "PSG",
+        "Bayern",
+        "Real Madrid",
+        "Liverpool",
+        "Inter Milan",
+        "Man City",
+        "Arsenal",
+        "Barcelona",
+        "Atletico Madrid",
+        "Dortmund",
+        "Roma",
+        "Sporting",
+        "Aston Villa",
+        "Porto",
+        "Man United",
+        "Club Brugge",
+        "Real Betis",
+        "PSV",
+        "Feyenoord",
+        "Lille",
+        "Bodo Glimt",
+        "Napoli",
+        "Leipzig",
+        "Villarreal",
+        "Fenerbahce",
+        "Shakhtar",
+        "Galatasaray",
+        "Slavia Praha",
+        "Bratislava",
+        "Stuttgart",
+        "AEK Athens",
+        "LASK",
+        "Como",
+        "Lens",
+        "Viking",
+        "Sabah"
+    ],
+    "stages": [
+        {
+            "displayName": "League",
+            "points": 120,
+            "id": "group"
+        },
+        {
+            "points": 180,
+            "displayName": "Playoffs",
+            "id": "group-playoff"
+        },
+        {
+            "displayName": "Round Of 16",
+            "points": 240,
+            "id": "group-round-of-16"
+        },
+        {
+            "id": "group-quarter-finals",
+            "points": 360,
+            "displayName": "Quarter Finals"
+        },
+        {
+            "points": 480,
+            "displayName": "Semi Finals",
+            "id": "group-semi-finals"
+        },
+        {
+            "id": "final",
+            "displayName": "Final",
+            "points": 600
+        }
+    ],
+    "matches": [
+        {
+            "homeScore": null,
+            "away": "LASK",
+            "stage": "group",
+            "home": "AEK Athens",
+            "id": "001",
+            "date": "2026-09-08T16:45:00Z",
+            "awayScore": null
+        },
+        {
+            "away": "Aston Villa",
+            "home": "Club Brugge",
+            "homeScore": null,
+            "id": "002",
+            "stage": "group",
+            "awayScore": null,
+            "date": "2026-09-08T16:45:00Z"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-09-08T19:00:00Z",
+            "id": "003",
+            "home": "Dortmund",
+            "awayScore": null,
+            "stage": "group",
+            "away": "Villarreal"
+        },
+        {
+            "away": "Man City",
+            "homeScore": null,
+            "home": "Porto",
+            "id": "004",
+            "stage": "group",
+            "date": "2026-09-08T19:00:00Z",
+            "awayScore": null
+        },
+        {
+            "stage": "group",
+            "awayScore": null,
+            "id": "005",
+            "away": "Real Betis",
+            "home": "Lille",
+            "date": "2026-09-08T19:00:00Z",
+            "homeScore": null
+        },
+        {
+            "stage": "group",
+            "home": "Real Madrid",
+            "homeScore": null,
+            "away": "Inter Milan",
+            "awayScore": null,
+            "date": "2026-09-08T19:00:00Z",
+            "id": "006"
+        },
+        {
+            "home": "Barcelona",
+            "stage": "group",
+            "away": "Feyenoord",
+            "homeScore": null,
+            "awayScore": null,
+            "date": "2026-09-09T16:45:00Z",
+            "id": "007"
+        },
+        {
+            "date": "2026-09-09T16:45:00Z",
+            "awayScore": null,
+            "id": "008",
+            "stage": "group",
+            "away": "Viking",
+            "homeScore": null,
+            "home": "Stuttgart"
+        },
+        {
+            "stage": "group",
+            "away": "Atletico Madrid",
+            "id": "009",
+            "homeScore": null,
+            "home": "Liverpool",
+            "date": "2026-09-09T19:00:00Z",
+            "awayScore": null
+        },
+        {
+            "id": "010",
+            "homeScore": null,
+            "date": "2026-09-09T19:00:00Z",
+            "away": "Bratislava",
+            "awayScore": null,
+            "home": "PSG",
+            "stage": "group"
+        },
+        {
+            "id": "011",
+            "homeScore": null,
+            "away": "Galatasaray",
+            "home": "Sporting",
+            "date": "2026-09-09T19:00:00Z",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "date": "2026-09-09T19:00:00Z",
+            "homeScore": null,
+            "awayScore": null,
+            "home": "Napoli",
+            "stage": "group",
+            "away": "Arsenal",
+            "id": "012"
+        },
+        {
+            "away": "Roma",
+            "homeScore": null,
+            "id": "013",
+            "home": "Fenerbahce",
+            "stage": "group",
+            "date": "2026-09-10T16:45:00Z",
+            "awayScore": null
+        },
+        {
+            "date": "2026-09-10T16:45:00Z",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "id": "014",
+            "home": "PSV",
+            "away": "Shakhtar"
+        },
+        {
+            "id": "015",
+            "awayScore": null,
+            "stage": "group",
+            "away": "Leipzig",
+            "home": "Como",
+            "date": "2026-09-10T19:00:00Z",
+            "homeScore": null
+        },
+        {
+            "home": "Bayern",
+            "stage": "group",
+            "awayScore": null,
+            "away": "Bodo Glimt",
+            "id": "016",
+            "homeScore": null,
+            "date": "2026-09-10T19:00:00Z"
+        },
+        {
+            "stage": "group",
+            "home": "Man United",
+            "away": "Sabah",
+            "homeScore": null,
+            "awayScore": null,
+            "id": "017",
+            "date": "2026-09-10T19:00:00Z"
+        },
+        {
+            "date": "2026-09-10T19:00:00Z",
+            "awayScore": null,
+            "id": "018",
+            "away": "Lens",
+            "homeScore": null,
+            "home": "Slavia Praha",
+            "stage": "group"
+        },
+        {
+            "date": "2026-10-13T16:45:00Z",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "home": "Lens",
+            "id": "019",
+            "away": "Sporting"
+        },
+        {
+            "stage": "group",
+            "homeScore": null,
+            "home": "Sabah",
+            "away": "Slavia Praha",
+            "date": "2026-10-13T16:45:00Z",
+            "awayScore": null,
+            "id": "020"
+        },
+        {
+            "date": "2026-10-13T19:00:00Z",
+            "id": "021",
+            "awayScore": null,
+            "away": "Lille",
+            "homeScore": null,
+            "home": "Arsenal",
+            "stage": "group"
+        },
+        {
+            "date": "2026-10-13T19:00:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "id": "022",
+            "home": "Atletico Madrid",
+            "away": "Man United"
+        },
+        {
+            "date": "2026-10-13T19:00:00Z",
+            "id": "023",
+            "homeScore": null,
+            "awayScore": null,
+            "away": "Club Brugge",
+            "home": "Inter Milan",
+            "stage": "group"
+        },
+        {
+            "awayScore": null,
+            "home": "Galatasaray",
+            "away": "Barcelona",
+            "date": "2026-10-13T19:00:00Z",
+            "stage": "group",
+            "homeScore": null,
+            "id": "024"
+        },
+        {
+            "awayScore": null,
+            "date": "2026-10-13T19:00:00Z",
+            "id": "025",
+            "away": "PSV",
+            "home": "Leipzig",
+            "homeScore": null,
+            "stage": "group"
+        },
+        {
+            "date": "2026-10-13T19:00:00Z",
+            "id": "026",
+            "homeScore": null,
+            "awayScore": null,
+            "away": "Bayern",
+            "stage": "group",
+            "home": "Viking"
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "away": "Napoli",
+            "id": "027",
+            "home": "Villarreal",
+            "date": "2026-10-13T19:00:00Z",
+            "homeScore": null
+        },
+        {
+            "home": "Feyenoord",
+            "homeScore": null,
+            "away": "Como",
+            "stage": "group",
+            "date": "2026-10-14T16:45:00Z",
+            "id": "028",
+            "awayScore": null
+        },
+        {
+            "date": "2026-10-14T16:45:00Z",
+            "homeScore": null,
+            "stage": "group",
+            "id": "029",
+            "awayScore": null,
+            "home": "LASK",
+            "away": "Liverpool"
+        },
+        {
+            "date": "2026-10-14T19:00:00Z",
+            "id": "030",
+            "homeScore": null,
+            "stage": "group",
+            "away": "Real Madrid",
+            "awayScore": null,
+            "home": "Roma"
+        },
+        {
+            "date": "2026-10-14T19:00:00Z",
+            "id": "031",
+            "stage": "group",
+            "homeScore": null,
+            "awayScore": null,
+            "away": "Fenerbahce",
+            "home": "Aston Villa"
+        },
+        {
+            "date": "2026-10-14T19:00:00Z",
+            "awayScore": null,
+            "id": "032",
+            "away": "AEK Athens",
+            "homeScore": null,
+            "stage": "group",
+            "home": "Shakhtar"
+        },
+        {
+            "date": "2026-10-14T19:00:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "033",
+            "home": "Bodo Glimt",
+            "stage": "group",
+            "away": "Dortmund"
+        },
+        {
+            "home": "Man City",
+            "stage": "group",
+            "away": "PSG",
+            "awayScore": null,
+            "homeScore": null,
+            "date": "2026-10-14T19:00:00Z",
+            "id": "034"
+        },
+        {
+            "date": "2026-10-14T19:00:00Z",
+            "awayScore": null,
+            "id": "035",
+            "stage": "group",
+            "homeScore": null,
+            "away": "Porto",
+            "home": "Real Betis"
+        },
+        {
+            "away": "Stuttgart",
+            "stage": "group",
+            "home": "Bratislava",
+            "id": "036",
+            "awayScore": null,
+            "homeScore": null,
+            "date": "2026-10-14T19:00:00Z"
+        },
+        {
+            "date": "2026-10-20T16:45:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "037",
+            "home": "Fenerbahce",
+            "away": "Slavia Praha",
+            "stage": "group"
+        },
+        {
+            "stage": "group",
+            "away": "Dortmund",
+            "id": "038",
+            "homeScore": null,
+            "home": "Sabah",
+            "date": "2026-10-20T16:45:00Z",
+            "awayScore": null
+        },
+        {
+            "date": "2026-10-20T19:00:00Z",
+            "id": "039",
+            "stage": "group",
+            "awayScore": null,
+            "homeScore": null,
+            "away": "Bratislava",
+            "home": "Roma"
+        },
+        {
+            "stage": "group",
+            "awayScore": null,
+            "home": "Porto",
+            "away": "PSV",
+            "id": "040",
+            "date": "2026-10-20T19:00:00Z",
+            "homeScore": null
+        },
+        {
+            "id": "041",
+            "stage": "group",
+            "away": "Villarreal",
+            "home": "Liverpool",
+            "homeScore": null,
+            "awayScore": null,
+            "date": "2026-10-20T19:00:00Z"
+        },
+        {
+            "date": "2026-10-20T19:00:00Z",
+            "homeScore": null,
+            "id": "042",
+            "stage": "group",
+            "away": "AEK Athens",
+            "awayScore": null,
+            "home": "Man City"
+        },
+        {
+            "date": "2026-10-20T19:00:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "043",
+            "home": "PSG",
+            "away": "Barcelona",
+            "stage": "group"
+        },
+        {
+            "date": "2026-10-20T19:00:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "id": "044",
+            "home": "Napoli",
+            "away": "Bodo Glimt"
+        },
+        {
+            "id": "045",
+            "away": "Atletico Madrid",
+            "home": "Stuttgart",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "date": "2026-10-20T19:00:00Z"
+        },
+        {
+            "awayScore": null,
+            "date": "2026-10-21T16:45:00Z",
+            "home": "Como",
+            "away": "Man United",
+            "stage": "group",
+            "homeScore": null,
+            "id": "046"
+        },
+        {
+            "date": "2026-10-21T16:45:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "id": "047",
+            "away": "Galatasaray",
+            "homeScore": null,
+            "home": "Lille"
+        },
+        {
+            "homeScore": null,
+            "home": "Aston Villa",
+            "away": "Viking",
+            "stage": "group",
+            "date": "2026-10-21T19:00:00Z",
+            "awayScore": null,
+            "id": "048"
+        },
+        {
+            "homeScore": null,
+            "id": "049",
+            "away": "Lens",
+            "home": "Club Brugge",
+            "date": "2026-10-21T19:00:00Z",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "id": "050",
+            "stage": "group",
+            "date": "2026-10-21T19:00:00Z",
+            "awayScore": null,
+            "away": "Arsenal",
+            "homeScore": null,
+            "home": "Bayern"
+        },
+        {
+            "date": "2026-10-21T19:00:00Z",
+            "homeScore": null,
+            "id": "051",
+            "awayScore": null,
+            "away": "Shakhtar",
+            "home": "Inter Milan",
+            "stage": "group"
+        },
+        {
+            "awayScore": null,
+            "date": "2026-10-21T19:00:00Z",
+            "home": "Real Madrid",
+            "homeScore": null,
+            "away": "Leipzig",
+            "id": "052",
+            "stage": "group"
+        },
+        {
+            "home": "Real Betis",
+            "awayScore": null,
+            "away": "Feyenoord",
+            "id": "053",
+            "stage": "group",
+            "homeScore": null,
+            "date": "2026-10-21T19:00:00Z"
+        },
+        {
+            "id": "054",
+            "date": "2026-10-21T19:00:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "away": "LASK",
+            "home": "Sporting"
+        },
+        {
+            "stage": "group",
+            "home": "Shakhtar",
+            "homeScore": null,
+            "away": "Sporting",
+            "awayScore": null,
+            "date": "2026-11-03T17:45:00Z",
+            "id": "055"
+        },
+        {
+            "awayScore": null,
+            "away": "Stuttgart",
+            "home": "Galatasaray",
+            "id": "056",
+            "date": "2026-11-03T17:45:00Z",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "home": "Atletico Madrid",
+            "away": "Bayern",
+            "awayScore": null,
+            "homeScore": null,
+            "date": "2026-11-03T20:00:00Z",
+            "stage": "group",
+            "id": "057"
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "id": "058",
+            "away": "Aston Villa",
+            "home": "Barcelona",
+            "date": "2026-11-03T20:00:00Z",
+            "homeScore": null
+        },
+        {
+            "away": "Inter Milan",
+            "id": "059",
+            "home": "Feyenoord",
+            "homeScore": null,
+            "stage": "group",
+            "date": "2026-11-03T20:00:00Z",
+            "awayScore": null
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "date": "2026-11-03T20:00:00Z",
+            "home": "Bodo Glimt",
+            "away": "Lille",
+            "id": "060",
+            "homeScore": null
+        },
+        {
+            "away": "Bratislava",
+            "home": "LASK",
+            "id": "061",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "date": "2026-11-03T20:00:00Z"
+        },
+        {
+            "awayScore": null,
+            "date": "2026-11-03T20:00:00Z",
+            "home": "Man United",
+            "id": "062",
+            "away": "Roma",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "date": "2026-11-03T20:00:00Z",
+            "id": "063",
+            "home": "Villarreal",
+            "away": "PSG",
+            "homeScore": null
+        },
+        {
+            "away": "Real Madrid",
+            "stage": "group",
+            "home": "AEK Athens",
+            "awayScore": null,
+            "id": "064",
+            "homeScore": null,
+            "date": "2026-11-04T17:45:00Z"
+        },
+        {
+            "home": "Fenerbahce",
+            "stage": "group",
+            "away": "Liverpool",
+            "homeScore": null,
+            "awayScore": null,
+            "id": "065",
+            "date": "2026-11-04T17:45:00Z"
+        },
+        {
+            "home": "Dortmund",
+            "away": "Real Betis",
+            "awayScore": null,
+            "stage": "group",
+            "id": "066",
+            "homeScore": null,
+            "date": "2026-11-04T20:00:00Z"
+        },
+        {
+            "date": "2026-11-04T20:00:00Z",
+            "homeScore": null,
+            "awayScore": null,
+            "home": "Porto",
+            "id": "067",
+            "away": "Napoli",
+            "stage": "group"
+        },
+        {
+            "home": "PSV",
+            "away": "Club Brugge",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "date": "2026-11-04T20:00:00Z",
+            "id": "068"
+        },
+        {
+            "stage": "group",
+            "homeScore": null,
+            "date": "2026-11-04T20:00:00Z",
+            "home": "Leipzig",
+            "away": "Man City",
+            "awayScore": null,
+            "id": "069"
+        },
+        {
+            "date": "2026-11-04T20:00:00Z",
+            "homeScore": null,
+            "id": "070",
+            "away": "Como",
+            "awayScore": null,
+            "stage": "group",
+            "home": "Lens"
+        },
+        {
+            "home": "Slavia Praha",
+            "away": "Arsenal",
+            "awayScore": null,
+            "id": "071",
+            "homeScore": null,
+            "stage": "group",
+            "date": "2026-11-04T20:00:00Z"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-11-04T20:00:00Z",
+            "id": "072",
+            "away": "Sabah",
+            "home": "Viking",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "home": "Bodo Glimt",
+            "away": "LASK",
+            "homeScore": null,
+            "awayScore": null,
+            "date": "2026-11-24T17:45:00Z",
+            "stage": "group",
+            "id": "073"
+        },
+        {
+            "date": "2026-11-24T17:45:00Z",
+            "awayScore": null,
+            "id": "074",
+            "homeScore": null,
+            "away": "Aston Villa",
+            "home": "Galatasaray",
+            "stage": "group"
+        },
+        {
+            "away": "Dortmund",
+            "id": "075",
+            "home": "Arsenal",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "date": "2026-11-24T20:00:00Z"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-11-24T20:00:00Z",
+            "home": "Como",
+            "away": "AEK Athens",
+            "awayScore": null,
+            "stage": "group",
+            "id": "076"
+        },
+        {
+            "id": "077",
+            "date": "2026-11-24T20:00:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "away": "Porto",
+            "home": "Feyenoord",
+            "stage": "group"
+        },
+        {
+            "date": "2026-11-24T20:00:00Z",
+            "awayScore": null,
+            "id": "078",
+            "homeScore": null,
+            "away": "Napoli",
+            "stage": "group",
+            "home": "Man City"
+        },
+        {
+            "stage": "group",
+            "away": "Lens",
+            "awayScore": null,
+            "id": "079",
+            "home": "Leipzig",
+            "date": "2026-11-24T20:00:00Z",
+            "homeScore": null
+        },
+        {
+            "home": "Real Madrid",
+            "away": "PSV",
+            "homeScore": null,
+            "stage": "group",
+            "id": "080",
+            "awayScore": null,
+            "date": "2026-11-24T20:00:00Z"
+        },
+        {
+            "stage": "group",
+            "date": "2026-11-24T20:00:00Z",
+            "homeScore": null,
+            "id": "081",
+            "away": "Real Betis",
+            "home": "Bratislava",
+            "awayScore": null
+        },
+        {
+            "date": "2026-11-25T17:45:00Z",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "home": "Sabah",
+            "away": "Barcelona",
+            "id": "082"
+        },
+        {
+            "date": "2026-11-25T17:45:00Z",
+            "awayScore": null,
+            "id": "083",
+            "away": "Villarreal",
+            "homeScore": null,
+            "home": "Slavia Praha",
+            "stage": "group"
+        },
+        {
+            "home": "Atletico Madrid",
+            "awayScore": null,
+            "away": "Viking",
+            "stage": "group",
+            "homeScore": null,
+            "id": "084",
+            "date": "2026-11-25T20:00:00Z"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-11-25T20:00:00Z",
+            "id": "085",
+            "home": "Club Brugge",
+            "awayScore": null,
+            "stage": "group",
+            "away": "Liverpool"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-11-25T20:00:00Z",
+            "home": "Inter Milan",
+            "away": "Stuttgart",
+            "awayScore": null,
+            "id": "086",
+            "stage": "group"
+        },
+        {
+            "date": "2026-11-25T20:00:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "087",
+            "home": "Shakhtar",
+            "stage": "group",
+            "away": "Fenerbahce"
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "date": "2026-11-25T20:00:00Z",
+            "id": "088",
+            "home": "Lille",
+            "away": "Bayern",
+            "homeScore": null
+        },
+        {
+            "date": "2026-11-25T20:00:00Z",
+            "homeScore": null,
+            "id": "089",
+            "awayScore": null,
+            "away": "Roma",
+            "home": "PSG",
+            "stage": "group"
+        },
+        {
+            "homeScore": null,
+            "date": "2026-11-25T20:00:00Z",
+            "home": "Sporting",
+            "id": "090",
+            "awayScore": null,
+            "away": "Man United",
+            "stage": "group"
+        },
+        {
+            "id": "091",
+            "awayScore": null,
+            "date": "2026-12-08T17:45:00Z",
+            "away": "Feyenoord",
+            "home": "Viking",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "date": "2026-12-08T17:45:00Z",
+            "id": "092",
+            "homeScore": null,
+            "awayScore": null,
+            "away": "Sabah",
+            "stage": "group",
+            "home": "Villarreal"
+        },
+        {
+            "stage": "group",
+            "date": "2026-12-08T20:00:00Z",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "093",
+            "home": "AEK Athens",
+            "away": "Galatasaray"
+        },
+        {
+            "date": "2026-12-08T20:00:00Z",
+            "awayScore": null,
+            "id": "094",
+            "homeScore": null,
+            "away": "Sporting",
+            "stage": "group",
+            "home": "Roma"
+        },
+        {
+            "stage": "group",
+            "date": "2026-12-08T20:00:00Z",
+            "id": "095",
+            "homeScore": null,
+            "away": "PSG",
+            "awayScore": null,
+            "home": "Aston Villa"
+        },
+        {
+            "awayScore": null,
+            "away": "Man City",
+            "stage": "group",
+            "home": "Barcelona",
+            "id": "096",
+            "date": "2026-12-08T20:00:00Z",
+            "homeScore": null
+        },
+        {
+            "homeScore": null,
+            "date": "2026-12-08T20:00:00Z",
+            "stage": "group",
+            "id": "097",
+            "home": "Bayern",
+            "away": "Slavia Praha",
+            "awayScore": null
+        },
+        {
+            "homeScore": null,
+            "date": "2026-12-08T20:00:00Z",
+            "home": "Man United",
+            "away": "Leipzig",
+            "id": "098",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "id": "099",
+            "awayScore": null,
+            "stage": "group",
+            "date": "2026-12-08T20:00:00Z",
+            "away": "Club Brugge",
+            "home": "Napoli",
+            "homeScore": null
+        },
+        {
+            "awayScore": null,
+            "date": "2026-12-09T17:45:00Z",
+            "home": "Real Betis",
+            "homeScore": null,
+            "away": "Como",
+            "stage": "group",
+            "id": "100"
+        },
+        {
+            "id": "101",
+            "date": "2026-12-09T17:45:00Z",
+            "stage": "group",
+            "awayScore": null,
+            "away": "Shakhtar",
+            "homeScore": null,
+            "home": "Bratislava"
+        },
+        {
+            "date": "2026-12-09T20:00:00Z",
+            "id": "102",
+            "stage": "group",
+            "homeScore": null,
+            "awayScore": null,
+            "away": "Real Madrid",
+            "home": "Arsenal"
+        },
+        {
+            "date": "2026-12-09T20:00:00Z",
+            "homeScore": null,
+            "awayScore": null,
+            "id": "103",
+            "home": "Dortmund",
+            "away": "Inter Milan",
+            "stage": "group"
+        },
+        {
+            "date": "2026-12-09T20:00:00Z",
+            "id": "104",
+            "awayScore": null,
+            "homeScore": null,
+            "away": "Fenerbahce",
+            "home": "LASK",
+            "stage": "group"
+        },
+        {
+            "id": "105",
+            "away": "Porto",
+            "stage": "group",
+            "home": "Liverpool",
+            "homeScore": null,
+            "awayScore": null,
+            "date": "2026-12-09T20:00:00Z"
+        },
+        {
+            "stage": "group",
+            "home": "PSV",
+            "away": "Atletico Madrid",
+            "homeScore": null,
+            "awayScore": null,
+            "id": "106",
+            "date": "2026-12-09T20:00:00Z"
+        },
+        {
+            "id": "107",
+            "date": "2026-12-09T20:00:00Z",
+            "homeScore": null,
+            "away": "Bodo Glimt",
+            "awayScore": null,
+            "home": "Lens",
+            "stage": "group"
+        },
+        {
+            "stage": "group",
+            "homeScore": null,
+            "home": "Stuttgart",
+            "away": "Lille",
+            "id": "108",
+            "awayScore": null,
+            "date": "2026-12-09T20:00:00Z"
+        },
+        {
+            "awayScore": null,
+            "id": "109",
+            "date": "2027-01-19T17:45:00Z",
+            "away": "Atletico Madrid",
+            "home": "Bodo Glimt",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "stage": "group",
+            "homeScore": null,
+            "date": "2027-01-19T17:45:00Z",
+            "id": "110",
+            "home": "Galatasaray",
+            "awayScore": null,
+            "away": "Feyenoord"
+        },
+        {
+            "stage": "group",
+            "homeScore": null,
+            "home": "AEK Athens",
+            "away": "Roma",
+            "id": "111",
+            "date": "2027-01-19T20:00:00Z",
+            "awayScore": null
+        },
+        {
+            "awayScore": null,
+            "date": "2027-01-19T20:00:00Z",
+            "id": "112",
+            "home": "Aston Villa",
+            "away": "Dortmund",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "stage": "group",
+            "home": "Inter Milan",
+            "homeScore": null,
+            "away": "Liverpool",
+            "awayScore": null,
+            "date": "2027-01-19T20:00:00Z",
+            "id": "113"
+        },
+        {
+            "home": "Porto",
+            "awayScore": null,
+            "stage": "group",
+            "away": "Slavia Praha",
+            "id": "114",
+            "homeScore": null,
+            "date": "2027-01-19T20:00:00Z"
+        },
+        {
+            "homeScore": null,
+            "stage": "group",
+            "date": "2027-01-19T20:00:00Z",
+            "home": "Lille",
+            "away": "Bratislava",
+            "id": "115",
+            "awayScore": null
+        },
+        {
+            "stage": "group",
+            "home": "Real Madrid",
+            "away": "LASK",
+            "homeScore": null,
+            "awayScore": null,
+            "date": "2027-01-19T20:00:00Z",
+            "id": "116"
+        },
+        {
+            "awayScore": null,
+            "date": "2027-01-19T20:00:00Z",
+            "home": "Stuttgart",
+            "away": "Club Brugge",
+            "homeScore": null,
+            "stage": "group",
+            "id": "117"
+        },
+        {
+            "date": "2027-01-20T17:45:00Z",
+            "stage": "group",
+            "awayScore": null,
+            "homeScore": null,
+            "home": "Fenerbahce",
+            "away": "Villarreal",
+            "id": "118"
+        },
+        {
+            "stage": "group",
+            "home": "Sabah",
+            "away": "Napoli",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "119",
+            "date": "2027-01-20T17:45:00Z"
+        },
+        {
+            "id": "120",
+            "stage": "group",
+            "homeScore": null,
+            "away": "PSG",
+            "home": "Como",
+            "date": "2027-01-20T20:00:00Z",
+            "awayScore": null
+        },
+        {
+            "id": "121",
+            "homeScore": null,
+            "date": "2027-01-20T20:00:00Z",
+            "stage": "group",
+            "away": "Bayern",
+            "home": "Man United",
+            "awayScore": null
+        },
+        {
+            "away": "Shakhtar",
+            "home": "Leipzig",
+            "awayScore": null,
+            "id": "122",
+            "stage": "group",
+            "homeScore": null,
+            "date": "2027-01-20T20:00:00Z"
+        },
+        {
+            "homeScore": null,
+            "date": "2027-01-20T20:00:00Z",
+            "id": "123",
+            "away": "Man City",
+            "home": "Lens",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "awayScore": null,
+            "home": "Real Betis",
+            "away": "Arsenal",
+            "id": "124",
+            "date": "2027-01-20T20:00:00Z",
+            "stage": "group",
+            "homeScore": null
+        },
+        {
+            "date": "2027-01-20T20:00:00Z",
+            "awayScore": null,
+            "id": "125",
+            "away": "Barcelona",
+            "stage": "group",
+            "home": "Sporting",
+            "homeScore": null
+        },
+        {
+            "awayScore": null,
+            "id": "126",
+            "stage": "group",
+            "away": "PSV",
+            "home": "Viking",
+            "date": "2027-01-20T20:00:00Z",
+            "homeScore": null
+        },
+        {
+            "home": "Arsenal",
+            "away": "Sabah",
+            "homeScore": null,
+            "stage": "group",
+            "id": "127",
+            "awayScore": null,
+            "date": "2027-01-27T20:00:00Z"
+        },
+        {
+            "home": "Roma",
+            "away": "Lille",
+            "awayScore": null,
+            "homeScore": null,
+            "stage": "group",
+            "date": "2027-01-27T20:00:00Z",
+            "id": "128"
+        },
+        {
+            "id": "129",
+            "away": "Fenerbahce",
+            "awayScore": null,
+            "home": "Atletico Madrid",
+            "date": "2027-01-27T20:00:00Z",
+            "homeScore": null,
+            "stage": "group"
+        },
+        {
+            "homeScore": null,
+            "date": "2027-01-27T20:00:00Z",
+            "id": "130",
+            "away": "AEK Athens",
+            "home": "Dortmund",
+            "awayScore": null,
+            "stage": "group"
+        },
+        {
+            "date": "2027-01-27T20:00:00Z",
+            "awayScore": null,
+            "id": "131",
+            "homeScore": null,
+            "away": "Bodo Glimt",
+            "stage": "group",
+            "home": "Club Brugge"
+        },
+        {
+            "homeScore": null,
+            "home": "Bayern",
+            "away": "Real Betis",
+            "stage": "group",
+            "date": "2027-01-27T20:00:00Z",
+            "id": "132",
+            "awayScore": null
+        },
+        {
+            "date": "2027-01-27T20:00:00Z",
+            "id": "133",
+            "homeScore": null,
+            "stage": "group",
+            "awayScore": null,
+            "away": "Como",
+            "home": "Barcelona"
+        },
+        {
+            "stage": "group",
+            "home": "Shakhtar",
+            "away": "Real Madrid",
+            "awayScore": null,
+            "homeScore": null,
+            "id": "134",
+            "date": "2027-01-27T20:00:00Z"
+        },
+        {
+            "stage": "group",
+            "away": "Leipzig",
+            "awayScore": null,
+            "home": "Feyenoord",
+            "id": "135",
+            "homeScore": null,
+            "date": "2027-01-27T20:00:00Z"
+        },
+        {
+            "date": "2027-01-27T20:00:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "id": "136",
+            "home": "LASK",
+            "away": "Porto"
+        },
+        {
+            "date": "2027-01-27T20:00:00Z",
+            "homeScore": null,
+            "stage": "group",
+            "id": "137",
+            "awayScore": null,
+            "home": "Liverpool",
+            "away": "Lens"
+        },
+        {
+            "homeScore": null,
+            "date": "2027-01-27T20:00:00Z",
+            "home": "Man City",
+            "id": "138",
+            "away": "Sporting",
+            "stage": "group",
+            "awayScore": null
+        },
+        {
+            "awayScore": null,
+            "date": "2027-01-27T20:00:00Z",
+            "id": "139",
+            "away": "Galatasaray",
+            "home": "PSG",
+            "homeScore": null,
+            "stage": "group"
+        },
+        {
+            "awayScore": null,
+            "stage": "group",
+            "date": "2027-01-27T20:00:00Z",
+            "id": "140",
+            "away": "Stuttgart",
+            "home": "PSV",
+            "homeScore": null
+        },
+        {
+            "home": "Slavia Praha",
+            "away": "Aston Villa",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "id": "141",
+            "date": "2027-01-27T20:00:00Z"
+        },
+        {
+            "id": "142",
+            "awayScore": null,
+            "stage": "group",
+            "date": "2027-01-27T20:00:00Z",
+            "away": "Viking",
+            "home": "Napoli",
+            "homeScore": null
+        },
+        {
+            "date": "2027-01-27T20:00:00Z",
+            "awayScore": null,
+            "stage": "group",
+            "homeScore": null,
+            "id": "143",
+            "home": "Villarreal",
+            "away": "Man United"
+        },
+        {
+            "homeScore": null,
+            "id": "144",
+            "away": "Inter Milan",
+            "home": "Bratislava",
+            "date": "2027-01-27T20:00:00Z",
+            "stage": "group",
+            "awayScore": null
+        }
+    ]
+}
